@@ -24,6 +24,7 @@ import Screens.Principal.Principal;
  * @author tutaa
  */
 // TODO: poner "añadir fondos y retirar fondos"
+// TODO: crear pantalla transacciones
 public class PersonalProfile extends javax.swing.JFrame {
 
         /**

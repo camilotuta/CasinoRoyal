@@ -407,9 +407,9 @@ public class RecoverPassword extends javax.swing.JFrame {
                 pack();
         }// </editor-fold>//GEN-END:initComponents
 
-        private void tfCorreoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_tfCorreoActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_tfCorreoActionPerformed
+        private void tfCorreoActionPerformed(java.awt.event.ActionEvent evt) {
+
+        }
 
         private void pfContraseñaKeyReleased(java.awt.event.KeyEvent evt) {
                 desactivarBotonRegistrarse();
