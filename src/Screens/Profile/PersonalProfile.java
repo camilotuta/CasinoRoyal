@@ -109,222 +109,210 @@ public class PersonalProfile extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-        // Code">//GEN-BEGIN:initComponents
-        private void initComponents() {
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
-                ventanaProfile = new javax.swing.JPanel();
-                panelMenu = new javax.swing.JPanel();
-                imgCasa = new javax.swing.JLabel();
-                imgVolver = new javax.swing.JLabel();
-                imgUsuario = new javax.swing.JLabel();
-                imgMenuBar = new javax.swing.JLabel();
-                lbPonerFondos = new javax.swing.JLabel();
-                lbPerfil = new javax.swing.JLabel();
-                lbPonerNombre = new javax.swing.JLabel();
-                lbPonerEdad = new javax.swing.JLabel();
-                lbPonerCorreo = new javax.swing.JLabel();
-                lbBiografía = new javax.swing.JLabel();
-                scrollPonerBiografia = new Screens.Custom.ScrollPaneWin11();
-                txtMostrarBiografia = new javax.swing.JTextArea();
-                lbCambiarBiografia = new javax.swing.JLabel();
-                scrollCambiarBiografia = new Screens.Custom.ScrollPaneWin11();
-                tfCambiarBiografia = new javax.swing.JTextPane();
-                btnVerTransacciones = new javax.swing.JButton();
-                btnGuardarBiografia = new javax.swing.JButton();
-                btnCancelarBiografia = new javax.swing.JButton();
+        ventanaProfile = new javax.swing.JPanel();
+        panelMenu = new javax.swing.JPanel();
+        imgCasa = new javax.swing.JLabel();
+        imgVolver = new javax.swing.JLabel();
+        imgUsuario = new javax.swing.JLabel();
+        imgMenuBar = new javax.swing.JLabel();
+        lbPonerFondos = new javax.swing.JLabel();
+        lbPerfil = new javax.swing.JLabel();
+        lbPonerNombre = new javax.swing.JLabel();
+        lbPonerEdad = new javax.swing.JLabel();
+        lbPonerCorreo = new javax.swing.JLabel();
+        lbBiografía = new javax.swing.JLabel();
+        scrollPonerBiografia = new Screens.Principal.Custom.ScrollPaneWin11();
+        txtMostrarBiografia = new javax.swing.JTextArea();
+        lbCambiarBiografia = new javax.swing.JLabel();
+        scrollCambiarBiografia = new Screens.Principal.Custom.ScrollPaneWin11();
+        tfCambiarBiografia = new javax.swing.JTextPane();
+        btnVerTransacciones = new javax.swing.JButton();
+        btnGuardarBiografia = new javax.swing.JButton();
+        btnCancelarBiografia = new javax.swing.JButton();
 
-                setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-                ventanaProfile.setBackground(new java.awt.Color(27, 9, 5));
-                ventanaProfile.setForeground(new java.awt.Color(255, 255, 255));
-                ventanaProfile.setPreferredSize(new java.awt.Dimension(1080, 720));
-                ventanaProfile.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        ventanaProfile.setBackground(new java.awt.Color(27, 9, 5));
+        ventanaProfile.setForeground(new java.awt.Color(255, 255, 255));
+        ventanaProfile.setPreferredSize(new java.awt.Dimension(1080, 720));
+        ventanaProfile.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                panelMenu.setBackground(new java.awt.Color(22, 22, 26));
-                panelMenu.setOpaque(false);
-                panelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelMenu.setBackground(new java.awt.Color(22, 22, 26));
+        panelMenu.setOpaque(false);
+        panelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                imgCasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/casa.png"))); // NOI18N
-                imgCasa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                imgCasa.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                                imgCasaMouseClicked(evt);
-                        }
+        imgCasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/casa.png"))); // NOI18N
+        imgCasa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        imgCasa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgCasaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                imgCasaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                imgCasaMouseExited(evt);
+            }
+        });
+        panelMenu.add(imgCasa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
-                        public void mouseEntered(java.awt.event.MouseEvent evt) {
-                                imgCasaMouseEntered(evt);
-                        }
+        imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/volver.png"))); // NOI18N
+        imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgVolverMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                imgVolverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                imgVolverMouseExited(evt);
+            }
+        });
+        panelMenu.add(imgVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
-                        public void mouseExited(java.awt.event.MouseEvent evt) {
-                                imgCasaMouseExited(evt);
-                        }
-                });
-                panelMenu.add(imgCasa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+        imgUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuarioHover.png"))); // NOI18N
+        imgUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelMenu.add(imgUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
-                imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/volver.png"))); // NOI18N
-                imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                                imgVolverMouseClicked(evt);
-                        }
+        imgMenuBar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imgMenuBar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lineaVertical.png"))); // NOI18N
+        imgMenuBar.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panelMenu.add(imgMenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, -1));
 
-                        public void mouseEntered(java.awt.event.MouseEvent evt) {
-                                imgVolverMouseEntered(evt);
-                        }
+        ventanaProfile.add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 230, 60, 220));
 
-                        public void mouseExited(java.awt.event.MouseEvent evt) {
-                                imgVolverMouseExited(evt);
-                        }
-                });
-                panelMenu.add(imgVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
+        lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
+        lbPonerFondos.setText("-");
+        ventanaProfile.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 10, 160, -1));
 
-                imgUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuarioHover.png"))); // NOI18N
-                imgUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-                panelMenu.add(imgUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+        lbPerfil.setFont(new java.awt.Font("Crabs", 1, 100)); // NOI18N
+        lbPerfil.setForeground(new java.awt.Color(227, 199, 104));
+        lbPerfil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbPerfil.setText("Perfil");
+        ventanaProfile.add(lbPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1080, -1));
 
-                imgMenuBar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                imgMenuBar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lineaVertical.png"))); // NOI18N
-                imgMenuBar.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-                panelMenu.add(imgMenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, -1));
+        lbPonerNombre.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        lbPonerNombre.setForeground(new java.awt.Color(255, 255, 255));
+        lbPonerNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbPonerNombre.setText("Laura Nathalya Abril Velasquez");
+        lbPonerNombre.setToolTipText("");
+        ventanaProfile.add(lbPonerNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 1080, -1));
 
-                ventanaProfile.add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 230, 60, 220));
+        lbPonerEdad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbPonerEdad.setForeground(new java.awt.Color(255, 255, 255));
+        lbPonerEdad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbPonerEdad.setText("19 años");
+        ventanaProfile.add(lbPonerEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 1080, -1));
 
-                lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-                lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
-                lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-                lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
-                lbPonerFondos.setText("-");
-                ventanaProfile.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 10, 160, -1));
+        lbPonerCorreo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbPonerCorreo.setForeground(new java.awt.Color(255, 255, 255));
+        lbPonerCorreo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbPonerCorreo.setText("lalaabril01@gmail.com");
+        ventanaProfile.add(lbPonerCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 1080, -1));
 
-                lbPerfil.setFont(new java.awt.Font("Crabs", 1, 100)); // NOI18N
-                lbPerfil.setForeground(new java.awt.Color(227, 199, 104));
-                lbPerfil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                lbPerfil.setText("Perfil");
-                ventanaProfile.add(lbPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1080, -1));
+        lbBiografía.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbBiografía.setForeground(new java.awt.Color(224, 195, 102));
+        lbBiografía.setText("BIOGRAFÍA: ");
+        ventanaProfile.add(lbBiografía, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, -1, -1));
 
-                lbPonerNombre.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
-                lbPonerNombre.setForeground(new java.awt.Color(255, 255, 255));
-                lbPonerNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                lbPonerNombre.setText("Laura Nathalya Abril Velasquez");
-                lbPonerNombre.setToolTipText("");
-                ventanaProfile.add(lbPonerNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 1080, -1));
+        scrollPonerBiografia.setBackground(new java.awt.Color(0, 2, 2));
 
-                lbPonerEdad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-                lbPonerEdad.setForeground(new java.awt.Color(255, 255, 255));
-                lbPonerEdad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                lbPonerEdad.setText("19 anos");
-                ventanaProfile.add(lbPonerEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 1080, -1));
+        txtMostrarBiografia.setEditable(false);
+        txtMostrarBiografia.setBackground(new java.awt.Color(27, 9, 5));
+        txtMostrarBiografia.setColumns(1);
+        txtMostrarBiografia.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtMostrarBiografia.setForeground(new java.awt.Color(255, 255, 255));
+        txtMostrarBiografia.setLineWrap(true);
+        txtMostrarBiografia.setRows(3);
+        txtMostrarBiografia.setWrapStyleWord(true);
+        txtMostrarBiografia.setBorder(null);
+        txtMostrarBiografia.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtMostrarBiografia.setFocusable(false);
+        scrollPonerBiografia.setViewportView(txtMostrarBiografia);
 
-                lbPonerCorreo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-                lbPonerCorreo.setForeground(new java.awt.Color(255, 255, 255));
-                lbPonerCorreo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                lbPonerCorreo.setText("lalaabril01@gmail.com");
-                ventanaProfile.add(lbPonerCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 1080, -1));
+        ventanaProfile.add(scrollPonerBiografia, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 380, 100));
 
-                lbBiografía.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-                lbBiografía.setForeground(new java.awt.Color(224, 195, 102));
-                lbBiografía.setText("BIOGRAFÍA: ");
-                ventanaProfile.add(lbBiografía, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, -1, -1));
+        lbCambiarBiografia.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbCambiarBiografia.setForeground(new java.awt.Color(224, 195, 102));
+        lbCambiarBiografia.setText("CAMBIAR BIOGRAFÍA: ");
+        ventanaProfile.add(lbCambiarBiografia, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 490, -1, -1));
 
-                scrollPonerBiografia.setBackground(new java.awt.Color(0, 2, 2));
+        scrollCambiarBiografia.setBackground(new java.awt.Color(0, 2, 2));
 
-                txtMostrarBiografia.setEditable(false);
-                txtMostrarBiografia.setBackground(new java.awt.Color(27, 9, 5));
-                txtMostrarBiografia.setColumns(1);
-                txtMostrarBiografia.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-                txtMostrarBiografia.setForeground(new java.awt.Color(255, 255, 255));
-                txtMostrarBiografia.setLineWrap(true);
-                txtMostrarBiografia.setRows(3);
-                txtMostrarBiografia.setWrapStyleWord(true);
-                txtMostrarBiografia.setBorder(null);
-                txtMostrarBiografia.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-                txtMostrarBiografia.setFocusable(false);
-                scrollPonerBiografia.setViewportView(txtMostrarBiografia);
+        tfCambiarBiografia.setBackground(new java.awt.Color(27, 9, 5));
+        tfCambiarBiografia.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        tfCambiarBiografia.setForeground(new java.awt.Color(255, 255, 255));
+        tfCambiarBiografia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfCambiarBiografiaKeyReleased(evt);
+            }
+        });
+        scrollCambiarBiografia.setViewportView(tfCambiarBiografia);
 
-                ventanaProfile.add(scrollPonerBiografia,
-                                new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 380, 100));
+        ventanaProfile.add(scrollCambiarBiografia, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 530, 380, 80));
 
-                lbCambiarBiografia.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-                lbCambiarBiografia.setForeground(new java.awt.Color(224, 195, 102));
-                lbCambiarBiografia.setText("CAMBIAR BIOGRAFÍA: ");
-                ventanaProfile.add(lbCambiarBiografia,
-                                new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 490, -1, -1));
+        btnVerTransacciones.setBackground(new java.awt.Color(147, 128, 67));
+        btnVerTransacciones.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnVerTransacciones.setForeground(new java.awt.Color(255, 255, 254));
+        btnVerTransacciones.setText("Ver Transacciones");
+        btnVerTransacciones.setActionCommand("Ingresar");
+        btnVerTransacciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVerTransacciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerTransaccionesActionPerformed(evt);
+            }
+        });
+        ventanaProfile.add(btnVerTransacciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 640, -1, -1));
 
-                scrollCambiarBiografia.setBackground(new java.awt.Color(0, 2, 2));
+        btnGuardarBiografia.setBackground(new java.awt.Color(147, 128, 67));
+        btnGuardarBiografia.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnGuardarBiografia.setForeground(new java.awt.Color(255, 255, 254));
+        btnGuardarBiografia.setText("Guardar");
+        btnGuardarBiografia.setActionCommand("Ingresar");
+        btnGuardarBiografia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardarBiografia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarBiografiaActionPerformed(evt);
+            }
+        });
+        ventanaProfile.add(btnGuardarBiografia, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 640, 100, -1));
 
-                tfCambiarBiografia.setBackground(new java.awt.Color(27, 9, 5));
-                tfCambiarBiografia.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-                tfCambiarBiografia.setForeground(new java.awt.Color(255, 255, 255));
-                tfCambiarBiografia.addKeyListener(new java.awt.event.KeyAdapter() {
-                        public void keyReleased(java.awt.event.KeyEvent evt) {
-                                tfCambiarBiografiaKeyReleased(evt);
-                        }
-                });
-                scrollCambiarBiografia.setViewportView(tfCambiarBiografia);
+        btnCancelarBiografia.setBackground(new java.awt.Color(147, 128, 67));
+        btnCancelarBiografia.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnCancelarBiografia.setForeground(new java.awt.Color(255, 255, 254));
+        btnCancelarBiografia.setText("Cancelar");
+        btnCancelarBiografia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelarBiografia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarBiografiaActionPerformed(evt);
+            }
+        });
+        ventanaProfile.add(btnCancelarBiografia, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 640, -1, -1));
 
-                ventanaProfile.add(scrollCambiarBiografia,
-                                new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 530, 380, 80));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ventanaProfile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ventanaProfile, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE))
+        );
 
-                btnVerTransacciones.setBackground(new java.awt.Color(147, 128, 67));
-                btnVerTransacciones.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-                btnVerTransacciones.setForeground(new java.awt.Color(255, 255, 254));
-                btnVerTransacciones.setText("Ver Transacciones");
-                btnVerTransacciones.setActionCommand("Ingresar");
-                btnVerTransacciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                btnVerTransacciones.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnVerTransaccionesActionPerformed(evt);
-                        }
-                });
-                ventanaProfile.add(btnVerTransacciones,
-                                new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 650, -1, -1));
-
-                btnGuardarBiografia.setBackground(new java.awt.Color(147, 128, 67));
-                btnGuardarBiografia.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-                btnGuardarBiografia.setForeground(new java.awt.Color(255, 255, 254));
-                btnGuardarBiografia.setText("Guardar");
-                btnGuardarBiografia.setActionCommand("Ingresar");
-                btnGuardarBiografia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                btnGuardarBiografia.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                try {
-                                        btnGuardarBiografiaActionPerformed(evt);
-                                } catch (SQLException e) {
-                                        e.printStackTrace();
-                                }
-                        }
-                });
-                ventanaProfile.add(btnGuardarBiografia,
-                                new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 650, 100, -1));
-
-                btnCancelarBiografia.setBackground(new java.awt.Color(147, 128, 67));
-                btnCancelarBiografia.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-                btnCancelarBiografia.setForeground(new java.awt.Color(255, 255, 254));
-                btnCancelarBiografia.setText("Cancelar");
-                btnCancelarBiografia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                btnCancelarBiografia.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnCancelarBiografiaActionPerformed(evt);
-                        }
-                });
-                ventanaProfile.add(btnCancelarBiografia,
-                                new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 650, -1, -1));
-
-                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-                getContentPane().setLayout(layout);
-                layout.setHorizontalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(ventanaProfile, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
-                layout.setVerticalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(ventanaProfile, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
-
-                pack();
-        }// </editor-fold>//GEN-END:initComponents
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
 
         private void btnVerTransaccionesActionPerformed(java.awt.event.ActionEvent evt) {
 
@@ -383,26 +371,26 @@ public class PersonalProfile extends javax.swing.JFrame {
                 EventQueue.invokeLater(() -> new PersonalProfile().setVisible(true));
         }
 
-        // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JButton btnCancelarBiografia;
-        private javax.swing.JButton btnGuardarBiografia;
-        private javax.swing.JButton btnVerTransacciones;
-        private javax.swing.JLabel imgCasa;
-        private javax.swing.JLabel imgMenuBar;
-        private javax.swing.JLabel imgUsuario;
-        private javax.swing.JLabel imgVolver;
-        private javax.swing.JLabel lbBiografía;
-        private javax.swing.JLabel lbCambiarBiografia;
-        private javax.swing.JLabel lbPerfil;
-        private javax.swing.JLabel lbPonerCorreo;
-        private javax.swing.JLabel lbPonerEdad;
-        private javax.swing.JLabel lbPonerFondos;
-        private javax.swing.JLabel lbPonerNombre;
-        private javax.swing.JPanel panelMenu;
-        private javax.swing.JScrollPane scrollCambiarBiografia;
-        private javax.swing.JScrollPane scrollPonerBiografia;
-        private javax.swing.JTextPane tfCambiarBiografia;
-        private javax.swing.JTextArea txtMostrarBiografia;
-        private javax.swing.JPanel ventanaProfile;
-        // End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelarBiografia;
+    private javax.swing.JButton btnGuardarBiografia;
+    private javax.swing.JButton btnVerTransacciones;
+    private javax.swing.JLabel imgCasa;
+    private javax.swing.JLabel imgMenuBar;
+    private javax.swing.JLabel imgUsuario;
+    private javax.swing.JLabel imgVolver;
+    private javax.swing.JLabel lbBiografía;
+    private javax.swing.JLabel lbCambiarBiografia;
+    private javax.swing.JLabel lbPerfil;
+    private javax.swing.JLabel lbPonerCorreo;
+    private javax.swing.JLabel lbPonerEdad;
+    private javax.swing.JLabel lbPonerFondos;
+    private javax.swing.JLabel lbPonerNombre;
+    private javax.swing.JPanel panelMenu;
+    private javax.swing.JScrollPane scrollCambiarBiografia;
+    private javax.swing.JScrollPane scrollPonerBiografia;
+    private javax.swing.JTextPane tfCambiarBiografia;
+    private javax.swing.JTextArea txtMostrarBiografia;
+    private javax.swing.JPanel ventanaProfile;
+    // End of variables declaration//GEN-END:variables
 }

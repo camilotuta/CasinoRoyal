@@ -86,113 +86,416 @@ public class Principal extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-        // Code">//GEN-BEGIN:initComponents
-        private void initComponents() {
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
-                ventanaPrincipal = new javax.swing.JPanel();
-                imgReload = new javax.swing.JLabel();
-                panelMenu = new javax.swing.JPanel();
-                imgCasa = new javax.swing.JLabel();
-                imgVolver = new javax.swing.JLabel();
-                imgUsuario = new javax.swing.JLabel();
-                imgMenuBar = new javax.swing.JLabel();
-                lbJuegos = new javax.swing.JLabel();
-                scrollPublicaciones = new Screens.Custom.ScrollPaneWin11();
-                panelPublicaciones = new javax.swing.JPanel();
+        ventanaPrincipal = new javax.swing.JPanel();
+        imgReload = new javax.swing.JLabel();
+        panelMenu = new javax.swing.JPanel();
+        imgCasa = new javax.swing.JLabel();
+        imgVolver = new javax.swing.JLabel();
+        imgUsuario = new javax.swing.JLabel();
+        imgMenuBar = new javax.swing.JLabel();
+        lbJuegos = new javax.swing.JLabel();
+        scrollPublicaciones = new Screens.Principal.Custom.ScrollPaneWin11();
+        panelPublicaciones = new javax.swing.JPanel();
+        jPanelPoker = new javax.swing.JPanel();
+        bttonpoker = new javax.swing.JButton();
+        pokerimagen = new javax.swing.JLabel();
+        jPanelTragaMonedas = new javax.swing.JPanel();
+        bttonTragaM = new javax.swing.JButton();
+        pokerimagen1 = new javax.swing.JLabel();
+        jPanelRuleta = new javax.swing.JPanel();
+        bttonRuleta = new javax.swing.JButton();
+        pokerimagen5 = new javax.swing.JLabel();
+        jPanelBlackJack = new javax.swing.JPanel();
+        bttonBJACK = new javax.swing.JButton();
+        pokerimagen2 = new javax.swing.JLabel();
+        jPanelDados = new javax.swing.JPanel();
+        jButton9 = new javax.swing.JButton();
+        pokerimagen3 = new javax.swing.JLabel();
+        bttonDados = new javax.swing.JButton();
+        jPanelBingo = new javax.swing.JPanel();
+        bttonBingo = new javax.swing.JButton();
+        pokerimagen4 = new javax.swing.JLabel();
 
-                setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-                ventanaPrincipal.setBackground(new java.awt.Color(27, 9, 5));
-                ventanaPrincipal.setPreferredSize(new java.awt.Dimension(1080, 720));
-                ventanaPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        ventanaPrincipal.setBackground(new java.awt.Color(27, 9, 5));
+        ventanaPrincipal.setPreferredSize(new java.awt.Dimension(1080, 720));
+        ventanaPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                imgReload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reload.png"))); // NOI18N
-                imgReload.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                imgReload.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                                imgReloadMouseClicked(evt);
-                        }
-                });
-                ventanaPrincipal.add(imgReload, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 180, -1, -1));
+        imgReload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reload.png"))); // NOI18N
+        imgReload.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        imgReload.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgReloadMouseClicked(evt);
+            }
+        });
+        ventanaPrincipal.add(imgReload, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 180, -1, -1));
 
-                panelMenu.setBackground(new java.awt.Color(22, 22, 26));
-                panelMenu.setOpaque(false);
-                panelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelMenu.setBackground(new java.awt.Color(22, 22, 26));
+        panelMenu.setOpaque(false);
+        panelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                imgCasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/casaHover.png"))); // NOI18N
-                imgCasa.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-                panelMenu.add(imgCasa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+        imgCasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/casaHover.png"))); // NOI18N
+        imgCasa.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        panelMenu.add(imgCasa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
-                imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/volver.png"))); // NOI18N
-                imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                                imgVolverMouseClicked(evt);
-                        }
+        imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/volver.png"))); // NOI18N
+        imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgVolverMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                imgVolverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                imgVolverMouseExited(evt);
+            }
+        });
+        panelMenu.add(imgVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
-                        public void mouseEntered(java.awt.event.MouseEvent evt) {
-                                imgVolverMouseEntered(evt);
-                        }
+        imgUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuario.png"))); // NOI18N
+        imgUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        imgUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgUsuarioMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                imgUsuarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                imgUsuarioMouseExited(evt);
+            }
+        });
+        panelMenu.add(imgUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
-                        public void mouseExited(java.awt.event.MouseEvent evt) {
-                                imgVolverMouseExited(evt);
-                        }
-                });
-                panelMenu.add(imgVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        imgMenuBar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imgMenuBar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lineaVertical.png"))); // NOI18N
+        imgMenuBar.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panelMenu.add(imgMenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, -1));
 
-                imgUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuario.png"))); // NOI18N
-                imgUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                imgUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                                imgUsuarioMouseClicked(evt);
-                        }
+        ventanaPrincipal.add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 230, 60, 220));
 
-                        public void mouseEntered(java.awt.event.MouseEvent evt) {
-                                imgUsuarioMouseEntered(evt);
-                        }
+        lbJuegos.setFont(new java.awt.Font("Crabs", 1, 100)); // NOI18N
+        lbJuegos.setForeground(new java.awt.Color(227, 199, 104));
+        lbJuegos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbJuegos.setText("Juegos");
+        ventanaPrincipal.add(lbJuegos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1080, -1));
 
-                        public void mouseExited(java.awt.event.MouseEvent evt) {
-                                imgUsuarioMouseExited(evt);
-                        }
-                });
-                panelMenu.add(imgUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+        panelPublicaciones.setBackground(new java.awt.Color(36, 38, 41));
+        panelPublicaciones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 199, 104)));
+        panelPublicaciones.setMinimumSize(new java.awt.Dimension(350, 100000));
+        panelPublicaciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                imgMenuBar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                imgMenuBar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lineaVertical.png"))); // NOI18N
-                imgMenuBar.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-                panelMenu.add(imgMenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, -1));
+        jPanelPoker.setBackground(new java.awt.Color(227, 199, 104));
+        jPanelPoker.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
 
-                ventanaPrincipal.add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 230, 60, 220));
+        bttonpoker.setBackground(new java.awt.Color(147, 128, 67));
+        bttonpoker.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bttonpoker.setForeground(new java.awt.Color(255, 255, 255));
+        bttonpoker.setText("POKER");
+        bttonpoker.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttonpokerActionPerformed(evt);
+            }
+        });
 
-                lbJuegos.setFont(new java.awt.Font("Crabs", 1, 100)); // NOI18N
-                lbJuegos.setForeground(new java.awt.Color(227, 199, 104));
-                lbJuegos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                lbJuegos.setText("Juegos");
-                ventanaPrincipal.add(lbJuegos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1080, -1));
+        pokerimagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/poker.png"))); // NOI18N
 
-                panelPublicaciones.setBackground(new java.awt.Color(36, 38, 41));
-                panelPublicaciones.setMinimumSize(new java.awt.Dimension(350, 100000));
-                panelPublicaciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-                scrollPublicaciones.setViewportView(panelPublicaciones);
+        javax.swing.GroupLayout jPanelPokerLayout = new javax.swing.GroupLayout(jPanelPoker);
+        jPanelPoker.setLayout(jPanelPokerLayout);
+        jPanelPokerLayout.setHorizontalGroup(
+            jPanelPokerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPokerLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(pokerimagen, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPokerLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bttonpoker)
+                .addGap(76, 76, 76))
+        );
+        jPanelPokerLayout.setVerticalGroup(
+            jPanelPokerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPokerLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(pokerimagen, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bttonpoker)
+                .addContainerGap())
+        );
 
-                ventanaPrincipal.add(scrollPublicaciones,
-                                new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 890, 480));
+        panelPublicaciones.add(jPanelPoker, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 230, 180));
 
-                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-                getContentPane().setLayout(layout);
-                layout.setHorizontalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(ventanaPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
-                layout.setVerticalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(ventanaPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
+        jPanelTragaMonedas.setBackground(new java.awt.Color(227, 199, 104));
+        jPanelTragaMonedas.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
 
-                pack();
-        }// </editor-fold>//GEN-END:initComponents
+        bttonTragaM.setBackground(new java.awt.Color(147, 128, 67));
+        bttonTragaM.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bttonTragaM.setForeground(new java.awt.Color(255, 255, 255));
+        bttonTragaM.setText("TRAGA MONEDAS");
+        bttonTragaM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttonTragaMActionPerformed(evt);
+            }
+        });
+
+        pokerimagen1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tragaMonedas.png"))); // NOI18N
+        pokerimagen1.setText("jLabel2");
+
+        javax.swing.GroupLayout jPanelTragaMonedasLayout = new javax.swing.GroupLayout(jPanelTragaMonedas);
+        jPanelTragaMonedas.setLayout(jPanelTragaMonedasLayout);
+        jPanelTragaMonedasLayout.setHorizontalGroup(
+            jPanelTragaMonedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTragaMonedasLayout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addGroup(jPanelTragaMonedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTragaMonedasLayout.createSequentialGroup()
+                        .addComponent(pokerimagen1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTragaMonedasLayout.createSequentialGroup()
+                        .addComponent(bttonTragaM)
+                        .addGap(47, 47, 47))))
+        );
+        jPanelTragaMonedasLayout.setVerticalGroup(
+            jPanelTragaMonedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTragaMonedasLayout.createSequentialGroup()
+                .addContainerGap(11, Short.MAX_VALUE)
+                .addComponent(pokerimagen1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bttonTragaM)
+                .addContainerGap())
+        );
+
+        panelPublicaciones.add(jPanelTragaMonedas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 230, 180));
+
+        jPanelRuleta.setBackground(new java.awt.Color(227, 199, 104));
+        jPanelRuleta.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+
+        bttonRuleta.setBackground(new java.awt.Color(147, 128, 67));
+        bttonRuleta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bttonRuleta.setForeground(new java.awt.Color(255, 255, 255));
+        bttonRuleta.setText("RULETA");
+        bttonRuleta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttonRuletaActionPerformed(evt);
+            }
+        });
+
+        pokerimagen5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ruleta.png"))); // NOI18N
+        pokerimagen5.setText("jLabel2");
+
+        javax.swing.GroupLayout jPanelRuletaLayout = new javax.swing.GroupLayout(jPanelRuleta);
+        jPanelRuleta.setLayout(jPanelRuletaLayout);
+        jPanelRuletaLayout.setHorizontalGroup(
+            jPanelRuletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelRuletaLayout.createSequentialGroup()
+                .addGroup(jPanelRuletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelRuletaLayout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(bttonRuleta))
+                    .addGroup(jPanelRuletaLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(pokerimagen5, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        jPanelRuletaLayout.setVerticalGroup(
+            jPanelRuletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelRuletaLayout.createSequentialGroup()
+                .addContainerGap(11, Short.MAX_VALUE)
+                .addComponent(pokerimagen5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bttonRuleta)
+                .addContainerGap())
+        );
+
+        panelPublicaciones.add(jPanelRuleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 230, 180));
+
+        jPanelBlackJack.setBackground(new java.awt.Color(227, 199, 104));
+        jPanelBlackJack.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+
+        bttonBJACK.setBackground(new java.awt.Color(147, 128, 67));
+        bttonBJACK.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bttonBJACK.setForeground(new java.awt.Color(255, 255, 255));
+        bttonBJACK.setText("BLACKJACK");
+        bttonBJACK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttonBJACKActionPerformed(evt);
+            }
+        });
+
+        pokerimagen2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/blackJack.png"))); // NOI18N
+        pokerimagen2.setText("jLabel2");
+
+        javax.swing.GroupLayout jPanelBlackJackLayout = new javax.swing.GroupLayout(jPanelBlackJack);
+        jPanelBlackJack.setLayout(jPanelBlackJackLayout);
+        jPanelBlackJackLayout.setHorizontalGroup(
+            jPanelBlackJackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBlackJackLayout.createSequentialGroup()
+                .addGroup(jPanelBlackJackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelBlackJackLayout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(bttonBJACK))
+                    .addGroup(jPanelBlackJackLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(pokerimagen2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+        jPanelBlackJackLayout.setVerticalGroup(
+            jPanelBlackJackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBlackJackLayout.createSequentialGroup()
+                .addContainerGap(11, Short.MAX_VALUE)
+                .addComponent(pokerimagen2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bttonBJACK)
+                .addContainerGap())
+        );
+
+        panelPublicaciones.add(jPanelBlackJack, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, 230, 180));
+
+        jPanelDados.setBackground(new java.awt.Color(227, 199, 104));
+        jPanelDados.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+
+        jButton9.setText("BlackJack");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
+        pokerimagen3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dados.png"))); // NOI18N
+        pokerimagen3.setText("jLabel2");
+
+        bttonDados.setBackground(new java.awt.Color(147, 128, 67));
+        bttonDados.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bttonDados.setForeground(new java.awt.Color(255, 255, 255));
+        bttonDados.setText("DADOS");
+        bttonDados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttonDadosActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelDadosLayout = new javax.swing.GroupLayout(jPanelDados);
+        jPanelDados.setLayout(jPanelDadosLayout);
+        jPanelDadosLayout.setHorizontalGroup(
+            jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDadosLayout.createSequentialGroup()
+                .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelDadosLayout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(bttonDados)
+                        .addGap(106, 106, 106)
+                        .addComponent(jButton9))
+                    .addGroup(jPanelDadosLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(pokerimagen3, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelDadosLayout.setVerticalGroup(
+            jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDadosLayout.createSequentialGroup()
+                .addContainerGap(11, Short.MAX_VALUE)
+                .addComponent(pokerimagen3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton9)
+                    .addComponent(bttonDados))
+                .addContainerGap())
+        );
+
+        panelPublicaciones.add(jPanelDados, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 230, 180));
+
+        jPanelBingo.setBackground(new java.awt.Color(227, 199, 104));
+        jPanelBingo.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+
+        bttonBingo.setBackground(new java.awt.Color(147, 128, 67));
+        bttonBingo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        bttonBingo.setForeground(new java.awt.Color(255, 255, 255));
+        bttonBingo.setText("BINGO");
+        bttonBingo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bttonBingoActionPerformed(evt);
+            }
+        });
+
+        pokerimagen4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bingo.png"))); // NOI18N
+        pokerimagen4.setText("jLabel2");
+
+        javax.swing.GroupLayout jPanelBingoLayout = new javax.swing.GroupLayout(jPanelBingo);
+        jPanelBingo.setLayout(jPanelBingoLayout);
+        jPanelBingoLayout.setHorizontalGroup(
+            jPanelBingoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBingoLayout.createSequentialGroup()
+                .addGroup(jPanelBingoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelBingoLayout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(bttonBingo))
+                    .addGroup(jPanelBingoLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(pokerimagen4, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+        jPanelBingoLayout.setVerticalGroup(
+            jPanelBingoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBingoLayout.createSequentialGroup()
+                .addContainerGap(11, Short.MAX_VALUE)
+                .addComponent(pokerimagen4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bttonBingo)
+                .addContainerGap())
+        );
+
+        panelPublicaciones.add(jPanelBingo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, 230, 180));
+
+        scrollPublicaciones.setViewportView(panelPublicaciones);
+
+        ventanaPrincipal.add(scrollPublicaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 890, 480));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(ventanaPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(ventanaPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void bttonTragaMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttonTragaMActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bttonTragaMActionPerformed
+
+    private void bttonpokerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttonpokerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bttonpokerActionPerformed
+
+    private void bttonBJACKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttonBJACKActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bttonBJACKActionPerformed
+
+    private void bttonRuletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttonRuletaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bttonRuletaActionPerformed
+
+    private void bttonBingoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttonBingoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bttonBingoActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void bttonDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttonDadosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bttonDadosActionPerformed
 
         private void imgReloadMouseClicked(java.awt.event.MouseEvent evt) {
         }
@@ -239,16 +542,35 @@ public class Principal extends javax.swing.JFrame {
                 EventQueue.invokeLater(() -> new Principal().setVisible(true));
         }
 
-        // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JLabel imgCasa;
-        private javax.swing.JLabel imgMenuBar;
-        private javax.swing.JLabel imgReload;
-        private javax.swing.JLabel imgUsuario;
-        private javax.swing.JLabel imgVolver;
-        private javax.swing.JLabel lbJuegos;
-        private javax.swing.JPanel panelMenu;
-        private javax.swing.JPanel panelPublicaciones;
-        private javax.swing.JScrollPane scrollPublicaciones;
-        private javax.swing.JPanel ventanaPrincipal;
-        // End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bttonBJACK;
+    private javax.swing.JButton bttonBingo;
+    private javax.swing.JButton bttonDados;
+    private javax.swing.JButton bttonRuleta;
+    private javax.swing.JButton bttonTragaM;
+    private javax.swing.JButton bttonpoker;
+    private javax.swing.JLabel imgCasa;
+    private javax.swing.JLabel imgMenuBar;
+    private javax.swing.JLabel imgReload;
+    private javax.swing.JLabel imgUsuario;
+    private javax.swing.JLabel imgVolver;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JPanel jPanelBingo;
+    private javax.swing.JPanel jPanelBlackJack;
+    private javax.swing.JPanel jPanelDados;
+    private javax.swing.JPanel jPanelPoker;
+    private javax.swing.JPanel jPanelRuleta;
+    private javax.swing.JPanel jPanelTragaMonedas;
+    private javax.swing.JLabel lbJuegos;
+    private javax.swing.JPanel panelMenu;
+    private javax.swing.JPanel panelPublicaciones;
+    private javax.swing.JLabel pokerimagen;
+    private javax.swing.JLabel pokerimagen1;
+    private javax.swing.JLabel pokerimagen2;
+    private javax.swing.JLabel pokerimagen3;
+    private javax.swing.JLabel pokerimagen4;
+    private javax.swing.JLabel pokerimagen5;
+    private javax.swing.JScrollPane scrollPublicaciones;
+    private javax.swing.JPanel ventanaPrincipal;
+    // End of variables declaration//GEN-END:variables
 }
