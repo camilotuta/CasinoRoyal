@@ -145,7 +145,7 @@ public class Transactions extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-        // Code">//GEN-BEGIN:initComponents
+        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 ventanaTransacciones = new javax.swing.JPanel();
@@ -169,11 +169,9 @@ public class Transactions extends javax.swing.JFrame {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseClicked(evt);
                         }
-
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseEntered(evt);
                         }
-
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseExited(evt);
                         }
@@ -184,30 +182,29 @@ public class Transactions extends javax.swing.JFrame {
                 lbTransacciones.setForeground(new java.awt.Color(227, 199, 104));
                 lbTransacciones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 lbTransacciones.setText("Transacciones");
-                ventanaTransacciones.add(lbTransacciones,
-                                new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1080, -1));
+                ventanaTransacciones.add(lbTransacciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1080, -1));
 
                 tablaTransacciones.setBackground(new java.awt.Color(36, 38, 41));
                 tablaTransacciones.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
                 tablaTransacciones.setForeground(new java.awt.Color(255, 255, 255));
                 tablaTransacciones.setModel(new javax.swing.table.DefaultTableModel(
-                                new Object[][] {
-                                                {},
-                                                {},
-                                                {},
-                                                {},
-                                                {},
-                                                {}
-                                },
-                                new String[] {
+                        new Object [][] {
+                                {},
+                                {},
+                                {},
+                                {},
+                                {},
+                                {}
+                        },
+                        new String [] {
 
-                                }));
+                        }
+                ));
                 tablaTransacciones.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
                 tablaTransacciones.setGridColor(new java.awt.Color(255, 51, 51));
                 tbContenidoTransacciones.setViewportView(tablaTransacciones);
 
-                ventanaTransacciones.add(tbContenidoTransacciones,
-                                new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 980, 490));
+                ventanaTransacciones.add(tbContenidoTransacciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 980, 490));
 
                 btnDepositar.setBackground(new java.awt.Color(147, 128, 67));
                 btnDepositar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -220,8 +217,7 @@ public class Transactions extends javax.swing.JFrame {
                                 btnDepositarActionPerformed(evt);
                         }
                 });
-                ventanaTransacciones.add(btnDepositar,
-                                new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 630, -1, -1));
+                ventanaTransacciones.add(btnDepositar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 630, -1, -1));
 
                 btnRetirar.setBackground(new java.awt.Color(147, 128, 67));
                 btnRetirar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -234,21 +230,18 @@ public class Transactions extends javax.swing.JFrame {
                                 btnRetirarActionPerformed(evt);
                         }
                 });
-                ventanaTransacciones.add(btnRetirar,
-                                new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 630, -1, -1));
+                ventanaTransacciones.add(btnRetirar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 630, -1, -1));
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(ventanaTransacciones,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(ventanaTransacciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                );
                 layout.setVerticalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(ventanaTransacciones,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE, 682,
-                                                                Short.MAX_VALUE));
+                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(ventanaTransacciones, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
+                );
 
                 pack();
         }// </editor-fold>//GEN-END:initComponents
