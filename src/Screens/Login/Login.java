@@ -4,6 +4,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Screens.Login;
+//TODO: poner que todos los errores se muestren con JOP
 
 import java.awt.EventQueue;
 import java.awt.Toolkit;
@@ -37,6 +38,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+
         this.setTitle("Ingresar");
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -46,7 +48,11 @@ public class Login extends javax.swing.JFrame {
                 "©" + Dates.obtenerAño() + " Casino Royal . Todos los derechos reservados.");
         tfCorreo.requestFocus();
         CambiarIU.ponerTextoCampo(tfCorreo, correoGuardar);
+        // TODO: eliminar correo y contraseña
+        tfCorreo.setText("carlos.diaz@gmail.com");
+        pfContraseña.setText("password123");
         desactivarBotonIngresar();
+
     }
 
     private void desactivarBotonIngresar() {
