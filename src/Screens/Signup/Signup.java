@@ -380,7 +380,9 @@ public class Signup extends javax.swing.JFrame {
                                 try {
                                         btnEnviarCodigoActionPerformed(evt);
                                 } catch (HeadlessException | SQLException e) {
-                                        e.printStackTrace();
+                                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR DE DEPÓSITO",
+                                                        JOptionPane.ERROR_MESSAGE);
+
                                 }
                         }
                 });
@@ -458,7 +460,9 @@ public class Signup extends javax.swing.JFrame {
                                 try {
                                         btnRegistrarseActionPerformed(evt);
                                 } catch (SQLException e) {
-                                        e.printStackTrace();
+                                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR DE DEPÓSITO",
+                                                        JOptionPane.ERROR_MESSAGE);
+
                                 }
                         }
                 });

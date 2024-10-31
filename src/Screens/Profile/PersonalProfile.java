@@ -10,6 +10,8 @@ import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 
 import Code.OperacionCRUD;
@@ -23,7 +25,6 @@ import Screens.Principal.Principal;
  *
  * @author tutaa
  */
-// TODO: poner "añadir fondos y retirar fondos"
 public class PersonalProfile extends javax.swing.JFrame {
 
         /**
@@ -70,7 +71,10 @@ public class PersonalProfile extends javax.swing.JFrame {
                         CambiarIU.ponerTextoArea(txtMostrarBiografia, ((String) datos.get(0).get(3)));
 
                 } catch (SQLException e) {
-                        e.printStackTrace();
+                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+                                        JOptionPane.ERROR_MESSAGE);
+                                        
+
                 }
         }
 
@@ -295,7 +299,9 @@ public class PersonalProfile extends javax.swing.JFrame {
                                 try {
                                         btnGuardarBiografiaActionPerformed(evt);
                                 } catch (SQLException e) {
-                                        e.printStackTrace();
+                                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+                                                        JOptionPane.ERROR_MESSAGE);
+
                                 }
                         }
                 });
@@ -368,7 +374,10 @@ public class PersonalProfile extends javax.swing.JFrame {
                 try {
                         actualizarBiografia();
                 } catch (Exception e) {
-                        System.out.println("Error:" + e);
+                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+                                        JOptionPane.ERROR_MESSAGE);
+                                        
+
                 }
         }
 

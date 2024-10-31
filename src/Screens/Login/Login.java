@@ -4,7 +4,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Screens.Login;
-//TODO: poner que todos los errores se muestren con JOP
 
 import java.awt.EventQueue;
 import java.awt.Toolkit;
@@ -225,7 +224,9 @@ public class Login extends javax.swing.JFrame {
                 try {
                     btnIngresarActionPerformed(evt);
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+
                 }
             }
         });
