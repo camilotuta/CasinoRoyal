@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/C:/Users/lalaa/OneDrive/Laura/ClonarRepositorio/CasinoRoyal/src/Screens/Principal/JuegoDados.java</file>
             <file>file:/C:/Users/lalaa/OneDrive/Laura/ClonarRepositorio/CasinoRoyal/src/Screens/Principal/JuegoRuleta.java</file>
@@ -13,5 +14,8 @@
             <file>file:/C:/Users/lalaa/OneDrive/Laura/ClonarRepositorio/CasinoRoyal/src/Screens/Profile/PersonalTransaccion.java</file>
             <file>file:/C:/Users/lalaa/OneDrive/Laura/ClonarRepositorio/CasinoRoyal/src/Screens/Principal/JuegoPoker.java</file>
         </group>
+=======
+        <group/>
+>>>>>>> 6bfbb594e2a8ffc233b013f83a8f1fddf85ce419
     </open-files>
 </project-private>

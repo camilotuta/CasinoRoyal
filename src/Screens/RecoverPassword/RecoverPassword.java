@@ -297,7 +297,9 @@ public class RecoverPassword extends javax.swing.JFrame {
                                 try {
                                         btnEnviarCodigoActionPerformed(evt);
                                 } catch (HeadlessException | SQLException e) {
-                                        e.printStackTrace();
+                                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+                                                        JOptionPane.ERROR_MESSAGE);
+
                                 }
                         }
                 });
@@ -375,7 +377,9 @@ public class RecoverPassword extends javax.swing.JFrame {
                                 try {
                                         btnRegistrarseActionPerformed(evt);
                                 } catch (SQLException e) {
-                                        e.printStackTrace();
+                                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+                                                        JOptionPane.ERROR_MESSAGE);
+
                                 }
                         }
                 });

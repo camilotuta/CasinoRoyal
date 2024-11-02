@@ -37,6 +37,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+
         this.setTitle("Ingresar");
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -46,7 +47,11 @@ public class Login extends javax.swing.JFrame {
                 "©" + Dates.obtenerAño() + " Casino Royal . Todos los derechos reservados.");
         tfCorreo.requestFocus();
         CambiarIU.ponerTextoCampo(tfCorreo, correoGuardar);
+        // TODO: eliminar correo y contraseña
+        tfCorreo.setText("carlos.diaz@gmail.com");
+        pfContraseña.setText("password123");
         desactivarBotonIngresar();
+
     }
 
     private void desactivarBotonIngresar() {
@@ -219,7 +224,9 @@ public class Login extends javax.swing.JFrame {
                 try {
                     btnIngresarActionPerformed(evt);
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
+
                 }
             }
         });
