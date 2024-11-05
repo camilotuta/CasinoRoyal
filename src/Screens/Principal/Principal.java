@@ -24,7 +24,6 @@ import com.formdev.flatlaf.themes.FlatMacDarkLaf;
  *
  * @author tutaa
  */
-// TODO: crear pantalla para mostrar el juego
 // TODO: poner chats en cada juego y con ia generar mensajes automaticos
 public class Principal extends javax.swing.JFrame {
 

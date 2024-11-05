@@ -17,6 +17,8 @@ import java.awt.Toolkit;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -58,7 +60,18 @@ public class Bingo extends javax.swing.JFrame {
                                                         Login.idUsuarioGuardar),
                                         new String[] { "nombre_usuario" });
 
-                        return (String) datos.get(0).get(0);
+                        String[] nombreCompleto = ((String) datos.get(0).get(0)).split(" ");
+                        String nombreApellido = "";
+                        if (nombreCompleto.length <= 5 && nombreCompleto.length >= 3) {
+                                nombreApellido = nombreCompleto[0] + " " + nombreCompleto[2];
+
+                        } else if (nombreCompleto.length == 1) {
+                                nombreApellido = nombreCompleto[0];
+                        } else {
+                                nombreApellido = nombreCompleto[0] + " " + nombreCompleto[1];
+                        }
+
+                        return nombreApellido;
                 } catch (SQLException e) {
                         JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
                                         JOptionPane.ERROR_MESSAGE);

@@ -51,7 +51,7 @@ public class ChatClient {
 	private void enviarMensaje(String nombreCliente) {
 		String userMessage = taMensaje.getText().trim();
 		if (!userMessage.isEmpty()) {
-			taChat.append(nombreCliente + ": " + userMessage + "\n");
+			taChat.append("> " + userMessage + "\n");
 			taMensaje.setText("");
 			try {
 
