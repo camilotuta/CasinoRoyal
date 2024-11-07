@@ -68,57 +68,158 @@ public class Dados extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-        // Code">//GEN-BEGIN:initComponents
-        private void initComponents() {
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
-                ventanaBlackJack = new javax.swing.JPanel();
-                imgVolver = new javax.swing.JLabel();
-                lbDados = new javax.swing.JLabel();
+        ventanaBlackJack = new javax.swing.JPanel();
+        imgVolver = new javax.swing.JLabel();
+        lbDados = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jTextField1 = new javax.swing.JTextField();
+        btnDepositar5 = new javax.swing.JButton();
+        btnDepositar6 = new javax.swing.JButton();
+        textField1 = new java.awt.TextField();
+        jLabel1 = new javax.swing.JLabel();
+        lbPonerFondos = new javax.swing.JLabel();
+        btnDepositar7 = new javax.swing.JButton();
 
-                setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-                ventanaBlackJack.setBackground(new java.awt.Color(27, 9, 5));
-                ventanaBlackJack.setPreferredSize(new java.awt.Dimension(1080, 720));
-                ventanaBlackJack.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        ventanaBlackJack.setBackground(new java.awt.Color(27, 9, 5));
+        ventanaBlackJack.setPreferredSize(new java.awt.Dimension(1080, 720));
+        ventanaBlackJack.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/volver.png"))); // NOI18N
-                imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                                imgVolverMouseClicked(evt);
-                        }
+        imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/volver.png"))); // NOI18N
+        imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgVolverMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                imgVolverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                imgVolverMouseExited(evt);
+            }
+        });
+        ventanaBlackJack.add(imgVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-                        public void mouseEntered(java.awt.event.MouseEvent evt) {
-                                imgVolverMouseEntered(evt);
-                        }
+        lbDados.setFont(new java.awt.Font("Crabs", 1, 100)); // NOI18N
+        lbDados.setForeground(new java.awt.Color(227, 199, 104));
+        lbDados.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbDados.setText("Dados");
+        ventanaBlackJack.add(lbDados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1080, -1));
 
-                        public void mouseExited(java.awt.event.MouseEvent evt) {
-                                imgVolverMouseExited(evt);
-                        }
-                });
-                ventanaBlackJack.add(imgVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jComboBox1.setBackground(new java.awt.Color(27, 9, 5));
+        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 DADO", "2 DADOS", "3 DADOS", "4 DADOS", "5 DADOS" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        ventanaBlackJack.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 550, 190, 40));
 
-                lbDados.setFont(new java.awt.Font("Crabs", 1, 100)); // NOI18N
-                lbDados.setForeground(new java.awt.Color(227, 199, 104));
-                lbDados.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                lbDados.setText("Dados");
-                ventanaBlackJack.add(lbDados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1080, -1));
+        jTextField1.setBackground(new java.awt.Color(27, 9, 5));
+        jTextField1.setText("jTextField1");
+        ventanaBlackJack.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 750, 350));
 
-                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-                getContentPane().setLayout(layout);
-                layout.setHorizontalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(ventanaBlackJack, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
-                layout.setVerticalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(ventanaBlackJack, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
+        btnDepositar5.setBackground(new java.awt.Color(147, 128, 67));
+        btnDepositar5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnDepositar5.setForeground(new java.awt.Color(255, 255, 254));
+        btnDepositar5.setText("Apostar");
+        btnDepositar5.setActionCommand("Ingresar");
+        btnDepositar5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDepositar5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepositar5ActionPerformed(evt);
+            }
+        });
+        ventanaBlackJack.add(btnDepositar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 660, -1, -1));
 
-                pack();
-        }// </editor-fold>//GEN-END:initComponents
+        btnDepositar6.setBackground(new java.awt.Color(147, 128, 67));
+        btnDepositar6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnDepositar6.setForeground(new java.awt.Color(255, 255, 254));
+        btnDepositar6.setText("Cambiar la apuesta");
+        btnDepositar6.setActionCommand("Ingresar");
+        btnDepositar6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDepositar6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepositar6ActionPerformed(evt);
+            }
+        });
+        ventanaBlackJack.add(btnDepositar6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 660, -1, -1));
+
+        textField1.setBackground(new java.awt.Color(27, 9, 5));
+        textField1.setText("textField1");
+        textField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textField1ActionPerformed(evt);
+            }
+        });
+        ventanaBlackJack.add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 550, 80, 40));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Ingrese el valor a apostar");
+        ventanaBlackJack.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 550, 160, 30));
+
+        lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
+        lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
+        lbPonerFondos.setText("-");
+        ventanaBlackJack.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
+
+        btnDepositar7.setBackground(new java.awt.Color(147, 128, 67));
+        btnDepositar7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnDepositar7.setForeground(new java.awt.Color(255, 255, 254));
+        btnDepositar7.setText("Retirarse");
+        btnDepositar7.setActionCommand("Ingresar");
+        btnDepositar7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDepositar7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepositar7ActionPerformed(evt);
+            }
+        });
+        ventanaBlackJack.add(btnDepositar7, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 660, 110, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(ventanaBlackJack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(ventanaBlackJack, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void btnDepositar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositar5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDepositar5ActionPerformed
+
+    private void btnDepositar6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositar6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDepositar6ActionPerformed
+
+    private void textField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textField1ActionPerformed
+
+    private void btnDepositar7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositar7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDepositar7ActionPerformed
 
         private void imgVolverMouseEntered(java.awt.event.MouseEvent evt) {
                 CambiarIU.setImageLabel(imgVolver, "src/img/volverHover.png");
@@ -142,9 +243,17 @@ public class Dados extends javax.swing.JFrame {
                 EventQueue.invokeLater(() -> new Dados().setVisible(true));
         }
 
-        // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JLabel imgVolver;
-        private javax.swing.JLabel lbDados;
-        private javax.swing.JPanel ventanaBlackJack;
-        // End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDepositar5;
+    private javax.swing.JButton btnDepositar6;
+    private javax.swing.JButton btnDepositar7;
+    private javax.swing.JLabel imgVolver;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lbDados;
+    private javax.swing.JLabel lbPonerFondos;
+    private java.awt.TextField textField1;
+    private javax.swing.JPanel ventanaBlackJack;
+    // End of variables declaration//GEN-END:variables
 }
