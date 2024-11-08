@@ -17,8 +17,15 @@ import Screens.Profile.PersonalProfile;
 
 import java.awt.EventQueue;
 import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+
+import Code.Dates;
+import Code.OperacionCRUD;
 
 /**
  *
@@ -40,7 +47,23 @@ public class Principal extends javax.swing.JFrame {
                 this.setIconImage(Toolkit.getDefaultToolkit()
                                 .getImage(getClass().getResource("/img/icon.png")));
                 textosLabels();
+                ponerFondos();
+        }
 
+        private void ponerFondos() {
+                try {
+                        ArrayList<ArrayList<Object>> datos = OperacionCRUD.seleccionar(
+                                        String.format("SELECT * FROM jugadores where jugador_id = %d",
+                                                        Login.idUsuarioGuardar),
+                                        new String[] { "fondos_jugador" });
+
+                        CambiarIU.ponerTextoEtiqueta(lbPonerFondos, (datos.get(0).get(0) + " Fondos"));
+
+                } catch (SQLException e) {
+                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+                                        JOptionPane.ERROR_MESSAGE);
+
+                }
         }
 
         /**
@@ -76,17 +99,20 @@ public class Principal extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
         // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 ventanaPrincipal = new javax.swing.JPanel();
+                btnDepositar = new javax.swing.JButton();
                 panelMenu = new javax.swing.JPanel();
                 imgCasa = new javax.swing.JLabel();
                 imgVolver = new javax.swing.JLabel();
                 imgUsuario = new javax.swing.JLabel();
                 imgMenuBar = new javax.swing.JLabel();
                 lbJuegos = new javax.swing.JLabel();
-                scrollPublicaciones = new Screens.Custom.ScrollPaneWin11();
+                lbPonerFondos = new javax.swing.JLabel();
+                scPublicaciones = new Screens.Custom.ScrollPaneWin11();
                 panelPublicaciones = new javax.swing.JPanel();
                 panelPoker = new javax.swing.JPanel();
                 btnPoker = new javax.swing.JButton();
@@ -112,6 +138,19 @@ public class Principal extends javax.swing.JFrame {
                 ventanaPrincipal.setBackground(new java.awt.Color(27, 9, 5));
                 ventanaPrincipal.setPreferredSize(new java.awt.Dimension(1080, 720));
                 ventanaPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+                btnDepositar.setBackground(new java.awt.Color(147, 128, 67));
+                btnDepositar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                btnDepositar.setForeground(new java.awt.Color(255, 255, 254));
+                btnDepositar.setText("Depositar");
+                btnDepositar.setActionCommand("Ingresar");
+                btnDepositar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnDepositar.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnDepositarActionPerformed(evt);
+                        }
+                });
+                ventanaPrincipal.add(btnDepositar, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 50, -1, -1));
 
                 panelMenu.setBackground(new java.awt.Color(22, 22, 26));
                 panelMenu.setOpaque(false);
@@ -167,6 +206,14 @@ public class Principal extends javax.swing.JFrame {
                 lbJuegos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 lbJuegos.setText("Juegos");
                 ventanaPrincipal.add(lbJuegos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1080, -1));
+
+                lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+                lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
+                lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+                lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
+                lbPonerFondos.setText("-");
+                ventanaPrincipal.add(lbPonerFondos,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
 
                 panelPublicaciones.setBackground(new java.awt.Color(36, 38, 41));
                 panelPublicaciones.setBorder(
@@ -495,9 +542,9 @@ public class Principal extends javax.swing.JFrame {
                 panelPublicaciones.add(panelBingo,
                                 new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, 230, 180));
 
-                scrollPublicaciones.setViewportView(panelPublicaciones);
+                scPublicaciones.setViewportView(panelPublicaciones);
 
-                ventanaPrincipal.add(scrollPublicaciones,
+                ventanaPrincipal.add(scPublicaciones,
                                 new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 890, 480));
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -515,6 +562,10 @@ public class Principal extends javax.swing.JFrame {
 
                 pack();
         }// </editor-fold>//GEN-END:initComponents
+
+        private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDepositarActionPerformed
+                // TODO add your handling code here:
+        }// GEN-LAST:event_btnDepositarActionPerformed
 
         private void btnBingoActionPerformed(java.awt.event.ActionEvent evt) {
                 Bingo bingo = new Bingo();
@@ -602,6 +653,7 @@ public class Principal extends javax.swing.JFrame {
         private javax.swing.JButton btnBingo;
         private javax.swing.JButton btnBlackJack;
         private javax.swing.JButton btnDados;
+        private javax.swing.JButton btnDepositar;
         private javax.swing.JButton btnPoker;
         private javax.swing.JButton btnRuleta;
         private javax.swing.JButton btnTragaMonedas;
@@ -616,6 +668,7 @@ public class Principal extends javax.swing.JFrame {
         private javax.swing.JLabel imgUsuario;
         private javax.swing.JLabel imgVolver;
         private javax.swing.JLabel lbJuegos;
+        private javax.swing.JLabel lbPonerFondos;
         private javax.swing.JPanel panelBingo;
         private javax.swing.JPanel panelBlackJack;
         private javax.swing.JPanel panelDados;
@@ -624,7 +677,7 @@ public class Principal extends javax.swing.JFrame {
         private javax.swing.JPanel panelPublicaciones;
         private javax.swing.JPanel panelRuleta;
         private javax.swing.JPanel panelTragaMonedas;
-        private javax.swing.JScrollPane scrollPublicaciones;
+        private javax.swing.JScrollPane scPublicaciones;
         private javax.swing.JPanel ventanaPrincipal;
         // End of variables declaration//GEN-END:variables
 }
