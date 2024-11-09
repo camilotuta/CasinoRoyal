@@ -1,5 +1,5 @@
 /*
- cSpell:ignore publicacion ubicacion operacion
+ cSpell:ignore publicacion ubicacion operacion numeros tahoma
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -8,8 +8,13 @@ package Screens.Principal.Games;
 import Code.ChatClient;
 import Code.OperacionCRUD;
 import Screens.Custom.CambiarIU;
+import Screens.Custom.ObtenerIU;
+import Screens.Custom.SoundPlay;
+import Screens.Custom.Games.CasillasRuleta;
 import Screens.Login.Login;
 import Screens.Principal.Principal;
+import Screens.Profile.PersonalProfile;
+import Screens.Profile.Transactions;
 
 import java.awt.EventQueue;
 import java.awt.Toolkit;
@@ -39,25 +44,17 @@ public class Ruleta extends javax.swing.JFrame {
 
                 this.setIconImage(Toolkit.getDefaultToolkit()
                                 .getImage(getClass().getResource("/img/icon.png")));
+                CambiarIU.setImageLabel(lbContenido, "src/img/ruletaQuieta.png");
                 ingresarChat();
                 taChatRuleta.setEditable(false);
                 ponerFondos();
         }
 
         private void ponerFondos() {
-                try {
-                        ArrayList<ArrayList<Object>> datos = OperacionCRUD.seleccionar(
-                                        String.format("SELECT * FROM jugadores where jugador_id = %d",
-                                                        Login.idUsuarioGuardar),
-                                        new String[] { "fondos_jugador" });
 
-                        CambiarIU.ponerTextoEtiqueta(lbPonerFondos, (datos.get(0).get(0) + " Fondos"));
+                CambiarIU.ponerTextoEtiqueta(lbPonerFondos,
+                                (Double.toString(PersonalProfile.obtenerFondos()) + " Fondos"));
 
-                } catch (SQLException e) {
-                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
-                                        JOptionPane.ERROR_MESSAGE);
-
-                }
         }
 
         private String obtenerNombre() {
@@ -86,6 +83,60 @@ public class Ruleta extends javax.swing.JFrame {
                         }
                 });
                 chatThread.start();
+        }
+
+        private void girarRuleta(String grupoApostado, int casillaApostada, double valorApostado) {
+                if (PersonalProfile
+                                .fondosSuficientes(
+                                                Double.parseDouble(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)))) {
+                        Transactions.restarFondos(valorApostado);
+                        ponerFondos();
+
+                        CambiarIU.setImageLabel(lbContenido, "src/img/ruletaGirando.gif");
+                        SoundPlay.reproducir("src/sound/ruletaGirando.wav");
+
+                        int casillaJuego = CasillasRuleta.casillaAleatoria();
+                        String colorJuego = CasillasRuleta.colorCasilla(casillaJuego);
+
+                        final double[] valorGanado = { 0 };
+
+                        new Thread(() -> {
+                                try {
+                                        Thread.sleep(5000);
+                                } catch (InterruptedException e) {
+                                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+                                                        JOptionPane.ERROR_MESSAGE);
+                                }
+
+                                if ((grupoApostado.equalsIgnoreCase("Rojo")
+                                                && grupoApostado.equalsIgnoreCase(colorJuego))
+                                                || (grupoApostado.equalsIgnoreCase("Negro")
+                                                                && grupoApostado.equalsIgnoreCase(colorJuego))) {
+                                        valorGanado[0] = valorApostado * 2;
+
+                                } else if (grupoApostado.equalsIgnoreCase("Verde")
+                                                && grupoApostado.equalsIgnoreCase(colorJuego)) {
+                                        valorGanado[0] = valorApostado * 40;
+
+                                } else if (grupoApostado.equalsIgnoreCase("") && casillaApostada == casillaJuego) {
+                                        valorGanado[0] = valorApostado * 35;
+                                }
+
+                                String mensaje = "La ruleta ha caído en la casilla: " + casillaJuego + " (" + colorJuego
+                                                + ")\n"
+                                                + "Ganancia: $" + valorGanado[0];
+
+                                JOptionPane.showMessageDialog(
+                                                null,
+                                                mensaje,
+                                                "Resultado de la Ruleta",
+                                                JOptionPane.INFORMATION_MESSAGE);
+
+                                Transactions.sumarFondos(valorGanado[0]);
+                                ponerFondos();
+                                CambiarIU.setImageLabel(lbContenido, "src/img/ruletaQuieta.png");
+                        }).start();
+                }
         }
 
         /**
@@ -126,26 +177,31 @@ public class Ruleta extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
         // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 ventanaRuleta = new javax.swing.JPanel();
                 imgVolver = new javax.swing.JLabel();
+                btnDepositar = new javax.swing.JButton();
                 lbRuleta = new javax.swing.JLabel();
                 lbPonerFondos = new javax.swing.JLabel();
-                btnDepositar = new javax.swing.JButton();
                 lbChat = new javax.swing.JLabel();
                 scChatRuleta = new javax.swing.JScrollPane();
                 taChatRuleta = new javax.swing.JTextArea();
                 scMensaje = new javax.swing.JScrollPane();
                 taMensaje = new javax.swing.JTextArea();
                 imgEnviar = new javax.swing.JLabel();
+                lbApuesta = new javax.swing.JLabel();
+                cbValorApostado = new javax.swing.JComboBox<>();
                 btnAlVerde = new javax.swing.JButton();
                 btnAlRojo = new javax.swing.JButton();
                 btnAlNegro = new javax.swing.JButton();
                 btnIngresarNumeros = new javax.swing.JButton();
-                btnApostar = new javax.swing.JButton();
-                btnRetirarse = new javax.swing.JButton();
                 lbContenido = new javax.swing.JLabel();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -171,19 +227,6 @@ public class Ruleta extends javax.swing.JFrame {
                 });
                 ventanaRuleta.add(imgVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-                lbRuleta.setFont(new java.awt.Font("Crabs", 1, 100)); // NOI18N
-                lbRuleta.setForeground(new java.awt.Color(227, 199, 104));
-                lbRuleta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                lbRuleta.setText("Ruleta");
-                ventanaRuleta.add(lbRuleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1080, -1));
-
-                lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-                lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
-                lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-                lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
-                lbPonerFondos.setText("-");
-                ventanaRuleta.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
-
                 btnDepositar.setBackground(new java.awt.Color(147, 128, 67));
                 btnDepositar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                 btnDepositar.setForeground(new java.awt.Color(255, 255, 254));
@@ -196,6 +239,19 @@ public class Ruleta extends javax.swing.JFrame {
                         }
                 });
                 ventanaRuleta.add(btnDepositar, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 50, -1, -1));
+
+                lbRuleta.setFont(new java.awt.Font("Crabs", 1, 100)); // NOI18N
+                lbRuleta.setForeground(new java.awt.Color(227, 199, 104));
+                lbRuleta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                lbRuleta.setText("Ruleta");
+                ventanaRuleta.add(lbRuleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1080, -1));
+
+                lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+                lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
+                lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+                lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
+                lbPonerFondos.setText("-");
+                ventanaRuleta.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
 
                 lbChat.setFont(new java.awt.Font("Crabs", 1, 48)); // NOI18N
                 lbChat.setForeground(new java.awt.Color(227, 199, 104));
@@ -240,6 +296,25 @@ public class Ruleta extends javax.swing.JFrame {
                 });
                 ventanaRuleta.add(imgEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 650, 40, 40));
 
+                lbApuesta.setFont(new java.awt.Font("Crabs", 1, 24)); // NOI18N
+                lbApuesta.setForeground(new java.awt.Color(227, 199, 104));
+                lbApuesta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                lbApuesta.setText("Apuesta");
+                ventanaRuleta.add(lbApuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 569, 190, 30));
+
+                cbValorApostado.setBackground(new java.awt.Color(27, 9, 5));
+                cbValorApostado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                cbValorApostado.setForeground(new java.awt.Color(224, 195, 102));
+                cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500",
+                                "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
+                cbValorApostado.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                cbValorApostadoActionPerformed(evt);
+                        }
+                });
+                ventanaRuleta.add(cbValorApostado,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 600, 190, 40));
+
                 btnAlVerde.setBackground(new java.awt.Color(51, 153, 0));
                 btnAlVerde.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                 btnAlVerde.setForeground(new java.awt.Color(255, 255, 254));
@@ -251,7 +326,7 @@ public class Ruleta extends javax.swing.JFrame {
                                 btnAlVerdeActionPerformed(evt);
                         }
                 });
-                ventanaRuleta.add(btnAlVerde, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, 120, -1));
+                ventanaRuleta.add(btnAlVerde, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 610, 120, -1));
 
                 btnAlRojo.setBackground(new java.awt.Color(255, 0, 0));
                 btnAlRojo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -264,7 +339,7 @@ public class Ruleta extends javax.swing.JFrame {
                                 btnAlRojoActionPerformed(evt);
                         }
                 });
-                ventanaRuleta.add(btnAlRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 580, 120, -1));
+                ventanaRuleta.add(btnAlRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 660, 120, -1));
 
                 btnAlNegro.setBackground(new java.awt.Color(0, 0, 0));
                 btnAlNegro.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -277,7 +352,7 @@ public class Ruleta extends javax.swing.JFrame {
                                 btnAlNegroActionPerformed(evt);
                         }
                 });
-                ventanaRuleta.add(btnAlNegro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 620, 120, -1));
+                ventanaRuleta.add(btnAlNegro, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 660, 120, -1));
 
                 btnIngresarNumeros.setBackground(new java.awt.Color(153, 153, 0));
                 btnIngresarNumeros.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -291,88 +366,85 @@ public class Ruleta extends javax.swing.JFrame {
                         }
                 });
                 ventanaRuleta.add(btnIngresarNumeros,
-                                new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 660, 120, -1));
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 610, 120, -1));
 
-                btnApostar.setBackground(new java.awt.Color(147, 128, 67));
-                btnApostar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-                btnApostar.setForeground(new java.awt.Color(255, 255, 254));
-                btnApostar.setText("Apostar");
-                btnApostar.setActionCommand("Ingresar");
-                btnApostar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                btnApostar.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnApostarActionPerformed(evt);
-                        }
-                });
-                ventanaRuleta.add(btnApostar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 660, 120, -1));
-
-                btnRetirarse.setBackground(new java.awt.Color(147, 128, 67));
-                btnRetirarse.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-                btnRetirarse.setForeground(new java.awt.Color(255, 255, 254));
-                btnRetirarse.setText("Retirarse");
-                btnRetirarse.setActionCommand("Ingresar");
-                btnRetirarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                btnRetirarse.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnRetirarseActionPerformed(evt);
-                        }
-                });
-                ventanaRuleta.add(btnRetirarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 660, 120, -1));
-                ventanaRuleta.add(lbContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 550, 450));
+                lbContenido.setBackground(new java.awt.Color(36, 38, 41));
+                lbContenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                lbContenido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ruletaQuieta.png"))); // NOI18N
+                ventanaRuleta.add(lbContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, 340, 340));
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
                                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                                .addContainerGap()
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout
+                                                                .createSequentialGroup()
+                                                                .addGap(0, 0, Short.MAX_VALUE)
                                                                 .addComponent(ventanaRuleta,
                                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                Short.MAX_VALUE)));
+                                                                                1080,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)));
                 layout.setVerticalGroup(
                                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                                .addContainerGap()
-                                                                .addComponent(ventanaRuleta,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                Short.MAX_VALUE)));
+                                                .addComponent(ventanaRuleta, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
                 pack();
         }// </editor-fold>//GEN-END:initComponents
 
-        private void btnAlVerdeActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAlVerdeActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnAlVerdeActionPerformed
+        private void cbValorApostadoActionPerformed(java.awt.event.ActionEvent evt) {
+        }
 
-        private void btnRetirarseActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnRetirarseActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnRetirarseActionPerformed
+        private void btnAlVerdeActionPerformed(java.awt.event.ActionEvent evt) {
+                girarRuleta("Verde", -1, Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+        }
 
-        private void btnAlNegroActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAlNegroActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnAlNegroActionPerformed
+        private void btnAlNegroActionPerformed(java.awt.event.ActionEvent evt) {
+                girarRuleta("Negro", -1, Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
 
-        private void btnAlRojoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAlRojoActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnAlRojoActionPerformed
+        }
 
-        private void btnIngresarNumerosActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnIngresarNumerosActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnIngresarNumerosActionPerformed
+        private void btnAlRojoActionPerformed(java.awt.event.ActionEvent evt) {
+                girarRuleta("Rojo", -1, Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
 
-        private void btnApostarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnApostarActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnApostarActionPerformed
+        }
 
-        private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDepositarActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnDepositarActionPerformed
+        private void btnIngresarNumerosActionPerformed(java.awt.event.ActionEvent evt) {
+                String input = JOptionPane.showInputDialog(null, "Adivina el número de la ruleta (0-36):");
+                int numeroIngresado = -1;
+                try {
+                        if (Integer.valueOf(input) instanceof Integer) {
+                                numeroIngresado = Integer.valueOf(input);
+
+                                if ((numeroIngresado >= 0 && numeroIngresado <= 36)) {
+                                        girarRuleta("", numeroIngresado,
+                                                        Integer.valueOf(ObtenerIU
+                                                                        .obtenerSeleccionCombo(cbValorApostado)));
+
+                                }
+
+                        } else {
+
+                                JOptionPane.showMessageDialog(null,
+                                                "El número ingresado no es válido (debe estar entre 0 y 36).",
+                                                "ERROR",
+                                                JOptionPane.ERROR_MESSAGE);
+                        }
+
+                } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null,
+                                        "El número ingresado no es válido (debe estar entre 0 y 36).",
+                                        "ERROR",
+                                        JOptionPane.ERROR_MESSAGE);
+                }
+
+        }
+
+        private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {
+                Transactions transactions = new Transactions();
+                transactions.setVisible(true);
+                this.setVisible(false);
+        }
 
         private void imgEnviarMouseClicked(java.awt.event.MouseEvent evt) {
 
@@ -419,12 +491,12 @@ public class Ruleta extends javax.swing.JFrame {
         private javax.swing.JButton btnAlNegro;
         private javax.swing.JButton btnAlRojo;
         private javax.swing.JButton btnAlVerde;
-        private javax.swing.JButton btnApostar;
         private javax.swing.JButton btnDepositar;
         private javax.swing.JButton btnIngresarNumeros;
-        private javax.swing.JButton btnRetirarse;
+        private javax.swing.JComboBox<String> cbValorApostado;
         private javax.swing.JLabel imgEnviar;
         private javax.swing.JLabel imgVolver;
+        private javax.swing.JLabel lbApuesta;
         private javax.swing.JLabel lbChat;
         private javax.swing.JLabel lbContenido;
         private javax.swing.JLabel lbPonerFondos;

@@ -1,5 +1,5 @@
 /*
- cSpell:ignore publicacion ubicacion operacion
+ cSpell:ignore publicacion ubicacion operacion tahoma
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -10,6 +10,8 @@ import Code.OperacionCRUD;
 import Screens.Custom.CambiarIU;
 import Screens.Login.Login;
 import Screens.Principal.Principal;
+import Screens.Profile.PersonalProfile;
+import Screens.Profile.Transactions;
 
 import java.awt.EventQueue;
 import java.awt.Toolkit;
@@ -45,19 +47,10 @@ public class BlackJack extends javax.swing.JFrame {
         }
 
         private void ponerFondos() {
-                try {
-                        ArrayList<ArrayList<Object>> datos = OperacionCRUD.seleccionar(
-                                        String.format("SELECT * FROM jugadores where jugador_id = %d",
-                                                        Login.idUsuarioGuardar),
-                                        new String[] { "fondos_jugador" });
 
-                        CambiarIU.ponerTextoEtiqueta(lbPonerFondos, (datos.get(0).get(0) + " Fondos"));
+                CambiarIU.ponerTextoEtiqueta(lbPonerFondos,
+                                (Double.toString(PersonalProfile.obtenerFondos()) + " Fondos"));
 
-                } catch (SQLException e) {
-                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
-                                        JOptionPane.ERROR_MESSAGE);
-
-                }
         }
 
         private String obtenerNombre() {
@@ -127,14 +120,15 @@ public class BlackJack extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
         // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 ventanaBlackJack = new javax.swing.JPanel();
                 imgVolver = new javax.swing.JLabel();
+                btnDepositar = new javax.swing.JButton();
                 lbBlackJack = new javax.swing.JLabel();
                 lbPonerFondos = new javax.swing.JLabel();
-                btnDepositar = new javax.swing.JButton();
                 lbChat = new javax.swing.JLabel();
                 scChatBlackJack = new javax.swing.JScrollPane();
                 taChatBlackJack = new javax.swing.JTextArea();
@@ -170,6 +164,19 @@ public class BlackJack extends javax.swing.JFrame {
                 });
                 ventanaBlackJack.add(imgVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
+                btnDepositar.setBackground(new java.awt.Color(147, 128, 67));
+                btnDepositar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                btnDepositar.setForeground(new java.awt.Color(255, 255, 254));
+                btnDepositar.setText("Depositar");
+                btnDepositar.setActionCommand("Ingresar");
+                btnDepositar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnDepositar.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnDepositarActionPerformed(evt);
+                        }
+                });
+                ventanaBlackJack.add(btnDepositar, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 50, -1, -1));
+
                 lbBlackJack.setFont(new java.awt.Font("Crabs", 1, 100)); // NOI18N
                 lbBlackJack.setForeground(new java.awt.Color(227, 199, 104));
                 lbBlackJack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -183,19 +190,6 @@ public class BlackJack extends javax.swing.JFrame {
                 lbPonerFondos.setText("-");
                 ventanaBlackJack.add(lbPonerFondos,
                                 new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
-
-                btnDepositar.setBackground(new java.awt.Color(147, 128, 67));
-                btnDepositar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-                btnDepositar.setForeground(new java.awt.Color(255, 255, 254));
-                btnDepositar.setText("Depositar");
-                btnDepositar.setActionCommand("Ingresar");
-                btnDepositar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                btnDepositar.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnDepositarActionPerformed(evt);
-                        }
-                });
-                ventanaBlackJack.add(btnDepositar, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 50, -1, -1));
 
                 lbChat.setFont(new java.awt.Font("Crabs", 1, 48)); // NOI18N
                 lbChat.setForeground(new java.awt.Color(227, 199, 104));
@@ -332,7 +326,9 @@ public class BlackJack extends javax.swing.JFrame {
         }// GEN-LAST:event_btnPedirCartasActionPerformed
 
         private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDepositarActionPerformed
-                // TODO add your handling code here:
+                Transactions transactions = new Transactions();
+                transactions.setVisible(true);
+                this.setVisible(false);
         }// GEN-LAST:event_btnDepositarActionPerformed
 
         private void imgEnviarMouseClicked(java.awt.event.MouseEvent evt) {

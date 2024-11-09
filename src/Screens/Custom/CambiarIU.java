@@ -14,11 +14,13 @@ import raven.datetime.component.date.DatePicker;
 
 public class CambiarIU {
     public static void setImageLabel(JLabel labelName, String root) {
-        ImageIcon image = new ImageIcon(root);
-        Icon icon = new ImageIcon(
-                image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(),
-                        Image.SCALE_DEFAULT));
-        labelName.setIcon(icon);
+        new Thread(() -> {
+            ImageIcon image = new ImageIcon(root);
+            Icon icon = new ImageIcon(
+                    image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(),
+                            Image.SCALE_DEFAULT));
+            labelName.setIcon(icon);
+        }).start();
     }
 
     public static void setImageLabelSize(JLabel labelName, String root, int width, int height) {

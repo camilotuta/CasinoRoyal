@@ -1,5 +1,5 @@
 /*
- cSpell:ignore publicacion ubicacion operacion
+ cSpell:ignore publicacion ubicacion operacion tahoma
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -14,24 +14,16 @@ import Screens.Principal.Games.Poker;
 import Screens.Principal.Games.Ruleta;
 import Screens.Principal.Games.TragaMonedas;
 import Screens.Profile.PersonalProfile;
+import Screens.Profile.Transactions;
 
 import java.awt.EventQueue;
 import java.awt.Toolkit;
-import java.sql.SQLException;
-import java.util.ArrayList;
-
-import javax.swing.JOptionPane;
-
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
-
-import Code.Dates;
-import Code.OperacionCRUD;
 
 /**
  *
  * @author tutaa
  */
-// TODO: poner chats en cada juego y con ia generar mensajes automaticos
 public class Principal extends javax.swing.JFrame {
 
         /**
@@ -51,19 +43,10 @@ public class Principal extends javax.swing.JFrame {
         }
 
         private void ponerFondos() {
-                try {
-                        ArrayList<ArrayList<Object>> datos = OperacionCRUD.seleccionar(
-                                        String.format("SELECT * FROM jugadores where jugador_id = %d",
-                                                        Login.idUsuarioGuardar),
-                                        new String[] { "fondos_jugador" });
 
-                        CambiarIU.ponerTextoEtiqueta(lbPonerFondos, (datos.get(0).get(0) + " Fondos"));
+                CambiarIU.ponerTextoEtiqueta(lbPonerFondos,
+                                (Double.toString(PersonalProfile.obtenerFondos()) + " Fondos"));
 
-                } catch (SQLException e) {
-                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
-                                        JOptionPane.ERROR_MESSAGE);
-
-                }
         }
 
         /**
@@ -563,9 +546,12 @@ public class Principal extends javax.swing.JFrame {
                 pack();
         }// </editor-fold>//GEN-END:initComponents
 
-        private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDepositarActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnDepositarActionPerformed
+        private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {
+                Transactions transactions = new Transactions();
+                transactions.setVisible(true);
+                this.setVisible(false);
+
+        }
 
         private void btnBingoActionPerformed(java.awt.event.ActionEvent evt) {
                 Bingo bingo = new Bingo();
