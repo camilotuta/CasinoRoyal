@@ -45,42 +45,37 @@ public class RecoverPassword extends javax.swing.JFrame {
 
                 this.setIconImage(Toolkit.getDefaultToolkit()
                                 .getImage(getClass().getResource("/img/icon.png")));
-                desactivarBotonRegistrarse();
+                desactivarBotonConfirmar();
                 desactivarBotonEnviarCodigo();
                 desactivarBotonVerificarCodigo();
                 desactivarCamposContraseña();
                 mostrarErrores();
         }
 
-        private void desactivarBotonRegistrarse() {
-                btnRegistrarse.setEnabled((correoVerificado
-                                && (ObtenerIU.obtenerTextoCampo(tfCorreo).contains("@"))
-                                && (Desencriptar.desencriptarContra(ObtenerIU.obtenerContraseña(pfContraseña))
-                                                .length() >= 8)
-                                && (Desencriptar.desencriptarContra(ObtenerIU.obtenerContraseña(pfConfirmarContraseña))
-                                                .length() >= 8)
-                                && (ObtenerIU.obtenerTextoCampo(tfCorreo).length() >= 13)
-                                && (Desencriptar.desencriptarContra(ObtenerIU.obtenerContraseña(pfContraseña))
-                                                .equals(Desencriptar.desencriptarContra(
+        private void desactivarBotonConfirmar() {
+                btnConfirmar.setEnabled((correoVerificado
+                                && (VerificarDato.correoValido(ObtenerIU.obtenerTextoCampo(tfCorreo)))
+                                && (VerificarDato.contraseñaValida(Desencriptar
+                                                .desencriptarContra(ObtenerIU.obtenerContraseña(pfContraseña))))
+                                && (VerificarDato.confirmarContraseñaValida(
+                                                Desencriptar.desencriptarContra(
+                                                                ObtenerIU.obtenerContraseña(pfContraseña)),
+                                                Desencriptar.desencriptarContra(
                                                                 ObtenerIU.obtenerContraseña(pfConfirmarContraseña))))));
         }
 
         private void desactivarBotonEnviarCodigo() {
                 if (botonesActivos) {
-
-                        btnEnviarCodigo.setEnabled(
-                                        ObtenerIU.obtenerTextoCampo(tfCorreo).contains("@")
-                                                        && ObtenerIU.obtenerTextoCampo(tfCorreo).length() >= 13);
+                        btnEnviarCodigo.setEnabled(VerificarDato.correoValido(ObtenerIU.obtenerTextoCampo(tfCorreo)));
                 }
         }
 
         private void desactivarBotonVerificarCodigo() {
                 if (botonesActivos) {
-                        btnVerificarCodigo
-                                        .setEnabled(correoEnviado
-                                                        && ObtenerIU.obtenerTextoCampo(tfRecibirCodigo).length() == 6
-                                                        && ObtenerIU.obtenerTextoCampo(tfCorreo).contains("@")
-                                                        && ObtenerIU.obtenerTextoCampo(tfCorreo).length() >= 13);
+                        btnVerificarCodigo.setEnabled(correoEnviado
+                                        && VerificarDato.codigoValido(ObtenerIU.obtenerTextoCampo(
+                                                        tfRecibirCodigo))
+                                        && VerificarDato.correoValido(ObtenerIU.obtenerTextoCampo(tfCorreo)));
                 }
         }
 
@@ -191,20 +186,20 @@ public class RecoverPassword extends javax.swing.JFrame {
         private void mostrarErrores() {
 
                 // pfContraseña
-                // pfContraseña
                 VerificarDato.verificarCampo(
-                                Desencriptar.desencriptarContra(ObtenerIU.obtenerContraseña(pfContraseña)).length() < 8,
+                                !VerificarDato.contraseñaValida(
+                                                Desencriptar.desencriptarContra(ObtenerIU.obtenerContraseña(
+                                                                pfContraseña))),
                                 lbErrorContraseña, "La contraseña tiene mínimo 8 caracteres.",
                                 "La contraseña debe tener mínimo 8 caracteres.");
 
                 // pfConfContraseña
                 VerificarDato.verificarCampo(
-                                (!Desencriptar.desencriptarContra(ObtenerIU.obtenerContraseña(pfConfirmarContraseña))
-                                                .equals(Desencriptar.desencriptarContra(
-                                                                ObtenerIU.obtenerContraseña(pfContraseña))))
-                                                || Desencriptar.desencriptarContra(
-                                                                ObtenerIU.obtenerContraseña(pfConfirmarContraseña))
-                                                                .equals(""),
+                                (!VerificarDato.confirmarContraseñaValida(
+                                                Desencriptar.desencriptarContra(ObtenerIU.obtenerContraseña(
+                                                                pfContraseña)),
+                                                Desencriptar.desencriptarContra(
+                                                                ObtenerIU.obtenerContraseña(pfConfirmarContraseña)))),
                                 lbErrorConfContraseña, "Las contraseñas son iguales.",
                                 "Las contraseñas deben ser iguales.");
         }
@@ -215,6 +210,7 @@ public class RecoverPassword extends javax.swing.JFrame {
          * always regenerated by the Form Editor.
          */
         @SuppressWarnings("unchecked")
+        // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
@@ -246,7 +242,7 @@ public class RecoverPassword extends javax.swing.JFrame {
                 pfConfirmarContraseña = new javax.swing.JPasswordField();
                 lbNuevaContraseña = new javax.swing.JLabel();
                 pfContraseña = new javax.swing.JPasswordField();
-                btnRegistrarse = new javax.swing.JButton();
+                btnConfirmar = new javax.swing.JButton();
                 btnRegresar = new javax.swing.JButton();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -299,7 +295,6 @@ public class RecoverPassword extends javax.swing.JFrame {
                                 } catch (HeadlessException | SQLException e) {
                                         JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
                                                         JOptionPane.ERROR_MESSAGE);
-
                                 }
                         }
                 });
@@ -366,24 +361,24 @@ public class RecoverPassword extends javax.swing.JFrame {
                 });
                 ventanaSignup.add(pfContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, 310, 30));
 
-                btnRegistrarse.setBackground(new java.awt.Color(147, 128, 67));
-                btnRegistrarse.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-                btnRegistrarse.setForeground(new java.awt.Color(255, 255, 254));
-                btnRegistrarse.setText("Confirmar");
-                btnRegistrarse.setActionCommand("Ingresar");
-                btnRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
+                btnConfirmar.setBackground(new java.awt.Color(147, 128, 67));
+                btnConfirmar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                btnConfirmar.setForeground(new java.awt.Color(255, 255, 254));
+                btnConfirmar.setText("Confirmar");
+                btnConfirmar.setActionCommand("Ingresar");
+                btnConfirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 try {
-                                        btnRegistrarseActionPerformed(evt);
+                                        btnConfirmarActionPerformed(evt);
                                 } catch (SQLException e) {
                                         JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
                                                         JOptionPane.ERROR_MESSAGE);
-
                                 }
+
                         }
                 });
-                ventanaSignup.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 550, -1, -1));
+                ventanaSignup.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 550, -1, -1));
 
                 btnRegresar.setBackground(new java.awt.Color(147, 128, 67));
                 btnRegresar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -416,16 +411,16 @@ public class RecoverPassword extends javax.swing.JFrame {
         }
 
         private void pfContraseñaKeyReleased(java.awt.event.KeyEvent evt) {
-                desactivarBotonRegistrarse();
+                desactivarBotonConfirmar();
                 mostrarErrores();
         }
 
         private void pfConfirmarContraseñaKeyReleased(java.awt.event.KeyEvent evt) {
-                desactivarBotonRegistrarse();
+                desactivarBotonConfirmar();
                 mostrarErrores();
         }
 
-        private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
+        private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
                 actualizarContraseña();
 
                 Login.correoGuardar = ObtenerIU.obtenerTextoCampo(tfCorreo);
@@ -451,7 +446,7 @@ public class RecoverPassword extends javax.swing.JFrame {
         }
 
         private void tfCorreoKeyReleased(java.awt.event.KeyEvent evt) {
-                desactivarBotonRegistrarse();
+                desactivarBotonConfirmar();
                 desactivarBotonEnviarCodigo();
                 desactivarBotonVerificarCodigo();
                 mostrarErrores();
@@ -471,8 +466,8 @@ public class RecoverPassword extends javax.swing.JFrame {
         }
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
+        private javax.swing.JButton btnConfirmar;
         private javax.swing.JButton btnEnviarCodigo;
-        private javax.swing.JButton btnRegistrarse;
         private javax.swing.JButton btnRegresar;
         private javax.swing.JButton btnVerificarCodigo;
         private javax.swing.JLabel lbConfContraseña;

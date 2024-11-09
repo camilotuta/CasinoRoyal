@@ -17,6 +17,7 @@ import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import Code.Dates;
 import Code.Desencriptar;
 import Code.OperacionCRUD;
+import Code.VerificarDato;
 import Screens.Custom.CambiarIU;
 import Screens.Custom.ObtenerIU;
 import Screens.Principal.Principal;
@@ -48,17 +49,15 @@ public class Login extends javax.swing.JFrame {
         tfCorreo.requestFocus();
         CambiarIU.ponerTextoCampo(tfCorreo, correoGuardar);
         // TODO: eliminar correo y contraseña
-        tfCorreo.setText("carlos.diaz@gmail.com");
-        pfContraseña.setText("password123");
+        tfCorreo.setText("camilotuta2004@gmail.com");
+        pfContraseña.setText("Dulcehelado123.");
         desactivarBotonIngresar();
 
     }
 
     private void desactivarBotonIngresar() {
-        String contraseña = Desencriptar.desencriptarContra(ObtenerIU.obtenerContraseña(pfContraseña));
-        btnIngresar.setEnabled((contraseña.length() >= 8) && ObtenerIU.obtenerTextoCampo(tfCorreo).contains("@")
-                && ObtenerIU.obtenerTextoCampo(tfCorreo).length() > 13);
-
+        btnIngresar.setEnabled(VerificarDato.correoValido((ObtenerIU.obtenerTextoCampo(tfCorreo))) && (VerificarDato
+                .contraseñaValida(Desencriptar.desencriptarContra(ObtenerIU.obtenerContraseña(pfContraseña)))));
     }
 
     private boolean usuarioEstaRegistrado(String correo, String contraseña) throws SQLException {
