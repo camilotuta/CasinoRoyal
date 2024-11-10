@@ -34,7 +34,6 @@ import javax.swing.JFormattedTextField;
  *
  * @author tutaa
  */
-// TODO: verificar que la cedula sea solo un int, comprobar en "poner errores"
 public class Signup extends javax.swing.JFrame {
 
         private EnviarCodigoVerificacion enviarCodigo;

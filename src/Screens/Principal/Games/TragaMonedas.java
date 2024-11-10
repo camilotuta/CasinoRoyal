@@ -218,27 +218,27 @@ public class TragaMonedas extends javax.swing.JFrame {
                 pack();
         }// </editor-fold>//GEN-END:initComponents
 
-        private void btnCambiarApuestaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnCambiarApuestaActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnCambiarApuestaActionPerformed
+        private void btnCambiarApuestaActionPerformed(java.awt.event.ActionEvent evt) {
 
-        private void btnGirarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnGirarActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnGirarActionPerformed
+        }
 
-        private void btnApostarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnApostarActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnApostarActionPerformed
+        private void btnGirarActionPerformed(java.awt.event.ActionEvent evt) {
 
-        private void btnRetirarseActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnRetirarseActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnRetirarseActionPerformed
+        }
 
-        private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDepositarActionPerformed
+        private void btnApostarActionPerformed(java.awt.event.ActionEvent evt) {
+
+        }
+
+        private void btnRetirarseActionPerformed(java.awt.event.ActionEvent evt) {
+
+        }
+
+        private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {
                 Transactions transactions = new Transactions();
                 transactions.setVisible(true);
                 this.setVisible(false);
-        }// GEN-LAST:event_btnDepositarActionPerformed
+        }
 
         private void imgVolverMouseEntered(java.awt.event.MouseEvent evt) {
                 CambiarIU.setImageLabel(imgVolver, "src/img/volverHover.png");
