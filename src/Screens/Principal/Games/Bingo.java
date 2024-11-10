@@ -683,127 +683,127 @@ public class Bingo extends javax.swing.JFrame {
                 pack();
         }// </editor-fold>//GEN-END:initComponents
 
-        private void btnRetirarseActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnRetirarseActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnRetirarseActionPerformed
+        private void btnRetirarseActionPerformed(java.awt.event.ActionEvent evt) {
 
-        private void btnBingoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnBingoActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnBingoActionPerformed
+        }
 
-        private void btnApostarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnApostarActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnApostarActionPerformed
+        private void btnBingoActionPerformed(java.awt.event.ActionEvent evt) {
 
-        private void btnO1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnO1ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnO1ActionPerformed
+        }
 
-        private void btnB1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnB1ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnB1ActionPerformed
+        private void btnApostarActionPerformed(java.awt.event.ActionEvent evt) {
 
-        private void btnI1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnI1ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnI1ActionPerformed
+        }
 
-        private void btnN1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnN1ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnN1ActionPerformed
+        private void btnO1ActionPerformed(java.awt.event.ActionEvent evt) {
 
-        private void btnG1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnG1ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnG1ActionPerformed
+        }
 
-        private void btnUltimoNumeroActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnUltimoNumeroActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnUltimoNumeroActionPerformed
+        private void btnB1ActionPerformed(java.awt.event.ActionEvent evt) {
 
-        private void btnB2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnB2ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnB2ActionPerformed
+        }
 
-        private void btnI2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnI2ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnI2ActionPerformed
+        private void btnI1ActionPerformed(java.awt.event.ActionEvent evt) {
 
-        private void btnN2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnN2ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnN2ActionPerformed
+        }
 
-        private void btnG2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnG2ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnG2ActionPerformed
+        private void btnN1ActionPerformed(java.awt.event.ActionEvent evt) {
 
-        private void btnO2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnO2ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnO2ActionPerformed
+        }
 
-        private void btnB3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnB3ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnB3ActionPerformed
+        private void btnG1ActionPerformed(java.awt.event.ActionEvent evt) {
 
-        private void btnI3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnI3ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnI3ActionPerformed
+        }
 
-        private void btnN3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnN3ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnN3ActionPerformed
+        private void btnUltimoNumeroActionPerformed(java.awt.event.ActionEvent evt) {
 
-        private void btnG3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnG3ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnG3ActionPerformed
+        }
 
-        private void btnO3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnO3ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnO3ActionPerformed
+        private void btnB2ActionPerformed(java.awt.event.ActionEvent evt) {
 
-        private void btnB4ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnB4ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnB4ActionPerformed
+        }
 
-        private void btnI4ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnI4ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnI4ActionPerformed
+        private void btnI2ActionPerformed(java.awt.event.ActionEvent evt) {
 
-        private void btnN4ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnN4ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnN4ActionPerformed
+        }
 
-        private void btnG4ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnG4ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnG4ActionPerformed
+        private void btnN2ActionPerformed(java.awt.event.ActionEvent evt) {
 
-        private void btnO4ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnO4ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnO4ActionPerformed
+        }
 
-        private void btnB5ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnB5ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnB5ActionPerformed
+        private void btnG2ActionPerformed(java.awt.event.ActionEvent evt) {
 
-        private void btnI5ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnI5ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnI5ActionPerformed
+        }
 
-        private void btnN5ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnN5ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnN5ActionPerformed
+        private void btnO2ActionPerformed(java.awt.event.ActionEvent evt) {
 
-        private void btnG5ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnG5ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnG5ActionPerformed
+        }
 
-        private void btnO5ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnO5ActionPerformed
-                // TODO add your handling code here:
-        }// GEN-LAST:event_btnO5ActionPerformed
+        private void btnB3ActionPerformed(java.awt.event.ActionEvent evt) {
 
-        private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnDepositarActionPerformed
+        }
+
+        private void btnI3ActionPerformed(java.awt.event.ActionEvent evt) {
+
+        }
+
+        private void btnN3ActionPerformed(java.awt.event.ActionEvent evt) {
+
+        }
+
+        private void btnG3ActionPerformed(java.awt.event.ActionEvent evt) {
+
+        }
+
+        private void btnO3ActionPerformed(java.awt.event.ActionEvent evt) {
+
+        }
+
+        private void btnB4ActionPerformed(java.awt.event.ActionEvent evt) {
+
+        }
+
+        private void btnI4ActionPerformed(java.awt.event.ActionEvent evt) {
+
+        }
+
+        private void btnN4ActionPerformed(java.awt.event.ActionEvent evt) {
+
+        }
+
+        private void btnG4ActionPerformed(java.awt.event.ActionEvent evt) {
+
+        }
+
+        private void btnO4ActionPerformed(java.awt.event.ActionEvent evt) {
+
+        }
+
+        private void btnB5ActionPerformed(java.awt.event.ActionEvent evt) {
+
+        }
+
+        private void btnI5ActionPerformed(java.awt.event.ActionEvent evt) {
+
+        }
+
+        private void btnN5ActionPerformed(java.awt.event.ActionEvent evt) {
+
+        }
+
+        private void btnG5ActionPerformed(java.awt.event.ActionEvent evt) {
+
+        }
+
+        private void btnO5ActionPerformed(java.awt.event.ActionEvent evt) {
+
+        }
+
+        private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {
                 Transactions transactions = new Transactions();
                 transactions.setVisible(true);
                 this.setVisible(false);
-        }// GEN-LAST:event_btnDepositarActionPerformed
+        }
 
         private void imgEnviarMouseClicked(java.awt.event.MouseEvent evt) {
 
