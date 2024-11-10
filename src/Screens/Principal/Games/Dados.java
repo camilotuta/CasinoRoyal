@@ -8,15 +8,11 @@ package Screens.Principal.Games;
 import Screens.Custom.CambiarIU;
 import Screens.Custom.ObtenerIU;
 import Screens.Custom.SoundPlay;
-import Screens.Custom.Games.CasillasRuleta;
 import Screens.Custom.Games.NumerosDado;
 import Screens.Principal.Principal;
 
 import java.awt.EventQueue;
 import java.awt.Toolkit;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -89,7 +85,9 @@ public class Dados extends javax.swing.JFrame {
                                                         * NumerosDado.cuotaSumaPagar(numeroDado1 + numeroDado2);
 
                                 } else if (tipoApuesta.equalsIgnoreCase("dobles")
-                                                && (numeroDado1 == args[0] && numeroDado2 == args[1])) {
+                                                && ((numeroDado1 == args[0] && numeroDado2 == args[1])
+                                                                || (numeroDado2 == args[0]
+                                                                                && numeroDado1 == args[1]))) {
                                         valorGanado[0] = valorApostado * 30;
                                 }
 
@@ -329,7 +327,6 @@ public class Dados extends javax.swing.JFrame {
         private void btnApostarSumaActionPerformed(java.awt.event.ActionEvent evt) {
                 String input = JOptionPane.showInputDialog(null, "Adivina el número de la suma de ambos dados (2-12):");
                 int numeroIngresado = -1;
-                System.out.println(input);
                 try {
                         numeroIngresado = Integer.valueOf(input);
 
@@ -342,20 +339,17 @@ public class Dados extends javax.swing.JFrame {
 
                         } else {
 
-                                System.out.println("else");
                                 JOptionPane.showMessageDialog(null,
                                                 "El número ingresado no es válido (debe estar entre 2 y 12).",
                                                 "ERROR",
                                                 JOptionPane.ERROR_MESSAGE);
                         }
                 } catch (Exception e) {
-                        System.out.println("catch");
                         JOptionPane.showMessageDialog(null,
                                         "El número ingresado no es válido.",
                                         "ERROR",
                                         JOptionPane.ERROR_MESSAGE);
                 }
-
         }
 
         private void btnApostarDoblesActionPerformed(java.awt.event.ActionEvent evt) {
