@@ -67,41 +67,43 @@ public class Dados extends javax.swing.JFrame {
                         new Thread(() -> {
                                 try {
                                         Thread.sleep(4000);
+
+                                        if (tipoApuesta.equalsIgnoreCase("par")
+                                                        && (numeroDado1 % 2 == 0 && numeroDado2 % 2 == 0)) {
+                                                valorGanado[0] = valorApostado * 2;
+
+                                        } else if (tipoApuesta.equalsIgnoreCase("impar")
+                                                        && (numeroDado1 % 2 != 0 && numeroDado2 % 2 != 0)) {
+                                                valorGanado[0] = valorApostado * 2;
+                                        } else if (tipoApuesta.equalsIgnoreCase("suma")
+                                                        && (numeroDado1 + numeroDado2) == args[0]) {
+                                                valorGanado[0] = valorApostado
+                                                                * NumerosDado.cuotaSumaPagar(numeroDado1 + numeroDado2);
+
+                                        } else if (tipoApuesta.equalsIgnoreCase("dobles")
+                                                        && ((numeroDado1 == args[0] && numeroDado2 == args[1])
+                                                                        || (numeroDado2 == args[0]
+                                                                                        && numeroDado1 == args[1]))) {
+                                                valorGanado[0] = valorApostado * 30;
+                                        }
+
+                                        CambiarIU.setImageLabel(lbDado1, "src/img/dados/dado" + numeroDado1 + ".png");
+                                        CambiarIU.setImageLabel(lbDado2, "src/img/dados/dado" + numeroDado2 + ".png");
+
+                                        Thread.sleep(2000);
+                                        String mensaje = "Los dados han caído en: " + numeroDado1 + " y " + numeroDado2
+                                                        + ". Total: " + (numeroDado1 + numeroDado2) + "\n"
+                                                        + "Ganancia: $" + valorGanado[0];
+
+                                        JOptionPane.showMessageDialog(null, mensaje, "Resultado de los Dados",
+                                                        JOptionPane.INFORMATION_MESSAGE);
+
+                                        Transactions.sumarFondos(valorGanado[0]);
+                                        ponerFondos();
                                 } catch (InterruptedException e) {
                                         JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
                                                         JOptionPane.ERROR_MESSAGE);
                                 }
-
-                                if (tipoApuesta.equalsIgnoreCase("par")
-                                                && (numeroDado1 % 2 == 0 && numeroDado2 % 2 == 0)) {
-                                        valorGanado[0] = valorApostado * 2;
-
-                                } else if (tipoApuesta.equalsIgnoreCase("impar")
-                                                && (numeroDado1 % 2 != 0 && numeroDado2 % 2 != 0)) {
-                                        valorGanado[0] = valorApostado * 2;
-                                } else if (tipoApuesta.equalsIgnoreCase("suma")
-                                                && (numeroDado1 + numeroDado2) == args[0]) {
-                                        valorGanado[0] = valorApostado
-                                                        * NumerosDado.cuotaSumaPagar(numeroDado1 + numeroDado2);
-
-                                } else if (tipoApuesta.equalsIgnoreCase("dobles")
-                                                && ((numeroDado1 == args[0] && numeroDado2 == args[1])
-                                                                || (numeroDado2 == args[0]
-                                                                                && numeroDado1 == args[1]))) {
-                                        valorGanado[0] = valorApostado * 30;
-                                }
-
-                                CambiarIU.setImageLabel(lbDado1, "src/img/dados/dado" + numeroDado1 + ".png");
-                                CambiarIU.setImageLabel(lbDado2, "src/img/dados/dado" + numeroDado2 + ".png");
-                                String mensaje = "Los dados han caído en: " + numeroDado1 + " y " + numeroDado2
-                                                + ". Total: " + (numeroDado1 + numeroDado2) + "\n"
-                                                + "Ganancia: $" + valorGanado[0];
-
-                                JOptionPane.showMessageDialog(null, mensaje, "Resultado de los Dados",
-                                                JOptionPane.INFORMATION_MESSAGE);
-
-                                Transactions.sumarFondos(valorGanado[0]);
-                                ponerFondos();
                         }).start();
                 }
         }

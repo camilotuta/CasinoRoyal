@@ -103,38 +103,41 @@ public class Ruleta extends javax.swing.JFrame {
                         new Thread(() -> {
                                 try {
                                         Thread.sleep(5000);
+
+                                        if ((grupoApostado.equalsIgnoreCase("Rojo")
+                                                        && grupoApostado.equalsIgnoreCase(colorJuego))
+                                                        || (grupoApostado.equalsIgnoreCase("Negro")
+                                                                        && grupoApostado.equalsIgnoreCase(
+                                                                                        colorJuego))) {
+                                                valorGanado[0] = valorApostado * 2;
+
+                                        } else if (grupoApostado.equalsIgnoreCase("Verde")
+                                                        && grupoApostado.equalsIgnoreCase(colorJuego)) {
+                                                valorGanado[0] = valorApostado * 40;
+
+                                        } else if (grupoApostado.equalsIgnoreCase("")
+                                                        && casillaApostada == casillaJuego) {
+                                                valorGanado[0] = valorApostado * 35;
+                                        }
+
+                                        String mensaje = "La ruleta ha caído en la casilla: " + casillaJuego + " ("
+                                                        + colorJuego
+                                                        + ")\n"
+                                                        + "Ganancia: $" + valorGanado[0];
+
+                                        JOptionPane.showMessageDialog(
+                                                        null,
+                                                        mensaje,
+                                                        "Resultado de la Ruleta",
+                                                        JOptionPane.INFORMATION_MESSAGE);
+
+                                        Transactions.sumarFondos(valorGanado[0]);
+                                        ponerFondos();
+                                        CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaQuieta.png");
                                 } catch (InterruptedException e) {
                                         JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
                                                         JOptionPane.ERROR_MESSAGE);
                                 }
-
-                                if ((grupoApostado.equalsIgnoreCase("Rojo")
-                                                && grupoApostado.equalsIgnoreCase(colorJuego))
-                                                || (grupoApostado.equalsIgnoreCase("Negro")
-                                                                && grupoApostado.equalsIgnoreCase(colorJuego))) {
-                                        valorGanado[0] = valorApostado * 2;
-
-                                } else if (grupoApostado.equalsIgnoreCase("Verde")
-                                                && grupoApostado.equalsIgnoreCase(colorJuego)) {
-                                        valorGanado[0] = valorApostado * 40;
-
-                                } else if (grupoApostado.equalsIgnoreCase("") && casillaApostada == casillaJuego) {
-                                        valorGanado[0] = valorApostado * 35;
-                                }
-
-                                String mensaje = "La ruleta ha caído en la casilla: " + casillaJuego + " (" + colorJuego
-                                                + ")\n"
-                                                + "Ganancia: $" + valorGanado[0];
-
-                                JOptionPane.showMessageDialog(
-                                                null,
-                                                mensaje,
-                                                "Resultado de la Ruleta",
-                                                JOptionPane.INFORMATION_MESSAGE);
-
-                                Transactions.sumarFondos(valorGanado[0]);
-                                ponerFondos();
-                                CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaQuieta.png");
                         }).start();
                 }
         }
