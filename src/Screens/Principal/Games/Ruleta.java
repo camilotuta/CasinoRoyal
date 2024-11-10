@@ -44,7 +44,7 @@ public class Ruleta extends javax.swing.JFrame {
 
                 this.setIconImage(Toolkit.getDefaultToolkit()
                                 .getImage(getClass().getResource("/img/icon.png")));
-                CambiarIU.setImageLabel(lbContenido, "src/img/ruletaQuieta.png");
+                CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaQuieta.png");
                 ingresarChat();
                 taChatRuleta.setEditable(false);
                 ponerFondos();
@@ -92,7 +92,7 @@ public class Ruleta extends javax.swing.JFrame {
                         Transactions.restarFondos(valorApostado);
                         ponerFondos();
 
-                        CambiarIU.setImageLabel(lbContenido, "src/img/ruletaGirando.gif");
+                        CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaGirando.gif");
                         SoundPlay.reproducir("src/sound/ruletaGirando.wav");
 
                         int casillaJuego = CasillasRuleta.casillaAleatoria();
@@ -103,38 +103,41 @@ public class Ruleta extends javax.swing.JFrame {
                         new Thread(() -> {
                                 try {
                                         Thread.sleep(5000);
+
+                                        if ((grupoApostado.equalsIgnoreCase("Rojo")
+                                                        && grupoApostado.equalsIgnoreCase(colorJuego))
+                                                        || (grupoApostado.equalsIgnoreCase("Negro")
+                                                                        && grupoApostado.equalsIgnoreCase(
+                                                                                        colorJuego))) {
+                                                valorGanado[0] = valorApostado * 2;
+
+                                        } else if (grupoApostado.equalsIgnoreCase("Verde")
+                                                        && grupoApostado.equalsIgnoreCase(colorJuego)) {
+                                                valorGanado[0] = valorApostado * 40;
+
+                                        } else if (grupoApostado.equalsIgnoreCase("")
+                                                        && casillaApostada == casillaJuego) {
+                                                valorGanado[0] = valorApostado * 35;
+                                        }
+
+                                        String mensaje = "La ruleta ha caído en la casilla: " + casillaJuego + " ("
+                                                        + colorJuego
+                                                        + ")\n"
+                                                        + "Ganancia: $" + valorGanado[0];
+
+                                        JOptionPane.showMessageDialog(
+                                                        null,
+                                                        mensaje,
+                                                        "Resultado de la Ruleta",
+                                                        JOptionPane.INFORMATION_MESSAGE);
+
+                                        Transactions.sumarFondos(valorGanado[0]);
+                                        ponerFondos();
+                                        CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaQuieta.png");
                                 } catch (InterruptedException e) {
                                         JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
                                                         JOptionPane.ERROR_MESSAGE);
                                 }
-
-                                if ((grupoApostado.equalsIgnoreCase("Rojo")
-                                                && grupoApostado.equalsIgnoreCase(colorJuego))
-                                                || (grupoApostado.equalsIgnoreCase("Negro")
-                                                                && grupoApostado.equalsIgnoreCase(colorJuego))) {
-                                        valorGanado[0] = valorApostado * 2;
-
-                                } else if (grupoApostado.equalsIgnoreCase("Verde")
-                                                && grupoApostado.equalsIgnoreCase(colorJuego)) {
-                                        valorGanado[0] = valorApostado * 40;
-
-                                } else if (grupoApostado.equalsIgnoreCase("") && casillaApostada == casillaJuego) {
-                                        valorGanado[0] = valorApostado * 35;
-                                }
-
-                                String mensaje = "La ruleta ha caído en la casilla: " + casillaJuego + " (" + colorJuego
-                                                + ")\n"
-                                                + "Ganancia: $" + valorGanado[0];
-
-                                JOptionPane.showMessageDialog(
-                                                null,
-                                                mensaje,
-                                                "Resultado de la Ruleta",
-                                                JOptionPane.INFORMATION_MESSAGE);
-
-                                Transactions.sumarFondos(valorGanado[0]);
-                                ponerFondos();
-                                CambiarIU.setImageLabel(lbContenido, "src/img/ruletaQuieta.png");
                         }).start();
                 }
         }
@@ -145,6 +148,7 @@ public class Ruleta extends javax.swing.JFrame {
          * always regenerated by the Form Editor.
          */
         @SuppressWarnings("unchecked")
+        // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
@@ -370,7 +374,7 @@ public class Ruleta extends javax.swing.JFrame {
 
                 lbContenido.setBackground(new java.awt.Color(36, 38, 41));
                 lbContenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                lbContenido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ruletaQuieta.png"))); // NOI18N
+                lbContenido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ruleta/ruletaQuieta.png"))); // NOI18N
                 ventanaRuleta.add(lbContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, 340, 340));
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -413,15 +417,12 @@ public class Ruleta extends javax.swing.JFrame {
                 String input = JOptionPane.showInputDialog(null, "Adivina el número de la ruleta (0-36):");
                 int numeroIngresado = -1;
                 try {
-                        if (Integer.valueOf(input) instanceof Integer) {
-                                numeroIngresado = Integer.valueOf(input);
+                        numeroIngresado = Integer.valueOf(input);
 
-                                if ((numeroIngresado >= 0 && numeroIngresado <= 36)) {
-                                        girarRuleta("", numeroIngresado,
-                                                        Integer.valueOf(ObtenerIU
-                                                                        .obtenerSeleccionCombo(cbValorApostado)));
-
-                                }
+                        if ((numeroIngresado >= 0 && numeroIngresado <= 36)) {
+                                girarRuleta("", numeroIngresado,
+                                                Integer.valueOf(ObtenerIU
+                                                                .obtenerSeleccionCombo(cbValorApostado)));
 
                         } else {
 
@@ -429,11 +430,12 @@ public class Ruleta extends javax.swing.JFrame {
                                                 "El número ingresado no es válido (debe estar entre 0 y 36).",
                                                 "ERROR",
                                                 JOptionPane.ERROR_MESSAGE);
+
                         }
 
                 } catch (Exception e) {
                         JOptionPane.showMessageDialog(null,
-                                        "El número ingresado no es válido (debe estar entre 0 y 36).",
+                                        "El número ingresado no es válido.",
                                         "ERROR",
                                         JOptionPane.ERROR_MESSAGE);
                 }
