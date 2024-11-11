@@ -44,6 +44,7 @@ public class Poker extends javax.swing.JFrame {
                 ingresarChat();
                 taChatPoker.setEditable(false);
                 ponerFondos();
+                CambiarIU.setImageLabel(lbContenido, "src/img/poker/pokerPartida.gif");
         }
 
         private void ponerFondos() {
@@ -120,7 +121,8 @@ public class Poker extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-        // Code">//GEN-BEGIN:initComponents
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 ventanaBingo = new javax.swing.JPanel();
@@ -151,11 +153,9 @@ public class Poker extends javax.swing.JFrame {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseClicked(evt);
                         }
-
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseEntered(evt);
                         }
-
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseExited(evt);
                         }
@@ -221,11 +221,9 @@ public class Poker extends javax.swing.JFrame {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseClicked(evt);
                         }
-
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseEntered(evt);
                         }
-
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseExited(evt);
                         }
@@ -243,7 +241,7 @@ public class Poker extends javax.swing.JFrame {
                                 btnApostarActionPerformed(evt);
                         }
                 });
-                ventanaBingo.add(btnApostar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 660, 130, -1));
+                ventanaBingo.add(btnApostar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 630, 130, -1));
 
                 btnCambiarApuesta.setBackground(new java.awt.Color(147, 128, 67));
                 btnCambiarApuesta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -256,8 +254,7 @@ public class Poker extends javax.swing.JFrame {
                                 btnCambiarApuestaActionPerformed(evt);
                         }
                 });
-                ventanaBingo.add(btnCambiarApuesta,
-                                new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 660, 210, -1));
+                ventanaBingo.add(btnCambiarApuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 660, 210, -1));
 
                 btnRetirarse.setBackground(new java.awt.Color(147, 128, 67));
                 btnRetirarse.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -270,35 +267,35 @@ public class Poker extends javax.swing.JFrame {
                                 btnRetirarseActionPerformed(evt);
                         }
                 });
-                ventanaBingo.add(btnRetirarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 660, 120, -1));
-                ventanaBingo.add(lbContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 550, 480));
+                ventanaBingo.add(btnRetirarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 630, 120, -1));
+
+                lbContenido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 0)));
+                ventanaBingo.add(lbContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 590, 380));
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
+                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                );
                 layout.setVerticalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
+                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                );
 
                 pack();
         }// </editor-fold>//GEN-END:initComponents
 
         private void btnApostarActionPerformed(java.awt.event.ActionEvent evt) {
-                
+
         }
 
         private void btnRetirarseActionPerformed(java.awt.event.ActionEvent evt) {
-                
+
         }
 
         private void btnCambiarApuestaActionPerformed(java.awt.event.ActionEvent evt) {
-                
+
         }
 
         private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {
