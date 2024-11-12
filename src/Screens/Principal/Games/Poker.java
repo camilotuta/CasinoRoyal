@@ -125,176 +125,169 @@ public class Poker extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-        // Code">//GEN-BEGIN:initComponents
-        private void initComponents() {
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
-                ventanaBingo = new javax.swing.JPanel();
-                imgVolver = new javax.swing.JLabel();
-                btnDepositar = new javax.swing.JButton();
-                lbPoker = new javax.swing.JLabel();
-                lbPonerFondos = new javax.swing.JLabel();
-                lbChat = new javax.swing.JLabel();
-                scChatPoker = new javax.swing.JScrollPane();
-                taChatPoker = new javax.swing.JTextArea();
-                scMensaje = new javax.swing.JScrollPane();
-                taMensaje = new javax.swing.JTextArea();
-                imgEnviar = new javax.swing.JLabel();
-                btnApostar = new javax.swing.JButton();
-                btnCambiarApuesta = new javax.swing.JButton();
-                btnRetirarse = new javax.swing.JButton();
-                lbContenido = new javax.swing.JLabel();
+        ventanaBingo = new javax.swing.JPanel();
+        imgVolver = new javax.swing.JLabel();
+        btnDepositar = new javax.swing.JButton();
+        lbPoker = new javax.swing.JLabel();
+        lbPonerFondos = new javax.swing.JLabel();
+        lbChat = new javax.swing.JLabel();
+        scChatPoker = new javax.swing.JScrollPane();
+        taChatPoker = new javax.swing.JTextArea();
+        scMensaje = new javax.swing.JScrollPane();
+        taMensaje = new javax.swing.JTextArea();
+        imgEnviar = new javax.swing.JLabel();
+        btnApostar = new javax.swing.JButton();
+        btnCambiarApuesta = new javax.swing.JButton();
+        btnRetirarse = new javax.swing.JButton();
+        lbContenido = new javax.swing.JLabel();
 
-                setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-                ventanaBingo.setBackground(new java.awt.Color(27, 9, 5));
-                ventanaBingo.setPreferredSize(new java.awt.Dimension(1080, 720));
-                ventanaBingo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        ventanaBingo.setBackground(new java.awt.Color(27, 9, 5));
+        ventanaBingo.setPreferredSize(new java.awt.Dimension(1080, 720));
+        ventanaBingo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/volver.png"))); // NOI18N
-                imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                                imgVolverMouseClicked(evt);
-                        }
+        imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/volver.png"))); // NOI18N
+        imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgVolverMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                imgVolverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                imgVolverMouseExited(evt);
+            }
+        });
+        ventanaBingo.add(imgVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-                        public void mouseEntered(java.awt.event.MouseEvent evt) {
-                                imgVolverMouseEntered(evt);
-                        }
+        btnDepositar.setBackground(new java.awt.Color(147, 128, 67));
+        btnDepositar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnDepositar.setForeground(new java.awt.Color(255, 255, 254));
+        btnDepositar.setText("Depositar");
+        btnDepositar.setActionCommand("Ingresar");
+        btnDepositar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDepositar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepositarActionPerformed(evt);
+            }
+        });
+        ventanaBingo.add(btnDepositar, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 50, -1, -1));
 
-                        public void mouseExited(java.awt.event.MouseEvent evt) {
-                                imgVolverMouseExited(evt);
-                        }
-                });
-                ventanaBingo.add(imgVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        lbPoker.setFont(new java.awt.Font("Crabs", 1, 100)); // NOI18N
+        lbPoker.setForeground(new java.awt.Color(227, 199, 104));
+        lbPoker.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbPoker.setText("Poker");
+        ventanaBingo.add(lbPoker, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1080, -1));
 
-                btnDepositar.setBackground(new java.awt.Color(147, 128, 67));
-                btnDepositar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-                btnDepositar.setForeground(new java.awt.Color(255, 255, 254));
-                btnDepositar.setText("Depositar");
-                btnDepositar.setActionCommand("Ingresar");
-                btnDepositar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                btnDepositar.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnDepositarActionPerformed(evt);
-                        }
-                });
-                ventanaBingo.add(btnDepositar, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 50, -1, -1));
+        lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
+        lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
+        lbPonerFondos.setText("-");
+        ventanaBingo.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
 
-                lbPoker.setFont(new java.awt.Font("Crabs", 1, 100)); // NOI18N
-                lbPoker.setForeground(new java.awt.Color(227, 199, 104));
-                lbPoker.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                lbPoker.setText("Poker");
-                ventanaBingo.add(lbPoker, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1080, -1));
+        lbChat.setFont(new java.awt.Font("Crabs", 1, 48)); // NOI18N
+        lbChat.setForeground(new java.awt.Color(227, 199, 104));
+        lbChat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbChat.setText("Chat");
+        ventanaBingo.add(lbChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 310, 220, -1));
 
-                lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-                lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
-                lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-                lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
-                lbPonerFondos.setText("-");
-                ventanaBingo.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
+        taChatPoker.setBackground(new java.awt.Color(36, 38, 41));
+        taChatPoker.setColumns(20);
+        taChatPoker.setForeground(new java.awt.Color(148, 161, 178));
+        taChatPoker.setLineWrap(true);
+        taChatPoker.setRows(5);
+        taChatPoker.setWrapStyleWord(true);
+        taChatPoker.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 199, 104)));
+        scChatPoker.setViewportView(taChatPoker);
 
-                lbChat.setFont(new java.awt.Font("Crabs", 1, 48)); // NOI18N
-                lbChat.setForeground(new java.awt.Color(227, 199, 104));
-                lbChat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                lbChat.setText("Chat");
-                ventanaBingo.add(lbChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 310, 220, -1));
+        ventanaBingo.add(scChatPoker, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 370, -1, 260));
 
-                taChatPoker.setBackground(new java.awt.Color(36, 38, 41));
-                taChatPoker.setColumns(20);
-                taChatPoker.setForeground(new java.awt.Color(148, 161, 178));
-                taChatPoker.setLineWrap(true);
-                taChatPoker.setRows(5);
-                taChatPoker.setWrapStyleWord(true);
-                taChatPoker.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 199, 104)));
-                scChatPoker.setViewportView(taChatPoker);
+        taMensaje.setBackground(new java.awt.Color(36, 38, 41));
+        taMensaje.setColumns(20);
+        taMensaje.setForeground(new java.awt.Color(148, 161, 178));
+        taMensaje.setLineWrap(true);
+        taMensaje.setRows(2);
+        taMensaje.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 199, 104)));
+        scMensaje.setViewportView(taMensaje);
 
-                ventanaBingo.add(scChatPoker, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 370, -1, 260));
+        ventanaBingo.add(scMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 650, 180, 50));
 
-                taMensaje.setBackground(new java.awt.Color(36, 38, 41));
-                taMensaje.setColumns(20);
-                taMensaje.setForeground(new java.awt.Color(148, 161, 178));
-                taMensaje.setLineWrap(true);
-                taMensaje.setRows(2);
-                taMensaje.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 199, 104)));
-                scMensaje.setViewportView(taMensaje);
+        imgEnviar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/enviar.png"))); // NOI18N
+        imgEnviar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        imgEnviar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgEnviarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                imgEnviarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                imgEnviarMouseExited(evt);
+            }
+        });
+        ventanaBingo.add(imgEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 650, 40, 40));
 
-                ventanaBingo.add(scMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 650, 180, 50));
+        btnApostar.setBackground(new java.awt.Color(171, 157, 113));
+        btnApostar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnApostar.setForeground(new java.awt.Color(255, 255, 254));
+        btnApostar.setText("Apostar");
+        btnApostar.setActionCommand("Ingresar");
+        btnApostar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnApostar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApostarActionPerformed(evt);
+            }
+        });
+        ventanaBingo.add(btnApostar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 630, 130, -1));
 
-                imgEnviar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/enviar.png"))); // NOI18N
-                imgEnviar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                imgEnviar.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                                imgEnviarMouseClicked(evt);
-                        }
+        btnCambiarApuesta.setBackground(new java.awt.Color(198, 182, 131));
+        btnCambiarApuesta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnCambiarApuesta.setForeground(new java.awt.Color(255, 255, 254));
+        btnCambiarApuesta.setText("Cambiar la apuesta");
+        btnCambiarApuesta.setActionCommand("Ingresar");
+        btnCambiarApuesta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCambiarApuesta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCambiarApuestaActionPerformed(evt);
+            }
+        });
+        ventanaBingo.add(btnCambiarApuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 660, 210, -1));
 
-                        public void mouseEntered(java.awt.event.MouseEvent evt) {
-                                imgEnviarMouseEntered(evt);
-                        }
+        btnRetirarse.setBackground(new java.awt.Color(171, 157, 113));
+        btnRetirarse.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnRetirarse.setForeground(new java.awt.Color(255, 255, 254));
+        btnRetirarse.setText("Retirarse");
+        btnRetirarse.setActionCommand("Ingresar");
+        btnRetirarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRetirarse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetirarseActionPerformed(evt);
+            }
+        });
+        ventanaBingo.add(btnRetirarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 630, 120, -1));
 
-                        public void mouseExited(java.awt.event.MouseEvent evt) {
-                                imgEnviarMouseExited(evt);
-                        }
-                });
-                ventanaBingo.add(imgEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 650, 40, 40));
+        lbContenido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 0)));
+        ventanaBingo.add(lbContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 590, 380));
 
-                btnApostar.setBackground(new java.awt.Color(147, 128, 67));
-                btnApostar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-                btnApostar.setForeground(new java.awt.Color(255, 255, 254));
-                btnApostar.setText("Apostar");
-                btnApostar.setActionCommand("Ingresar");
-                btnApostar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                btnApostar.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnApostarActionPerformed(evt);
-                        }
-                });
-                ventanaBingo.add(btnApostar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 630, 130, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
-                btnCambiarApuesta.setBackground(new java.awt.Color(147, 128, 67));
-                btnCambiarApuesta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-                btnCambiarApuesta.setForeground(new java.awt.Color(255, 255, 254));
-                btnCambiarApuesta.setText("Cambiar la apuesta");
-                btnCambiarApuesta.setActionCommand("Ingresar");
-                btnCambiarApuesta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                btnCambiarApuesta.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnCambiarApuestaActionPerformed(evt);
-                        }
-                });
-                ventanaBingo.add(btnCambiarApuesta,
-                                new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 660, 210, -1));
-
-                btnRetirarse.setBackground(new java.awt.Color(147, 128, 67));
-                btnRetirarse.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-                btnRetirarse.setForeground(new java.awt.Color(255, 255, 254));
-                btnRetirarse.setText("Retirarse");
-                btnRetirarse.setActionCommand("Ingresar");
-                btnRetirarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                btnRetirarse.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnRetirarseActionPerformed(evt);
-                        }
-                });
-                ventanaBingo.add(btnRetirarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 630, 120, -1));
-
-                lbContenido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 0)));
-                ventanaBingo.add(lbContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 590, 380));
-
-                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-                getContentPane().setLayout(layout);
-                layout.setHorizontalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
-                layout.setVerticalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
-
-                pack();
-        }// </editor-fold>//GEN-END:initComponents
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
 
         private void btnApostarActionPerformed(java.awt.event.ActionEvent evt) {
 
@@ -356,21 +349,21 @@ public class Poker extends javax.swing.JFrame {
                 EventQueue.invokeLater(() -> new Poker().setVisible(true));
         }
 
-        // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JButton btnApostar;
-        private javax.swing.JButton btnCambiarApuesta;
-        private javax.swing.JButton btnDepositar;
-        private javax.swing.JButton btnRetirarse;
-        private javax.swing.JLabel imgEnviar;
-        private javax.swing.JLabel imgVolver;
-        private javax.swing.JLabel lbChat;
-        private javax.swing.JLabel lbContenido;
-        private javax.swing.JLabel lbPoker;
-        private javax.swing.JLabel lbPonerFondos;
-        private javax.swing.JScrollPane scChatPoker;
-        private javax.swing.JScrollPane scMensaje;
-        private javax.swing.JTextArea taChatPoker;
-        private javax.swing.JTextArea taMensaje;
-        private javax.swing.JPanel ventanaBingo;
-        // End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnApostar;
+    private javax.swing.JButton btnCambiarApuesta;
+    private javax.swing.JButton btnDepositar;
+    private javax.swing.JButton btnRetirarse;
+    private javax.swing.JLabel imgEnviar;
+    private javax.swing.JLabel imgVolver;
+    private javax.swing.JLabel lbChat;
+    private javax.swing.JLabel lbContenido;
+    private javax.swing.JLabel lbPoker;
+    private javax.swing.JLabel lbPonerFondos;
+    private javax.swing.JScrollPane scChatPoker;
+    private javax.swing.JScrollPane scMensaje;
+    private javax.swing.JTextArea taChatPoker;
+    private javax.swing.JTextArea taMensaje;
+    private javax.swing.JPanel ventanaBingo;
+    // End of variables declaration//GEN-END:variables
 }
