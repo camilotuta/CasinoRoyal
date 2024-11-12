@@ -289,7 +289,7 @@ public class BlackJack extends javax.swing.JFrame {
         });
         ventanaBlackJack.add(imgEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 650, 40, 40));
 
-        btnJugar.setBackground(new java.awt.Color(171, 157, 113));
+        btnJugar.setBackground(new java.awt.Color(102, 0, 51));
         btnJugar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnJugar.setForeground(new java.awt.Color(255, 255, 254));
         btnJugar.setText("Jugar");

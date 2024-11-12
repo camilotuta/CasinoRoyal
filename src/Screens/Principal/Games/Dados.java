@@ -237,7 +237,7 @@ public class Dados extends javax.swing.JFrame {
         });
         ventanaBlackJack.add(cbValorApostado, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 570, 190, 40));
 
-        btnApostarPar.setBackground(new java.awt.Color(198, 182, 131));
+        btnApostarPar.setBackground(new java.awt.Color(153, 0, 102));
         btnApostarPar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnApostarPar.setForeground(new java.awt.Color(255, 255, 254));
         btnApostarPar.setText("Ambos Par");
@@ -250,7 +250,7 @@ public class Dados extends javax.swing.JFrame {
         });
         ventanaBlackJack.add(btnApostarPar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 580, -1, -1));
 
-        btnApostarSuma.setBackground(new java.awt.Color(198, 182, 131));
+        btnApostarSuma.setBackground(new java.awt.Color(0, 153, 153));
         btnApostarSuma.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnApostarSuma.setForeground(new java.awt.Color(255, 255, 254));
         btnApostarSuma.setText("Suma de los Dados");
@@ -263,7 +263,7 @@ public class Dados extends javax.swing.JFrame {
         });
         ventanaBlackJack.add(btnApostarSuma, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 640, -1, -1));
 
-        btnApostarDobles.setBackground(new java.awt.Color(171, 157, 113));
+        btnApostarDobles.setBackground(new java.awt.Color(51, 0, 153));
         btnApostarDobles.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnApostarDobles.setForeground(new java.awt.Color(255, 255, 254));
         btnApostarDobles.setText("Dobles");
@@ -276,7 +276,7 @@ public class Dados extends javax.swing.JFrame {
         });
         ventanaBlackJack.add(btnApostarDobles, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 640, -1, -1));
 
-        btnApostarImpar.setBackground(new java.awt.Color(198, 182, 131));
+        btnApostarImpar.setBackground(new java.awt.Color(204, 102, 0));
         btnApostarImpar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnApostarImpar.setForeground(new java.awt.Color(255, 255, 254));
         btnApostarImpar.setText("Ambos Impar");
