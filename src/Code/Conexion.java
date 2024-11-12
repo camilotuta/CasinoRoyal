@@ -10,56 +10,35 @@ import javax.swing.JOptionPane;
 
 public class Conexion {
 
-    static String url = "jdbc:sqlite:db/casino_royal.db";
-    static Connection connect;
-    static PreparedStatement pSt;
-    static ResultSet result = null;
+    private static final String URL = "jdbc:sqlite:db/casino_royal.db";
 
-    public static void conectar() {
+    // Método para obtener una nueva conexión a la base de datos
+    public static Connection conectar() {
         try {
             Class.forName("org.sqlite.JDBC");
-            connect = DriverManager.getConnection(url);
+            return DriverManager.getConnection(URL);
         } catch (ClassNotFoundException | SQLException e) {
             JOptionPane.showMessageDialog(null, "ERROR DE CONEXIÓN:\n" + e.getMessage());
+            return null;
         }
     }
 
-    public static void cerrarConexion() {
+    // Método para cerrar una conexión, PreparedStatement y ResultSet
+    public static void cerrarConexion(Connection conn, PreparedStatement pSt, ResultSet result) {
         try {
-            if (pSt != null) {
-                pSt.close();
-            }
             if (result != null) {
                 result.close();
             }
-            if (connect != null) {
-                connect.close();
+            if (pSt != null) {
+                pSt.close();
+            }
+            if (conn != null) {
+                conn.close();
             }
         } catch (SQLException e) {
             System.out.println("Error al cerrar la conexión: " + e.getMessage());
         }
     }
 
-    public static void operaciones() throws SQLException {
-
-        // ^ REGISTRAR
-        OperacionCRUD.registrar(
-                "INSERT INTO usuarios (correo,contraseña,nombre,departamento,ciudad,edad,"
-                        + "fecha_registro ) VALUES ('laura@gmail.com','Laura1234!','Laura Gomez',"
-                        // cSpell:disable-next-line
-                        + "'Antioquia','Medellín',25,DATE ('now'));");
-
-        // ^ ELIMINAR
-        OperacionCRUD.eliminar("delete from usuarios where correo like '%@example%'");
-
-        // ^ SELECCIONAR
-        System.out.println(OperacionCRUD.seleccionar("select * from usuarios",
-                new String[] { "nombre", "edad", "correo" }));
-
-        // ^ ACTUALIZAR
-        OperacionCRUD.actualizar("update usuarios set nombre = 'Adrian Camilo Tuta Cortes' where "
-                + "id_usuario = 1");
-
-    }
-
+   
 }

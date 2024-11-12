@@ -5,10 +5,12 @@
  */
 package Screens.Login;
 
+import Code.Conexion;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.sql.Connection;
 
 import javax.swing.JOptionPane;
 
@@ -30,86 +32,102 @@ import Screens.Signup.Signup;
  */
 public class Login extends javax.swing.JFrame {
 
-        public static int idUsuarioGuardar;
-        public static String correoGuardar = "";
+	public static int idUsuarioGuardar;
+	public static String correoGuardar = "";
 
-        /**
-         * Creates new form Login
-         */
-        public Login() {
-                initComponents();
+	/**
+	 * Creates new form Login
+	 */
+	public Login() {
+		initComponents();
 
-                this.setTitle("Ingresar");
-                this.setResizable(false);
-                this.setLocationRelativeTo(null);
-                this.setIconImage(Toolkit.getDefaultToolkit()
-                                .getImage(getClass().getResource("/img/icon.png")));
-                CambiarIU.ponerTextoEtiqueta(txtMostrarCopy,
-                                "©" + Dates.obtenerAño() + " Casino Royal . Todos los derechos reservados.");
-                tfCorreo.requestFocus();
-                CambiarIU.ponerTextoCampo(tfCorreo, correoGuardar);
-                desactivarBotonIngresar();
+		this.setTitle("Ingresar");
+		this.setResizable(false);
+		this.setLocationRelativeTo(null);
+		this.setIconImage(Toolkit.getDefaultToolkit()
+			.getImage(getClass().getResource("/img/icon.png")));
+		CambiarIU.ponerTextoEtiqueta(txtMostrarCopy,
+			"©" + Dates.obtenerAño() + " Casino Royal . Todos los derechos reservados.");
+		tfCorreo.requestFocus();
+		CambiarIU.ponerTextoCampo(tfCorreo, correoGuardar);
+		desactivarBotonIngresar();
 
-        }
+	}
 
-        private void desactivarBotonIngresar() {
-                btnIngresar.setEnabled(
-                                VerificarDato.correoValido((ObtenerIU.obtenerTextoCampo(tfCorreo))) && (VerificarDato
-                                                .contraseñaValida(Desencriptar.desencriptarContra(
-                                                                ObtenerIU.obtenerContraseña(pfContraseña)))));
-        }
+	private void desactivarBotonIngresar() {
+		btnIngresar.setEnabled(
+			VerificarDato.correoValido((ObtenerIU.obtenerTextoCampo(tfCorreo))) && (VerificarDato
+			.contraseñaValida(Desencriptar.desencriptarContra(
+				ObtenerIU.obtenerContraseña(pfContraseña)))));
+	}
 
-        private boolean usuarioEstaRegistrado(String correo, String contraseña) throws SQLException {
-                ArrayList<ArrayList<Object>> datosUsuarioRegistrado = OperacionCRUD.seleccionar(
-                                String.format("SELECT * FROM jugadores WHERE correo_jugador = '%s' AND password_jugador = '%s'",
-                                                correo, contraseña),
-                                new String[] { "jugador_id", "correo_jugador", "password_jugador" });
+	private boolean usuarioEstaRegistrado(String correo, String contraseña) throws SQLException {
+		ArrayList<ArrayList<Object>> datosUsuarioRegistrado;
 
-                if (datosUsuarioRegistrado.size() < 4 && !datosUsuarioRegistrado.isEmpty()) {
-                        idUsuarioGuardar = Integer.parseInt((String) datosUsuarioRegistrado.get(0).get(0));
-                        return true;
-                }
-                return false;
-        }
+		try (Connection conn = Conexion.conectar()) {
+			if (conn == null) {
+				throw new SQLException("No se pudo establecer la conexión a la base de datos.");
+			}
 
-        private void ingresarUsuario() throws SQLException {
-                String correo = ObtenerIU.obtenerTextoCampo(tfCorreo).toLowerCase();
-                String contraseña = Desencriptar.desencriptarContra(ObtenerIU.obtenerContraseña(pfContraseña));
+			datosUsuarioRegistrado = OperacionCRUD.seleccionar(
+				conn,
+				String.format("SELECT * FROM jugadores WHERE correo_jugador = '%s' AND password_jugador = '%s'",
+					correo, contraseña),
+				new String[]{"jugador_id", "correo_jugador", "password_jugador"}
+			);
 
-                if (usuarioEstaRegistrado(correo, contraseña)) {
-                        correoGuardar = correo;
+		
+			if (!datosUsuarioRegistrado.isEmpty() && datosUsuarioRegistrado.get(0).size() >= 1) {
+				idUsuarioGuardar = Integer.parseInt(datosUsuarioRegistrado.get(0).get(0).toString());
+				return true;
+			}
 
-                        Principal pantallaPrincipal = new Principal();
-                        pantallaPrincipal.setVisible(true);
-                        this.setVisible(false);
-                } else {
-                        JOptionPane.showMessageDialog(this, "CORREO O CONTRASEÑA NO VALIDOS \n", "AVISO!",
-                                        javax.swing.JOptionPane.INFORMATION_MESSAGE);
+		} catch (SQLException e) {
+			System.out.println("Error al verificar el usuario: " + e.getMessage());
+			throw e;  
+		}
 
-                        CambiarIU.ponerTextoCampoContraseña(pfContraseña, "");
-                        pfContraseña.requestFocus();
-                        desactivarBotonIngresar();
-                }
-        }
+		return false;
+	}
 
-        /**
-         * This method is called from within the constructor to initialize the
-         * form. WARNING: Do NOT modify this code. The content of this method is
-         * always regenerated by the Form Editor.
-         */
-        @SuppressWarnings("unchecked")
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
+	private void ingresarUsuario() throws SQLException {
+		String correo = ObtenerIU.obtenerTextoCampo(tfCorreo).toLowerCase();
+		String contraseña = Desencriptar.desencriptarContra(ObtenerIU.obtenerContraseña(pfContraseña));
+
+		if (usuarioEstaRegistrado(correo, contraseña)) {
+			correoGuardar = correo;
+
+			Principal pantallaPrincipal = new Principal();
+			pantallaPrincipal.setVisible(true);
+			this.setVisible(false);
+		} else {
+			JOptionPane.showMessageDialog(this, "CORREO O CONTRASEÑA NO VALIDOS \n", "AVISO!",
+				javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+			CambiarIU.ponerTextoCampoContraseña(pfContraseña, "");
+			pfContraseña.requestFocus();
+			desactivarBotonIngresar();
+		}
+	}
+
+	/**
+	 * This method is called from within the constructor to initialize the
+	 * form. WARNING: Do NOT modify this code. The content of this method is
+	 * always regenerated by the Form Editor.
+	 */
+	@SuppressWarnings("unchecked")
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
         // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
@@ -254,78 +272,78 @@ public class Login extends javax.swing.JFrame {
                 pack();
         }// </editor-fold>//GEN-END:initComponents
 
-        private void lbCambiarContraseñaMouseClicked(java.awt.event.MouseEvent evt) {
-                RecoverPassword recoverPassword = new RecoverPassword();
-                recoverPassword.setVisible(true);
-                this.setVisible(false);
-        }
+	private void lbCambiarContraseñaMouseClicked(java.awt.event.MouseEvent evt) {
+		RecoverPassword recoverPassword = new RecoverPassword();
+		recoverPassword.setVisible(true);
+		this.setVisible(false);
+	}
 
-        private void lbCambiarContraseñaMouseEntered(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(lbCambiarContraseña, "src/img/helpHover.png");
-        }
+	private void lbCambiarContraseñaMouseEntered(java.awt.event.MouseEvent evt) {
+		CambiarIU.setImageLabel(lbCambiarContraseña, "src/img/helpHover.png");
+	}
 
-        private void lbCambiarContraseñaMouseExited(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(lbCambiarContraseña, "src/img/help.png");
-        }
+	private void lbCambiarContraseñaMouseExited(java.awt.event.MouseEvent evt) {
+		CambiarIU.setImageLabel(lbCambiarContraseña, "src/img/help.png");
+	}
 
-        private void pfContraseñaKeyReleased(java.awt.event.KeyEvent evt) {
-                desactivarBotonIngresar();
-        }
+	private void pfContraseñaKeyReleased(java.awt.event.KeyEvent evt) {
+		desactivarBotonIngresar();
+	}
 
-        private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {
-                Signup pantallaRegistro = new Signup();
-                pantallaRegistro.setVisible(true);
-                this.setVisible(false);
-        }
+	private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {
+		Signup pantallaRegistro = new Signup();
+		pantallaRegistro.setVisible(true);
+		this.setVisible(false);
+	}
 
-        private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
-                ingresarUsuario();
+	private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
+		ingresarUsuario();
 
-        }
+	}
 
-        private void tfCorreoKeyReleased(java.awt.event.KeyEvent evt) {
-                desactivarBotonIngresar();
-        }
+	private void tfCorreoKeyReleased(java.awt.event.KeyEvent evt) {
+		desactivarBotonIngresar();
+	}
 
-        private void btnErroresComunesActionPerformed(java.awt.event.ActionEvent evt) {
-                String texto = "¡Hola! Aquí te dejo un apartado de ayuda con algunos errores comunes y"
-                                + " sus\nposibles soluciones:\n\nNo puedes ingresar:\nVerifica tus "
-                                + "credenciales de inicio de sesión.\nRestablece tu contraseña si "
-                                + "la has olvidado.\nVerifica tu conexión a internet.\nSi el "
-                                + "problema persiste, contacta al soporte técnico de la plataforma."
-                                + "\n\nNo puedes registrarte:\nVerifica que completaste todos los "
-                                + "campos requeridos y que usaste una\ndirección de correo "
-                                + "institucional válida.\nSi el problema persiste, intenta utilizar"
-                                + " una dirección de correo electrónico\ndiferente o contacta al "
-                                + "soporte técnico de la plataforma.\n\nError al actualizar "
-                                + "biografía:\nAsegúrate de seguir los requisitos de longitud y "
-                                + "formato para la biografía.\nSi el problema persiste, intenta "
-                                + "actualizar tu biografía desde otro\ndispositivo o navegador o "
-                                + "contacta al soporte técnico de la plataforma.\n\nError al"
-                                + " agendar tutoría:\nVerifica que seleccionaste la fecha y hora "
-                                + "correctas.\nVerifica que tienes los permisos necesarios para"
-                                + " agendar una tutoría.\nSi el problema persiste, intenta utilizar"
-                                + " otro dispositivo o navegador o\ncontacta al soporte técnico de"
-                                + " la plataforma.\n\nError al actualizar lista de tareas:"
-                                + "\nAsegúrate de seguir los requisitos de longitud y formato para"
-                                + " cada tarea en\nla lista.\nVerifica que tienes los permisos "
-                                + "necesarios para actualizar la lista de\ntareas en la plataforma."
-                                + "\n\nSi necesitas ayuda adicional, por favor envía un correo "
-                                + "especificando tu problema a alguno\nde los siguientes correos de"
-                                + " contacto:\n\nAdrián Camilo Tuta Cortés:"
-                                + " adriantuta.cc@academia.umb.edu.co\nLaura Nathalya Abril Velasquez:"
-                                + " lauraabril.nv@academia.umb.edu.co";
+	private void btnErroresComunesActionPerformed(java.awt.event.ActionEvent evt) {
+		String texto = "¡Hola! Aquí te dejo un apartado de ayuda con algunos errores comunes y"
+			+ " sus\nposibles soluciones:\n\nNo puedes ingresar:\nVerifica tus "
+			+ "credenciales de inicio de sesión.\nRestablece tu contraseña si "
+			+ "la has olvidado.\nVerifica tu conexión a internet.\nSi el "
+			+ "problema persiste, contacta al soporte técnico de la plataforma."
+			+ "\n\nNo puedes registrarte:\nVerifica que completaste todos los "
+			+ "campos requeridos y que usaste una\ndirección de correo "
+			+ "institucional válida.\nSi el problema persiste, intenta utilizar"
+			+ " una dirección de correo electrónico\ndiferente o contacta al "
+			+ "soporte técnico de la plataforma.\n\nError al actualizar "
+			+ "biografía:\nAsegúrate de seguir los requisitos de longitud y "
+			+ "formato para la biografía.\nSi el problema persiste, intenta "
+			+ "actualizar tu biografía desde otro\ndispositivo o navegador o "
+			+ "contacta al soporte técnico de la plataforma.\n\nError al"
+			+ " agendar tutoría:\nVerifica que seleccionaste la fecha y hora "
+			+ "correctas.\nVerifica que tienes los permisos necesarios para"
+			+ " agendar una tutoría.\nSi el problema persiste, intenta utilizar"
+			+ " otro dispositivo o navegador o\ncontacta al soporte técnico de"
+			+ " la plataforma.\n\nError al actualizar lista de tareas:"
+			+ "\nAsegúrate de seguir los requisitos de longitud y formato para"
+			+ " cada tarea en\nla lista.\nVerifica que tienes los permisos "
+			+ "necesarios para actualizar la lista de\ntareas en la plataforma."
+			+ "\n\nSi necesitas ayuda adicional, por favor envía un correo "
+			+ "especificando tu problema a alguno\nde los siguientes correos de"
+			+ " contacto:\n\nAdrián Camilo Tuta Cortés:"
+			+ " adriantuta.cc@academia.umb.edu.co\nLaura Nathalya Abril Velasquez:"
+			+ " lauraabril.nv@academia.umb.edu.co";
 
-                JOptionPane.showMessageDialog(null, texto, "AYUDA", JOptionPane.INFORMATION_MESSAGE);
-        }
+		JOptionPane.showMessageDialog(null, texto, "AYUDA", JOptionPane.INFORMATION_MESSAGE);
+	}
 
-        /**
-         * @param args the command line arguments
-         */
-        public static void main(String args[]) {
-                FlatMacDarkLaf.setup();
-                EventQueue.invokeLater(() -> new Login().setVisible(true));
-        }
+	/**
+	 * @param args the command line arguments
+	 */
+	public static void main(String args[]) {
+		FlatMacDarkLaf.setup();
+		EventQueue.invokeLater(() -> new Login().setVisible(true));
+	}
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton btnErroresComunes;

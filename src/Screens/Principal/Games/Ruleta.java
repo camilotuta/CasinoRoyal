@@ -6,12 +6,10 @@
 package Screens.Principal.Games;
 
 import Code.ChatClient;
-import Code.OperacionCRUD;
 import Screens.Custom.CambiarIU;
 import Screens.Custom.ObtenerIU;
 import Screens.Custom.SoundPlay;
 import Screens.Custom.Games.CasillasRuleta;
-import Screens.Login.Login;
 import Screens.Principal.Principal;
 import Screens.Profile.PersonalProfile;
 import Screens.Profile.Transactions;
@@ -20,8 +18,6 @@ import java.awt.EventQueue;
 import java.awt.Toolkit;
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,167 +26,151 @@ import javax.swing.JOptionPane;
  */
 public class Ruleta extends javax.swing.JFrame {
 
-        /**
-         * Creates new form Ruleta
-         */
-        private ChatClient chatClient;
+	/**
+	 * Creates new form Ruleta
+	 */
+	private ChatClient chatClient;
 
-        public Ruleta() {
-                initComponents();
+	public Ruleta() {
+		initComponents();
 
-                this.setTitle("Ruleta");
-                this.setResizable(false);
-                this.setLocationRelativeTo(null);
+		this.setTitle("Ruleta");
+		this.setResizable(false);
+		this.setLocationRelativeTo(null);
 
-                this.setIconImage(Toolkit.getDefaultToolkit()
-                                .getImage(getClass().getResource("/img/icon.png")));
-                CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaQuieta.png");
-                ingresarChat();
-                taChatRuleta.setEditable(false);
-                ponerFondos();
-        }
+		this.setIconImage(Toolkit.getDefaultToolkit()
+				.getImage(getClass().getResource("/img/icon.png")));
+		CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaQuieta.png");
+		ingresarChat();
+		taChatRuleta.setEditable(false);
+		ponerFondos();
+	}
 
-        private void ponerFondos() {
+	private void ponerFondos() {
 
-                CambiarIU.ponerTextoEtiqueta(lbPonerFondos,
-                                (Double.toString(PersonalProfile.obtenerFondos()) + " Fondos"));
+		CambiarIU.ponerTextoEtiqueta(lbPonerFondos,
+				(Double.toString(PersonalProfile.obtenerFondos()) + " Fondos"));
 
-        }
+	}
 
-        private String obtenerNombre() {
+	private void ingresarChat() {
+		Thread chatThread = new Thread(() -> {
+			String nombre = PersonalProfile.obtenerNombre();
+			if (!nombre.isEmpty()) {
+				chatClient = new ChatClient(nombre, taChatRuleta, taMensaje, imgEnviar, 4444);
+			} else {
 
-                try {
-                        ArrayList<ArrayList<Object>> datos = OperacionCRUD.seleccionar(
-                                        String.format("SELECT * FROM jugadores where jugador_id = %d",
-                                                        Login.idUsuarioGuardar),
-                                        new String[] { "nombre_usuario" });
+				JOptionPane.showMessageDialog(null, "No se pudo obtener el nombre del jugador.",
+						"ERROR", JOptionPane.ERROR_MESSAGE);
+			}
+		});
+		chatThread.start();
+	}
 
-                        return (String) datos.get(0).get(0);
-                } catch (SQLException e) {
-                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
-                                        JOptionPane.ERROR_MESSAGE);
-                }
-                return "";
-        }
+	private void girarRuleta(String grupoApostado, int casillaApostada, double valorApostado) {
+		if (PersonalProfile
+				.fondosSuficientes(
+						Double.parseDouble(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)))) {
+			Transactions.restarFondos(valorApostado);
+			ponerFondos();
 
-        private void ingresarChat() {
-                Thread chatThread = new Thread(() -> {
-                        String nombre = obtenerNombre();
-                        if (!nombre.isEmpty()) {
-                                chatClient = new ChatClient(nombre, taChatRuleta, taMensaje, imgEnviar, 4444);
-                        } else {
+			CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaGirando.gif");
+			SoundPlay.reproducir("src/sound/ruletaGirando.wav");
+			CambiarIU.deshabilitarBotones(btnAlVerde, btnAlRojo, btnAlNegro, btnIngresarNumeros);
+			int casillaJuego = CasillasRuleta.casillaAleatoria();
+			String colorJuego = CasillasRuleta.colorCasilla(casillaJuego);
 
-                                JOptionPane.showMessageDialog(null, "No se pudo obtener el nombre del jugador.",
-                                                "ERROR", JOptionPane.ERROR_MESSAGE);
-                        }
-                });
-                chatThread.start();
-        }
+			final double[] valorGanado = { 0 };
 
-        private void girarRuleta(String grupoApostado, int casillaApostada, double valorApostado) {
-                if (PersonalProfile
-                                .fondosSuficientes(
-                                                Double.parseDouble(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)))) {
-                        Transactions.restarFondos(valorApostado);
-                        ponerFondos();
+			new Thread(() -> {
+				try {
+					Thread.sleep(5000);
 
-                        CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaGirando.gif");
-                        SoundPlay.reproducir("src/sound/ruletaGirando.wav");
-                        CambiarIU.deshabilitarBotones(btnAlVerde, btnAlRojo, btnAlNegro, btnIngresarNumeros);
-                        int casillaJuego = CasillasRuleta.casillaAleatoria();
-                        String colorJuego = CasillasRuleta.colorCasilla(casillaJuego);
+					if ((grupoApostado.equalsIgnoreCase("Rojo")
+							&& grupoApostado.equalsIgnoreCase(colorJuego))
+							|| (grupoApostado.equalsIgnoreCase("Negro")
+									&& grupoApostado.equalsIgnoreCase(
+											colorJuego))) {
+						valorGanado[0] = valorApostado * 2;
 
-                        final double[] valorGanado = { 0 };
+					} else if (grupoApostado.equalsIgnoreCase("Verde")
+							&& grupoApostado.equalsIgnoreCase(colorJuego)) {
+						valorGanado[0] = valorApostado * 40;
 
-                        new Thread(() -> {
-                                try {
-                                        Thread.sleep(5000);
+					} else if (grupoApostado.equalsIgnoreCase("")
+							&& casillaApostada == casillaJuego) {
+						valorGanado[0] = valorApostado * 35;
+					}
 
-                                        if ((grupoApostado.equalsIgnoreCase("Rojo")
-                                                        && grupoApostado.equalsIgnoreCase(colorJuego))
-                                                        || (grupoApostado.equalsIgnoreCase("Negro")
-                                                                        && grupoApostado.equalsIgnoreCase(
-                                                                                        colorJuego))) {
-                                                valorGanado[0] = valorApostado * 2;
+					String mensaje = "La ruleta ha caído en la casilla: " + casillaJuego + " ("
+							+ colorJuego
+							+ ")\n"
+							+ "Ganancia: $" + valorGanado[0];
 
-                                        } else if (grupoApostado.equalsIgnoreCase("Verde")
-                                                        && grupoApostado.equalsIgnoreCase(colorJuego)) {
-                                                valorGanado[0] = valorApostado * 40;
+					JOptionPane.showMessageDialog(
+							null,
+							mensaje,
+							"Resultado de la Ruleta",
+							JOptionPane.INFORMATION_MESSAGE);
 
-                                        } else if (grupoApostado.equalsIgnoreCase("")
-                                                        && casillaApostada == casillaJuego) {
-                                                valorGanado[0] = valorApostado * 35;
-                                        }
+					Transactions.sumarFondos(valorGanado[0]);
+					ponerFondos();
+					CambiarIU.habilitarBotones(btnAlVerde, btnAlRojo, btnAlNegro,
+							btnIngresarNumeros);
+					CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaQuieta.png");
+				} catch (InterruptedException e) {
+					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			}).start();
+		}
+	}
 
-                                        String mensaje = "La ruleta ha caído en la casilla: " + casillaJuego + " ("
-                                                        + colorJuego
-                                                        + ")\n"
-                                                        + "Ganancia: $" + valorGanado[0];
-
-                                        JOptionPane.showMessageDialog(
-                                                        null,
-                                                        mensaje,
-                                                        "Resultado de la Ruleta",
-                                                        JOptionPane.INFORMATION_MESSAGE);
-
-                                        Transactions.sumarFondos(valorGanado[0]);
-                                        ponerFondos();
-                                        CambiarIU.habilitarBotones(btnAlVerde, btnAlRojo, btnAlNegro,
-                                                        btnIngresarNumeros);
-                                        CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaQuieta.png");
-                                } catch (InterruptedException e) {
-                                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
-                                                        JOptionPane.ERROR_MESSAGE);
-                                }
-                        }).start();
-                }
-        }
-
-        /**
-         * This method is called from within the constructor to initialize the
-         * form. WARNING: Do NOT modify this code. The content of this method is
-         * always regenerated by the Form Editor.
-         */
-        @SuppressWarnings("unchecked")
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated
-        // Code">//GEN-BEGIN:initComponents
+	/**
+	 * This method is called from within the constructor to initialize the
+	 * form. WARNING: Do NOT modify this code. The content of this method is
+	 * always regenerated by the Form Editor.
+	 */
+	@SuppressWarnings("unchecked")
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 ventanaRuleta = new javax.swing.JPanel();
@@ -224,11 +204,9 @@ public class Ruleta extends javax.swing.JFrame {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseClicked(evt);
                         }
-
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseEntered(evt);
                         }
-
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseExited(evt);
                         }
@@ -293,11 +271,9 @@ public class Ruleta extends javax.swing.JFrame {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseClicked(evt);
                         }
-
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseEntered(evt);
                         }
-
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseExited(evt);
                         }
@@ -313,15 +289,8 @@ public class Ruleta extends javax.swing.JFrame {
                 cbValorApostado.setBackground(new java.awt.Color(27, 9, 5));
                 cbValorApostado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                 cbValorApostado.setForeground(new java.awt.Color(224, 195, 102));
-                cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500",
-                                "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
-                cbValorApostado.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                cbValorApostadoActionPerformed(evt);
-                        }
-                });
-                ventanaRuleta.add(cbValorApostado,
-                                new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 600, 190, 40));
+                cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500", "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
+                ventanaRuleta.add(cbValorApostado, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 600, 190, 40));
 
                 btnAlVerde.setBackground(new java.awt.Color(51, 153, 0));
                 btnAlVerde.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -373,8 +342,7 @@ public class Ruleta extends javax.swing.JFrame {
                                 btnIngresarNumerosActionPerformed(evt);
                         }
                 });
-                ventanaRuleta.add(btnIngresarNumeros,
-                                new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 610, 120, -1));
+                ventanaRuleta.add(btnIngresarNumeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 610, 120, -1));
 
                 lbContenido.setBackground(new java.awt.Color(36, 38, 41));
                 lbContenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -384,116 +352,111 @@ public class Ruleta extends javax.swing.JFrame {
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout
-                                                                .createSequentialGroup()
-                                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                                .addComponent(ventanaRuleta,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                1080,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)));
+                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(ventanaRuleta, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE))
+                );
                 layout.setVerticalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(ventanaRuleta, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(ventanaRuleta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                );
 
                 pack();
         }// </editor-fold>//GEN-END:initComponents
 
-        private void cbValorApostadoActionPerformed(java.awt.event.ActionEvent evt) {
-        }
 
-        private void btnAlVerdeActionPerformed(java.awt.event.ActionEvent evt) {
-                girarRuleta("Verde", -1, Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
-        }
+	private void btnAlVerdeActionPerformed(java.awt.event.ActionEvent evt) {
+		girarRuleta("Verde", -1, Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+	}
 
-        private void btnAlNegroActionPerformed(java.awt.event.ActionEvent evt) {
-                girarRuleta("Negro", -1, Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+	private void btnAlNegroActionPerformed(java.awt.event.ActionEvent evt) {
+		girarRuleta("Negro", -1, Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
 
-        }
+	}
 
-        private void btnAlRojoActionPerformed(java.awt.event.ActionEvent evt) {
-                girarRuleta("Rojo", -1, Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+	private void btnAlRojoActionPerformed(java.awt.event.ActionEvent evt) {
+		girarRuleta("Rojo", -1, Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
 
-        }
+	}
 
-        private void btnIngresarNumerosActionPerformed(java.awt.event.ActionEvent evt) {
-                String input = JOptionPane.showInputDialog(null, "Adivina el número de la ruleta (0-36):");
-                int numeroIngresado = -1;
-                try {
-                        numeroIngresado = Integer.valueOf(input);
+	private void btnIngresarNumerosActionPerformed(java.awt.event.ActionEvent evt) {
+		String input = JOptionPane.showInputDialog(null, "Adivina el número de la ruleta (0-36):");
+		int numeroIngresado = -1;
+		try {
+			numeroIngresado = Integer.valueOf(input);
 
-                        if ((numeroIngresado >= 0 && numeroIngresado <= 36)) {
-                                girarRuleta("", numeroIngresado,
-                                                Integer.valueOf(ObtenerIU
-                                                                .obtenerSeleccionCombo(cbValorApostado)));
+			if ((numeroIngresado >= 0 && numeroIngresado <= 36)) {
+				girarRuleta("", numeroIngresado,
+						Integer.valueOf(ObtenerIU
+								.obtenerSeleccionCombo(cbValorApostado)));
 
-                        } else {
+			} else {
 
-                                JOptionPane.showMessageDialog(null,
-                                                "El número ingresado no es válido (debe estar entre 0 y 36).",
-                                                "ERROR",
-                                                JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null,
+						"El número ingresado no es válido (debe estar entre 0 y 36).",
+						"ERROR",
+						JOptionPane.ERROR_MESSAGE);
 
-                        }
+			}
 
-                } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null,
-                                        "El número ingresado no es válido.",
-                                        "ERROR",
-                                        JOptionPane.ERROR_MESSAGE);
-                }
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null,
+					"El número ingresado no es válido.",
+					"ERROR",
+					JOptionPane.ERROR_MESSAGE);
+		}
 
-        }
+	}
 
-        private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {
-                Transactions transactions = new Transactions();
-                transactions.setVisible(true);
-                this.setVisible(false);
-        }
+	private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {
+		Transactions transactions = new Transactions();
+		transactions.setVisible(true);
+		this.setVisible(false);
+	}
 
-        private void imgEnviarMouseClicked(java.awt.event.MouseEvent evt) {
+	private void imgEnviarMouseClicked(java.awt.event.MouseEvent evt) {
 
-        }
+	}
 
-        private void imgEnviarMouseEntered(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgEnviar, "src/img/enviarHover.png");
+	private void imgEnviarMouseEntered(java.awt.event.MouseEvent evt) {
+		CambiarIU.setImageLabel(imgEnviar, "src/img/enviarHover.png");
 
-        }
+	}
 
-        private void imgEnviarMouseExited(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgEnviar, "src/img/enviar.png");
+	private void imgEnviarMouseExited(java.awt.event.MouseEvent evt) {
+		CambiarIU.setImageLabel(imgEnviar, "src/img/enviar.png");
 
-        }
+	}
 
-        private void imgVolverMouseEntered(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgVolver, "src/img/volverHover.png");
-        }
+	private void imgVolverMouseEntered(java.awt.event.MouseEvent evt) {
+		CambiarIU.setImageLabel(imgVolver, "src/img/volverHover.png");
+	}
 
-        private void imgVolverMouseExited(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgVolver, "src/img/volver.png");
-        }
+	private void imgVolverMouseExited(java.awt.event.MouseEvent evt) {
+		CambiarIU.setImageLabel(imgVolver, "src/img/volver.png");
+	}
 
-        private void imgVolverMouseClicked(java.awt.event.MouseEvent evt) {
-                if (chatClient != null) {
-                        chatClient.close();
-                } else {
+	private void imgVolverMouseClicked(java.awt.event.MouseEvent evt) {
+		if (chatClient != null) {
+			chatClient.close();
+		} else {
 
-                        JOptionPane.showMessageDialog(null, "El cliente de chat no está inicializado.", "ERROR",
-                                        JOptionPane.ERROR_MESSAGE);
-                }
-                Principal principal = new Principal();
-                principal.setVisible(true);
-                this.setVisible(false);
-        }
+			JOptionPane.showMessageDialog(null, "El cliente de chat no está inicializado.", "ERROR",
+					JOptionPane.ERROR_MESSAGE);
+		}
+		Principal principal = new Principal();
+		principal.setVisible(true);
+		this.setVisible(false);
+	}
 
-        /**
-         * @param args the command line arguments
-         */
-        public static void main(String args[]) {
-                FlatMacDarkLaf.setup();
-                EventQueue.invokeLater(() -> new Ruleta().setVisible(true));
-        }
+	/**
+	 * @param args the command line arguments
+	 */
+	public static void main(String args[]) {
+		FlatMacDarkLaf.setup();
+		EventQueue.invokeLater(() -> new Ruleta().setVisible(true));
+	}
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton btnAlNegro;

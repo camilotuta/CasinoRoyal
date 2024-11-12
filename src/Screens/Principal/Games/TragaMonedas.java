@@ -147,6 +147,7 @@ public class TragaMonedas extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
         // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
@@ -241,11 +242,6 @@ public class TragaMonedas extends javax.swing.JFrame {
                 cbValorApostado.setForeground(new java.awt.Color(224, 195, 102));
                 cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500",
                                 "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
-                cbValorApostado.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                cbValorApostadoActionPerformed(evt);
-                        }
-                });
                 ventanaBlackJack.add(cbValorApostado,
                                 new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 640, 190, 40));
 
@@ -374,10 +370,6 @@ public class TragaMonedas extends javax.swing.JFrame {
 
                 pack();
         }// </editor-fold>//GEN-END:initComponents
-
-        private void cbValorApostadoActionPerformed(java.awt.event.ActionEvent evt) {
-
-        }
 
         private void btnGirarActionPerformed(java.awt.event.ActionEvent evt) {
                 girarTragamonedas(Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));

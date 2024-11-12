@@ -1,10 +1,11 @@
 /*
- cspell:ignore ubicacion dias operacion biografia boton informacion nathalya tahoma minimos
+ cspell:ignore ubicacion dias operacion biografia boton informacion nathalya tahoma minimos conexion
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Screens.Profile;
 
+import Code.Conexion;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
 import java.sql.SQLException;
@@ -13,6 +14,9 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import Code.OperacionCRUD;
 import Code.Dates;
@@ -51,17 +55,19 @@ public class PersonalProfile extends javax.swing.JFrame {
                 imgCasa.setToolTipText("Pantalla Principal");
         }
 
-        public static Double obtenerFondos() {
-                ArrayList<ArrayList<Object>> datos;
-                try {
-                        datos = OperacionCRUD.seleccionar(
-                                        String.format("SELECT * FROM jugadores WHERE jugador_id = %d",
-                                                        Login.idUsuarioGuardar),
-                                        new String[] { "fondos_jugador" });
+        public static double obtenerFondos() {
+                try (Connection conn = Conexion.conectar()) {
+                        String query = "SELECT fondos_jugador FROM jugadores WHERE jugador_id = ?";
+                        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+                                stmt.setInt(1, Login.idUsuarioGuardar);
+                                ResultSet rs = stmt.executeQuery();
 
-                        return (Double) datos.get(0).get(0); // Asumiendo que el valor es un Double.
+                                if (rs.next()) {
+                                        return rs.getDouble("fondos_jugador");
+                                }
+                        }
                 } catch (SQLException e) {
-                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR AL OBTENER FONDOS",
                                         JOptionPane.ERROR_MESSAGE);
                 }
                 return 0.0;
@@ -82,29 +88,73 @@ public class PersonalProfile extends javax.swing.JFrame {
         }
 
         private void ponerInformacion() {
-                try {
-                        ArrayList<ArrayList<Object>> datos = OperacionCRUD.seleccionar(
-                                        String.format("SELECT * FROM jugadores where jugador_id = %d",
+                ArrayList<ArrayList<Object>> datos = null;
+
+                try (Connection conn = Conexion.conectar()) {
+                        if (conn == null) {
+                                throw new SQLException("No se pudo establecer la conexión a la base de datos.");
+                        }
+                        datos = OperacionCRUD.seleccionar(conn,
+                                        String.format("SELECT nombre_usuario, correo_jugador, fondos_jugador, biografia, fecha_nacimiento "
+                                                        + "FROM jugadores WHERE jugador_id = %d",
                                                         Login.idUsuarioGuardar),
                                         new String[] { "nombre_usuario", "correo_jugador", "fondos_jugador",
-                                                        "biografia", "fecha_nacimiento",
-                                        });
+                                                        "biografia", "fecha_nacimiento" });
 
-                        CambiarIU.ponerTextoEtiqueta(lbPonerNombre, ((String) datos.get(0).get(0)));
-                        CambiarIU.ponerTextoEtiqueta(lbPonerCorreo, ((String) datos.get(0).get(1)));
+                        if (!datos.isEmpty() && !datos.get(0).isEmpty()) {
+                                CambiarIU.ponerTextoEtiqueta(lbPonerNombre, (String) datos.get(0).get(0));
+                                CambiarIU.ponerTextoEtiqueta(lbPonerCorreo, (String) datos.get(0).get(1));
 
-                        int edad = (Dates.restarFechasSinDiasBisiestos((String) datos.get(0).get(4),
-                                        Dates.obtenerFechaHoy()));
-                        CambiarIU.ponerTextoEtiqueta(lbPonerEdad, (String.valueOf(edad) + " años"));
+                                String fechaNacimiento = (String) datos.get(0).get(4);
+                                if (fechaNacimiento != null && !fechaNacimiento.isEmpty()) {
+                                        int edad = Dates.restarFechasSinDiasBisiestos(fechaNacimiento,
+                                                        Dates.obtenerFechaHoy());
+                                        CambiarIU.ponerTextoEtiqueta(lbPonerEdad, (String.valueOf(edad) + " años"));
+                                }
 
-                        CambiarIU.ponerTextoEtiqueta(lbPonerFondos, (datos.get(0).get(2) + " Fondos"));
-                        CambiarIU.ponerTextoArea(txtMostrarBiografia, ((String) datos.get(0).get(3)));
+                                Object fondos = datos.get(0).get(2);
+                                if (fondos instanceof Double) {
+                                        CambiarIU.ponerTextoEtiqueta(lbPonerFondos, (fondos + " Fondos"));
+                                }
+
+                                CambiarIU.ponerTextoArea(txtMostrarBiografia, (String) datos.get(0).get(3));
+                        }
 
                 } catch (SQLException e) {
-                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
-                                        JOptionPane.ERROR_MESSAGE);
-
+                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
+        }
+
+        public static String obtenerNombre() {
+                ArrayList<ArrayList<Object>> datos = null;
+
+                try (Connection conn = Conexion.conectar()) {
+                        if (conn == null) {
+                                throw new SQLException("No se pudo establecer la conexión a la base de datos.");
+                        }
+
+                        datos = OperacionCRUD.seleccionar(
+                                        conn,
+                                        String.format("SELECT nombre_usuario FROM jugadores WHERE jugador_id = %d",
+                                                        Login.idUsuarioGuardar),
+                                        new String[] { "nombre_usuario" });
+
+                        if (!datos.isEmpty() && !datos.get(0).isEmpty()) {
+                                String nombreCompleto = (String) datos.get(0).get(0);
+                                String[] nombreSeparado = nombreCompleto.split(" ");
+
+                                return switch (nombreSeparado.length) {
+                                        case 1 -> nombreSeparado[0];
+                                        case 2 -> nombreSeparado[0] + " " + nombreSeparado[1];
+                                        default -> nombreSeparado[0] + " " + nombreSeparado[2];
+                                };
+                        }
+
+                } catch (SQLException e) {
+                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+
+                return "";
         }
 
         private void desactivarBotonGuardar() {
@@ -114,12 +164,21 @@ public class PersonalProfile extends javax.swing.JFrame {
         }
 
         private void actualizarBiografia() throws SQLException {
-                String nuevaBiografia = ObtenerIU.obtenerTextoPanel(tfCambiarBiografia);
-                OperacionCRUD.actualizar(String.format("UPDATE jugadores SET biografia = '%s' WHERE jugador_id = %d",
-                                nuevaBiografia, Login.idUsuarioGuardar));
-                ponerInformacion();
-                CambiarIU.ponerTextoPanel(tfCambiarBiografia, "");
-                desactivarBotonGuardar();
+
+                try (Connection conn = Conexion.conectar()) {
+                        if (conn == null) {
+                                throw new SQLException("No se pudo establecer la conexión a la base de datos.");
+                        }
+                        String nuevaBiografia = ObtenerIU.obtenerTextoPanel(tfCambiarBiografia);
+                        OperacionCRUD.actualizar(conn,
+                                        String.format("UPDATE jugadores SET biografia = '%s' WHERE jugador_id = %d",
+                                                        nuevaBiografia, Login.idUsuarioGuardar));
+                        ponerInformacion();
+                        CambiarIU.ponerTextoPanel(tfCambiarBiografia, "");
+                        desactivarBotonGuardar();
+                } catch (SQLException e) {
+                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
         }
 
         /**
