@@ -69,28 +69,28 @@ public class Transactions extends javax.swing.JFrame {
 
                         tablaTransacciones.setModel(modelo);
                 } catch (SQLException e) {
-                        e.printStackTrace();
+                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
 
         }
 
         private static double obtenerFondosJugador() {
-                        ArrayList<ArrayList<Object>> datos;
-                        try {
-                                datos = OperacionCRUD.seleccionar(
-                                                String.format("SELECT * FROM jugadores where jugador_id = %d",
-                                                                Login.idUsuarioGuardar),
-                                                new String[] { "fondos_jugador"
-                                                });
-                                return (double) datos.get(0).get(0);
-                        } catch (SQLException e) {
-                                e.printStackTrace();
-                        }
-                        return 0;
+                ArrayList<ArrayList<Object>> datos;
+                try {
+                        datos = OperacionCRUD.seleccionar(
+                                        String.format("SELECT * FROM jugadores where jugador_id = %d",
+                                                        Login.idUsuarioGuardar),
+                                        new String[] { "fondos_jugador"
+                                        });
+                        return (double) datos.get(0).get(0);
+                } catch (SQLException e) {
+                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
-        
-                public static void sumarFondos(double valor) {
-                        double fondosTotales = obtenerFondosJugador() + valor;
+                return 0;
+        }
+
+        public static void sumarFondos(double valor) {
+                double fondosTotales = obtenerFondosJugador() + valor;
                 try {
                         OperacionCRUD.actualizar(
                                         String.format("update jugadores set fondos_jugador = %d where jugador_id = %d",

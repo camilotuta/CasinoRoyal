@@ -1,4 +1,4 @@
-// cSpell:ignore rawtypes
+// cSpell:ignore rawtypes seleccion
 package Screens.Custom;
 
 import static Code.Dates.formatter;

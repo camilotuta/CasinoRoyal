@@ -9,7 +9,6 @@ import Screens.Custom.CambiarIU;
 import Screens.Custom.ObtenerIU;
 import Screens.Custom.SoundPlay;
 import Screens.Custom.Games.CasillasTragaMonedas;
-import Screens.Custom.Games.NumerosDado;
 import Screens.Principal.Principal;
 
 import java.awt.EventQueue;
@@ -70,7 +69,7 @@ public class TragaMonedas extends javax.swing.JFrame {
                         CambiarIU.setImageLabel(lbCasilla3, "src/img/tragamonedas/casillaGirando.gif");
 
                         SoundPlay.reproducir("src/sound/tragamonedasGirando.wav");
-
+                        CambiarIU.deshabilitarBotones(btnGirar);
                         int numeroCasilla1 = CasillasTragaMonedas.casillaAleatorio();
                         int numeroCasilla2 = CasillasTragaMonedas.casillaAleatorio();
                         int numeroCasilla3 = CasillasTragaMonedas.casillaAleatorio();
@@ -99,6 +98,7 @@ public class TragaMonedas extends javax.swing.JFrame {
                                         JOptionPane.showMessageDialog(null, mensaje, "Resultado de la partida",
                                                         JOptionPane.INFORMATION_MESSAGE);
 
+                                        CambiarIU.habilitarBotones(btnGirar);
                                         Transactions.sumarFondos(valorGanado[0]);
                                         ponerFondos();
                                 } catch (InterruptedException e) {

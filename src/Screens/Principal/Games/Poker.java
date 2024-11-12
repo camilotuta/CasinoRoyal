@@ -76,7 +76,9 @@ public class Poker extends javax.swing.JFrame {
                         if (!nombre.isEmpty()) {
                                 chatClient = new ChatClient(nombre, taChatPoker, taMensaje, imgEnviar, 3333);
                         } else {
-                                System.out.println("No se pudo obtener el nombre del jugador.");
+                                JOptionPane.showMessageDialog(null,
+                                                "No se pudo obtener el nombre del jugador.", "ERROR",
+                                                JOptionPane.ERROR_MESSAGE);
                         }
                 });
                 chatThread.start();
@@ -122,7 +124,8 @@ public class Poker extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 ventanaBingo = new javax.swing.JPanel();
@@ -153,9 +156,11 @@ public class Poker extends javax.swing.JFrame {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseClicked(evt);
                         }
+
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseEntered(evt);
                         }
+
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseExited(evt);
                         }
@@ -221,9 +226,11 @@ public class Poker extends javax.swing.JFrame {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseClicked(evt);
                         }
+
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseEntered(evt);
                         }
+
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseExited(evt);
                         }
@@ -254,7 +261,8 @@ public class Poker extends javax.swing.JFrame {
                                 btnCambiarApuestaActionPerformed(evt);
                         }
                 });
-                ventanaBingo.add(btnCambiarApuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 660, 210, -1));
+                ventanaBingo.add(btnCambiarApuesta,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 660, 210, -1));
 
                 btnRetirarse.setBackground(new java.awt.Color(147, 128, 67));
                 btnRetirarse.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -275,13 +283,15 @@ public class Poker extends javax.swing.JFrame {
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
                 layout.setVerticalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
 
                 pack();
         }// </editor-fold>//GEN-END:initComponents
@@ -330,7 +340,8 @@ public class Poker extends javax.swing.JFrame {
                 if (chatClient != null) {
                         chatClient.close();
                 } else {
-                        System.out.println("El cliente de chat no está inicializado.");
+                        JOptionPane.showMessageDialog(null,
+                                        "El cliente de chat no está inicializado.", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
                 Principal principal = new Principal();
                 principal.setVisible(true);
