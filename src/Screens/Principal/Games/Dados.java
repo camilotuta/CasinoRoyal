@@ -1,17 +1,25 @@
 /*
- cSpell:ignore publicacion ubicacion operacion
+ cSpell:ignore publicacion ubicacion operacion tahoma numeros
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Screens.Principal.Games;
 
 import Screens.Custom.CambiarIU;
+import Screens.Custom.ObtenerIU;
+import Screens.Custom.SoundPlay;
+import Screens.Custom.Games.NumerosDado;
 import Screens.Principal.Principal;
 
 import java.awt.EventQueue;
 import java.awt.Toolkit;
 
+import javax.swing.JOptionPane;
+
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+
+import Screens.Profile.PersonalProfile;
+import Screens.Profile.Transactions;
 
 /**
  *
@@ -31,7 +39,76 @@ public class Dados extends javax.swing.JFrame {
 
                 this.setIconImage(Toolkit.getDefaultToolkit()
                                 .getImage(getClass().getResource("/img/icon.png")));
+                ponerFondos();
+        }
 
+        private void ponerFondos() {
+
+                CambiarIU.ponerTextoEtiqueta(lbPonerFondos,
+                                (Double.toString(PersonalProfile.obtenerFondos()) + " Fondos"));
+
+        }
+
+        private void lanzarDados(String tipoApuesta, double valorApostado, Integer... args) {
+                if (PersonalProfile.fondosSuficientes(
+                                Double.parseDouble(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)))) {
+                        Transactions.restarFondos(valorApostado);
+                        ponerFondos();
+
+                        CambiarIU.deshabilitarBotones(btnApostarPar, btnApostarImpar, btnApostarSuma, btnApostarDobles);
+                        CambiarIU.setImageLabel(lbDado1, "src/img/dados/dadoGirando.gif");
+                        CambiarIU.setImageLabel(lbDado2, "src/img/dados/dadoGirando.gif");
+                        SoundPlay.reproducir("src/sound/lanzandoDados.wav");
+
+                        int numeroDado1 = NumerosDado.numeroAleatorio();
+                        int numeroDado2 = NumerosDado.numeroAleatorio();
+
+                        final double[] valorGanado = { 0 };
+
+                        new Thread(() -> {
+                                try {
+                                        Thread.sleep(4000);
+
+                                        if (tipoApuesta.equalsIgnoreCase("par")
+                                                        && (numeroDado1 % 2 == 0 && numeroDado2 % 2 == 0)) {
+                                                valorGanado[0] = valorApostado * 2;
+
+                                        } else if (tipoApuesta.equalsIgnoreCase("impar")
+                                                        && (numeroDado1 % 2 != 0 && numeroDado2 % 2 != 0)) {
+                                                valorGanado[0] = valorApostado * 2;
+                                        } else if (tipoApuesta.equalsIgnoreCase("suma")
+                                                        && (numeroDado1 + numeroDado2) == args[0]) {
+                                                valorGanado[0] = valorApostado
+                                                                * NumerosDado.cuotaSumaPagar(numeroDado1 + numeroDado2);
+
+                                        } else if (tipoApuesta.equalsIgnoreCase("dobles")
+                                                        && ((numeroDado1 == args[0] && numeroDado2 == args[1])
+                                                                        || (numeroDado2 == args[0]
+                                                                                        && numeroDado1 == args[1]))) {
+                                                valorGanado[0] = valorApostado * 30;
+                                        }
+
+                                        CambiarIU.setImageLabel(lbDado1, "src/img/dados/dado" + numeroDado1 + ".png");
+                                        CambiarIU.setImageLabel(lbDado2, "src/img/dados/dado" + numeroDado2 + ".png");
+
+                                        Thread.sleep(2000);
+                                        String mensaje = "Los dados han caído en: " + numeroDado1 + " y " + numeroDado2
+                                                        + ". Total: " + (numeroDado1 + numeroDado2) + "\n"
+                                                        + "Ganancia: $" + valorGanado[0];
+
+                                        JOptionPane.showMessageDialog(null, mensaje, "Resultado de los Dados",
+                                                        JOptionPane.INFORMATION_MESSAGE);
+
+                                        CambiarIU.habilitarBotones(btnApostarPar, btnApostarImpar, btnApostarSuma,
+                                                        btnApostarDobles);
+                                        Transactions.sumarFondos(valorGanado[0]);
+                                        ponerFondos();
+                                } catch (InterruptedException e) {
+                                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+                                                        JOptionPane.ERROR_MESSAGE);
+                                }
+                        }).start();
+                }
         }
 
         /**
@@ -68,158 +145,256 @@ public class Dados extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // Code">//GEN-BEGIN:initComponents
+        private void initComponents() {
 
-        ventanaBlackJack = new javax.swing.JPanel();
-        imgVolver = new javax.swing.JLabel();
-        lbDados = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
-        btnDepositar5 = new javax.swing.JButton();
-        btnDepositar6 = new javax.swing.JButton();
-        textField1 = new java.awt.TextField();
-        jLabel1 = new javax.swing.JLabel();
-        lbPonerFondos = new javax.swing.JLabel();
-        btnDepositar7 = new javax.swing.JButton();
+                ventanaBlackJack = new javax.swing.JPanel();
+                imgVolver = new javax.swing.JLabel();
+                btnDepositar = new javax.swing.JButton();
+                lbDados = new javax.swing.JLabel();
+                lbPonerFondos = new javax.swing.JLabel();
+                lbDado1 = new javax.swing.JLabel();
+                lbDado2 = new javax.swing.JLabel();
+                lbApuesta = new javax.swing.JLabel();
+                cbValorApostado = new javax.swing.JComboBox<>();
+                btnApostarPar = new javax.swing.JButton();
+                btnApostarSuma = new javax.swing.JButton();
+                btnApostarDobles = new javax.swing.JButton();
+                btnApostarImpar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        ventanaBlackJack.setBackground(new java.awt.Color(27, 9, 5));
-        ventanaBlackJack.setPreferredSize(new java.awt.Dimension(1080, 720));
-        ventanaBlackJack.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+                ventanaBlackJack.setBackground(new java.awt.Color(27, 9, 5));
+                ventanaBlackJack.setPreferredSize(new java.awt.Dimension(1080, 720));
+                ventanaBlackJack.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/volver.png"))); // NOI18N
-        imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imgVolverMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                imgVolverMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                imgVolverMouseExited(evt);
-            }
-        });
-        ventanaBlackJack.add(imgVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+                imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/volver.png"))); // NOI18N
+                imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                imgVolverMouseClicked(evt);
+                        }
 
-        lbDados.setFont(new java.awt.Font("Crabs", 1, 100)); // NOI18N
-        lbDados.setForeground(new java.awt.Color(227, 199, 104));
-        lbDados.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbDados.setText("Dados");
-        ventanaBlackJack.add(lbDados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1080, -1));
+                        public void mouseEntered(java.awt.event.MouseEvent evt) {
+                                imgVolverMouseEntered(evt);
+                        }
 
-        jComboBox1.setBackground(new java.awt.Color(27, 9, 5));
-        jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 DADO", "2 DADOS", "3 DADOS", "4 DADOS", "5 DADOS" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-        ventanaBlackJack.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 550, 190, 40));
+                        public void mouseExited(java.awt.event.MouseEvent evt) {
+                                imgVolverMouseExited(evt);
+                        }
+                });
+                ventanaBlackJack.add(imgVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jTextField1.setBackground(new java.awt.Color(27, 9, 5));
-        jTextField1.setText("jTextField1");
-        ventanaBlackJack.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 750, 350));
+                btnDepositar.setBackground(new java.awt.Color(147, 128, 67));
+                btnDepositar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                btnDepositar.setForeground(new java.awt.Color(255, 255, 254));
+                btnDepositar.setText("Depositar");
+                btnDepositar.setActionCommand("Ingresar");
+                btnDepositar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnDepositar.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnDepositarActionPerformed(evt);
+                        }
+                });
+                ventanaBlackJack.add(btnDepositar, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 50, -1, -1));
 
-        btnDepositar5.setBackground(new java.awt.Color(147, 128, 67));
-        btnDepositar5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnDepositar5.setForeground(new java.awt.Color(255, 255, 254));
-        btnDepositar5.setText("Apostar");
-        btnDepositar5.setActionCommand("Ingresar");
-        btnDepositar5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDepositar5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDepositar5ActionPerformed(evt);
-            }
-        });
-        ventanaBlackJack.add(btnDepositar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 660, -1, -1));
+                lbDados.setFont(new java.awt.Font("Crabs", 1, 100)); // NOI18N
+                lbDados.setForeground(new java.awt.Color(227, 199, 104));
+                lbDados.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                lbDados.setText("Dados");
+                ventanaBlackJack.add(lbDados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1080, -1));
 
-        btnDepositar6.setBackground(new java.awt.Color(147, 128, 67));
-        btnDepositar6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnDepositar6.setForeground(new java.awt.Color(255, 255, 254));
-        btnDepositar6.setText("Cambiar la apuesta");
-        btnDepositar6.setActionCommand("Ingresar");
-        btnDepositar6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDepositar6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDepositar6ActionPerformed(evt);
-            }
-        });
-        ventanaBlackJack.add(btnDepositar6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 660, -1, -1));
+                lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+                lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
+                lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+                lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
+                lbPonerFondos.setText("-");
+                ventanaBlackJack.add(lbPonerFondos,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
 
-        textField1.setBackground(new java.awt.Color(27, 9, 5));
-        textField1.setText("textField1");
-        textField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField1ActionPerformed(evt);
-            }
-        });
-        ventanaBlackJack.add(textField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 550, 80, 40));
+                lbDado1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dados/dado1.png"))); // NOI18N
+                ventanaBlackJack.add(lbDado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 154, 156));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Ingrese el valor a apostar");
-        ventanaBlackJack.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 550, 160, 30));
+                lbDado2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dados/dado6.png"))); // NOI18N
+                ventanaBlackJack.add(lbDado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, 154, 156));
 
-        lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
-        lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
-        lbPonerFondos.setText("-");
-        ventanaBlackJack.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
+                lbApuesta.setFont(new java.awt.Font("Crabs", 1, 24)); // NOI18N
+                lbApuesta.setForeground(new java.awt.Color(227, 199, 104));
+                lbApuesta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                lbApuesta.setText("Apuesta");
+                ventanaBlackJack.add(lbApuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 540, 190, 30));
 
-        btnDepositar7.setBackground(new java.awt.Color(147, 128, 67));
-        btnDepositar7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnDepositar7.setForeground(new java.awt.Color(255, 255, 254));
-        btnDepositar7.setText("Retirarse");
-        btnDepositar7.setActionCommand("Ingresar");
-        btnDepositar7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDepositar7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDepositar7ActionPerformed(evt);
-            }
-        });
-        ventanaBlackJack.add(btnDepositar7, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 660, 110, -1));
+                cbValorApostado.setBackground(new java.awt.Color(27, 9, 5));
+                cbValorApostado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                cbValorApostado.setForeground(new java.awt.Color(224, 195, 102));
+                cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500",
+                                "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
+                cbValorApostado.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                cbValorApostadoActionPerformed(evt);
+                        }
+                });
+                ventanaBlackJack.add(cbValorApostado,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 570, 190, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ventanaBlackJack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ventanaBlackJack, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+                btnApostarPar.setBackground(new java.awt.Color(147, 128, 67));
+                btnApostarPar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                btnApostarPar.setForeground(new java.awt.Color(255, 255, 254));
+                btnApostarPar.setText("Ambos Par");
+                btnApostarPar.setActionCommand("Ingresar");
+                btnApostarPar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnApostarPar.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnApostarParActionPerformed(evt);
+                        }
+                });
+                ventanaBlackJack.add(btnApostarPar,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 580, -1, -1));
 
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+                btnApostarSuma.setBackground(new java.awt.Color(147, 128, 67));
+                btnApostarSuma.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                btnApostarSuma.setForeground(new java.awt.Color(255, 255, 254));
+                btnApostarSuma.setText("Suma de los Dados");
+                btnApostarSuma.setActionCommand("Ingresar");
+                btnApostarSuma.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnApostarSuma.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnApostarSumaActionPerformed(evt);
+                        }
+                });
+                ventanaBlackJack.add(btnApostarSuma,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 640, -1, -1));
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+                btnApostarDobles.setBackground(new java.awt.Color(147, 128, 67));
+                btnApostarDobles.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                btnApostarDobles.setForeground(new java.awt.Color(255, 255, 254));
+                btnApostarDobles.setText("Dobles");
+                btnApostarDobles.setActionCommand("Ingresar");
+                btnApostarDobles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnApostarDobles.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnApostarDoblesActionPerformed(evt);
+                        }
+                });
+                ventanaBlackJack.add(btnApostarDobles,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 640, -1, -1));
 
-    private void btnDepositar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositar5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDepositar5ActionPerformed
+                btnApostarImpar.setBackground(new java.awt.Color(147, 128, 67));
+                btnApostarImpar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                btnApostarImpar.setForeground(new java.awt.Color(255, 255, 254));
+                btnApostarImpar.setText("Ambos Impar");
+                btnApostarImpar.setActionCommand("Ingresar");
+                btnApostarImpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnApostarImpar.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnApostarImparActionPerformed(evt);
+                        }
+                });
+                ventanaBlackJack.add(btnApostarImpar,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 580, -1, -1));
 
-    private void btnDepositar6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositar6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDepositar6ActionPerformed
+                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+                getContentPane().setLayout(layout);
+                layout.setHorizontalGroup(
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaBlackJack, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+                layout.setVerticalGroup(
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaBlackJack,
+                                                                javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
 
-    private void textField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textField1ActionPerformed
+                pack();
+        }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDepositar7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositar7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDepositar7ActionPerformed
+        private void cbValorApostadoActionPerformed(java.awt.event.ActionEvent evt) {
+
+        }
+
+        private void btnApostarParActionPerformed(java.awt.event.ActionEvent evt) {
+                lanzarDados("par", Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+
+        }
+
+        private void btnApostarImparActionPerformed(java.awt.event.ActionEvent evt) {
+                lanzarDados("impar", Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+
+        }
+
+        private void btnApostarSumaActionPerformed(java.awt.event.ActionEvent evt) {
+                String input = JOptionPane.showInputDialog(null, "Adivina el número de la suma de ambos dados (2-12):");
+                int numeroIngresado = -1;
+                try {
+                        numeroIngresado = Integer.valueOf(input);
+
+                        if (numeroIngresado >= 2 && numeroIngresado <= 12) {
+
+                                lanzarDados("suma",
+                                                Integer.valueOf(ObtenerIU
+                                                                .obtenerSeleccionCombo(cbValorApostado)),
+                                                numeroIngresado);
+
+                        } else {
+
+                                JOptionPane.showMessageDialog(null,
+                                                "El número ingresado no es válido (debe estar entre 2 y 12).",
+                                                "ERROR",
+                                                JOptionPane.ERROR_MESSAGE);
+                        }
+                } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null,
+                                        "El número ingresado no es válido.",
+                                        "ERROR",
+                                        JOptionPane.ERROR_MESSAGE);
+                }
+        }
+
+        private void btnApostarDoblesActionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                        String inputDado1 = JOptionPane.showInputDialog(null,
+                                        "Adivina el número del primer dado (1-6):");
+                        String inputDado2 = JOptionPane.showInputDialog(null,
+                                        "Adivina el número del segundo dado (1-6):");
+
+                        int numeroDado1 = Integer.parseInt(inputDado1);
+                        int numeroDado2 = Integer.parseInt(inputDado2);
+
+                        if ((numeroDado1 >= 1 && numeroDado1 <= 6) && (numeroDado2 >= 1 && numeroDado2 <= 6)) {
+                                lanzarDados(
+                                                "dobles",
+                                                Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)),
+                                                numeroDado1,
+                                                numeroDado2);
+                        } else {
+                                JOptionPane.showMessageDialog(
+                                                null,
+                                                "Los números ingresados no son válidos (deben estar entre 1 y 6).",
+                                                "ERROR",
+                                                JOptionPane.ERROR_MESSAGE);
+                        }
+                } catch (NumberFormatException e) {
+                        JOptionPane.showMessageDialog(
+                                        null,
+                                        "Los valores ingresados no son válidos. Por favor ingresa números enteros entre 1 y 6.",
+                                        "ERROR",
+                                        JOptionPane.ERROR_MESSAGE);
+                }
+
+        }
+
+        private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {
+                Transactions transactions = new Transactions();
+                transactions.setVisible(true);
+                this.setVisible(false);
+        }
 
         private void imgVolverMouseEntered(java.awt.event.MouseEvent evt) {
                 CambiarIU.setImageLabel(imgVolver, "src/img/volverHover.png");
@@ -243,17 +418,19 @@ public class Dados extends javax.swing.JFrame {
                 EventQueue.invokeLater(() -> new Dados().setVisible(true));
         }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDepositar5;
-    private javax.swing.JButton btnDepositar6;
-    private javax.swing.JButton btnDepositar7;
-    private javax.swing.JLabel imgVolver;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel lbDados;
-    private javax.swing.JLabel lbPonerFondos;
-    private java.awt.TextField textField1;
-    private javax.swing.JPanel ventanaBlackJack;
-    // End of variables declaration//GEN-END:variables
+        // Variables declaration - do not modify//GEN-BEGIN:variables
+        private javax.swing.JButton btnApostarDobles;
+        private javax.swing.JButton btnApostarImpar;
+        private javax.swing.JButton btnApostarPar;
+        private javax.swing.JButton btnApostarSuma;
+        private javax.swing.JButton btnDepositar;
+        private javax.swing.JComboBox<String> cbValorApostado;
+        private javax.swing.JLabel imgVolver;
+        private javax.swing.JLabel lbApuesta;
+        private javax.swing.JLabel lbDado1;
+        private javax.swing.JLabel lbDado2;
+        private javax.swing.JLabel lbDados;
+        private javax.swing.JLabel lbPonerFondos;
+        private javax.swing.JPanel ventanaBlackJack;
+        // End of variables declaration//GEN-END:variables
 }

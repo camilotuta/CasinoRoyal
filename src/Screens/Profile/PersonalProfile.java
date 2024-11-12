@@ -1,5 +1,5 @@
 /*
- cspell:ignore ubicacion dias operacion biografia boton informacion nathalya tahoma 
+ cspell:ignore ubicacion dias operacion biografia boton informacion nathalya tahoma minimos
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -51,6 +51,36 @@ public class PersonalProfile extends javax.swing.JFrame {
                 imgCasa.setToolTipText("Pantalla Principal");
         }
 
+        public static Double obtenerFondos() {
+                ArrayList<ArrayList<Object>> datos;
+                try {
+                        datos = OperacionCRUD.seleccionar(
+                                        String.format("SELECT * FROM jugadores WHERE jugador_id = %d",
+                                                        Login.idUsuarioGuardar),
+                                        new String[] { "fondos_jugador" });
+
+                        return (Double) datos.get(0).get(0); // Asumiendo que el valor es un Double.
+                } catch (SQLException e) {
+                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+                                        JOptionPane.ERROR_MESSAGE);
+                }
+                return 0.0;
+        }
+
+        public static boolean fondosSuficientes(double fondosMinimosJuego) {
+                if (!(obtenerFondos() >= fondosMinimosJuego)) {
+                        String mensaje = "No tienes suficientes fondos para apostar. Se requiere un mínimo de $"
+                                        + fondosMinimosJuego;
+                        JOptionPane.showMessageDialog(
+                                        null,
+                                        mensaje,
+                                        "Fondos Insuficientes",
+                                        JOptionPane.ERROR_MESSAGE);
+
+                }
+                return obtenerFondos() >= fondosMinimosJuego;
+        }
+
         private void ponerInformacion() {
                 try {
                         ArrayList<ArrayList<Object>> datos = OperacionCRUD.seleccionar(
@@ -73,7 +103,6 @@ public class PersonalProfile extends javax.swing.JFrame {
                 } catch (SQLException e) {
                         JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
                                         JOptionPane.ERROR_MESSAGE);
-                                        
 
                 }
         }
@@ -376,7 +405,6 @@ public class PersonalProfile extends javax.swing.JFrame {
                 } catch (Exception e) {
                         JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
                                         JOptionPane.ERROR_MESSAGE);
-                                        
 
                 }
         }

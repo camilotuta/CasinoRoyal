@@ -1,5 +1,5 @@
 /*
- cSpell:ignore publicacion ubicacion operacion
+ cSpell:ignore publicacion ubicacion operacion numeros tahoma
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -8,8 +8,13 @@ package Screens.Principal.Games;
 import Code.ChatClient;
 import Code.OperacionCRUD;
 import Screens.Custom.CambiarIU;
+import Screens.Custom.ObtenerIU;
+import Screens.Custom.SoundPlay;
+import Screens.Custom.Games.CasillasRuleta;
 import Screens.Login.Login;
 import Screens.Principal.Principal;
+import Screens.Profile.PersonalProfile;
+import Screens.Profile.Transactions;
 
 import java.awt.EventQueue;
 import java.awt.Toolkit;
@@ -39,8 +44,16 @@ public class Ruleta extends javax.swing.JFrame {
 
                 this.setIconImage(Toolkit.getDefaultToolkit()
                                 .getImage(getClass().getResource("/img/icon.png")));
+                CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaQuieta.png");
                 ingresarChat();
                 taChatRuleta.setEditable(false);
+                ponerFondos();
+        }
+
+        private void ponerFondos() {
+
+                CambiarIU.ponerTextoEtiqueta(lbPonerFondos,
+                                (Double.toString(PersonalProfile.obtenerFondos()) + " Fondos"));
 
         }
 
@@ -66,10 +79,71 @@ public class Ruleta extends javax.swing.JFrame {
                         if (!nombre.isEmpty()) {
                                 chatClient = new ChatClient(nombre, taChatRuleta, taMensaje, imgEnviar, 4444);
                         } else {
-                                System.out.println("No se pudo obtener el nombre del jugador.");
+
+                                JOptionPane.showMessageDialog(null, "No se pudo obtener el nombre del jugador.",
+                                                "ERROR", JOptionPane.ERROR_MESSAGE);
                         }
                 });
                 chatThread.start();
+        }
+
+        private void girarRuleta(String grupoApostado, int casillaApostada, double valorApostado) {
+                if (PersonalProfile
+                                .fondosSuficientes(
+                                                Double.parseDouble(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)))) {
+                        Transactions.restarFondos(valorApostado);
+                        ponerFondos();
+
+                        CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaGirando.gif");
+                        SoundPlay.reproducir("src/sound/ruletaGirando.wav");
+                        CambiarIU.deshabilitarBotones(btnAlVerde, btnAlRojo, btnAlNegro, btnIngresarNumeros);
+                        int casillaJuego = CasillasRuleta.casillaAleatoria();
+                        String colorJuego = CasillasRuleta.colorCasilla(casillaJuego);
+
+                        final double[] valorGanado = { 0 };
+
+                        new Thread(() -> {
+                                try {
+                                        Thread.sleep(5000);
+
+                                        if ((grupoApostado.equalsIgnoreCase("Rojo")
+                                                        && grupoApostado.equalsIgnoreCase(colorJuego))
+                                                        || (grupoApostado.equalsIgnoreCase("Negro")
+                                                                        && grupoApostado.equalsIgnoreCase(
+                                                                                        colorJuego))) {
+                                                valorGanado[0] = valorApostado * 2;
+
+                                        } else if (grupoApostado.equalsIgnoreCase("Verde")
+                                                        && grupoApostado.equalsIgnoreCase(colorJuego)) {
+                                                valorGanado[0] = valorApostado * 40;
+
+                                        } else if (grupoApostado.equalsIgnoreCase("")
+                                                        && casillaApostada == casillaJuego) {
+                                                valorGanado[0] = valorApostado * 35;
+                                        }
+
+                                        String mensaje = "La ruleta ha caído en la casilla: " + casillaJuego + " ("
+                                                        + colorJuego
+                                                        + ")\n"
+                                                        + "Ganancia: $" + valorGanado[0];
+
+                                        JOptionPane.showMessageDialog(
+                                                        null,
+                                                        mensaje,
+                                                        "Resultado de la Ruleta",
+                                                        JOptionPane.INFORMATION_MESSAGE);
+
+                                        Transactions.sumarFondos(valorGanado[0]);
+                                        ponerFondos();
+                                        CambiarIU.habilitarBotones(btnAlVerde, btnAlRojo, btnAlNegro,
+                                                        btnIngresarNumeros);
+                                        CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaQuieta.png");
+                                } catch (InterruptedException e) {
+                                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+                                                        JOptionPane.ERROR_MESSAGE);
+                                }
+                        }).start();
+                }
         }
 
         /**
@@ -109,242 +183,274 @@ public class Ruleta extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // Code">//GEN-BEGIN:initComponents
+        private void initComponents() {
 
-        ventanaRuleta = new javax.swing.JPanel();
-        lbChat = new javax.swing.JLabel();
-        imgVolver = new javax.swing.JLabel();
-        scChatRuleta = new javax.swing.JScrollPane();
-        taChatRuleta = new javax.swing.JTextArea();
-        scMensaje = new javax.swing.JScrollPane();
-        taMensaje = new javax.swing.JTextArea();
-        imgEnviar = new javax.swing.JLabel();
-        lbContenido = new javax.swing.JLabel();
-        lbRuleta = new javax.swing.JLabel();
-        btnDepositar = new javax.swing.JButton();
-        btnDepositar1 = new javax.swing.JButton();
-        btnDepositar2 = new javax.swing.JButton();
-        btnDepositar3 = new javax.swing.JButton();
-        btnDepositar4 = new javax.swing.JButton();
-        btnDepositar5 = new javax.swing.JButton();
-        lbPonerFondos = new javax.swing.JLabel();
-        btnDepositar6 = new javax.swing.JButton();
+                ventanaRuleta = new javax.swing.JPanel();
+                imgVolver = new javax.swing.JLabel();
+                btnDepositar = new javax.swing.JButton();
+                lbRuleta = new javax.swing.JLabel();
+                lbPonerFondos = new javax.swing.JLabel();
+                lbChat = new javax.swing.JLabel();
+                scChatRuleta = new javax.swing.JScrollPane();
+                taChatRuleta = new javax.swing.JTextArea();
+                scMensaje = new javax.swing.JScrollPane();
+                taMensaje = new javax.swing.JTextArea();
+                imgEnviar = new javax.swing.JLabel();
+                lbApuesta = new javax.swing.JLabel();
+                cbValorApostado = new javax.swing.JComboBox<>();
+                btnAlVerde = new javax.swing.JButton();
+                btnAlRojo = new javax.swing.JButton();
+                btnAlNegro = new javax.swing.JButton();
+                btnIngresarNumeros = new javax.swing.JButton();
+                lbContenido = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+                setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        ventanaRuleta.setBackground(new java.awt.Color(27, 9, 5));
-        ventanaRuleta.setPreferredSize(new java.awt.Dimension(1080, 720));
-        ventanaRuleta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+                ventanaRuleta.setBackground(new java.awt.Color(27, 9, 5));
+                ventanaRuleta.setPreferredSize(new java.awt.Dimension(1080, 720));
+                ventanaRuleta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbChat.setFont(new java.awt.Font("Crabs", 1, 48)); // NOI18N
-        lbChat.setForeground(new java.awt.Color(227, 199, 104));
-        lbChat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbChat.setText("Chat");
-        ventanaRuleta.add(lbChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 310, 220, -1));
+                imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/volver.png"))); // NOI18N
+                imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                imgVolverMouseClicked(evt);
+                        }
 
-        imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/volver.png"))); // NOI18N
-        imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imgVolverMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                imgVolverMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                imgVolverMouseExited(evt);
-            }
-        });
-        ventanaRuleta.add(imgVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+                        public void mouseEntered(java.awt.event.MouseEvent evt) {
+                                imgVolverMouseEntered(evt);
+                        }
 
-        taChatRuleta.setBackground(new java.awt.Color(36, 38, 41));
-        taChatRuleta.setColumns(20);
-        taChatRuleta.setForeground(new java.awt.Color(148, 161, 178));
-        taChatRuleta.setLineWrap(true);
-        taChatRuleta.setRows(5);
-        taChatRuleta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 199, 104)));
-        scChatRuleta.setViewportView(taChatRuleta);
+                        public void mouseExited(java.awt.event.MouseEvent evt) {
+                                imgVolverMouseExited(evt);
+                        }
+                });
+                ventanaRuleta.add(imgVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        ventanaRuleta.add(scChatRuleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 370, -1, 260));
+                btnDepositar.setBackground(new java.awt.Color(147, 128, 67));
+                btnDepositar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                btnDepositar.setForeground(new java.awt.Color(255, 255, 254));
+                btnDepositar.setText("Depositar");
+                btnDepositar.setActionCommand("Ingresar");
+                btnDepositar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnDepositar.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnDepositarActionPerformed(evt);
+                        }
+                });
+                ventanaRuleta.add(btnDepositar, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 50, -1, -1));
 
-        taMensaje.setBackground(new java.awt.Color(36, 38, 41));
-        taMensaje.setColumns(20);
-        taMensaje.setForeground(new java.awt.Color(148, 161, 178));
-        taMensaje.setLineWrap(true);
-        taMensaje.setRows(2);
-        taMensaje.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 199, 104)));
-        scMensaje.setViewportView(taMensaje);
+                lbRuleta.setFont(new java.awt.Font("Crabs", 1, 100)); // NOI18N
+                lbRuleta.setForeground(new java.awt.Color(227, 199, 104));
+                lbRuleta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                lbRuleta.setText("Ruleta");
+                ventanaRuleta.add(lbRuleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1080, -1));
 
-        ventanaRuleta.add(scMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 650, 180, 50));
+                lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+                lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
+                lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+                lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
+                lbPonerFondos.setText("-");
+                ventanaRuleta.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
 
-        imgEnviar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/enviar.png"))); // NOI18N
-        imgEnviar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        imgEnviar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imgEnviarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                imgEnviarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                imgEnviarMouseExited(evt);
-            }
-        });
-        ventanaRuleta.add(imgEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 650, 40, 40));
-        ventanaRuleta.add(lbContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 550, 520));
+                lbChat.setFont(new java.awt.Font("Crabs", 1, 48)); // NOI18N
+                lbChat.setForeground(new java.awt.Color(227, 199, 104));
+                lbChat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                lbChat.setText("Chat");
+                ventanaRuleta.add(lbChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 310, 220, -1));
 
-        lbRuleta.setFont(new java.awt.Font("Crabs", 1, 100)); // NOI18N
-        lbRuleta.setForeground(new java.awt.Color(227, 199, 104));
-        lbRuleta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbRuleta.setText("Ruleta");
-        ventanaRuleta.add(lbRuleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1080, -1));
+                taChatRuleta.setBackground(new java.awt.Color(36, 38, 41));
+                taChatRuleta.setColumns(20);
+                taChatRuleta.setForeground(new java.awt.Color(148, 161, 178));
+                taChatRuleta.setLineWrap(true);
+                taChatRuleta.setRows(5);
+                taChatRuleta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 199, 104)));
+                scChatRuleta.setViewportView(taChatRuleta);
 
-        btnDepositar.setBackground(new java.awt.Color(51, 153, 0));
-        btnDepositar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnDepositar.setForeground(new java.awt.Color(255, 255, 254));
-        btnDepositar.setText("Al verde");
-        btnDepositar.setActionCommand("Ingresar");
-        btnDepositar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDepositar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDepositarActionPerformed(evt);
-            }
-        });
-        ventanaRuleta.add(btnDepositar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, 120, -1));
+                ventanaRuleta.add(scChatRuleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 370, -1, 260));
 
-        btnDepositar1.setBackground(new java.awt.Color(147, 128, 67));
-        btnDepositar1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnDepositar1.setForeground(new java.awt.Color(255, 255, 254));
-        btnDepositar1.setText("Retirarse");
-        btnDepositar1.setActionCommand("Ingresar");
-        btnDepositar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDepositar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDepositar1ActionPerformed(evt);
-            }
-        });
-        ventanaRuleta.add(btnDepositar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 660, 120, -1));
+                taMensaje.setBackground(new java.awt.Color(36, 38, 41));
+                taMensaje.setColumns(20);
+                taMensaje.setForeground(new java.awt.Color(148, 161, 178));
+                taMensaje.setLineWrap(true);
+                taMensaje.setRows(2);
+                taMensaje.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 199, 104)));
+                scMensaje.setViewportView(taMensaje);
 
-        btnDepositar2.setBackground(new java.awt.Color(0, 0, 0));
-        btnDepositar2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnDepositar2.setForeground(new java.awt.Color(255, 255, 254));
-        btnDepositar2.setText("Al negro");
-        btnDepositar2.setActionCommand("Ingresar");
-        btnDepositar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDepositar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDepositar2ActionPerformed(evt);
-            }
-        });
-        ventanaRuleta.add(btnDepositar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 620, 120, -1));
+                ventanaRuleta.add(scMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 650, 180, 50));
 
-        btnDepositar3.setBackground(new java.awt.Color(255, 0, 0));
-        btnDepositar3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnDepositar3.setForeground(new java.awt.Color(255, 255, 254));
-        btnDepositar3.setText("Al rojo");
-        btnDepositar3.setActionCommand("Ingresar");
-        btnDepositar3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDepositar3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDepositar3ActionPerformed(evt);
-            }
-        });
-        ventanaRuleta.add(btnDepositar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 580, 120, -1));
+                imgEnviar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/enviar.png"))); // NOI18N
+                imgEnviar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                imgEnviar.addMouseListener(new java.awt.event.MouseAdapter() {
+                        public void mouseClicked(java.awt.event.MouseEvent evt) {
+                                imgEnviarMouseClicked(evt);
+                        }
 
-        btnDepositar4.setBackground(new java.awt.Color(153, 153, 0));
-        btnDepositar4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnDepositar4.setForeground(new java.awt.Color(255, 255, 254));
-        btnDepositar4.setText("Numeros");
-        btnDepositar4.setActionCommand("Ingresar");
-        btnDepositar4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDepositar4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDepositar4ActionPerformed(evt);
-            }
-        });
-        ventanaRuleta.add(btnDepositar4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 660, 120, -1));
+                        public void mouseEntered(java.awt.event.MouseEvent evt) {
+                                imgEnviarMouseEntered(evt);
+                        }
 
-        btnDepositar5.setBackground(new java.awt.Color(147, 128, 67));
-        btnDepositar5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnDepositar5.setForeground(new java.awt.Color(255, 255, 254));
-        btnDepositar5.setText("Apostar");
-        btnDepositar5.setActionCommand("Ingresar");
-        btnDepositar5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDepositar5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDepositar5ActionPerformed(evt);
-            }
-        });
-        ventanaRuleta.add(btnDepositar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 660, 120, -1));
+                        public void mouseExited(java.awt.event.MouseEvent evt) {
+                                imgEnviarMouseExited(evt);
+                        }
+                });
+                ventanaRuleta.add(imgEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 650, 40, 40));
 
-        lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
-        lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
-        lbPonerFondos.setText("-");
-        ventanaRuleta.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
+                lbApuesta.setFont(new java.awt.Font("Crabs", 1, 24)); // NOI18N
+                lbApuesta.setForeground(new java.awt.Color(227, 199, 104));
+                lbApuesta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                lbApuesta.setText("Apuesta");
+                ventanaRuleta.add(lbApuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 569, 190, 30));
 
-        btnDepositar6.setBackground(new java.awt.Color(147, 128, 67));
-        btnDepositar6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnDepositar6.setForeground(new java.awt.Color(255, 255, 254));
-        btnDepositar6.setText("Cambiar apuesta");
-        btnDepositar6.setActionCommand("Ingresar");
-        btnDepositar6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDepositar6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDepositar6ActionPerformed(evt);
-            }
-        });
-        ventanaRuleta.add(btnDepositar6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 660, 180, -1));
+                cbValorApostado.setBackground(new java.awt.Color(27, 9, 5));
+                cbValorApostado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                cbValorApostado.setForeground(new java.awt.Color(224, 195, 102));
+                cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500",
+                                "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
+                cbValorApostado.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                cbValorApostadoActionPerformed(evt);
+                        }
+                });
+                ventanaRuleta.add(cbValorApostado,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 600, 190, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ventanaRuleta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ventanaRuleta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+                btnAlVerde.setBackground(new java.awt.Color(51, 153, 0));
+                btnAlVerde.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                btnAlVerde.setForeground(new java.awt.Color(255, 255, 254));
+                btnAlVerde.setText("Al verde");
+                btnAlVerde.setActionCommand("Ingresar");
+                btnAlVerde.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnAlVerde.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnAlVerdeActionPerformed(evt);
+                        }
+                });
+                ventanaRuleta.add(btnAlVerde, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 610, 120, -1));
 
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+                btnAlRojo.setBackground(new java.awt.Color(255, 0, 0));
+                btnAlRojo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                btnAlRojo.setForeground(new java.awt.Color(255, 255, 254));
+                btnAlRojo.setText("Al rojo");
+                btnAlRojo.setActionCommand("Ingresar");
+                btnAlRojo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnAlRojo.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnAlRojoActionPerformed(evt);
+                        }
+                });
+                ventanaRuleta.add(btnAlRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 660, 120, -1));
 
-    private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDepositarActionPerformed
+                btnAlNegro.setBackground(new java.awt.Color(0, 0, 0));
+                btnAlNegro.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                btnAlNegro.setForeground(new java.awt.Color(255, 255, 254));
+                btnAlNegro.setText("Al negro");
+                btnAlNegro.setActionCommand("Ingresar");
+                btnAlNegro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnAlNegro.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnAlNegroActionPerformed(evt);
+                        }
+                });
+                ventanaRuleta.add(btnAlNegro, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 660, 120, -1));
 
-    private void btnDepositar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDepositar1ActionPerformed
+                btnIngresarNumeros.setBackground(new java.awt.Color(153, 153, 0));
+                btnIngresarNumeros.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                btnIngresarNumeros.setForeground(new java.awt.Color(255, 255, 254));
+                btnIngresarNumeros.setText("Numeros");
+                btnIngresarNumeros.setActionCommand("Ingresar");
+                btnIngresarNumeros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnIngresarNumeros.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnIngresarNumerosActionPerformed(evt);
+                        }
+                });
+                ventanaRuleta.add(btnIngresarNumeros,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 610, 120, -1));
 
-    private void btnDepositar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositar2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDepositar2ActionPerformed
+                lbContenido.setBackground(new java.awt.Color(36, 38, 41));
+                lbContenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                lbContenido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ruleta/ruletaQuieta.png"))); // NOI18N
+                ventanaRuleta.add(lbContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, 340, 340));
 
-    private void btnDepositar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositar3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDepositar3ActionPerformed
+                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+                getContentPane().setLayout(layout);
+                layout.setHorizontalGroup(
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout
+                                                                .createSequentialGroup()
+                                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                                .addComponent(ventanaRuleta,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                1080,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)));
+                layout.setVerticalGroup(
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaRuleta, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
-    private void btnDepositar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositar4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDepositar4ActionPerformed
+                pack();
+        }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDepositar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositar5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDepositar5ActionPerformed
+        private void cbValorApostadoActionPerformed(java.awt.event.ActionEvent evt) {
+        }
 
-    private void btnDepositar6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositar6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDepositar6ActionPerformed
+        private void btnAlVerdeActionPerformed(java.awt.event.ActionEvent evt) {
+                girarRuleta("Verde", -1, Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+        }
+
+        private void btnAlNegroActionPerformed(java.awt.event.ActionEvent evt) {
+                girarRuleta("Negro", -1, Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+
+        }
+
+        private void btnAlRojoActionPerformed(java.awt.event.ActionEvent evt) {
+                girarRuleta("Rojo", -1, Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+
+        }
+
+        private void btnIngresarNumerosActionPerformed(java.awt.event.ActionEvent evt) {
+                String input = JOptionPane.showInputDialog(null, "Adivina el número de la ruleta (0-36):");
+                int numeroIngresado = -1;
+                try {
+                        numeroIngresado = Integer.valueOf(input);
+
+                        if ((numeroIngresado >= 0 && numeroIngresado <= 36)) {
+                                girarRuleta("", numeroIngresado,
+                                                Integer.valueOf(ObtenerIU
+                                                                .obtenerSeleccionCombo(cbValorApostado)));
+
+                        } else {
+
+                                JOptionPane.showMessageDialog(null,
+                                                "El número ingresado no es válido (debe estar entre 0 y 36).",
+                                                "ERROR",
+                                                JOptionPane.ERROR_MESSAGE);
+
+                        }
+
+                } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null,
+                                        "El número ingresado no es válido.",
+                                        "ERROR",
+                                        JOptionPane.ERROR_MESSAGE);
+                }
+
+        }
+
+        private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {
+                Transactions transactions = new Transactions();
+                transactions.setVisible(true);
+                this.setVisible(false);
+        }
 
         private void imgEnviarMouseClicked(java.awt.event.MouseEvent evt) {
 
@@ -372,7 +478,9 @@ public class Ruleta extends javax.swing.JFrame {
                 if (chatClient != null) {
                         chatClient.close();
                 } else {
-                        System.out.println("El cliente de chat no está inicializado.");
+
+                        JOptionPane.showMessageDialog(null, "El cliente de chat no está inicializado.", "ERROR",
+                                        JOptionPane.ERROR_MESSAGE);
                 }
                 Principal principal = new Principal();
                 principal.setVisible(true);
@@ -387,24 +495,24 @@ public class Ruleta extends javax.swing.JFrame {
                 EventQueue.invokeLater(() -> new Ruleta().setVisible(true));
         }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDepositar;
-    private javax.swing.JButton btnDepositar1;
-    private javax.swing.JButton btnDepositar2;
-    private javax.swing.JButton btnDepositar3;
-    private javax.swing.JButton btnDepositar4;
-    private javax.swing.JButton btnDepositar5;
-    private javax.swing.JButton btnDepositar6;
-    private javax.swing.JLabel imgEnviar;
-    private javax.swing.JLabel imgVolver;
-    private javax.swing.JLabel lbChat;
-    private javax.swing.JLabel lbContenido;
-    private javax.swing.JLabel lbPonerFondos;
-    private javax.swing.JLabel lbRuleta;
-    private javax.swing.JScrollPane scChatRuleta;
-    private javax.swing.JScrollPane scMensaje;
-    private javax.swing.JTextArea taChatRuleta;
-    private javax.swing.JTextArea taMensaje;
-    private javax.swing.JPanel ventanaRuleta;
-    // End of variables declaration//GEN-END:variables
+        // Variables declaration - do not modify//GEN-BEGIN:variables
+        private javax.swing.JButton btnAlNegro;
+        private javax.swing.JButton btnAlRojo;
+        private javax.swing.JButton btnAlVerde;
+        private javax.swing.JButton btnDepositar;
+        private javax.swing.JButton btnIngresarNumeros;
+        private javax.swing.JComboBox<String> cbValorApostado;
+        private javax.swing.JLabel imgEnviar;
+        private javax.swing.JLabel imgVolver;
+        private javax.swing.JLabel lbApuesta;
+        private javax.swing.JLabel lbChat;
+        private javax.swing.JLabel lbContenido;
+        private javax.swing.JLabel lbPonerFondos;
+        private javax.swing.JLabel lbRuleta;
+        private javax.swing.JScrollPane scChatRuleta;
+        private javax.swing.JScrollPane scMensaje;
+        private javax.swing.JTextArea taChatRuleta;
+        private javax.swing.JTextArea taMensaje;
+        private javax.swing.JPanel ventanaRuleta;
+        // End of variables declaration//GEN-END:variables
 }

@@ -1,5 +1,5 @@
 /*
- cspell:ignore desencriptar correogir dias metodo operacion verificacion boton cedula codigo tahoma biografia datapicker
+ cspell:ignore Boton cedula codigo biografia desencriptar operacion tahoma verificacion 
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -34,7 +34,6 @@ import javax.swing.JFormattedTextField;
  *
  * @author tutaa
  */
-// TODO: verificar que la cedula sea solo un int, comprobar en "poner errores"
 public class Signup extends javax.swing.JFrame {
 
         private EnviarCodigoVerificacion enviarCodigo;
@@ -63,31 +62,28 @@ public class Signup extends javax.swing.JFrame {
 
         private void desactivarBotonRegistrarse() {
                 btnRegistrarse.setEnabled((fechaValida && correoVerificado
-                                && (ObtenerIU.obtenerTextoCampo(tfNombre).length() >= 10)
-                                && (ObtenerIU.obtenerTextoCampo(tfCorreo).contains("@"))
-                                && (Desencriptar.desencriptarContra(ObtenerIU.obtenerContraseña(pfContraseña))
-                                                .length() >= 8)
-                                && (Desencriptar.desencriptarContra(ObtenerIU.obtenerContraseña(pfConfirmarContraseña))
-                                                .length() >= 8)
-                                && (ObtenerIU.obtenerTextoCampo(tfCorreo).length() >= 13)
-                                && (Desencriptar.desencriptarContra(ObtenerIU.obtenerContraseña(pfContraseña))
-                                                .equals(Desencriptar.desencriptarContra(
+                                && (VerificarDato.nombreValido(ObtenerIU.obtenerTextoCampo(tfNombre)))
+                                && (VerificarDato.correoValido(ObtenerIU.obtenerTextoCampo(tfCorreo)))
+                                && (VerificarDato.cedulaValida(ObtenerIU.obtenerTextoCampo(tfCedula)))
+                                && (VerificarDato.contraseñaValida(Desencriptar
+                                                .desencriptarContra(ObtenerIU.obtenerContraseña(pfContraseña))))
+                                && (VerificarDato.confirmarContraseñaValida(
+                                                Desencriptar.desencriptarContra(
+                                                                ObtenerIU.obtenerContraseña(pfContraseña)),
+                                                Desencriptar.desencriptarContra(
                                                                 ObtenerIU.obtenerContraseña(pfConfirmarContraseña))))));
         }
 
         private void desactivarBotonEnviarCodigo() {
-                btnEnviarCodigo.setEnabled(
-                                ObtenerIU.obtenerTextoCampo(tfNombre).length() > 8
-                                                && ObtenerIU.obtenerTextoCampo(tfCorreo).contains("@")
-                                                && ObtenerIU.obtenerTextoCampo(tfCorreo).length() >= 13);
+                btnEnviarCodigo.setEnabled(VerificarDato.nombreValido(ObtenerIU.obtenerTextoCampo(tfNombre))
+                                && VerificarDato.correoValido(ObtenerIU.obtenerTextoCampo(tfCorreo)));
         }
 
         private void desactivarBotonVerificarCodigo() {
                 btnVerificarCodigo.setEnabled(correoEnviado
-                                && ObtenerIU.obtenerTextoCampo(
-                                                tfRecibirCodigo).length() == 6
-                                && ObtenerIU.obtenerTextoCampo(tfCorreo).contains("@")
-                                && ObtenerIU.obtenerTextoCampo(tfCorreo).length() >= 13);
+                                && VerificarDato.codigoValido(ObtenerIU.obtenerTextoCampo(
+                                                tfRecibirCodigo))
+                                && VerificarDato.correoValido(ObtenerIU.obtenerTextoCampo(tfCorreo)));
         }
 
         private void activarCamposContraseña() {
@@ -135,6 +131,15 @@ public class Signup extends javax.swing.JFrame {
                 return datosUsuarioRegistrado.size() == 1;
         }
 
+        private boolean IdEstaRegistrado(String idUsuario) throws SQLException {
+                ArrayList<ArrayList<Object>> datosUsuarioRegistrado = OperacionCRUD.seleccionar(
+                                String.format("SELECT * FROM jugadores WHERE jugador_id = %s",
+                                                idUsuario),
+                                new String[] { "jugador_id" });
+
+                return datosUsuarioRegistrado.size() == 1;
+        }
+
         private void enviarCodigo() throws HeadlessException, SQLException {
                 String correo = ObtenerIU.obtenerTextoCampo(tfCorreo).toLowerCase();
                 String nombre = ObtenerIU.obtenerTextoCampo(tfNombre);
@@ -175,28 +180,39 @@ public class Signup extends javax.swing.JFrame {
         }
 
         private void registrarUsuario() throws SQLException {
-                String correo = ObtenerIU.obtenerTextoCampo(tfCorreo).toLowerCase();
-                String contraseña = Desencriptar.desencriptarContra(ObtenerIU.obtenerContraseña(pfContraseña));
-                String nombre = ObtenerIU.obtenerTextoCampo(tfNombre);
                 String cedula = ObtenerIU.obtenerTextoCampo(tfCedula);
-                String fechaNacimiento = ObtenerIU.obtenerFechaSeleccionada(datePicker);
+                if (!IdEstaRegistrado(cedula)) {
+                        String correo = ObtenerIU.obtenerTextoCampo(tfCorreo).toLowerCase();
+                        String contraseña = Desencriptar.desencriptarContra(ObtenerIU.obtenerContraseña(pfContraseña));
+                        String nombre = ObtenerIU.obtenerTextoCampo(tfNombre);
+                        String fechaNacimiento = ObtenerIU.obtenerFechaSeleccionada(datePicker);
 
-                String fechaNacimientoSQL = String.format("'%s'", fechaNacimiento);
+                        String fechaNacimientoSQL = String.format("'%s'", fechaNacimiento);
 
-                OperacionCRUD.registrar(
-                                String.format("INSERT INTO jugadores (jugador_id, nombre_usuario, correo_jugador, password_jugador, fondos_jugador, biografia, fecha_nacimiento, juego_id) "
-                                                +
-                                                "VALUES ('%s', '%s', '%s', '%s', 0.0, ' ', %s, NULL);",
-                                                cedula, nombre, correo, contraseña, fechaNacimientoSQL));
+                        OperacionCRUD.registrar(
+                                        String.format("INSERT INTO jugadores (jugador_id, nombre_usuario, correo_jugador, password_jugador, fondos_jugador, biografia, fecha_nacimiento, juego_id) "
+                                                        +
+                                                        "VALUES ('%s', '%s', '%s', '%s', 0.0, ' ', %s, NULL);",
+                                                        cedula, nombre, correo, contraseña, fechaNacimientoSQL));
 
-                JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "¡AVISO!",
-                                javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "¡AVISO!",
+                                        javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+                        Login.correoGuardar = ObtenerIU.obtenerTextoCampo(tfCorreo);
+                        Login login = new Login();
+                        login.setVisible(true);
+                        this.setVisible(false);
+                } else {
+                        JOptionPane.showMessageDialog(null, "YA EXISTE UNA CUENTA CON ESTA CÉDULA.");
+                }
+
         }
 
         private void mostrarErrores() {
 
                 // tfNombre
-                VerificarDato.verificarCampo(ObtenerIU.obtenerTextoCampo(tfNombre).length() < 8,
+                VerificarDato.verificarCampo(!VerificarDato.nombreValido(ObtenerIU.obtenerTextoCampo(
+                                tfNombre)),
                                 lbErrorNombre, "El nombre tiene mínimo 8 caracteres.",
                                 "El nombre debe tener mínimo 8 caracteres.");
 
@@ -205,23 +221,31 @@ public class Signup extends javax.swing.JFrame {
                                 lbErrorEdad, "Ha seleccionado una fecha.", "Debe ser mayor de edad.");
 
                 // tfCorreo
-                VerificarDato.verificarCampo(!ObtenerIU.obtenerTextoCampo(tfCorreo)
-                                .contains("@"), lbErrorCorreo, "El correo es válido.", "El correo no es válido.");
+                VerificarDato.verificarCampo(!VerificarDato.correoValido(ObtenerIU.obtenerTextoCampo(
+                                tfCorreo)),
+                                lbErrorCorreo, "El correo es válido.", "El correo no es válido.");
+
+                // tfCedula
+                VerificarDato.verificarCampo(!VerificarDato.cedulaValida(ObtenerIU.obtenerTextoCampo(
+                                tfCedula)),
+                                lbErrorCedula, "La cedula es válida.",
+                                "Ingrese un numero de cédula válido.");
 
                 // pfContraseña
                 VerificarDato.verificarCampo(
-                                Desencriptar.desencriptarContra(ObtenerIU.obtenerContraseña(pfContraseña)).length() < 8,
+                                !VerificarDato.contraseñaValida(
+                                                Desencriptar.desencriptarContra(ObtenerIU.obtenerContraseña(
+                                                                pfContraseña))),
                                 lbErrorContraseña, "La contraseña tiene mínimo 8 caracteres.",
                                 "La contraseña debe tener mínimo 8 caracteres.");
 
                 // pfConfContraseña
                 VerificarDato.verificarCampo(
-                                (!Desencriptar.desencriptarContra(ObtenerIU.obtenerContraseña(pfConfirmarContraseña))
-                                                .equals(Desencriptar.desencriptarContra(
-                                                                ObtenerIU.obtenerContraseña(pfContraseña))))
-                                                || Desencriptar.desencriptarContra(
-                                                                ObtenerIU.obtenerContraseña(pfConfirmarContraseña))
-                                                                .equals(""),
+                                (!VerificarDato.confirmarContraseñaValida(
+                                                Desencriptar.desencriptarContra(ObtenerIU.obtenerContraseña(
+                                                                pfContraseña)),
+                                                Desencriptar.desencriptarContra(
+                                                                ObtenerIU.obtenerContraseña(pfConfirmarContraseña)))),
                                 lbErrorConfContraseña, "Las contraseñas son iguales.",
                                 "Las contraseñas deben ser iguales.");
         }
@@ -514,10 +538,6 @@ public class Signup extends javax.swing.JFrame {
         private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
                 registrarUsuario();
 
-                Login.correoGuardar = ObtenerIU.obtenerTextoCampo(tfCorreo);
-                Login login = new Login();
-                login.setVisible(true);
-                this.setVisible(false);
         }
 
         private void btnVerificarCodigoActionPerformed(java.awt.event.ActionEvent evt) {
