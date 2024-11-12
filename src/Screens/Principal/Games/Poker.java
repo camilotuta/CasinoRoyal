@@ -219,7 +219,7 @@ public class Poker extends javax.swing.JFrame {
         });
         ventanaBingo.add(imgEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 650, 40, 40));
 
-        btnApostar.setBackground(new java.awt.Color(171, 157, 113));
+        btnApostar.setBackground(new java.awt.Color(51, 102, 0));
         btnApostar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnApostar.setForeground(new java.awt.Color(255, 255, 254));
         btnApostar.setText("Apostar");
@@ -227,7 +227,7 @@ public class Poker extends javax.swing.JFrame {
         btnApostar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ventanaBingo.add(btnApostar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 630, 130, -1));
 
-        btnCambiarApuesta.setBackground(new java.awt.Color(198, 182, 131));
+        btnCambiarApuesta.setBackground(new java.awt.Color(102, 0, 102));
         btnCambiarApuesta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnCambiarApuesta.setForeground(new java.awt.Color(255, 255, 254));
         btnCambiarApuesta.setText("Cambiar la apuesta");
@@ -235,7 +235,7 @@ public class Poker extends javax.swing.JFrame {
         btnCambiarApuesta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ventanaBingo.add(btnCambiarApuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 660, 210, -1));
 
-        btnRetirarse.setBackground(new java.awt.Color(171, 157, 113));
+        btnRetirarse.setBackground(new java.awt.Color(153, 0, 0));
         btnRetirarse.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnRetirarse.setForeground(new java.awt.Color(255, 255, 254));
         btnRetirarse.setText("Retirarse");

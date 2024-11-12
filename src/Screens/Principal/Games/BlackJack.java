@@ -275,6 +275,18 @@ public class BlackJack extends javax.swing.JFrame {
 			}
 		});
 		ventanaBlackJack.add(imgEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 650, 40, 40));
+        btnJugar.setBackground(new java.awt.Color(102, 0, 51));
+        btnJugar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnJugar.setForeground(new java.awt.Color(255, 255, 254));
+        btnJugar.setText("Jugar");
+        btnJugar.setActionCommand("Ingresar");
+        btnJugar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnJugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJugarActionPerformed(evt);
+            }
+        });
+        ventanaBlackJack.add(btnJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 620, 140, 50));
 
 		btnJugar.setBackground(new java.awt.Color(171, 157, 113));
 		btnJugar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -331,7 +343,7 @@ public class BlackJack extends javax.swing.JFrame {
 	}// </editor-fold>//GEN-END:initComponents
 
 	private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {
-		jugarBlackJack(Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+		jugarBlackJack(Integer.parseInt(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
 
 	}
 
