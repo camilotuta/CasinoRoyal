@@ -319,7 +319,7 @@ public class Carrera extends javax.swing.JFrame {
                 });
                 ventanaBingo.add(imgEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 650, 40, 40));
 
-                btnApostarCarro2.setBackground(new java.awt.Color(198, 182, 131));
+                btnApostarCarro2.setBackground(new java.awt.Color(51, 153, 1));
                 btnApostarCarro2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                 btnApostarCarro2.setForeground(new java.awt.Color(255, 255, 254));
                 btnApostarCarro2.setText("Carro 2");
@@ -332,7 +332,7 @@ public class Carrera extends javax.swing.JFrame {
                 });
                 ventanaBingo.add(btnApostarCarro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 570, 140, -1));
 
-                btnApostarCarro1.setBackground(new java.awt.Color(171, 157, 113));
+                btnApostarCarro1.setBackground(new java.awt.Color(153, 0, 1));
                 btnApostarCarro1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                 btnApostarCarro1.setForeground(new java.awt.Color(255, 255, 254));
                 btnApostarCarro1.setText("Carro 1");
@@ -345,7 +345,7 @@ public class Carrera extends javax.swing.JFrame {
                 });
                 ventanaBingo.add(btnApostarCarro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 570, 140, -1));
 
-                btnApostarCarro3.setBackground(new java.awt.Color(198, 182, 131));
+                btnApostarCarro3.setBackground(new java.awt.Color(102, 1, 102));
                 btnApostarCarro3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                 btnApostarCarro3.setForeground(new java.awt.Color(255, 255, 254));
                 btnApostarCarro3.setText("Carro 3");
@@ -358,7 +358,7 @@ public class Carrera extends javax.swing.JFrame {
                 });
                 ventanaBingo.add(btnApostarCarro3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 650, 140, -1));
 
-                btnApostarCarro4.setBackground(new java.awt.Color(171, 157, 113));
+                btnApostarCarro4.setBackground(new java.awt.Color(204, 102, 1));
                 btnApostarCarro4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                 btnApostarCarro4.setForeground(new java.awt.Color(255, 255, 254));
                 btnApostarCarro4.setText("Carro 4");
@@ -388,7 +388,7 @@ public class Carrera extends javax.swing.JFrame {
                 ventanaBingo.add(cbValorApostado, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 590, 190, 40));
 
                 lbCuentaRegresiva.setFont(new java.awt.Font("Crabs", 1, 36)); // NOI18N
-                lbCuentaRegresiva.setForeground(new java.awt.Color(198, 182, 131));
+                lbCuentaRegresiva.setForeground(new java.awt.Color(204, 204, 0));
                 lbCuentaRegresiva.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 ventanaBingo.add(lbCuentaRegresiva, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 190, 50));
 
