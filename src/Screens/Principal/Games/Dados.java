@@ -55,6 +55,7 @@ public class Dados extends javax.swing.JFrame {
                         Transactions.restarFondos(valorApostado);
                         ponerFondos();
 
+                        CambiarIU.deshabilitarBotones(btnApostarPar, btnApostarImpar, btnApostarSuma, btnApostarDobles);
                         CambiarIU.setImageLabel(lbDado1, "src/img/dados/dadoGirando.gif");
                         CambiarIU.setImageLabel(lbDado2, "src/img/dados/dadoGirando.gif");
                         SoundPlay.reproducir("src/sound/lanzandoDados.wav");
@@ -98,6 +99,8 @@ public class Dados extends javax.swing.JFrame {
                                         JOptionPane.showMessageDialog(null, mensaje, "Resultado de los Dados",
                                                         JOptionPane.INFORMATION_MESSAGE);
 
+                                        CambiarIU.habilitarBotones(btnApostarPar, btnApostarImpar, btnApostarSuma,
+                                                        btnApostarDobles);
                                         Transactions.sumarFondos(valorGanado[0]);
                                         ponerFondos();
                                 } catch (InterruptedException e) {
@@ -145,7 +148,9 @@ public class Dados extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 ventanaBlackJack = new javax.swing.JPanel();
@@ -174,9 +179,11 @@ public class Dados extends javax.swing.JFrame {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseClicked(evt);
                         }
+
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseEntered(evt);
                         }
+
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseExited(evt);
                         }
@@ -207,7 +214,8 @@ public class Dados extends javax.swing.JFrame {
                 lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
                 lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
                 lbPonerFondos.setText("-");
-                ventanaBlackJack.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
+                ventanaBlackJack.add(lbPonerFondos,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
 
                 lbDado1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dados/dado1.png"))); // NOI18N
                 ventanaBlackJack.add(lbDado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 154, 156));
@@ -224,18 +232,20 @@ public class Dados extends javax.swing.JFrame {
                 cbValorApostado.setBackground(new java.awt.Color(27, 9, 5));
                 cbValorApostado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                 cbValorApostado.setForeground(new java.awt.Color(224, 195, 102));
-                cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500", "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
+                cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500",
+                                "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
                 cbValorApostado.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
                                 cbValorApostadoActionPerformed(evt);
                         }
                 });
-                ventanaBlackJack.add(cbValorApostado, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 570, 190, 40));
+                ventanaBlackJack.add(cbValorApostado,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 570, 190, 40));
 
                 btnApostarPar.setBackground(new java.awt.Color(147, 128, 67));
                 btnApostarPar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                 btnApostarPar.setForeground(new java.awt.Color(255, 255, 254));
-                btnApostarPar.setText("Par");
+                btnApostarPar.setText("Ambos Par");
                 btnApostarPar.setActionCommand("Ingresar");
                 btnApostarPar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 btnApostarPar.addActionListener(new java.awt.event.ActionListener() {
@@ -243,7 +253,8 @@ public class Dados extends javax.swing.JFrame {
                                 btnApostarParActionPerformed(evt);
                         }
                 });
-                ventanaBlackJack.add(btnApostarPar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 580, -1, -1));
+                ventanaBlackJack.add(btnApostarPar,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 580, -1, -1));
 
                 btnApostarSuma.setBackground(new java.awt.Color(147, 128, 67));
                 btnApostarSuma.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -256,7 +267,8 @@ public class Dados extends javax.swing.JFrame {
                                 btnApostarSumaActionPerformed(evt);
                         }
                 });
-                ventanaBlackJack.add(btnApostarSuma, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 640, -1, -1));
+                ventanaBlackJack.add(btnApostarSuma,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 640, -1, -1));
 
                 btnApostarDobles.setBackground(new java.awt.Color(147, 128, 67));
                 btnApostarDobles.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -269,12 +281,13 @@ public class Dados extends javax.swing.JFrame {
                                 btnApostarDoblesActionPerformed(evt);
                         }
                 });
-                ventanaBlackJack.add(btnApostarDobles, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 640, -1, -1));
+                ventanaBlackJack.add(btnApostarDobles,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 640, -1, -1));
 
                 btnApostarImpar.setBackground(new java.awt.Color(147, 128, 67));
                 btnApostarImpar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                 btnApostarImpar.setForeground(new java.awt.Color(255, 255, 254));
-                btnApostarImpar.setText("Impar");
+                btnApostarImpar.setText("Ambos Impar");
                 btnApostarImpar.setActionCommand("Ingresar");
                 btnApostarImpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 btnApostarImpar.addActionListener(new java.awt.event.ActionListener() {
@@ -282,18 +295,22 @@ public class Dados extends javax.swing.JFrame {
                                 btnApostarImparActionPerformed(evt);
                         }
                 });
-                ventanaBlackJack.add(btnApostarImpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 580, -1, -1));
+                ventanaBlackJack.add(btnApostarImpar,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 580, -1, -1));
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaBlackJack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaBlackJack, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
                 layout.setVerticalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaBlackJack, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaBlackJack,
+                                                                javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
 
                 pack();
         }// </editor-fold>//GEN-END:initComponents
@@ -320,7 +337,7 @@ public class Dados extends javax.swing.JFrame {
 
                         if (numeroIngresado >= 2 && numeroIngresado <= 12) {
 
-                                lanzarDados("",
+                                lanzarDados("suma",
                                                 Integer.valueOf(ObtenerIU
                                                                 .obtenerSeleccionCombo(cbValorApostado)),
                                                 numeroIngresado);

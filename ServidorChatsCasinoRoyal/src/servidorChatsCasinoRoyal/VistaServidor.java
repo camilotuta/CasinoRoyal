@@ -39,7 +39,7 @@ public class VistaServidor extends javax.swing.JFrame {
 	private void llenarJuegos() {
 
 		juegos = new HashMap<>();
-		juegos.put(1111, "Bingo");
+		juegos.put(1111, "Carrera");
 		juegos.put(2222, "BlackJack");
 		juegos.put(3333, "Poker");
 		juegos.put(4444, "Ruleta");

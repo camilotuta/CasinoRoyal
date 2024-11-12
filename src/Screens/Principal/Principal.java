@@ -7,7 +7,7 @@ package Screens.Principal;
 
 import Screens.Custom.CambiarIU;
 import Screens.Login.Login;
-import Screens.Principal.Games.Bingo;
+import Screens.Principal.Games.Carrera;
 import Screens.Principal.Games.BlackJack;
 import Screens.Principal.Games.Dados;
 import Screens.Principal.Games.Poker;
@@ -83,6 +83,7 @@ public class Principal extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
         // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
@@ -112,9 +113,9 @@ public class Principal extends javax.swing.JFrame {
                 panelDados = new javax.swing.JPanel();
                 imgDados = new javax.swing.JLabel();
                 btnDados = new javax.swing.JButton();
-                panelBingo = new javax.swing.JPanel();
-                btnBingo = new javax.swing.JButton();
-                imgBingo = new javax.swing.JLabel();
+                panelCarrera = new javax.swing.JPanel();
+                btnCarrera = new javax.swing.JButton();
+                imgCarrera = new javax.swing.JLabel();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -208,6 +209,7 @@ public class Principal extends javax.swing.JFrame {
                 panelPoker.setBorder(javax.swing.BorderFactory.createCompoundBorder(
                                 javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)),
                                 javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+                panelPoker.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
                 btnPoker.setBackground(new java.awt.Color(147, 128, 67));
                 btnPoker.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -218,38 +220,10 @@ public class Principal extends javax.swing.JFrame {
                                 btnPokerActionPerformed(evt);
                         }
                 });
+                panelPoker.add(btnPoker, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
 
                 imgPoker.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/poker.png"))); // NOI18N
-
-                javax.swing.GroupLayout panelPokerLayout = new javax.swing.GroupLayout(panelPoker);
-                panelPoker.setLayout(panelPokerLayout);
-                panelPokerLayout.setHorizontalGroup(
-                                panelPokerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(panelPokerLayout.createSequentialGroup()
-                                                                .addGap(18, 18, 18)
-                                                                .addComponent(imgPoker,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                195,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addContainerGap(13, Short.MAX_VALUE))
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPokerLayout
-                                                                .createSequentialGroup()
-                                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                Short.MAX_VALUE)
-                                                                .addComponent(btnPoker)
-                                                                .addGap(76, 76, 76)));
-                panelPokerLayout.setVerticalGroup(
-                                panelPokerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(panelPokerLayout.createSequentialGroup()
-                                                                .addGap(15, 15, 15)
-                                                                .addComponent(imgPoker,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                130,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(btnPoker)
-                                                                .addContainerGap()));
+                panelPoker.add(imgPoker, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
                 panelPublicaciones.add(panelPoker, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 230, 180));
 
@@ -257,6 +231,7 @@ public class Principal extends javax.swing.JFrame {
                 panelRuleta.setBorder(javax.swing.BorderFactory.createCompoundBorder(
                                 javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)),
                                 javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+                panelRuleta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
                 btnRuleta.setBackground(new java.awt.Color(147, 128, 67));
                 btnRuleta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -267,42 +242,11 @@ public class Principal extends javax.swing.JFrame {
                                 btnRuletaActionPerformed(evt);
                         }
                 });
+                panelRuleta.add(btnRuleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 149, -1, -1));
 
                 imgRuleta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ruleta.png"))); // NOI18N
                 imgRuleta.setText("jLabel2");
-
-                javax.swing.GroupLayout panelRuletaLayout = new javax.swing.GroupLayout(panelRuleta);
-                panelRuleta.setLayout(panelRuletaLayout);
-                panelRuletaLayout.setHorizontalGroup(
-                                panelRuletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(panelRuletaLayout.createSequentialGroup()
-                                                                .addGroup(panelRuletaLayout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addGroup(panelRuletaLayout
-                                                                                                .createSequentialGroup()
-                                                                                                .addGap(72, 72, 72)
-                                                                                                .addComponent(btnRuleta))
-                                                                                .addGroup(panelRuletaLayout
-                                                                                                .createSequentialGroup()
-                                                                                                .addGap(17, 17, 17)
-                                                                                                .addComponent(imgRuleta,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                195,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                                .addContainerGap(14, Short.MAX_VALUE)));
-                panelRuletaLayout.setVerticalGroup(
-                                panelRuletaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRuletaLayout
-                                                                .createSequentialGroup()
-                                                                .addContainerGap(11, Short.MAX_VALUE)
-                                                                .addComponent(imgRuleta,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                130,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(btnRuleta)
-                                                                .addContainerGap()));
+                panelRuleta.add(imgRuleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 195, 130));
 
                 panelPublicaciones.add(panelRuleta,
                                 new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 230, 180));
@@ -311,6 +255,7 @@ public class Principal extends javax.swing.JFrame {
                 panelBlackJack.setBorder(javax.swing.BorderFactory.createCompoundBorder(
                                 javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)),
                                 javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+                panelBlackJack.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
                 btnBlackJack.setBackground(new java.awt.Color(147, 128, 67));
                 btnBlackJack.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -321,42 +266,11 @@ public class Principal extends javax.swing.JFrame {
                                 btnBlackJackActionPerformed(evt);
                         }
                 });
+                panelBlackJack.add(btnBlackJack, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 149, -1, -1));
 
                 imgBlackJack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/blackJack.png"))); // NOI18N
                 imgBlackJack.setText("jLabel2");
-
-                javax.swing.GroupLayout panelBlackJackLayout = new javax.swing.GroupLayout(panelBlackJack);
-                panelBlackJack.setLayout(panelBlackJackLayout);
-                panelBlackJackLayout.setHorizontalGroup(
-                                panelBlackJackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(panelBlackJackLayout.createSequentialGroup()
-                                                                .addGroup(panelBlackJackLayout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addGroup(panelBlackJackLayout
-                                                                                                .createSequentialGroup()
-                                                                                                .addGap(72, 72, 72)
-                                                                                                .addComponent(btnBlackJack))
-                                                                                .addGroup(panelBlackJackLayout
-                                                                                                .createSequentialGroup()
-                                                                                                .addGap(18, 18, 18)
-                                                                                                .addComponent(imgBlackJack,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                195,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                                .addContainerGap(13, Short.MAX_VALUE)));
-                panelBlackJackLayout.setVerticalGroup(
-                                panelBlackJackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-                                                                panelBlackJackLayout.createSequentialGroup()
-                                                                                .addContainerGap(11, Short.MAX_VALUE)
-                                                                                .addComponent(imgBlackJack,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                130,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                .addPreferredGap(
-                                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                .addComponent(btnBlackJack)
-                                                                                .addContainerGap()));
+                panelBlackJack.add(imgBlackJack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 195, 130));
 
                 panelPublicaciones.add(panelBlackJack,
                                 new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, 230, 180));
@@ -365,6 +279,7 @@ public class Principal extends javax.swing.JFrame {
                 panelTragaMonedas.setBorder(javax.swing.BorderFactory.createCompoundBorder(
                                 javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)),
                                 javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+                panelTragaMonedas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
                 btnTragaMonedas.setBackground(new java.awt.Color(147, 128, 67));
                 btnTragaMonedas.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -375,44 +290,13 @@ public class Principal extends javax.swing.JFrame {
                                 btnTragaMonedasActionPerformed(evt);
                         }
                 });
+                panelTragaMonedas.add(btnTragaMonedas,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 149, -1, -1));
 
                 imgTragaMonedas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tragaMonedas.png"))); // NOI18N
                 imgTragaMonedas.setText("jLabel2");
-
-                javax.swing.GroupLayout panelTragaMonedasLayout = new javax.swing.GroupLayout(panelTragaMonedas);
-                panelTragaMonedas.setLayout(panelTragaMonedasLayout);
-                panelTragaMonedasLayout.setHorizontalGroup(
-                                panelTragaMonedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(panelTragaMonedasLayout.createSequentialGroup()
-                                                                .addContainerGap(15, Short.MAX_VALUE)
-                                                                .addGroup(panelTragaMonedasLayout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-                                                                                                panelTragaMonedasLayout
-                                                                                                                .createSequentialGroup()
-                                                                                                                .addComponent(imgTragaMonedas,
-                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                                195,
-                                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                                                .addGap(16, 16, 16))
-                                                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-                                                                                                panelTragaMonedasLayout
-                                                                                                                .createSequentialGroup()
-                                                                                                                .addComponent(btnTragaMonedas)
-                                                                                                                .addGap(47, 47, 47)))));
-                panelTragaMonedasLayout.setVerticalGroup(
-                                panelTragaMonedasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
-                                                                panelTragaMonedasLayout.createSequentialGroup()
-                                                                                .addContainerGap(11, Short.MAX_VALUE)
-                                                                                .addComponent(imgTragaMonedas,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                130,
-                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                .addPreferredGap(
-                                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                .addComponent(btnTragaMonedas)
-                                                                                .addContainerGap()));
+                panelTragaMonedas.add(imgTragaMonedas,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 13, 195, 130));
 
                 panelPublicaciones.add(panelTragaMonedas,
                                 new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 230, 180));
@@ -421,9 +305,11 @@ public class Principal extends javax.swing.JFrame {
                 panelDados.setBorder(javax.swing.BorderFactory.createCompoundBorder(
                                 javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)),
                                 javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+                panelDados.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
                 imgDados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dados.png"))); // NOI18N
                 imgDados.setText("jLabel2");
+                panelDados.add(imgDados, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 13, 195, 130));
 
                 btnDados.setBackground(new java.awt.Color(147, 128, 67));
                 btnDados.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -434,95 +320,33 @@ public class Principal extends javax.swing.JFrame {
                                 btnDadosActionPerformed(evt);
                         }
                 });
-
-                javax.swing.GroupLayout panelDadosLayout = new javax.swing.GroupLayout(panelDados);
-                panelDados.setLayout(panelDadosLayout);
-                panelDadosLayout.setHorizontalGroup(
-                                panelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(panelDadosLayout.createSequentialGroup()
-                                                                .addGroup(panelDadosLayout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addGroup(panelDadosLayout
-                                                                                                .createSequentialGroup()
-                                                                                                .addGap(80, 80, 80)
-                                                                                                .addComponent(btnDados))
-                                                                                .addGroup(panelDadosLayout
-                                                                                                .createSequentialGroup()
-                                                                                                .addGap(16, 16, 16)
-                                                                                                .addComponent(imgDados,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                195,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                                .addContainerGap(15, Short.MAX_VALUE)));
-                panelDadosLayout.setVerticalGroup(
-                                panelDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDadosLayout
-                                                                .createSequentialGroup()
-                                                                .addContainerGap(11, Short.MAX_VALUE)
-                                                                .addComponent(imgDados,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                130,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(btnDados)
-                                                                .addContainerGap()));
+                panelDados.add(btnDados, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 149, -1, -1));
 
                 panelPublicaciones.add(panelDados,
                                 new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 230, 180));
 
-                panelBingo.setBackground(new java.awt.Color(227, 199, 104));
-                panelBingo.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+                panelCarrera.setBackground(new java.awt.Color(227, 199, 104));
+                panelCarrera.setBorder(javax.swing.BorderFactory.createCompoundBorder(
                                 javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)),
                                 javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
+                panelCarrera.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                btnBingo.setBackground(new java.awt.Color(147, 128, 67));
-                btnBingo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-                btnBingo.setForeground(new java.awt.Color(255, 255, 255));
-                btnBingo.setText("BINGO");
-                btnBingo.addActionListener(new java.awt.event.ActionListener() {
+                btnCarrera.setBackground(new java.awt.Color(147, 128, 67));
+                btnCarrera.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+                btnCarrera.setForeground(new java.awt.Color(255, 255, 255));
+                btnCarrera.setText("CARRERA");
+                btnCarrera.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnBingoActionPerformed(evt);
+                                btnCarreraActionPerformed(evt);
                         }
                 });
+                panelCarrera.add(btnCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 149, -1, -1));
 
-                imgBingo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bingo.png"))); // NOI18N
-                imgBingo.setText("jLabel2");
+                imgCarrera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/carrera.jpg"))); // NOI18N
+                imgCarrera.setText("jLabel2");
+                panelCarrera.add(imgCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 195, -1));
 
-                javax.swing.GroupLayout panelBingoLayout = new javax.swing.GroupLayout(panelBingo);
-                panelBingo.setLayout(panelBingoLayout);
-                panelBingoLayout.setHorizontalGroup(
-                                panelBingoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(panelBingoLayout.createSequentialGroup()
-                                                                .addGroup(panelBingoLayout.createParallelGroup(
-                                                                                javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                .addGroup(panelBingoLayout
-                                                                                                .createSequentialGroup()
-                                                                                                .addGap(72, 72, 72)
-                                                                                                .addComponent(btnBingo))
-                                                                                .addGroup(panelBingoLayout
-                                                                                                .createSequentialGroup()
-                                                                                                .addGap(17, 17, 17)
-                                                                                                .addComponent(imgBingo,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                                                195,
-                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                                .addContainerGap(14, Short.MAX_VALUE)));
-                panelBingoLayout.setVerticalGroup(
-                                panelBingoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBingoLayout
-                                                                .createSequentialGroup()
-                                                                .addContainerGap(11, Short.MAX_VALUE)
-                                                                .addComponent(imgBingo,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                                130,
-                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(
-                                                                                javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(btnBingo)
-                                                                .addContainerGap()));
-
-                panelPublicaciones.add(panelBingo,
+                panelPublicaciones.add(panelCarrera,
                                 new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, 230, 180));
 
                 scPublicaciones.setViewportView(panelPublicaciones);
@@ -553,9 +377,9 @@ public class Principal extends javax.swing.JFrame {
 
         }
 
-        private void btnBingoActionPerformed(java.awt.event.ActionEvent evt) {
-                Bingo bingo = new Bingo();
-                bingo.setVisible(true);
+        private void btnCarreraActionPerformed(java.awt.event.ActionEvent evt) {
+                Carrera carrera = new Carrera();
+                carrera.setVisible(true);
                 this.setVisible(false);
         }
 
@@ -636,15 +460,15 @@ public class Principal extends javax.swing.JFrame {
         }
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JButton btnBingo;
         private javax.swing.JButton btnBlackJack;
+        private javax.swing.JButton btnCarrera;
         private javax.swing.JButton btnDados;
         private javax.swing.JButton btnDepositar;
         private javax.swing.JButton btnPoker;
         private javax.swing.JButton btnRuleta;
         private javax.swing.JButton btnTragaMonedas;
-        private javax.swing.JLabel imgBingo;
         private javax.swing.JLabel imgBlackJack;
+        private javax.swing.JLabel imgCarrera;
         private javax.swing.JLabel imgCasa;
         private javax.swing.JLabel imgDados;
         private javax.swing.JLabel imgMenuBar;
@@ -655,8 +479,8 @@ public class Principal extends javax.swing.JFrame {
         private javax.swing.JLabel imgVolver;
         private javax.swing.JLabel lbJuegos;
         private javax.swing.JLabel lbPonerFondos;
-        private javax.swing.JPanel panelBingo;
         private javax.swing.JPanel panelBlackJack;
+        private javax.swing.JPanel panelCarrera;
         private javax.swing.JPanel panelDados;
         private javax.swing.JPanel panelMenu;
         private javax.swing.JPanel panelPoker;

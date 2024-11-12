@@ -79,7 +79,9 @@ public class Ruleta extends javax.swing.JFrame {
                         if (!nombre.isEmpty()) {
                                 chatClient = new ChatClient(nombre, taChatRuleta, taMensaje, imgEnviar, 4444);
                         } else {
-                                System.out.println("No se pudo obtener el nombre del jugador.");
+
+                                JOptionPane.showMessageDialog(null, "No se pudo obtener el nombre del jugador.",
+                                                "ERROR", JOptionPane.ERROR_MESSAGE);
                         }
                 });
                 chatThread.start();
@@ -94,7 +96,7 @@ public class Ruleta extends javax.swing.JFrame {
 
                         CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaGirando.gif");
                         SoundPlay.reproducir("src/sound/ruletaGirando.wav");
-
+                        CambiarIU.deshabilitarBotones(btnAlVerde, btnAlRojo, btnAlNegro, btnIngresarNumeros);
                         int casillaJuego = CasillasRuleta.casillaAleatoria();
                         String colorJuego = CasillasRuleta.colorCasilla(casillaJuego);
 
@@ -133,6 +135,8 @@ public class Ruleta extends javax.swing.JFrame {
 
                                         Transactions.sumarFondos(valorGanado[0]);
                                         ponerFondos();
+                                        CambiarIU.habilitarBotones(btnAlVerde, btnAlRojo, btnAlNegro,
+                                                        btnIngresarNumeros);
                                         CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaQuieta.png");
                                 } catch (InterruptedException e) {
                                         JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
@@ -474,7 +478,9 @@ public class Ruleta extends javax.swing.JFrame {
                 if (chatClient != null) {
                         chatClient.close();
                 } else {
-                        System.out.println("El cliente de chat no está inicializado.");
+
+                        JOptionPane.showMessageDialog(null, "El cliente de chat no está inicializado.", "ERROR",
+                                        JOptionPane.ERROR_MESSAGE);
                 }
                 Principal principal = new Principal();
                 principal.setVisible(true);

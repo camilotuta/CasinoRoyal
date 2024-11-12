@@ -1,6 +1,8 @@
 package Screens.Custom;
 
 import javax.sound.sampled.*;
+import javax.swing.JOptionPane;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -23,13 +25,13 @@ public class SoundPlay {
                     }
                 });
 
-                
                 clip.drain();
             } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+                        JOptionPane.ERROR_MESSAGE);
             }
         });
 
-        soundThread.start(); 
+        soundThread.start();
     }
 }

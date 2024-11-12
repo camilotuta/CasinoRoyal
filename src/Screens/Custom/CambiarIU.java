@@ -6,6 +6,7 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.JPasswordField;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -53,5 +54,17 @@ public class CambiarIU {
 
     public static String obtenerFechaSeleccionada(DatePicker datePicker) {
         return formatter.format(datePicker.getSelectedDate());
+    }
+
+    public static void deshabilitarBotones(JButton... args) {
+        for (JButton b : args) {
+            b.setEnabled(false);
+        }
+    }
+
+    public static void habilitarBotones(JButton... args) {
+        for (JButton b : args) {
+            b.setEnabled(true);
+        }
     }
 }

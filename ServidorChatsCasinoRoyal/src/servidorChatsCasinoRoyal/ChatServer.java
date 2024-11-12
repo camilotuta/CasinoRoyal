@@ -5,6 +5,8 @@ import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 public class ChatServer {
     private static List<ClientHandler> clients = new ArrayList<>();
     private static VistaServidor vistaServidor;
@@ -22,7 +24,7 @@ public class ChatServer {
                 new Thread(clientHandler).start();
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -65,12 +67,12 @@ public class ChatServer {
                     ChatServer.broadcast(message, this);
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
             } finally {
                 try {
                     socket.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
                 clients.remove(this);
             }
