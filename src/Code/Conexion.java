@@ -12,7 +12,6 @@ public class Conexion {
 
     private static final String URL = "jdbc:sqlite:db/casino_royal.db";
 
-    // Método para obtener una nueva conexión a la base de datos
     public static Connection conectar() {
         try {
             Class.forName("org.sqlite.JDBC");
@@ -23,7 +22,6 @@ public class Conexion {
         }
     }
 
-    // Método para cerrar una conexión, PreparedStatement y ResultSet
     public static void cerrarConexion(Connection conn, PreparedStatement pSt, ResultSet result) {
         try {
             if (result != null) {
@@ -36,9 +34,8 @@ public class Conexion {
                 conn.close();
             }
         } catch (SQLException e) {
-            System.out.println("Error al cerrar la conexión: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-   
 }

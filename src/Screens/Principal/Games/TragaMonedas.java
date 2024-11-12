@@ -372,7 +372,7 @@ public class TragaMonedas extends javax.swing.JFrame {
         }// </editor-fold>//GEN-END:initComponents
 
         private void btnGirarActionPerformed(java.awt.event.ActionEvent evt) {
-                girarTragamonedas(Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+                girarTragamonedas(Integer.parseInt(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
 
         }
 

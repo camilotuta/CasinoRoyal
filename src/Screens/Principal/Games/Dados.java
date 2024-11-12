@@ -20,6 +20,7 @@ import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 
 import Screens.Profile.PersonalProfile;
 import Screens.Profile.Transactions;
+import java.awt.HeadlessException;
 
 /**
  *
@@ -300,12 +301,12 @@ public class Dados extends javax.swing.JFrame {
         }// </editor-fold>//GEN-END:initComponents
 
         private void btnApostarParActionPerformed(java.awt.event.ActionEvent evt) {
-                lanzarDados("par", Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+                lanzarDados("par", Integer.parseInt(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
 
         }
 
         private void btnApostarImparActionPerformed(java.awt.event.ActionEvent evt) {
-                lanzarDados("impar", Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+                lanzarDados("impar", Integer.parseInt(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
 
         }
 
@@ -313,12 +314,12 @@ public class Dados extends javax.swing.JFrame {
                 String input = JOptionPane.showInputDialog(null, "Adivina el número de la suma de ambos dados (2-12):");
                 int numeroIngresado = -1;
                 try {
-                        numeroIngresado = Integer.valueOf(input);
+                        numeroIngresado = Integer.parseInt(input);
 
                         if (numeroIngresado >= 2 && numeroIngresado <= 12) {
 
                                 lanzarDados("suma",
-                                                Integer.valueOf(ObtenerIU
+                                                Integer.parseInt(ObtenerIU
                                                                 .obtenerSeleccionCombo(cbValorApostado)),
                                                 numeroIngresado);
 
@@ -329,7 +330,7 @@ public class Dados extends javax.swing.JFrame {
                                                 "ERROR",
                                                 JOptionPane.ERROR_MESSAGE);
                         }
-                } catch (Exception e) {
+                } catch (HeadlessException | NumberFormatException e) {
                         JOptionPane.showMessageDialog(null,
                                         "El número ingresado no es válido.",
                                         "ERROR",
@@ -348,9 +349,8 @@ public class Dados extends javax.swing.JFrame {
                         int numeroDado2 = Integer.parseInt(inputDado2);
 
                         if ((numeroDado1 >= 1 && numeroDado1 <= 6) && (numeroDado2 >= 1 && numeroDado2 <= 6)) {
-                                lanzarDados(
-                                                "dobles",
-                                                Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)),
+                                lanzarDados("dobles",
+                                                Integer.parseInt(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)),
                                                 numeroDado1,
                                                 numeroDado2);
                         } else {

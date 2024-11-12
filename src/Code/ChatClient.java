@@ -38,13 +38,14 @@ public class ChatClient {
 			listenerThread.start();
 
 			imgEnviar.addMouseListener(new java.awt.event.MouseAdapter() {
+				@Override
 				public void mouseClicked(java.awt.event.MouseEvent evt) {
 					enviarMensaje(nombreCliente);
 				}
 			});
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -58,7 +59,7 @@ public class ChatClient {
 				PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 				out.println(nombreCliente + ": " + userMessage);
 			} catch (IOException e) {
-				e.printStackTrace();
+				JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
@@ -67,7 +68,7 @@ public class ChatClient {
 		try {
 			socket.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

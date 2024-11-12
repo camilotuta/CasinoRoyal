@@ -45,9 +45,9 @@ public class Login extends javax.swing.JFrame {
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		this.setIconImage(Toolkit.getDefaultToolkit()
-			.getImage(getClass().getResource("/img/icon.png")));
+				.getImage(getClass().getResource("/img/icon.png")));
 		CambiarIU.ponerTextoEtiqueta(txtMostrarCopy,
-			"©" + Dates.obtenerAño() + " Casino Royal . Todos los derechos reservados.");
+				"©" + Dates.obtenerAño() + " Casino Royal . Todos los derechos reservados.");
 		tfCorreo.requestFocus();
 		CambiarIU.ponerTextoCampo(tfCorreo, correoGuardar);
 		desactivarBotonIngresar();
@@ -56,9 +56,9 @@ public class Login extends javax.swing.JFrame {
 
 	private void desactivarBotonIngresar() {
 		btnIngresar.setEnabled(
-			VerificarDato.correoValido((ObtenerIU.obtenerTextoCampo(tfCorreo))) && (VerificarDato
-			.contraseñaValida(Desencriptar.desencriptarContra(
-				ObtenerIU.obtenerContraseña(pfContraseña)))));
+				VerificarDato.correoValido((ObtenerIU.obtenerTextoCampo(tfCorreo))) && (VerificarDato
+						.contraseñaValida(Desencriptar.desencriptarContra(
+								ObtenerIU.obtenerContraseña(pfContraseña)))));
 	}
 
 	private boolean usuarioEstaRegistrado(String correo, String contraseña) throws SQLException {
@@ -70,21 +70,19 @@ public class Login extends javax.swing.JFrame {
 			}
 
 			datosUsuarioRegistrado = OperacionCRUD.seleccionar(
-				conn,
-				String.format("SELECT * FROM jugadores WHERE correo_jugador = '%s' AND password_jugador = '%s'",
-					correo, contraseña),
-				new String[]{"jugador_id", "correo_jugador", "password_jugador"}
-			);
+					conn,
+					String.format("SELECT * FROM jugadores WHERE correo_jugador = '%s' AND password_jugador = '%s'",
+							correo, contraseña),
+					new String[] { "jugador_id", "correo_jugador", "password_jugador" });
 
-		
 			if (!datosUsuarioRegistrado.isEmpty() && datosUsuarioRegistrado.get(0).size() >= 1) {
 				idUsuarioGuardar = Integer.parseInt(datosUsuarioRegistrado.get(0).get(0).toString());
 				return true;
 			}
 
 		} catch (SQLException e) {
-			System.out.println("Error al verificar el usuario: " + e.getMessage());
-			throw e;  
+			JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+			throw e;
 		}
 
 		return false;
@@ -102,7 +100,7 @@ public class Login extends javax.swing.JFrame {
 			this.setVisible(false);
 		} else {
 			JOptionPane.showMessageDialog(this, "CORREO O CONTRASEÑA NO VALIDOS \n", "AVISO!",
-				javax.swing.JOptionPane.INFORMATION_MESSAGE);
+					javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
 			CambiarIU.ponerTextoCampoContraseña(pfContraseña, "");
 			pfContraseña.requestFocus();
@@ -128,149 +126,149 @@ public class Login extends javax.swing.JFrame {
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// <editor-fold defaultstate="collapsed" desc="Generated
-        // Code">//GEN-BEGIN:initComponents
-        private void initComponents() {
+	// Code">//GEN-BEGIN:initComponents
+	private void initComponents() {
 
-                ventanaLogIn = new javax.swing.JPanel();
-                lbCambiarContraseña = new javax.swing.JLabel();
-                lbTitulo = new javax.swing.JLabel();
-                btnErroresComunes = new javax.swing.JButton();
-                lbCorreo = new javax.swing.JLabel();
-                tfCorreo = new javax.swing.JTextField();
-                lbContraseña = new javax.swing.JLabel();
-                pfContraseña = new javax.swing.JPasswordField();
-                btnRegistrarse = new javax.swing.JButton();
-                btnIngresar = new javax.swing.JButton();
-                txtMostrarCopy = new javax.swing.JLabel();
+		ventanaLogIn = new javax.swing.JPanel();
+		lbCambiarContraseña = new javax.swing.JLabel();
+		lbTitulo = new javax.swing.JLabel();
+		btnErroresComunes = new javax.swing.JButton();
+		lbCorreo = new javax.swing.JLabel();
+		tfCorreo = new javax.swing.JTextField();
+		lbContraseña = new javax.swing.JLabel();
+		pfContraseña = new javax.swing.JPasswordField();
+		btnRegistrarse = new javax.swing.JButton();
+		btnIngresar = new javax.swing.JButton();
+		txtMostrarCopy = new javax.swing.JLabel();
 
-                setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-                ventanaLogIn.setBackground(new java.awt.Color(27, 9, 5));
-                ventanaLogIn.setForeground(new java.awt.Color(255, 255, 255));
-                ventanaLogIn.setPreferredSize(new java.awt.Dimension(1080, 720));
-                ventanaLogIn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+		ventanaLogIn.setBackground(new java.awt.Color(27, 9, 5));
+		ventanaLogIn.setForeground(new java.awt.Color(255, 255, 255));
+		ventanaLogIn.setPreferredSize(new java.awt.Dimension(1080, 720));
+		ventanaLogIn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                lbCambiarContraseña.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-                lbCambiarContraseña.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/help.png"))); // NOI18N
-                lbCambiarContraseña.setToolTipText("¿Deseas recuperar o cambiar tu contraseña? Click aquí.");
-                lbCambiarContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                lbCambiarContraseña.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                                lbCambiarContraseñaMouseClicked(evt);
-                        }
+		lbCambiarContraseña.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+		lbCambiarContraseña.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/help.png"))); // NOI18N
+		lbCambiarContraseña.setToolTipText("¿Deseas recuperar o cambiar tu contraseña? Click aquí.");
+		lbCambiarContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+		lbCambiarContraseña.addMouseListener(new java.awt.event.MouseAdapter() {
+			public void mouseClicked(java.awt.event.MouseEvent evt) {
+				lbCambiarContraseñaMouseClicked(evt);
+			}
 
-                        public void mouseEntered(java.awt.event.MouseEvent evt) {
-                                lbCambiarContraseñaMouseEntered(evt);
-                        }
+			public void mouseEntered(java.awt.event.MouseEvent evt) {
+				lbCambiarContraseñaMouseEntered(evt);
+			}
 
-                        public void mouseExited(java.awt.event.MouseEvent evt) {
-                                lbCambiarContraseñaMouseExited(evt);
-                        }
-                });
-                ventanaLogIn.add(lbCambiarContraseña,
-                                new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 440, 30, 30));
+			public void mouseExited(java.awt.event.MouseEvent evt) {
+				lbCambiarContraseñaMouseExited(evt);
+			}
+		});
+		ventanaLogIn.add(lbCambiarContraseña,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 440, 30, 30));
 
-                lbTitulo.setFont(new java.awt.Font("Crabs", 1, 100)); // NOI18N
-                lbTitulo.setForeground(new java.awt.Color(255, 255, 254));
-                lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                lbTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoPequeño.png"))); // NOI18N
-                ventanaLogIn.add(lbTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1080, 320));
+		lbTitulo.setFont(new java.awt.Font("Crabs", 1, 100)); // NOI18N
+		lbTitulo.setForeground(new java.awt.Color(255, 255, 254));
+		lbTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		lbTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoPequeño.png"))); // NOI18N
+		ventanaLogIn.add(lbTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1080, 320));
 
-                btnErroresComunes.setBackground(new java.awt.Color(147, 128, 67));
-                btnErroresComunes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-                btnErroresComunes.setForeground(new java.awt.Color(255, 255, 254));
-                btnErroresComunes.setText("?");
-                btnErroresComunes.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnErroresComunesActionPerformed(evt);
-                        }
-                });
-                ventanaLogIn.add(btnErroresComunes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 30));
+		btnErroresComunes.setBackground(new java.awt.Color(147, 128, 67));
+		btnErroresComunes.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+		btnErroresComunes.setForeground(new java.awt.Color(255, 255, 254));
+		btnErroresComunes.setText("?");
+		btnErroresComunes.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				btnErroresComunesActionPerformed(evt);
+			}
+		});
+		ventanaLogIn.add(btnErroresComunes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 30));
 
-                lbCorreo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-                lbCorreo.setForeground(new java.awt.Color(224, 195, 102));
-                lbCorreo.setText("CORREO: ");
-                ventanaLogIn.add(lbCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, -1, -1));
+		lbCorreo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+		lbCorreo.setForeground(new java.awt.Color(224, 195, 102));
+		lbCorreo.setText("CORREO: ");
+		ventanaLogIn.add(lbCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, -1, -1));
 
-                tfCorreo.setBackground(new java.awt.Color(27, 9, 5));
-                tfCorreo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-                tfCorreo.setForeground(new java.awt.Color(255, 255, 255));
-                tfCorreo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-                tfCorreo.setOpaque(true);
-                tfCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
-                        public void keyReleased(java.awt.event.KeyEvent evt) {
-                                tfCorreoKeyReleased(evt);
-                        }
-                });
-                ventanaLogIn.add(tfCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 360, 310, 30));
+		tfCorreo.setBackground(new java.awt.Color(27, 9, 5));
+		tfCorreo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+		tfCorreo.setForeground(new java.awt.Color(255, 255, 255));
+		tfCorreo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+		tfCorreo.setOpaque(true);
+		tfCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
+			public void keyReleased(java.awt.event.KeyEvent evt) {
+				tfCorreoKeyReleased(evt);
+			}
+		});
+		ventanaLogIn.add(tfCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 360, 310, 30));
 
-                lbContraseña.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-                lbContraseña.setForeground(new java.awt.Color(224, 195, 102));
-                lbContraseña.setText("CONTRASEÑA: ");
-                ventanaLogIn.add(lbContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 440, -1, -1));
+		lbContraseña.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+		lbContraseña.setForeground(new java.awt.Color(224, 195, 102));
+		lbContraseña.setText("CONTRASEÑA: ");
+		ventanaLogIn.add(lbContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 440, -1, -1));
 
-                pfContraseña.setBackground(new java.awt.Color(27, 9, 5));
-                pfContraseña.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-                pfContraseña.setForeground(new java.awt.Color(255, 255, 255));
-                pfContraseña.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-                pfContraseña.setOpaque(true);
-                pfContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
-                        public void keyReleased(java.awt.event.KeyEvent evt) {
-                                pfContraseñaKeyReleased(evt);
-                        }
-                });
-                ventanaLogIn.add(pfContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 440, 310, 30));
+		pfContraseña.setBackground(new java.awt.Color(27, 9, 5));
+		pfContraseña.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+		pfContraseña.setForeground(new java.awt.Color(255, 255, 255));
+		pfContraseña.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+		pfContraseña.setOpaque(true);
+		pfContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+			public void keyReleased(java.awt.event.KeyEvent evt) {
+				pfContraseñaKeyReleased(evt);
+			}
+		});
+		ventanaLogIn.add(pfContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 440, 310, 30));
 
-                btnRegistrarse.setBackground(new java.awt.Color(147, 128, 67));
-                btnRegistrarse.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-                btnRegistrarse.setForeground(new java.awt.Color(255, 255, 255));
-                btnRegistrarse.setText("Registrarse");
-                btnRegistrarse.setActionCommand("Ingresar");
-                btnRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnRegistrarseActionPerformed(evt);
-                        }
-                });
-                ventanaLogIn.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 510, -1, -1));
+		btnRegistrarse.setBackground(new java.awt.Color(147, 128, 67));
+		btnRegistrarse.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+		btnRegistrarse.setForeground(new java.awt.Color(255, 255, 255));
+		btnRegistrarse.setText("Registrarse");
+		btnRegistrarse.setActionCommand("Ingresar");
+		btnRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+		btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				btnRegistrarseActionPerformed(evt);
+			}
+		});
+		ventanaLogIn.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 510, -1, -1));
 
-                btnIngresar.setBackground(new java.awt.Color(147, 128, 67));
-                btnIngresar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-                btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
-                btnIngresar.setText("Ingresar");
-                btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                btnIngresar.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                try {
-                                        btnIngresarActionPerformed(evt);
-                                } catch (SQLException e) {
-                                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
-                                                        JOptionPane.ERROR_MESSAGE);
-                                }
-                        }
-                });
-                ventanaLogIn.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 510, -1, -1));
+		btnIngresar.setBackground(new java.awt.Color(147, 128, 67));
+		btnIngresar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+		btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
+		btnIngresar.setText("Ingresar");
+		btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+		btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				try {
+					btnIngresarActionPerformed(evt);
+				} catch (SQLException e) {
+					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+							JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
+		ventanaLogIn.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 510, -1, -1));
 
-                txtMostrarCopy.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-                txtMostrarCopy.setForeground(new java.awt.Color(255, 255, 255));
-                txtMostrarCopy.setText("©");
-                ventanaLogIn.add(txtMostrarCopy, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 690, -1, -1));
+		txtMostrarCopy.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+		txtMostrarCopy.setForeground(new java.awt.Color(255, 255, 255));
+		txtMostrarCopy.setText("©");
+		ventanaLogIn.add(txtMostrarCopy, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 690, -1, -1));
 
-                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-                getContentPane().setLayout(layout);
-                layout.setHorizontalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(ventanaLogIn, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
-                layout.setVerticalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(ventanaLogIn, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
+		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+		getContentPane().setLayout(layout);
+		layout.setHorizontalGroup(
+				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addComponent(ventanaLogIn, javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE,
+								javax.swing.GroupLayout.PREFERRED_SIZE));
+		layout.setVerticalGroup(
+				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addComponent(ventanaLogIn, javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE,
+								javax.swing.GroupLayout.PREFERRED_SIZE));
 
-                pack();
-        }// </editor-fold>//GEN-END:initComponents
+		pack();
+	}// </editor-fold>//GEN-END:initComponents
 
 	private void lbCambiarContraseñaMouseClicked(java.awt.event.MouseEvent evt) {
 		RecoverPassword recoverPassword = new RecoverPassword();
@@ -307,32 +305,32 @@ public class Login extends javax.swing.JFrame {
 
 	private void btnErroresComunesActionPerformed(java.awt.event.ActionEvent evt) {
 		String texto = "¡Hola! Aquí te dejo un apartado de ayuda con algunos errores comunes y"
-			+ " sus\nposibles soluciones:\n\nNo puedes ingresar:\nVerifica tus "
-			+ "credenciales de inicio de sesión.\nRestablece tu contraseña si "
-			+ "la has olvidado.\nVerifica tu conexión a internet.\nSi el "
-			+ "problema persiste, contacta al soporte técnico de la plataforma."
-			+ "\n\nNo puedes registrarte:\nVerifica que completaste todos los "
-			+ "campos requeridos y que usaste una\ndirección de correo "
-			+ "institucional válida.\nSi el problema persiste, intenta utilizar"
-			+ " una dirección de correo electrónico\ndiferente o contacta al "
-			+ "soporte técnico de la plataforma.\n\nError al actualizar "
-			+ "biografía:\nAsegúrate de seguir los requisitos de longitud y "
-			+ "formato para la biografía.\nSi el problema persiste, intenta "
-			+ "actualizar tu biografía desde otro\ndispositivo o navegador o "
-			+ "contacta al soporte técnico de la plataforma.\n\nError al"
-			+ " agendar tutoría:\nVerifica que seleccionaste la fecha y hora "
-			+ "correctas.\nVerifica que tienes los permisos necesarios para"
-			+ " agendar una tutoría.\nSi el problema persiste, intenta utilizar"
-			+ " otro dispositivo o navegador o\ncontacta al soporte técnico de"
-			+ " la plataforma.\n\nError al actualizar lista de tareas:"
-			+ "\nAsegúrate de seguir los requisitos de longitud y formato para"
-			+ " cada tarea en\nla lista.\nVerifica que tienes los permisos "
-			+ "necesarios para actualizar la lista de\ntareas en la plataforma."
-			+ "\n\nSi necesitas ayuda adicional, por favor envía un correo "
-			+ "especificando tu problema a alguno\nde los siguientes correos de"
-			+ " contacto:\n\nAdrián Camilo Tuta Cortés:"
-			+ " adriantuta.cc@academia.umb.edu.co\nLaura Nathalya Abril Velasquez:"
-			+ " lauraabril.nv@academia.umb.edu.co";
+				+ " sus\nposibles soluciones:\n\nNo puedes ingresar:\nVerifica tus "
+				+ "credenciales de inicio de sesión.\nRestablece tu contraseña si "
+				+ "la has olvidado.\nVerifica tu conexión a internet.\nSi el "
+				+ "problema persiste, contacta al soporte técnico de la plataforma."
+				+ "\n\nNo puedes registrarte:\nVerifica que completaste todos los "
+				+ "campos requeridos y que usaste una\ndirección de correo "
+				+ "institucional válida.\nSi el problema persiste, intenta utilizar"
+				+ " una dirección de correo electrónico\ndiferente o contacta al "
+				+ "soporte técnico de la plataforma.\n\nError al actualizar "
+				+ "biografía:\nAsegúrate de seguir los requisitos de longitud y "
+				+ "formato para la biografía.\nSi el problema persiste, intenta "
+				+ "actualizar tu biografía desde otro\ndispositivo o navegador o "
+				+ "contacta al soporte técnico de la plataforma.\n\nError al"
+				+ " agendar tutoría:\nVerifica que seleccionaste la fecha y hora "
+				+ "correctas.\nVerifica que tienes los permisos necesarios para"
+				+ " agendar una tutoría.\nSi el problema persiste, intenta utilizar"
+				+ " otro dispositivo o navegador o\ncontacta al soporte técnico de"
+				+ " la plataforma.\n\nError al actualizar lista de tareas:"
+				+ "\nAsegúrate de seguir los requisitos de longitud y formato para"
+				+ " cada tarea en\nla lista.\nVerifica que tienes los permisos "
+				+ "necesarios para actualizar la lista de\ntareas en la plataforma."
+				+ "\n\nSi necesitas ayuda adicional, por favor envía un correo "
+				+ "especificando tu problema a alguno\nde los siguientes correos de"
+				+ " contacto:\n\nAdrián Camilo Tuta Cortés:"
+				+ " adriantuta.cc@academia.umb.edu.co\nLaura Nathalya Abril Velasquez:"
+				+ " lauraabril.nv@academia.umb.edu.co";
 
 		JOptionPane.showMessageDialog(null, texto, "AYUDA", JOptionPane.INFORMATION_MESSAGE);
 	}
@@ -345,17 +343,17 @@ public class Login extends javax.swing.JFrame {
 		EventQueue.invokeLater(() -> new Login().setVisible(true));
 	}
 
-        // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JButton btnErroresComunes;
-        private javax.swing.JButton btnIngresar;
-        private javax.swing.JButton btnRegistrarse;
-        private javax.swing.JLabel lbCambiarContraseña;
-        private javax.swing.JLabel lbContraseña;
-        private javax.swing.JLabel lbCorreo;
-        private javax.swing.JLabel lbTitulo;
-        private javax.swing.JPasswordField pfContraseña;
-        private javax.swing.JTextField tfCorreo;
-        private javax.swing.JLabel txtMostrarCopy;
-        private javax.swing.JPanel ventanaLogIn;
-        // End of variables declaration//GEN-END:variables
+	// Variables declaration - do not modify//GEN-BEGIN:variables
+	private javax.swing.JButton btnErroresComunes;
+	private javax.swing.JButton btnIngresar;
+	private javax.swing.JButton btnRegistrarse;
+	private javax.swing.JLabel lbCambiarContraseña;
+	private javax.swing.JLabel lbContraseña;
+	private javax.swing.JLabel lbCorreo;
+	private javax.swing.JLabel lbTitulo;
+	private javax.swing.JPasswordField pfContraseña;
+	private javax.swing.JTextField tfCorreo;
+	private javax.swing.JLabel txtMostrarCopy;
+	private javax.swing.JPanel ventanaLogIn;
+	// End of variables declaration//GEN-END:variables
 }

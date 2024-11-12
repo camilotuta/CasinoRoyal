@@ -21,8 +21,8 @@ public class CarreraCarros {
     private int velocidadCarrera = CarreraCarros.rand.nextInt(200, 600);
     private List<Carro> carros = new ArrayList<>();
     private List<Pista> pistas = new ArrayList<>();
-    private JTextArea textArea;
-    private JLabel lbCuentaRegresiva;
+    private final JTextArea textArea;
+    private final JLabel lbCuentaRegresiva;
 
     public CarreraCarros(JTextArea textArea, JLabel lbCuentaRegresiva) {
         this.textArea = textArea;
@@ -105,7 +105,7 @@ public class CarreraCarros {
             this.lbCuentaRegresiva.setText(String.valueOf(i));
             Thread.sleep(1000);
         }
-        this.lbCuentaRegresiva.setText("GOOOOO" + "\n");
+        this.lbCuentaRegresiva.setText(" GOOOOO " + "\n");
         Thread.sleep(1000);
     }
 

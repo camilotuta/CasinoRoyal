@@ -88,7 +88,7 @@ public class PersonalProfile extends javax.swing.JFrame {
         }
 
         private void ponerInformacion() {
-                ArrayList<ArrayList<Object>> datos = null;
+                ArrayList<ArrayList<Object>> datos;
 
                 try (Connection conn = Conexion.conectar()) {
                         if (conn == null) {
@@ -126,7 +126,7 @@ public class PersonalProfile extends javax.swing.JFrame {
         }
 
         public static String obtenerNombre() {
-                ArrayList<ArrayList<Object>> datos = null;
+                ArrayList<ArrayList<Object>> datos;
 
                 try (Connection conn = Conexion.conectar()) {
                         if (conn == null) {

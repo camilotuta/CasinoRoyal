@@ -68,7 +68,6 @@ public class Carrera extends javax.swing.JFrame {
 	private void ingresarChat() {
 		Thread chatThread = new Thread(() -> {
 			String nombre = PersonalProfile.obtenerNombre();
-			;
 			if (!nombre.isEmpty()) {
 				chatClient = new ChatClient(nombre, taChatCarrera, taMensaje, imgEnviar, 1111);
 			} else {
@@ -414,22 +413,22 @@ public class Carrera extends javax.swing.JFrame {
 
 
 	private void btnApostarCarro1ActionPerformed(java.awt.event.ActionEvent evt) {
-		iniciarCarrera(1, Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+		iniciarCarrera(1, Integer.parseInt(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
 
 	}
 
 	private void btnApostarCarro2ActionPerformed(java.awt.event.ActionEvent evt) {
-		iniciarCarrera(2, Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+		iniciarCarrera(2, Integer.parseInt(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
 
 	}
 
 	private void btnApostarCarro3ActionPerformed(java.awt.event.ActionEvent evt) {
-		iniciarCarrera(3, Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+		iniciarCarrera(3, Integer.parseInt(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
 
 	}
 
 	private void btnApostarCarro4ActionPerformed(java.awt.event.ActionEvent evt) {
-		iniciarCarrera(4, Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+		iniciarCarrera(4, Integer.parseInt(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
 
 	}
 

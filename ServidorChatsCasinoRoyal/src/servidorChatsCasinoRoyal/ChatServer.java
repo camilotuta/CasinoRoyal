@@ -29,7 +29,6 @@ public class ChatServer {
     }
 
     private void appendMessage(String message) {
-        System.out.println(message);
         vistaServidor.appendToChat(message);
     }
 

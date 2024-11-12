@@ -133,7 +133,7 @@ public class RecoverPassword extends javax.swing.JFrame {
 
 			return datosUsuarioRegistrado.size() == 1;
 		} catch (SQLException e) {
-			System.out.println("Error al verificar el correo: " + e.getMessage());
+		JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",JOptionPane.ERROR_MESSAGE);	
 			throw e;
 		}
 	}
@@ -189,7 +189,7 @@ public class RecoverPassword extends javax.swing.JFrame {
 				return "";
 			}
 		} catch (SQLException e) {
-			System.out.println("Error al obtener el nombre: " + e.getMessage());
+		JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",JOptionPane.ERROR_MESSAGE);	
 			throw e;
 		}
 	}
@@ -206,7 +206,6 @@ public class RecoverPassword extends javax.swing.JFrame {
 			JOptionPane.showMessageDialog(this, "¡CONTRASEÑA ACTUALIZADA!", "¡AVISO!",
 					javax.swing.JOptionPane.INFORMATION_MESSAGE);
 		} catch (SQLException e) {
-			System.out.println("Error al actualizar la contraseña: " + e.getMessage());
 			JOptionPane.showMessageDialog(this, "Error al actualizar la contraseña", "¡ERROR!",
 					javax.swing.JOptionPane.ERROR_MESSAGE);
 			throw e;

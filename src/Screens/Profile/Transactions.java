@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Screens.Custom.CambiarIU;
 import Screens.Login.Login;
+import java.awt.HeadlessException;
 
 import java.awt.Toolkit;
 import java.util.ArrayList;
@@ -305,7 +306,7 @@ public class Transactions extends javax.swing.JFrame {
 								"DEPOSITAR DINERO", JOptionPane.QUESTION_MESSAGE));
 			}
 			hacerDeposito(deposito);
-		} catch (Exception e) {
+		} catch (HeadlessException | NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
 					JOptionPane.ERROR_MESSAGE);
 

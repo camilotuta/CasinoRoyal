@@ -42,8 +42,7 @@ public class ScrollPaneWin11 extends JScrollPane {
         @Override
         public void layoutContainer(Container parent) {
             super.layoutContainer(parent);
-            if (parent instanceof JScrollPane) {
-                JScrollPane scroll = (JScrollPane) parent;
+            if (parent instanceof JScrollPane scroll) {
                 Rectangle rec = scroll.getViewport().getBounds();
                 Insets insets = parent.getInsets();
                 int rhHeight = 0;

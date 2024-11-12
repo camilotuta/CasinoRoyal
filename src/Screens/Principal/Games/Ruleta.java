@@ -18,6 +18,7 @@ import java.awt.EventQueue;
 import java.awt.Toolkit;
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 
 /**
@@ -367,16 +368,16 @@ public class Ruleta extends javax.swing.JFrame {
 
 
 	private void btnAlVerdeActionPerformed(java.awt.event.ActionEvent evt) {
-		girarRuleta("Verde", -1, Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+		girarRuleta("Verde", -1, Integer.parseInt(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
 	}
 
 	private void btnAlNegroActionPerformed(java.awt.event.ActionEvent evt) {
-		girarRuleta("Negro", -1, Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+		girarRuleta("Negro", -1, Integer.parseInt(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
 
 	}
 
 	private void btnAlRojoActionPerformed(java.awt.event.ActionEvent evt) {
-		girarRuleta("Rojo", -1, Integer.valueOf(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+		girarRuleta("Rojo", -1, Integer.parseInt(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
 
 	}
 
@@ -384,11 +385,11 @@ public class Ruleta extends javax.swing.JFrame {
 		String input = JOptionPane.showInputDialog(null, "Adivina el número de la ruleta (0-36):");
 		int numeroIngresado = -1;
 		try {
-			numeroIngresado = Integer.valueOf(input);
+			numeroIngresado = Integer.parseInt(input);
 
 			if ((numeroIngresado >= 0 && numeroIngresado <= 36)) {
 				girarRuleta("", numeroIngresado,
-						Integer.valueOf(ObtenerIU
+						Integer.parseInt(ObtenerIU
 								.obtenerSeleccionCombo(cbValorApostado)));
 
 			} else {
@@ -400,7 +401,7 @@ public class Ruleta extends javax.swing.JFrame {
 
 			}
 
-		} catch (Exception e) {
+		} catch (HeadlessException | NumberFormatException e) {
 			JOptionPane.showMessageDialog(null,
 					"El número ingresado no es válido.",
 					"ERROR",

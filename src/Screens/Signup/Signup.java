@@ -136,7 +136,7 @@ public class Signup extends javax.swing.JFrame {
 
 			return datosUsuarioRegistrado.size() == 1;
 		} catch (SQLException e) {
-			System.out.println("Error al verificar el correo: " + e.getMessage());
+			JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
 			throw e;
 		}
 	}
@@ -153,7 +153,7 @@ public class Signup extends javax.swing.JFrame {
 
 			return datosUsuarioRegistrado.size() == 1;
 		} catch (SQLException e) {
-			System.out.println("Error al verificar el ID: " + e.getMessage());
+			JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
 			throw e;
 		}
 	}
