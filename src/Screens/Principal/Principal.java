@@ -1,11 +1,12 @@
 /*
- cSpell:ignore publicacion ubicacion operacion tahoma 
+ cSpell:ignore publicacion ubicacion operacion tahoma  boton codigo conexion simbolos
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Screens.Principal;
 
 import Screens.Custom.CambiarIU;
+import Screens.Custom.ObtenerIU;
 import Screens.Login.Login;
 import Screens.Principal.Games.Carrera;
 import Screens.Principal.Games.BlackJack;
@@ -18,7 +19,21 @@ import Screens.Profile.Transactions;
 
 import java.awt.EventQueue;
 import java.awt.Toolkit;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+
+import Code.Conexion;
+import Code.OperacionCRUD;
+import Code.VerificarDato;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+
+import javax.swing.JLabel;
 
 /**
  *
@@ -39,14 +54,98 @@ public class Principal extends javax.swing.JFrame {
                 this.setIconImage(Toolkit.getDefaultToolkit()
                                 .getImage(getClass().getResource("/img/icon.png")));
                 textosLabels();
-                ponerFondos();
+                ponerFondos(lbPonerFondos);
+                deshabilitarBotonCanjear();
         }
 
-        private void ponerFondos() {
+        public static void ponerFondos(JLabel lbPonerFondos) {
+                DecimalFormatSymbols simbolosPersonalizados = new DecimalFormatSymbols();
+                simbolosPersonalizados.setGroupingSeparator(',');
+                simbolosPersonalizados.setDecimalSeparator('.');
 
-                CambiarIU.ponerTextoEtiqueta(lbPonerFondos,
-                                (Double.toString(PersonalProfile.obtenerFondos()) + " Fondos"));
+                DecimalFormat formato = new DecimalFormat("#,###.00", simbolosPersonalizados);
+                String numeroFormateado = formato.format(PersonalProfile.obtenerFondos());
+                CambiarIU.ponerTextoEtiqueta(lbPonerFondos, numeroFormateado);
+        }
 
+        public void deshabilitarBotonCanjear() {
+                btnCanjear.setEnabled(VerificarDato.codigoPromocionalValido(ObtenerIU.obtenerTextoCampo(
+                                tfCodigoPromocional)));
+
+        }
+
+        public boolean codigoCanjeado(String codigoPromocional) {
+                try (Connection conn = Conexion.conectar()) {
+                        String query = String.format("SELECT canjeado FROM codigo_promocional WHERE codigo_id = '%s'",
+                                        codigoPromocional);
+                        ArrayList<ArrayList<Object>> resultado = OperacionCRUD.seleccionar(conn, query,
+                                        new String[] { "canjeado" });
+
+                        if (!resultado.isEmpty()) {
+                                Object canjeado = resultado.get(0).get(0);
+                                if (canjeado instanceof Integer integer) {
+                                        return integer == 1;
+                                }
+                        }
+                } catch (SQLException e) {
+                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR AL OBTENER CÓDIGO",
+                                        JOptionPane.ERROR_MESSAGE);
+                }
+                return false;
+        }
+
+        public boolean codigoRegistrado(String codigoPromocional) {
+                try (Connection conn = Conexion.conectar()) {
+                        String query = String.format("SELECT codigo_id FROM codigo_promocional WHERE codigo_id = '%s'",
+                                        codigoPromocional);
+                        ArrayList<ArrayList<Object>> resultado = OperacionCRUD.seleccionar(conn, query,
+                                        new String[] { "codigo_id" });
+
+                        return !resultado.isEmpty();
+                } catch (SQLException e) {
+                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR AL VERIFICAR CÓDIGO",
+                                        JOptionPane.ERROR_MESSAGE);
+                }
+                return false;
+        }
+
+        public void canjearCodigo(String codigoPromocional) {
+                if (!codigoCanjeado(codigoPromocional)) {
+                        try (Connection conn = Conexion.conectar()) {
+
+                                String selectSql = String.format(
+                                                "SELECT valor FROM codigo_promocional WHERE codigo_id = '%s';",
+                                                codigoPromocional);
+                                ArrayList<ArrayList<Object>> resultado = OperacionCRUD.seleccionar(conn, selectSql,
+                                                new String[] { "valor" });
+
+                                if (!resultado.isEmpty()) {
+                                        double valor = ((Number) resultado.get(0).get(0)).doubleValue();
+
+                                        String updateSql = String.format(
+                                                        "UPDATE codigo_promocional SET canjeado_por = '%d', canjeado = 1 WHERE codigo_id = '%s';",
+                                                        Login.idUsuarioGuardar, codigoPromocional);
+
+                                        OperacionCRUD.actualizar(conn, updateSql);
+
+                                        Transactions.sumarFondos(valor);
+
+                                        JOptionPane.showMessageDialog(this,
+                                                        "¡CÓDIGO PROMOCIONAL CANJEADO EXITOSAMENTE!",
+                                                        "¡ÉXITO!", JOptionPane.INFORMATION_MESSAGE);
+                                        CambiarIU.ponerTextoCampo(tfCodigoPromocional, "");
+                                } else {
+                                        JOptionPane.showMessageDialog(this, "¡CÓDIGO PROMOCIONAL NO ENCONTRADO!",
+                                                        "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+                                }
+                        } catch (SQLException e) {
+                                JOptionPane.showMessageDialog(this, "¡ERROR AL CANJEAR EL CÓDIGO PROMOCIONAL!",
+                                                "¡ERROR!", JOptionPane.ERROR_MESSAGE);
+                        }
+                } else {
+                        JOptionPane.showMessageDialog(this, "¡Este código ya ha sido canjeado!", "¡ERROR!",
+                                        JOptionPane.ERROR_MESSAGE);
+                }
         }
 
         /**
@@ -55,6 +154,8 @@ public class Principal extends javax.swing.JFrame {
          * always regenerated by the Form Editor.
          */
         @SuppressWarnings("unchecked")
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
@@ -116,6 +217,9 @@ public class Principal extends javax.swing.JFrame {
                 panelCarrera = new javax.swing.JPanel();
                 btnCarrera = new javax.swing.JButton();
                 imgCarrera = new javax.swing.JLabel();
+                tfCodigoPromocional = new javax.swing.JTextField();
+                btnCanjear = new javax.swing.JButton();
+                lbJuegos1 = new javax.swing.JLabel();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -354,6 +458,40 @@ public class Principal extends javax.swing.JFrame {
                 ventanaPrincipal.add(scPublicaciones,
                                 new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 890, 480));
 
+                tfCodigoPromocional.setBackground(new java.awt.Color(27, 9, 5));
+                tfCodigoPromocional.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+                tfCodigoPromocional.setForeground(new java.awt.Color(255, 255, 255));
+                tfCodigoPromocional.setBorder(
+                                new javax.swing.border.LineBorder(new java.awt.Color(227, 199, 104), 1, true));
+                tfCodigoPromocional.setOpaque(true);
+                tfCodigoPromocional.addKeyListener(new java.awt.event.KeyAdapter() {
+                        public void keyReleased(java.awt.event.KeyEvent evt) {
+                                tfCodigoPromocionalKeyReleased(evt);
+                        }
+                });
+                ventanaPrincipal.add(tfCodigoPromocional,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 670, 160, 30));
+
+                btnCanjear.setBackground(new java.awt.Color(147, 128, 67));
+                btnCanjear.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                btnCanjear.setForeground(new java.awt.Color(255, 255, 254));
+                btnCanjear.setText("Canjear");
+                btnCanjear.setActionCommand("Ingresar");
+                btnCanjear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnCanjear.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnCanjearActionPerformed(evt);
+                        }
+                });
+                ventanaPrincipal.add(btnCanjear, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 670, -1, 30));
+
+                lbJuegos1.setFont(new java.awt.Font("Crabs", 1, 24)); // NOI18N
+                lbJuegos1.setForeground(new java.awt.Color(227, 199, 104));
+                lbJuegos1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                lbJuegos1.setText("Codigo Promocional:");
+                lbJuegos1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+                ventanaPrincipal.add(lbJuegos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 670, 210, 30));
+
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
@@ -369,6 +507,18 @@ public class Principal extends javax.swing.JFrame {
 
                 pack();
         }// </editor-fold>//GEN-END:initComponents
+
+        private void btnCanjearActionPerformed(java.awt.event.ActionEvent evt) {
+                canjearCodigo(ObtenerIU.obtenerTextoCampo(tfCodigoPromocional));
+                deshabilitarBotonCanjear();
+                ponerFondos(lbPonerFondos);
+
+        }
+
+        private void tfCodigoPromocionalKeyReleased(java.awt.event.KeyEvent evt) {
+                deshabilitarBotonCanjear();
+
+        }
 
         private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {
                 Transactions transactions = new Transactions();
@@ -461,6 +611,7 @@ public class Principal extends javax.swing.JFrame {
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton btnBlackJack;
+        private javax.swing.JButton btnCanjear;
         private javax.swing.JButton btnCarrera;
         private javax.swing.JButton btnDados;
         private javax.swing.JButton btnDepositar;
@@ -478,6 +629,7 @@ public class Principal extends javax.swing.JFrame {
         private javax.swing.JLabel imgUsuario;
         private javax.swing.JLabel imgVolver;
         private javax.swing.JLabel lbJuegos;
+        private javax.swing.JLabel lbJuegos1;
         private javax.swing.JLabel lbPonerFondos;
         private javax.swing.JPanel panelBlackJack;
         private javax.swing.JPanel panelCarrera;
@@ -488,6 +640,7 @@ public class Principal extends javax.swing.JFrame {
         private javax.swing.JPanel panelRuleta;
         private javax.swing.JPanel panelTragaMonedas;
         private javax.swing.JScrollPane scPublicaciones;
+        private javax.swing.JTextField tfCodigoPromocional;
         private javax.swing.JPanel ventanaPrincipal;
         // End of variables declaration//GEN-END:variables
 }

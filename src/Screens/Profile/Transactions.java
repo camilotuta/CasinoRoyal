@@ -16,12 +16,13 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Screens.Custom.CambiarIU;
 import Screens.Login.Login;
+import Screens.Principal.Principal;
+
 import java.awt.HeadlessException;
 
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
@@ -43,14 +44,7 @@ public class Transactions extends javax.swing.JFrame {
 		this.setIconImage(Toolkit.getDefaultToolkit()
 				.getImage(getClass().getResource("/img/icon.png")));
 		ponerTransaccionesUsuario();
-		ponerFondos();
-	}
-
-	private void ponerFondos() {
-
-		CambiarIU.ponerTextoEtiqueta(lbPonerFondos,
-				(Double.toString(PersonalProfile.obtenerFondos()) + " Fondos"));
-
+		Principal.ponerFondos(lbPonerFondos);
 	}
 
 	private void ponerTransaccionesUsuario() {
@@ -84,30 +78,30 @@ public class Transactions extends javax.swing.JFrame {
 	public static void sumarFondos(double valor) {
 		double fondosTotales = PersonalProfile.obtenerFondos() + valor;
 		try (Connection conn = Conexion.conectar()) {
-
-			String query = "UPDATE jugadores SET fondos_jugador = ? WHERE jugador_id = ?";
-			try (PreparedStatement stmt = conn.prepareStatement(query)) {
-				stmt.setDouble(1, fondosTotales);
-				stmt.setInt(2, Login.idUsuarioGuardar);
-
-				stmt.executeUpdate();
-			}
+			String query = String.format(
+					"UPDATE jugadores SET fondos_jugador = " + fondosTotales + " WHERE jugador_id = %d",
+					Login.idUsuarioGuardar);
+			OperacionCRUD.actualizar(conn, query);
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR DE DEPÓSITO", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
 	public static void restarFondos(double valor) {
-		double fondosTotales = PersonalProfile.obtenerFondos() - valor;
+		double fondosActuales = PersonalProfile.obtenerFondos();
+
+		if (fondosActuales < valor) {
+			JOptionPane.showMessageDialog(null, "No tiene suficientes fondos para realizar este retiro.",
+					"ERROR DE RETIRO", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+
+		double fondosTotales = fondosActuales - valor;
 		try (Connection conn = Conexion.conectar()) {
-
-			String query = "UPDATE jugadores SET fondos_jugador = ? WHERE jugador_id = ?";
-			try (PreparedStatement stmt = conn.prepareStatement(query)) {
-				stmt.setDouble(1, fondosTotales);
-				stmt.setInt(2, Login.idUsuarioGuardar);
-
-				stmt.executeUpdate();
-			}
+			String query = String.format(
+					"UPDATE jugadores SET fondos_jugador = " + fondosTotales + " WHERE jugador_id = %d",
+					Login.idUsuarioGuardar);
+			OperacionCRUD.actualizar(conn, query);
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR DE RETIRO", JOptionPane.ERROR_MESSAGE);
 		}
@@ -123,7 +117,7 @@ public class Transactions extends javax.swing.JFrame {
 						valorDeposito),
 				"DEPÓSITO EXITOSO",
 				JOptionPane.INFORMATION_MESSAGE);
-		ponerFondos();
+		Principal.ponerFondos(lbPonerFondos);
 	}
 
 	private void hacerRetiro(double valorRetiro) {
@@ -136,7 +130,7 @@ public class Transactions extends javax.swing.JFrame {
 					String.format("EL RETIRO DE %.2f A SU CUENTA HA SIDO UN ÉXITO.", valorRetiro),
 					"RETIRO EXITOSO",
 					JOptionPane.INFORMATION_MESSAGE);
-			ponerFondos();
+			Principal.ponerFondos(lbPonerFondos);
 		} else {
 			JOptionPane.showMessageDialog(null, "No tienes suficientes fondos para realizar este retiro.",
 					"ERROR DE RETIRO", JOptionPane.ERROR_MESSAGE);

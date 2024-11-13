@@ -54,6 +54,10 @@ public class VerificarDato {
         return Pattern.matches("^[A-Za-zÁÉÍÓÚáéíóúÑñ ]{10,50}$", nombre);
     }
 
+    public static boolean codigoPromocionalValido(String codigoPromocional) {
+        return Pattern.matches("^[A-Za-z0-9-]{5,20}$", codigoPromocional);
+    }
+
     public static boolean correoValido(String correo) {
         return Pattern.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$", correo);
 

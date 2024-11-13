@@ -28,144 +28,140 @@ import javax.swing.SwingUtilities;
  */
 public class BlackJack extends javax.swing.JFrame {
 
-	/**
-	 * Creates new form BlackJack
-	 */
-	private ChatClient chatClient;
+        /**
+         * Creates new form BlackJack
+         */
+        private ChatClient chatClient;
 
-	public BlackJack() {
-		initComponents();
+        public BlackJack() {
+                initComponents();
 
-		this.setTitle("BlackJack");
-		this.setResizable(false);
-		this.setLocationRelativeTo(null);
+                this.setTitle("BlackJack");
+                this.setResizable(false);
+                this.setLocationRelativeTo(null);
 
-		this.setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(getClass().getResource("/img/icon.png")));
-		ingresarChat();
-		taChatBlackJack.setEditable(false);
-		ponerFondos();
-	}
+                this.setIconImage(Toolkit.getDefaultToolkit()
+                                .getImage(getClass().getResource("/img/icon.png")));
+                ingresarChat();
+                taChatBlackJack.setEditable(false);
+                Principal.ponerFondos(lbPonerFondos);
+        }
 
-	public void ponerFondos() {
+        private void ingresarChat() {
+                Thread chatThread = new Thread(() -> {
+                        String nombre = PersonalProfile.obtenerNombre();
+                        if (!nombre.isEmpty()) {
+                                chatClient = new ChatClient(nombre, taChatBlackJack, taMensaje, imgEnviar, 2222);
+                        } else {
+                                JOptionPane.showMessageDialog(null,
+                                                "No se pudo obtener el nombre del jugador.", "ERROR",
+                                                JOptionPane.ERROR_MESSAGE);
+                        }
+                });
+                chatThread.start();
+        }
 
-		CambiarIU.ponerTextoEtiqueta(lbPonerFondos,
-				(Double.toString(PersonalProfile.obtenerFondos()) + " Fondos"));
+        private void jugarBlackJack(double valorApostado) {
 
-	}
+                if (valorApostado <= 0) {
+                        JOptionPane.showMessageDialog(null, "El valor apostado debe ser mayor que cero.", "ERROR",
+                                        JOptionPane.ERROR_MESSAGE);
+                        return;
+                }
 
-	private void ingresarChat() {
-		Thread chatThread = new Thread(() -> {
-			String nombre = PersonalProfile.obtenerNombre();
-			if (!nombre.isEmpty()) {
-				chatClient = new ChatClient(nombre, taChatBlackJack, taMensaje, imgEnviar, 2222);
-			} else {
-				JOptionPane.showMessageDialog(null,
-						"No se pudo obtener el nombre del jugador.", "ERROR",
-						JOptionPane.ERROR_MESSAGE);
-			}
-		});
-		chatThread.start();
-	}
+                if (PersonalProfile.fondosSuficientes(valorApostado)) {
+                        Transactions.restarFondos(valorApostado);
+                        Principal.ponerFondos(lbPonerFondos);
+                        SoundPlay.reproducir("src/sound/blackjack.wav");
+                        SwingUtilities.invokeLater(() -> CambiarIU.deshabilitarBotones(btnJugar, btnAllIn));
 
-	private void jugarBlackJack(double valorApostado) {
+                        new Thread(() -> {
+                                try {
 
-		if (valorApostado <= 0) {
-			JOptionPane.showMessageDialog(null, "El valor apostado debe ser mayor que cero.", "ERROR",
-					JOptionPane.ERROR_MESSAGE);
-			return;
-		}
+                                        PartidaBlackJack PBJ = new PartidaBlackJack(panelJuego, valorApostado);
 
-		if (PersonalProfile.fondosSuficientes(valorApostado)) {
-			Transactions.restarFondos(valorApostado);
-			ponerFondos();
-			SoundPlay.reproducir("src/sound/blackjack.wav");
-			SwingUtilities.invokeLater(() -> CambiarIU.deshabilitarBotones(btnJugar));
+                                        Thread.sleep(2000);
 
-			new Thread(() -> {
-				try {
+                                        while (PBJ.partidaEnCurso) {
 
-					PartidaBlackJack PBJ = new PartidaBlackJack(panelJuego, valorApostado);
+                                                SwingUtilities.invokeLater(() -> {
 
-					Thread.sleep(2000);
+                                                });
+                                                Thread.sleep(100);
+                                        }
 
-					while (PBJ.partidaEnCurso) {
+                                        SwingUtilities.invokeLater(() -> Principal.ponerFondos(lbPonerFondos));
 
-						SwingUtilities.invokeLater(() -> {
+                                        SwingUtilities.invokeLater(
+                                                        () -> CambiarIU.habilitarBotones(btnJugar, btnAllIn));
 
-						});
-						Thread.sleep(100);
-					}
+                                } catch (InterruptedException e) {
 
-					SwingUtilities.invokeLater(() -> ponerFondos());
+                                        SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(null,
+                                                        e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE));
+                                } catch (Exception e) {
 
-					SwingUtilities.invokeLater(() -> CambiarIU.habilitarBotones(btnJugar));
+                                        SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(null,
+                                                        e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE));
+                                }
+                        }).start();
+                } else {
 
-				} catch (InterruptedException e) {
+                        JOptionPane.showMessageDialog(null, "No tienes suficientes fondos para esta apuesta.", "ERROR",
+                                        JOptionPane.ERROR_MESSAGE);
+                }
+        }
 
-					SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(null,
-							e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE));
-				} catch (Exception e) {
-
-					SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(null,
-							e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE));
-				}
-			}).start();
-		} else {
-
-			JOptionPane.showMessageDialog(null, "No tienes suficientes fondos para esta apuesta.", "ERROR",
-					JOptionPane.ERROR_MESSAGE);
-		}
-	}
-
-	/**
-	 * This method is called from within the constructor to initialize the
-	 * form. WARNING: Do NOT modify this code. The content of this method is
-	 * always regenerated by the Form Editor.
-	 */
-	@SuppressWarnings("unchecked")
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+        /**
+         * This method is called from within the constructor to initialize the
+         * form. WARNING: Do NOT modify this code. The content of this method is
+         * always regenerated by the Form Editor.
+         */
+        @SuppressWarnings("unchecked")
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 ventanaBlackJack = new javax.swing.JPanel();
@@ -183,6 +179,8 @@ public class BlackJack extends javax.swing.JFrame {
                 cbValorApostado = new javax.swing.JComboBox<>();
                 panelJuego = new javax.swing.JPanel();
                 lbApuesta = new javax.swing.JLabel();
+                btnAllIn = new javax.swing.JButton();
+                jLabel1 = new javax.swing.JLabel();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -196,9 +194,11 @@ public class BlackJack extends javax.swing.JFrame {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseClicked(evt);
                         }
+
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseEntered(evt);
                         }
+
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseExited(evt);
                         }
@@ -229,23 +229,26 @@ public class BlackJack extends javax.swing.JFrame {
                 lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
                 lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
                 lbPonerFondos.setText("-");
-                ventanaBlackJack.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
+                ventanaBlackJack.add(lbPonerFondos,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
 
                 lbChat.setFont(new java.awt.Font("Crabs", 1, 48)); // NOI18N
                 lbChat.setForeground(new java.awt.Color(227, 199, 104));
                 lbChat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 lbChat.setText("Chat");
-                ventanaBlackJack.add(lbChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 310, 220, -1));
+                ventanaBlackJack.add(lbChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 310, 170, -1));
 
                 taChatBlackJack.setBackground(new java.awt.Color(36, 38, 41));
                 taChatBlackJack.setColumns(20);
                 taChatBlackJack.setForeground(new java.awt.Color(148, 161, 178));
                 taChatBlackJack.setLineWrap(true);
                 taChatBlackJack.setRows(5);
-                taChatBlackJack.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 199, 104)));
+                taChatBlackJack.setBorder(
+                                javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 199, 104)));
                 scChatBlackJack.setViewportView(taChatBlackJack);
 
-                ventanaBlackJack.add(scChatBlackJack, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 370, -1, 260));
+                ventanaBlackJack.add(scChatBlackJack,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 370, -1, 260));
 
                 taMensaje.setBackground(new java.awt.Color(36, 38, 41));
                 taMensaje.setColumns(20);
@@ -263,9 +266,11 @@ public class BlackJack extends javax.swing.JFrame {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseClicked(evt);
                         }
+
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseEntered(evt);
                         }
+
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseExited(evt);
                         }
@@ -283,13 +288,15 @@ public class BlackJack extends javax.swing.JFrame {
                                 btnJugarActionPerformed(evt);
                         }
                 });
-                ventanaBlackJack.add(btnJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 620, 140, 50));
+                ventanaBlackJack.add(btnJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 620, 140, 50));
 
                 cbValorApostado.setBackground(new java.awt.Color(27, 9, 5));
                 cbValorApostado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                 cbValorApostado.setForeground(new java.awt.Color(224, 195, 102));
-                cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500", "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
-                ventanaBlackJack.add(cbValorApostado, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 630, 190, 40));
+                cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500",
+                                "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
+                ventanaBlackJack.add(cbValorApostado,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 630, 190, 40));
 
                 panelJuego.setBackground(new java.awt.Color(36, 38, 41));
                 panelJuego.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 0)));
@@ -297,13 +304,11 @@ public class BlackJack extends javax.swing.JFrame {
                 javax.swing.GroupLayout panelJuegoLayout = new javax.swing.GroupLayout(panelJuego);
                 panelJuego.setLayout(panelJuegoLayout);
                 panelJuegoLayout.setHorizontalGroup(
-                        panelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 598, Short.MAX_VALUE)
-                );
+                                panelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGap(0, 598, Short.MAX_VALUE));
                 panelJuegoLayout.setVerticalGroup(
-                        panelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 408, Short.MAX_VALUE)
-                );
+                                panelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGap(0, 408, Short.MAX_VALUE));
 
                 ventanaBlackJack.add(panelJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 600, 410));
 
@@ -311,82 +316,109 @@ public class BlackJack extends javax.swing.JFrame {
                 lbApuesta.setForeground(new java.awt.Color(227, 199, 104));
                 lbApuesta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 lbApuesta.setText("Apuesta");
-                ventanaBlackJack.add(lbApuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 600, 190, 30));
+                ventanaBlackJack.add(lbApuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 600, 190, 30));
+
+                btnAllIn.setBackground(new java.awt.Color(139, 0, 0));
+                btnAllIn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+                btnAllIn.setForeground(new java.awt.Color(255, 255, 254));
+                btnAllIn.setText("All In");
+                btnAllIn.setActionCommand("Ingresar");
+                btnAllIn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 215, 0), 1, true));
+                btnAllIn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnAllIn.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                btnAllInActionPerformed(evt);
+                        }
+                });
+                ventanaBlackJack.add(btnAllIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 620, 140, 50));
+
+                jLabel1.setText("jLabel1");
+                ventanaBlackJack.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 30, 30));
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaBlackJack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaBlackJack, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
                 layout.setVerticalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaBlackJack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaBlackJack, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
 
                 pack();
         }// </editor-fold>//GEN-END:initComponents
 
-	private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {
-		jugarBlackJack(Integer.parseInt(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+        private void btnAllInActionPerformed(java.awt.event.ActionEvent evt) {
+                cbValorApostado.setSelectedIndex(0);
+                jugarBlackJack(PersonalProfile.obtenerFondos());
 
-	}
+        }
 
-	private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {
-		Transactions transactions = new Transactions();
-		transactions.setVisible(true);
-		this.setVisible(false);
-	}
+        private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {
+                jugarBlackJack(Integer.parseInt(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
 
-	private void imgEnviarMouseClicked(java.awt.event.MouseEvent evt) {
-		// pass
-	}
+        }
 
-	private void imgEnviarMouseEntered(java.awt.event.MouseEvent evt) {
-		CambiarIU.setImageLabel(imgEnviar, "src/img/enviarHover.png");
+        private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {
+                Transactions transactions = new Transactions();
+                transactions.setVisible(true);
+                this.setVisible(false);
+        }
 
-	}
+        private void imgEnviarMouseClicked(java.awt.event.MouseEvent evt) {
+                // pass
+        }
 
-	private void imgEnviarMouseExited(java.awt.event.MouseEvent evt) {
-		CambiarIU.setImageLabel(imgEnviar, "src/img/enviar.png");
+        private void imgEnviarMouseEntered(java.awt.event.MouseEvent evt) {
+                CambiarIU.setImageLabel(imgEnviar, "src/img/enviarHover.png");
 
-	}
+        }
 
-	private void imgVolverMouseEntered(java.awt.event.MouseEvent evt) {
-		CambiarIU.setImageLabel(imgVolver, "src/img/volverHover.png");
-	}
+        private void imgEnviarMouseExited(java.awt.event.MouseEvent evt) {
+                CambiarIU.setImageLabel(imgEnviar, "src/img/enviar.png");
 
-	private void imgVolverMouseExited(java.awt.event.MouseEvent evt) {
-		CambiarIU.setImageLabel(imgVolver, "src/img/volver.png");
-	}
+        }
 
-	private void imgVolverMouseClicked(java.awt.event.MouseEvent evt) {
-		if (chatClient != null) {
-			chatClient.close();
-		} else {
-			JOptionPane.showMessageDialog(null,
-					"El cliente de chat no está inicializado.", "ERROR",
-					JOptionPane.ERROR_MESSAGE);
-		}
-		Principal principal = new Principal();
-		principal.setVisible(true);
-		this.setVisible(false);
-	}
+        private void imgVolverMouseEntered(java.awt.event.MouseEvent evt) {
+                CambiarIU.setImageLabel(imgVolver, "src/img/volverHover.png");
+        }
 
-	/**
-	 * @param args the command line arguments
-	 */
-	public static void main(String args[]) {
-		FlatMacDarkLaf.setup();
-		EventQueue.invokeLater(() -> new BlackJack().setVisible(true));
-	}
+        private void imgVolverMouseExited(java.awt.event.MouseEvent evt) {
+                CambiarIU.setImageLabel(imgVolver, "src/img/volver.png");
+        }
+
+        private void imgVolverMouseClicked(java.awt.event.MouseEvent evt) {
+                if (chatClient != null) {
+                        chatClient.close();
+                } else {
+                        JOptionPane.showMessageDialog(null,
+                                        "El cliente de chat no está inicializado.", "ERROR",
+                                        JOptionPane.ERROR_MESSAGE);
+                }
+                Principal principal = new Principal();
+                principal.setVisible(true);
+                this.setVisible(false);
+        }
+
+        /**
+         * @param args the command line arguments
+         */
+        public static void main(String args[]) {
+                FlatMacDarkLaf.setup();
+                EventQueue.invokeLater(() -> new BlackJack().setVisible(true));
+        }
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
+        private javax.swing.JButton btnAllIn;
         private javax.swing.JButton btnDepositar;
         private javax.swing.JButton btnJugar;
         private javax.swing.JComboBox<String> cbValorApostado;
         private javax.swing.JLabel imgEnviar;
         private javax.swing.JLabel imgVolver;
+        private javax.swing.JLabel jLabel1;
         private javax.swing.JLabel lbApuesta;
         private javax.swing.JLabel lbBlackJack;
         private javax.swing.JLabel lbChat;

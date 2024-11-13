@@ -40,21 +40,14 @@ public class Dados extends javax.swing.JFrame {
 
                 this.setIconImage(Toolkit.getDefaultToolkit()
                                 .getImage(getClass().getResource("/img/icon.png")));
-                ponerFondos();
-        }
-
-        private void ponerFondos() {
-
-                CambiarIU.ponerTextoEtiqueta(lbPonerFondos,
-                                (Double.toString(PersonalProfile.obtenerFondos()) + " Fondos"));
-
+                Principal.ponerFondos(lbPonerFondos);
         }
 
         private void lanzarDados(String tipoApuesta, double valorApostado, Integer... args) {
                 if (PersonalProfile.fondosSuficientes(
                                 Double.parseDouble(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)))) {
                         Transactions.restarFondos(valorApostado);
-                        ponerFondos();
+                        Principal.ponerFondos(lbPonerFondos);
 
                         CambiarIU.deshabilitarBotones(btnApostarPar, btnApostarImpar, btnApostarSuma, btnApostarDobles);
                         CambiarIU.setImageLabel(lbDado1, "src/img/dados/dadoGirando.gif");
@@ -103,7 +96,7 @@ public class Dados extends javax.swing.JFrame {
                                         CambiarIU.habilitarBotones(btnApostarPar, btnApostarImpar, btnApostarSuma,
                                                         btnApostarDobles);
                                         Transactions.sumarFondos(valorGanado[0]);
-                                        ponerFondos();
+                                        Principal.ponerFondos(lbPonerFondos);
                                 } catch (InterruptedException e) {
                                         JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
                                                         JOptionPane.ERROR_MESSAGE);
@@ -152,7 +145,8 @@ public class Dados extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 ventanaBlackJack = new javax.swing.JPanel();
@@ -181,9 +175,11 @@ public class Dados extends javax.swing.JFrame {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseClicked(evt);
                         }
+
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseEntered(evt);
                         }
+
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseExited(evt);
                         }
@@ -214,7 +210,8 @@ public class Dados extends javax.swing.JFrame {
                 lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
                 lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
                 lbPonerFondos.setText("-");
-                ventanaBlackJack.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
+                ventanaBlackJack.add(lbPonerFondos,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
 
                 lbDado1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dados/dado1.png"))); // NOI18N
                 ventanaBlackJack.add(lbDado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 154, 156));
@@ -231,8 +228,10 @@ public class Dados extends javax.swing.JFrame {
                 cbValorApostado.setBackground(new java.awt.Color(27, 9, 5));
                 cbValorApostado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                 cbValorApostado.setForeground(new java.awt.Color(224, 195, 102));
-                cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500", "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
-                ventanaBlackJack.add(cbValorApostado, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 570, 190, 40));
+                cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500",
+                                "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
+                ventanaBlackJack.add(cbValorApostado,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 570, 190, 40));
 
                 btnApostarPar.setBackground(new java.awt.Color(153, 1, 102));
                 btnApostarPar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -245,7 +244,8 @@ public class Dados extends javax.swing.JFrame {
                                 btnApostarParActionPerformed(evt);
                         }
                 });
-                ventanaBlackJack.add(btnApostarPar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 580, -1, -1));
+                ventanaBlackJack.add(btnApostarPar,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 580, -1, -1));
 
                 btnApostarSuma.setBackground(new java.awt.Color(1, 153, 153));
                 btnApostarSuma.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -258,7 +258,8 @@ public class Dados extends javax.swing.JFrame {
                                 btnApostarSumaActionPerformed(evt);
                         }
                 });
-                ventanaBlackJack.add(btnApostarSuma, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 640, -1, -1));
+                ventanaBlackJack.add(btnApostarSuma,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 640, -1, -1));
 
                 btnApostarDobles.setBackground(new java.awt.Color(51, 1, 153));
                 btnApostarDobles.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -271,7 +272,8 @@ public class Dados extends javax.swing.JFrame {
                                 btnApostarDoblesActionPerformed(evt);
                         }
                 });
-                ventanaBlackJack.add(btnApostarDobles, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 640, -1, -1));
+                ventanaBlackJack.add(btnApostarDobles,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 640, -1, -1));
 
                 btnApostarImpar.setBackground(new java.awt.Color(204, 102, 1));
                 btnApostarImpar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -284,18 +286,22 @@ public class Dados extends javax.swing.JFrame {
                                 btnApostarImparActionPerformed(evt);
                         }
                 });
-                ventanaBlackJack.add(btnApostarImpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 580, -1, -1));
+                ventanaBlackJack.add(btnApostarImpar,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 580, -1, -1));
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaBlackJack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaBlackJack, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
                 layout.setVerticalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaBlackJack, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaBlackJack,
+                                                                javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
 
                 pack();
         }// </editor-fold>//GEN-END:initComponents

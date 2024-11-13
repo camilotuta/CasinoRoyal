@@ -112,11 +112,7 @@ public class PersonalProfile extends javax.swing.JFrame {
                                         CambiarIU.ponerTextoEtiqueta(lbPonerEdad, (String.valueOf(edad) + " años"));
                                 }
 
-                                Object fondos = datos.get(0).get(2);
-                                if (fondos instanceof Double) {
-                                        CambiarIU.ponerTextoEtiqueta(lbPonerFondos, (fondos + " Fondos"));
-                                }
-
+                                Principal.ponerFondos(lbPonerFondos);
                                 CambiarIU.ponerTextoArea(txtMostrarBiografia, (String) datos.get(0).get(3));
                         }
 

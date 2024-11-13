@@ -62,7 +62,6 @@ public class ChatServer {
 
                 String message;
                 while ((message = in.readLine()) != null) {
-                    System.out.println(message);
                     ChatServer.broadcast(message, this);
                 }
             } catch (IOException e) {

@@ -60,6 +60,26 @@ public class Signup extends javax.swing.JFrame {
 		desactivarBotonVerificarCodigo();
 		desactivarCamposContraseña();
 		mostrarErrores();
+		eventoRegistrar();
+	}
+
+	private void eventoRegistrar() {
+
+		pfContraseña.addActionListener(e -> {
+			try {
+				registrarUsuario();
+			} catch (SQLException e1) {
+				JOptionPane.showMessageDialog(null, e1.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+			}
+		});
+
+		pfConfirmarContraseña.addActionListener(e -> {
+			try {
+				registrarUsuario();
+			} catch (SQLException e1) {
+				JOptionPane.showMessageDialog(null, e1.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+			}
+		});
 	}
 
 	private void desactivarBotonRegistrarse() {
@@ -198,43 +218,46 @@ public class Signup extends javax.swing.JFrame {
 	}
 
 	private void registrarUsuario() throws SQLException {
+		if (btnRegistrarse.isEnabled()) {
 
-		String cedula = ObtenerIU.obtenerTextoCampo(tfCedula);
+			String cedula = ObtenerIU.obtenerTextoCampo(tfCedula);
 
-		if (!IdEstaRegistrado(cedula)) {
+			if (!IdEstaRegistrado(cedula)) {
 
-			String correo = ObtenerIU.obtenerTextoCampo(tfCorreo).toLowerCase();
-			String contraseña = Desencriptar.desencriptarContra(ObtenerIU.obtenerContraseña(pfContraseña));
+				String correo = ObtenerIU.obtenerTextoCampo(tfCorreo).toLowerCase();
+				String contraseña = Desencriptar.desencriptarContra(ObtenerIU.obtenerContraseña(pfContraseña));
 
-			String nombre = ObtenerIU.obtenerTextoCampo(tfNombre);
-			String fechaNacimiento = ObtenerIU.obtenerFechaSeleccionada(datePicker);
+				String nombre = ObtenerIU.obtenerTextoCampo(tfNombre);
+				String fechaNacimiento = ObtenerIU.obtenerFechaSeleccionada(datePicker);
 
-			String fechaNacimientoSQL = String.format("'%s'", fechaNacimiento);
+				String fechaNacimientoSQL = String.format("'%s'", fechaNacimiento);
 
-			try (Connection conn = Conexion.conectar()) {
-				OperacionCRUD.registrar(
-						conn,
-						String.format(
-								"INSERT INTO jugadores (jugador_id, nombre_usuario, correo_jugador, password_jugador, fondos_jugador, biografia, fecha_nacimiento, juego_id) "
-										+ "VALUES ('%s', '%s', '%s', '%s', 0.0, ' ', %s, NULL);",
-								cedula, nombre, correo, contraseña, fechaNacimientoSQL));
+				try (Connection conn = Conexion.conectar()) {
+					OperacionCRUD.registrar(
+							conn,
+							String.format(
+									"INSERT INTO jugadores (jugador_id, nombre_usuario, correo_jugador, password_jugador, fondos_jugador, biografia, fecha_nacimiento, juego_id) "
+											+ "VALUES ('%s', '%s', '%s', '%s', 0.0, ' ', %s, NULL);",
+									cedula, nombre, correo, contraseña, fechaNacimientoSQL));
 
-				JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(this, "¡REGISTRO EXITOSO!", "¡AVISO!",
+							JOptionPane.INFORMATION_MESSAGE);
 
-				Login.correoGuardar = correo;
-				Login login = new Login();
-				login.setVisible(true);
-				this.setVisible(false);
+					Login.correoGuardar = correo;
+					Login login = new Login();
+					login.setVisible(true);
+					this.setVisible(false);
 
-			} catch (SQLException e) {
+				} catch (SQLException e) {
 
-				JOptionPane.showMessageDialog(this, "Error al registrar el usuario: " + e.getMessage(), "ERROR",
-						JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(this, "Error al registrar el usuario: " + e.getMessage(), "ERROR",
+							JOptionPane.ERROR_MESSAGE);
+				}
+
+			} else {
+
+				JOptionPane.showMessageDialog(null, "YA EXISTE UNA CUENTA CON ESTA CÉDULA.");
 			}
-
-		} else {
-
-			JOptionPane.showMessageDialog(null, "YA EXISTE UNA CUENTA CON ESTA CÉDULA.");
 		}
 	}
 
