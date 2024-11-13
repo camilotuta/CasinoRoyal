@@ -1,11 +1,10 @@
 package servidorChatsCasinoRoyal;
 
-import consultas.OperacionCRUD;
+import consultas.Actualizar;
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.JOptionPane;
 
 public class ChatServer {
@@ -25,7 +24,7 @@ public class ChatServer {
 				appendMessage("Cliente conectado: " + clientSocket.getInetAddress());
 				ClientHandler clientHandler = new ClientHandler(clientSocket);
 				clients.add(clientHandler);
-				OperacionCRUD.actualizarPersonasConectadas(juegoId, clients.size());
+				Actualizar.actualizarPersonasConectadas(juegoId, clients.size());
 
 				new Thread(clientHandler).start();
 			}
@@ -75,18 +74,21 @@ public class ChatServer {
 				if ("Connection reset".equals(e.getMessage())) {
 					clients.remove(this);
 				} else {
-					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR AL ESCRIBIR MENSAJE", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR AL ESCRIBIR MENSAJE",
+							JOptionPane.ERROR_MESSAGE);
 				}
 			} catch (IOException e) {
-				JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR AL ESCRIBIR MENSAJE", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR AL ESCRIBIR MENSAJE",
+						JOptionPane.ERROR_MESSAGE);
 			} finally {
 				try {
 					socket.close();
 				} catch (IOException e) {
-					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR Al CERRAR CHAT", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR Al CERRAR CHAT",
+							JOptionPane.ERROR_MESSAGE);
 				}
 				clients.remove(this);
-				OperacionCRUD.actualizarPersonasConectadas(juegoId, clients.size());
+				Actualizar.actualizarPersonasConectadas(juegoId, clients.size());
 			}
 
 		}

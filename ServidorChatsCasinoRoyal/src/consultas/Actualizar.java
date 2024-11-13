@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-public class OperacionCRUD extends Conexion {
+public class Actualizar extends Conexion {
 
 	public static void actualizarPersonasConectadas(int juegoId, int personasConectadas) {
 		String query = "UPDATE JUEGOS SET personas_conectadas = ? WHERE juego_id = ?";

@@ -51,11 +51,8 @@ public class Login extends javax.swing.JFrame {
 		tfCorreo.requestFocus();
 		CambiarIU.ponerTextoCampo(tfCorreo, correoGuardar);
 
-		tfCorreo.setText("camilotuta2004@gmail.com");
-		pfContraseña.setText("Dulcehelado123.");
 		desactivarBotonIngresar();
 		eventoIngresar();
-
 	}
 
 	private void eventoIngresar() {
