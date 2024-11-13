@@ -1,5 +1,6 @@
 package servidorChatsCasinoRoyal;
 
+import consultas.OperacionCRUD;
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
@@ -8,76 +9,90 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 public class ChatServer {
-    private static List<ClientHandler> clients = new ArrayList<>();
-    private static VistaServidor vistaServidor;
 
-    public ChatServer(int PORT, VistaServidor vistaServidor) {
-        ChatServer.vistaServidor = vistaServidor;
-        appendMessage("Servidor de chat iniciado...");
+	private static final List<ClientHandler> clients = new ArrayList<>();
+	private static VistaServidor vistaServidor;
+	private static int juegoId;
 
-        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
-            while (true) {
-                Socket clientSocket = serverSocket.accept();
-                appendMessage("Cliente conectado: " + clientSocket.getInetAddress());
-                ClientHandler clientHandler = new ClientHandler(clientSocket);
-                clients.add(clientHandler);
-                new Thread(clientHandler).start();
-            }
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
-    }
+	public ChatServer(int PORT, VistaServidor vistaServidor, int juegoIdPoner) {
+		juegoId = juegoIdPoner;
+		ChatServer.vistaServidor = vistaServidor;
+		appendMessage("Servidor de chat iniciado...");
 
-    private void appendMessage(String message) {
-        vistaServidor.appendToChat(message);
-    }
+		try (ServerSocket serverSocket = new ServerSocket(PORT)) {
+			while (true) {
+				Socket clientSocket = serverSocket.accept();
+				appendMessage("Cliente conectado: " + clientSocket.getInetAddress());
+				ClientHandler clientHandler = new ClientHandler(clientSocket);
+				clients.add(clientHandler);
+				OperacionCRUD.actualizarPersonasConectadas(juegoId, clients.size());
 
-    public static void broadcast(String message, ClientHandler sender) {
-        for (ClientHandler client : clients) {
-            if (client != sender) {
-                client.sendMessage(message);
-            }
-        }
-        sender.getVistaServidor().appendToChat(message);
-    }
+				new Thread(clientHandler).start();
+			}
+		} catch (IOException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+		}
+	}
 
-    static class ClientHandler implements Runnable {
-        private Socket socket;
-        private PrintWriter out;
-        private BufferedReader in;
+	private void appendMessage(String message) {
+		vistaServidor.appendToChat(message);
+	}
 
-        public ClientHandler(Socket socket) {
-            this.socket = socket;
-        }
+	public static void broadcast(String message, ClientHandler sender) {
+		for (ClientHandler client : clients) {
+			if (client != sender) {
+				client.sendMessage(message);
+			}
+		}
+		sender.getVistaServidor().appendToChat(message);
+	}
 
-        public void sendMessage(String message) {
-            out.println(message);
-        }
+	static class ClientHandler implements Runnable {
 
-        @Override
-        public void run() {
-            try {
-                in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                out = new PrintWriter(socket.getOutputStream(), true);
+		private final Socket socket;
+		private PrintWriter out;
+		private BufferedReader in;
 
-                String message;
-                while ((message = in.readLine()) != null) {
-                    ChatServer.broadcast(message, this);
-                }
-            } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-            } finally {
-                try {
-                    socket.close();
-                } catch (IOException e) {
-                    JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-                }
-                clients.remove(this);
-            }
-        }
+		public ClientHandler(Socket socket) {
+			this.socket = socket;
+		}
 
-        public VistaServidor getVistaServidor() {
-            return vistaServidor;
-        }
-    }
+		public void sendMessage(String message) {
+			out.println(message);
+		}
+
+		@Override
+		public void run() {
+			try {
+				in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+				out = new PrintWriter(socket.getOutputStream(), true);
+
+				String message;
+				while ((message = in.readLine()) != null) {
+					ChatServer.broadcast(message, this);
+				}
+			} catch (SocketException e) {
+				if ("Connection reset".equals(e.getMessage())) {
+					clients.remove(this);
+				} else {
+					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR AL ESCRIBIR MENSAJE", JOptionPane.ERROR_MESSAGE);
+				}
+			} catch (IOException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR AL ESCRIBIR MENSAJE", JOptionPane.ERROR_MESSAGE);
+			} finally {
+				try {
+					socket.close();
+				} catch (IOException e) {
+					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR Al CERRAR CHAT", JOptionPane.ERROR_MESSAGE);
+				}
+				clients.remove(this);
+				OperacionCRUD.actualizarPersonasConectadas(juegoId, clients.size());
+			}
+
+		}
+
+		public VistaServidor getVistaServidor() {
+			return vistaServidor;
+		}
+	}
 }

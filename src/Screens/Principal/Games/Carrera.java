@@ -47,6 +47,7 @@ public class Carrera extends javax.swing.JFrame {
 		taChatCarrera.setEditable(false);
 		Principal.ponerFondos(lbPonerFondos);
 		ponerCarros();
+		Principal.ponerPersonasConectadas(lbPersonasConectadas, 6);
 	}
 
 	private void ponerCarros() {
@@ -70,6 +71,16 @@ public class Carrera extends javax.swing.JFrame {
 			}
 		});
 		chatThread.start();
+	}
+
+	private void cerrarChat() {
+		if (chatClient != null) {
+			chatClient.close();
+		} else {
+			JOptionPane.showMessageDialog(null,
+					"El cliente de chat no está inicializado.", "ERROR",
+					JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
 	private void iniciarCarrera(int carroGanador, double valorApostado) {
@@ -200,6 +211,7 @@ public class Carrera extends javax.swing.JFrame {
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
@@ -210,6 +222,7 @@ public class Carrera extends javax.swing.JFrame {
                 lbPonerFondos = new javax.swing.JLabel();
                 lbCuentaRegresiva = new javax.swing.JLabel();
                 lbChat = new javax.swing.JLabel();
+                lbPersonasConectadas = new javax.swing.JLabel();
                 scChatCarrera = new javax.swing.JScrollPane();
                 taChatCarrera = new javax.swing.JTextArea();
                 scMensaje = new javax.swing.JScrollPane();
@@ -281,6 +294,13 @@ public class Carrera extends javax.swing.JFrame {
                 lbChat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 lbChat.setText("Chat");
                 ventanaBingo.add(lbChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 310, 220, -1));
+
+                lbPersonasConectadas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+                lbPersonasConectadas.setForeground(new java.awt.Color(148, 161, 178));
+                lbPersonasConectadas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+                lbPersonasConectadas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/personas.png"))); // NOI18N
+                lbPersonasConectadas.setText("0");
+                ventanaBingo.add(lbPersonasConectadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 300, -1));
 
                 taChatCarrera.setBackground(new java.awt.Color(36, 38, 41));
                 taChatCarrera.setColumns(20);
@@ -426,6 +446,7 @@ public class Carrera extends javax.swing.JFrame {
 	}
 
 	private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {
+		cerrarChat();
 		Transactions transactions = new Transactions();
 		transactions.setVisible(true);
 		this.setVisible(false);
@@ -454,14 +475,7 @@ public class Carrera extends javax.swing.JFrame {
 	}
 
 	private void imgVolverMouseClicked(java.awt.event.MouseEvent evt) {
-		if (chatClient != null) {
-			chatClient.close();
-		} else {
-			JOptionPane.showMessageDialog(null,
-					"El cliente de chat no está inicializado.", "ERROR",
-					JOptionPane.ERROR_MESSAGE);
-
-		}
+		cerrarChat();
 		Principal principal = new Principal();
 		principal.setVisible(true);
 		this.setVisible(false);
@@ -490,6 +504,7 @@ public class Carrera extends javax.swing.JFrame {
         private javax.swing.JLabel lbCarrera;
         private javax.swing.JLabel lbChat;
         private javax.swing.JLabel lbCuentaRegresiva;
+        private javax.swing.JLabel lbPersonasConectadas;
         private javax.swing.JLabel lbPonerFondos;
         private javax.swing.JScrollPane scCarrera;
         private javax.swing.JScrollPane scChatCarrera;

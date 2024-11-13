@@ -9,7 +9,6 @@ import javax.swing.JOptionPane;
 
 public class OperacionCRUD {
 
-    // Método para registrar información en la base de datos
     public static void registrar(Connection conn, String query) throws SQLException {
         try (PreparedStatement pSt = conn.prepareStatement(query)) {
             pSt.executeUpdate();

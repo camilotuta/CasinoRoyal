@@ -45,6 +45,7 @@ public class BlackJack extends javax.swing.JFrame {
                 ingresarChat();
                 taChatBlackJack.setEditable(false);
                 Principal.ponerFondos(lbPonerFondos);
+		Principal.ponerPersonasConectadas(lbPersonasConectadas, 3);
         }
 
         private void ingresarChat() {
@@ -61,54 +62,63 @@ public class BlackJack extends javax.swing.JFrame {
                 chatThread.start();
         }
 
+        private void cerrarChat() {
+                if (chatClient != null) {
+                        chatClient.close();
+                } else {
+                        JOptionPane.showMessageDialog(null,
+                                        "El cliente de chat no está inicializado.", "ERROR",
+                                        JOptionPane.ERROR_MESSAGE);
+                }
+        }
+
         private void jugarBlackJack(double valorApostado) {
 
-                if (valorApostado <= 0) {
-                        JOptionPane.showMessageDialog(null, "El valor apostado debe ser mayor que cero.", "ERROR",
-                                        JOptionPane.ERROR_MESSAGE);
-                        return;
-                }
+                if (PersonalProfile.fondosSuficientes(
+                                Double.parseDouble(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)))) {
 
-                if (PersonalProfile.fondosSuficientes(valorApostado)) {
-                        Transactions.restarFondos(valorApostado);
-                        Principal.ponerFondos(lbPonerFondos);
-                        SoundPlay.reproducir("src/sound/blackjack.wav");
-                        SwingUtilities.invokeLater(() -> CambiarIU.deshabilitarBotones(btnJugar, btnAllIn));
+                        if (PersonalProfile.fondosSuficientes(valorApostado)) {
+                                Transactions.restarFondos(valorApostado);
+                                Principal.ponerFondos(lbPonerFondos);
+                                SoundPlay.reproducir("src/sound/blackjack.wav");
+                                SwingUtilities.invokeLater(() -> CambiarIU.deshabilitarBotones(btnJugar, btnAllIn));
 
-                        new Thread(() -> {
-                                try {
+                                new Thread(() -> {
+                                        try {
 
-                                        PartidaBlackJack PBJ = new PartidaBlackJack(panelJuego, valorApostado);
+                                                PartidaBlackJack PBJ = new PartidaBlackJack(panelJuego, valorApostado);
 
-                                        Thread.sleep(2000);
+                                                Thread.sleep(2000);
 
-                                        while (PBJ.partidaEnCurso) {
+                                                while (PBJ.partidaEnCurso) {
 
-                                                SwingUtilities.invokeLater(() -> {
+                                                        SwingUtilities.invokeLater(() -> {
 
-                                                });
-                                                Thread.sleep(100);
+                                                        });
+                                                        Thread.sleep(100);
+                                                }
+
+                                                SwingUtilities.invokeLater(() -> Principal.ponerFondos(lbPonerFondos));
+
+                                                SwingUtilities.invokeLater(
+                                                                () -> CambiarIU.habilitarBotones(btnJugar, btnAllIn));
+
+                                        } catch (InterruptedException e) {
+
+                                                SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(null,
+                                                                e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE));
+                                        } catch (Exception e) {
+
+                                                SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(null,
+                                                                e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE));
                                         }
+                                }).start();
+                        } else {
 
-                                        SwingUtilities.invokeLater(() -> Principal.ponerFondos(lbPonerFondos));
-
-                                        SwingUtilities.invokeLater(
-                                                        () -> CambiarIU.habilitarBotones(btnJugar, btnAllIn));
-
-                                } catch (InterruptedException e) {
-
-                                        SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(null,
-                                                        e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE));
-                                } catch (Exception e) {
-
-                                        SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(null,
-                                                        e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE));
-                                }
-                        }).start();
-                } else {
-
-                        JOptionPane.showMessageDialog(null, "No tienes suficientes fondos para esta apuesta.", "ERROR",
-                                        JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "No tienes suficientes fondos para esta apuesta.",
+                                                "ERROR",
+                                                JOptionPane.ERROR_MESSAGE);
+                        }
                 }
         }
 
@@ -161,6 +171,7 @@ public class BlackJack extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
@@ -170,6 +181,7 @@ public class BlackJack extends javax.swing.JFrame {
                 lbBlackJack = new javax.swing.JLabel();
                 lbPonerFondos = new javax.swing.JLabel();
                 lbChat = new javax.swing.JLabel();
+                lbPersonasConectadas = new javax.swing.JLabel();
                 scChatBlackJack = new javax.swing.JScrollPane();
                 taChatBlackJack = new javax.swing.JTextArea();
                 scMensaje = new javax.swing.JScrollPane();
@@ -233,6 +245,13 @@ public class BlackJack extends javax.swing.JFrame {
                 lbChat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 lbChat.setText("Chat");
                 ventanaBlackJack.add(lbChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 310, 220, -1));
+
+                lbPersonasConectadas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+                lbPersonasConectadas.setForeground(new java.awt.Color(148, 161, 178));
+                lbPersonasConectadas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+                lbPersonasConectadas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/personas.png"))); // NOI18N
+                lbPersonasConectadas.setText("0");
+                ventanaBlackJack.add(lbPersonasConectadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 300, -1));
 
                 taChatBlackJack.setBackground(new java.awt.Color(36, 38, 41));
                 taChatBlackJack.setColumns(20);
@@ -350,6 +369,7 @@ public class BlackJack extends javax.swing.JFrame {
         }
 
         private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarChat();
                 Transactions transactions = new Transactions();
                 transactions.setVisible(true);
                 this.setVisible(false);
@@ -378,13 +398,7 @@ public class BlackJack extends javax.swing.JFrame {
         }
 
         private void imgVolverMouseClicked(java.awt.event.MouseEvent evt) {
-                if (chatClient != null) {
-                        chatClient.close();
-                } else {
-                        JOptionPane.showMessageDialog(null,
-                                        "El cliente de chat no está inicializado.", "ERROR",
-                                        JOptionPane.ERROR_MESSAGE);
-                }
+                cerrarChat();
                 Principal principal = new Principal();
                 principal.setVisible(true);
                 this.setVisible(false);
@@ -408,6 +422,7 @@ public class BlackJack extends javax.swing.JFrame {
         private javax.swing.JLabel lbApuesta;
         private javax.swing.JLabel lbBlackJack;
         private javax.swing.JLabel lbChat;
+        private javax.swing.JLabel lbPersonasConectadas;
         private javax.swing.JLabel lbPonerFondos;
         private javax.swing.JPanel panelJuego;
         private javax.swing.JScrollPane scChatBlackJack;

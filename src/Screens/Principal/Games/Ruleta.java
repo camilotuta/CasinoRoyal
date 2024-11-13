@@ -27,144 +27,156 @@ import javax.swing.JOptionPane;
  */
 public class Ruleta extends javax.swing.JFrame {
 
-	/**
-	 * Creates new form Ruleta
-	 */
-	private ChatClient chatClient;
+        /**
+         * Creates new form Ruleta
+         */
+        private ChatClient chatClient;
 
-	public Ruleta() {
-		initComponents();
+        public Ruleta() {
+                initComponents();
 
-		this.setTitle("Ruleta");
-		this.setResizable(false);
-		this.setLocationRelativeTo(null);
+                this.setTitle("Ruleta");
+                this.setResizable(false);
+                this.setLocationRelativeTo(null);
 
-		this.setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(getClass().getResource("/img/icon.png")));
-		CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaQuieta.png");
-		ingresarChat();
-		taChatRuleta.setEditable(false);
-		Principal.ponerFondos(lbPonerFondos);
-	}
+                this.setIconImage(Toolkit.getDefaultToolkit()
+                                .getImage(getClass().getResource("/img/icon.png")));
+                CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaQuieta.png");
+                ingresarChat();
+                taChatRuleta.setEditable(false);
+                Principal.ponerFondos(lbPonerFondos);
+		Principal.ponerPersonasConectadas(lbPersonasConectadas, 2);
+        }
 
-	private void ingresarChat() {
-		Thread chatThread = new Thread(() -> {
-			String nombre = PersonalProfile.obtenerNombre();
-			if (!nombre.isEmpty()) {
-				chatClient = new ChatClient(nombre, taChatRuleta, taMensaje, imgEnviar, 4444);
-			} else {
+        private void ingresarChat() {
+                Thread chatThread = new Thread(() -> {
+                        String nombre = PersonalProfile.obtenerNombre();
+                        if (!nombre.isEmpty()) {
+                                chatClient = new ChatClient(nombre, taChatRuleta, taMensaje, imgEnviar, 4444);
+                        } else {
 
-				JOptionPane.showMessageDialog(null, "No se pudo obtener el nombre del jugador.",
-						"ERROR", JOptionPane.ERROR_MESSAGE);
-			}
-		});
-		chatThread.start();
-	}
+                                JOptionPane.showMessageDialog(null, "No se pudo obtener el nombre del jugador.",
+                                                "ERROR", JOptionPane.ERROR_MESSAGE);
+                        }
+                });
+                chatThread.start();
+        }
 
-	private void girarRuleta(String grupoApostado, int casillaApostada, double valorApostado) {
-		if (PersonalProfile
-				.fondosSuficientes(
-						Double.parseDouble(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)))) {
-			Transactions.restarFondos(valorApostado);
-			Principal.ponerFondos(lbPonerFondos);
+        private void cerrarChat() {
+                if (chatClient != null) {
+                        chatClient.close();
+                } else {
+                        JOptionPane.showMessageDialog(null,
+                                        "El cliente de chat no está inicializado.", "ERROR",
+                                        JOptionPane.ERROR_MESSAGE);
+                }
+        }
 
-			CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaGirando.gif");
-			SoundPlay.reproducir("src/sound/ruletaGirando.wav");
-			CambiarIU.deshabilitarBotones(btnAlVerde, btnAlRojo, btnAlNegro, btnIngresarNumeros);
-			int casillaJuego = CasillasRuleta.casillaAleatoria();
-			String colorJuego = CasillasRuleta.colorCasilla(casillaJuego);
+        private void girarRuleta(String grupoApostado, int casillaApostada, double valorApostado) {
+                if (PersonalProfile
+                                .fondosSuficientes(
+                                                Double.parseDouble(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)))) {
+                        Transactions.restarFondos(valorApostado);
+                        Principal.ponerFondos(lbPonerFondos);
 
-			final double[] valorGanado = { 0 };
+                        CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaGirando.gif");
+                        SoundPlay.reproducir("src/sound/ruletaGirando.wav");
+                        CambiarIU.deshabilitarBotones(btnAlVerde, btnAlRojo, btnAlNegro, btnIngresarNumeros);
+                        int casillaJuego = CasillasRuleta.casillaAleatoria();
+                        String colorJuego = CasillasRuleta.colorCasilla(casillaJuego);
 
-			new Thread(() -> {
-				try {
-					Thread.sleep(5000);
+                        final double[] valorGanado = { 0 };
 
-					if ((grupoApostado.equalsIgnoreCase("Rojo")
-							&& grupoApostado.equalsIgnoreCase(colorJuego))
-							|| (grupoApostado.equalsIgnoreCase("Negro")
-									&& grupoApostado.equalsIgnoreCase(
-											colorJuego))) {
-						valorGanado[0] = valorApostado * 2;
+                        new Thread(() -> {
+                                try {
+                                        Thread.sleep(5000);
 
-					} else if (grupoApostado.equalsIgnoreCase("Verde")
-							&& grupoApostado.equalsIgnoreCase(colorJuego)) {
-						valorGanado[0] = valorApostado * 40;
+                                        if ((grupoApostado.equalsIgnoreCase("Rojo")
+                                                        && grupoApostado.equalsIgnoreCase(colorJuego))
+                                                        || (grupoApostado.equalsIgnoreCase("Negro")
+                                                                        && grupoApostado.equalsIgnoreCase(
+                                                                                        colorJuego))) {
+                                                valorGanado[0] = valorApostado * 2;
 
-					} else if (grupoApostado.equalsIgnoreCase("")
-							&& casillaApostada == casillaJuego) {
-						valorGanado[0] = valorApostado * 35;
-					}
+                                        } else if (grupoApostado.equalsIgnoreCase("Verde")
+                                                        && grupoApostado.equalsIgnoreCase(colorJuego)) {
+                                                valorGanado[0] = valorApostado * 40;
 
-					String mensaje = "La ruleta ha caído en la casilla: " + casillaJuego + " ("
-							+ colorJuego
-							+ ")\n"
-							+ "Ganancia: $" + valorGanado[0];
+                                        } else if (grupoApostado.equalsIgnoreCase("")
+                                                        && casillaApostada == casillaJuego) {
+                                                valorGanado[0] = valorApostado * 35;
+                                        }
 
-					JOptionPane.showMessageDialog(
-							null,
-							mensaje,
-							"Resultado de la Ruleta",
-							JOptionPane.INFORMATION_MESSAGE);
+                                        String mensaje = "La ruleta ha caído en la casilla: " + casillaJuego + " ("
+                                                        + colorJuego
+                                                        + ")\n"
+                                                        + "Ganancia: $" + valorGanado[0];
 
-					Transactions.sumarFondos(valorGanado[0]);
-					Principal.ponerFondos(lbPonerFondos);
-					CambiarIU.habilitarBotones(btnAlVerde, btnAlRojo, btnAlNegro,
-							btnIngresarNumeros);
-					CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaQuieta.png");
-				} catch (InterruptedException e) {
-					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
-							JOptionPane.ERROR_MESSAGE);
-				}
-			}).start();
-		}
-	}
+                                        JOptionPane.showMessageDialog(
+                                                        null,
+                                                        mensaje,
+                                                        "Resultado de la Ruleta",
+                                                        JOptionPane.INFORMATION_MESSAGE);
 
-	/**
-	 * This method is called from within the constructor to initialize the
-	 * form. WARNING: Do NOT modify this code. The content of this method is
-	 * always regenerated by the Form Editor.
-	 */
-	@SuppressWarnings("unchecked")
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
-	// <editor-fold defaultstate="collapsed" desc="Generated
+                                        Transactions.sumarFondos(valorGanado[0]);
+                                        Principal.ponerFondos(lbPonerFondos);
+                                        CambiarIU.habilitarBotones(btnAlVerde, btnAlRojo, btnAlNegro,
+                                                        btnIngresarNumeros);
+                                        CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaQuieta.png");
+                                } catch (InterruptedException e) {
+                                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+                                                        JOptionPane.ERROR_MESSAGE);
+                                }
+                        }).start();
+                }
+        }
+
+        /**
+         * This method is called from within the constructor to initialize the
+         * form. WARNING: Do NOT modify this code. The content of this method is
+         * always regenerated by the Form Editor.
+         */
+        @SuppressWarnings("unchecked")
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
@@ -174,6 +186,7 @@ public class Ruleta extends javax.swing.JFrame {
                 lbRuleta = new javax.swing.JLabel();
                 lbPonerFondos = new javax.swing.JLabel();
                 lbChat = new javax.swing.JLabel();
+                lbPersonasConectadas = new javax.swing.JLabel();
                 scChatRuleta = new javax.swing.JScrollPane();
                 taChatRuleta = new javax.swing.JTextArea();
                 scMensaje = new javax.swing.JScrollPane();
@@ -239,6 +252,13 @@ public class Ruleta extends javax.swing.JFrame {
                 lbChat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 lbChat.setText("Chat");
                 ventanaRuleta.add(lbChat, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 310, 220, -1));
+
+                lbPersonasConectadas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+                lbPersonasConectadas.setForeground(new java.awt.Color(148, 161, 178));
+                lbPersonasConectadas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+                lbPersonasConectadas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/personas.png"))); // NOI18N
+                lbPersonasConectadas.setText("0");
+                ventanaRuleta.add(lbPersonasConectadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 300, -1));
 
                 taChatRuleta.setBackground(new java.awt.Color(36, 38, 41));
                 taChatRuleta.setColumns(20);
@@ -360,97 +380,92 @@ public class Ruleta extends javax.swing.JFrame {
                 pack();
         }// </editor-fold>//GEN-END:initComponents
 
-	private void btnAlVerdeActionPerformed(java.awt.event.ActionEvent evt) {
-		girarRuleta("Verde", -1, Integer.parseInt(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
-	}
+        private void btnAlVerdeActionPerformed(java.awt.event.ActionEvent evt) {
+                girarRuleta("Verde", -1, Integer.parseInt(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+        }
 
-	private void btnAlNegroActionPerformed(java.awt.event.ActionEvent evt) {
-		girarRuleta("Negro", -1, Integer.parseInt(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+        private void btnAlNegroActionPerformed(java.awt.event.ActionEvent evt) {
+                girarRuleta("Negro", -1, Integer.parseInt(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
 
-	}
+        }
 
-	private void btnAlRojoActionPerformed(java.awt.event.ActionEvent evt) {
-		girarRuleta("Rojo", -1, Integer.parseInt(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
+        private void btnAlRojoActionPerformed(java.awt.event.ActionEvent evt) {
+                girarRuleta("Rojo", -1, Integer.parseInt(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)));
 
-	}
+        }
 
-	private void btnIngresarNumerosActionPerformed(java.awt.event.ActionEvent evt) {
-		String input = JOptionPane.showInputDialog(null, "Adivina el número de la ruleta (0-36):");
-		int numeroIngresado = -1;
-		try {
-			numeroIngresado = Integer.parseInt(input);
+        private void btnIngresarNumerosActionPerformed(java.awt.event.ActionEvent evt) {
+                String input = JOptionPane.showInputDialog(null, "Adivina el número de la ruleta (0-36):");
+                int numeroIngresado = -1;
+                try {
+                        numeroIngresado = Integer.parseInt(input);
 
-			if ((numeroIngresado >= 0 && numeroIngresado <= 36)) {
-				girarRuleta("", numeroIngresado,
-						Integer.parseInt(ObtenerIU
-								.obtenerSeleccionCombo(cbValorApostado)));
+                        if ((numeroIngresado >= 0 && numeroIngresado <= 36)) {
+                                girarRuleta("", numeroIngresado,
+                                                Integer.parseInt(ObtenerIU
+                                                                .obtenerSeleccionCombo(cbValorApostado)));
 
-			} else {
+                        } else {
 
-				JOptionPane.showMessageDialog(null,
-						"El número ingresado no es válido (debe estar entre 0 y 36).",
-						"ERROR",
-						JOptionPane.ERROR_MESSAGE);
+                                JOptionPane.showMessageDialog(null,
+                                                "El número ingresado no es válido (debe estar entre 0 y 36).",
+                                                "ERROR",
+                                                JOptionPane.ERROR_MESSAGE);
 
-			}
+                        }
 
-		} catch (HeadlessException | NumberFormatException e) {
-			JOptionPane.showMessageDialog(null,
-					"El número ingresado no es válido.",
-					"ERROR",
-					JOptionPane.ERROR_MESSAGE);
-		}
+                } catch (HeadlessException | NumberFormatException e) {
+                        JOptionPane.showMessageDialog(null,
+                                        "El número ingresado no es válido.",
+                                        "ERROR",
+                                        JOptionPane.ERROR_MESSAGE);
+                }
 
-	}
+        }
 
-	private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {
-		Transactions transactions = new Transactions();
-		transactions.setVisible(true);
-		this.setVisible(false);
-	}
+        private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarChat();
+                Transactions transactions = new Transactions();
+                transactions.setVisible(true);
+                this.setVisible(false);
+        }
 
-	private void imgEnviarMouseClicked(java.awt.event.MouseEvent evt) {
+        private void imgEnviarMouseClicked(java.awt.event.MouseEvent evt) {
 
-	}
+        }
 
-	private void imgEnviarMouseEntered(java.awt.event.MouseEvent evt) {
-		CambiarIU.setImageLabel(imgEnviar, "src/img/enviarHover.png");
+        private void imgEnviarMouseEntered(java.awt.event.MouseEvent evt) {
+                CambiarIU.setImageLabel(imgEnviar, "src/img/enviarHover.png");
 
-	}
+        }
 
-	private void imgEnviarMouseExited(java.awt.event.MouseEvent evt) {
-		CambiarIU.setImageLabel(imgEnviar, "src/img/enviar.png");
+        private void imgEnviarMouseExited(java.awt.event.MouseEvent evt) {
+                CambiarIU.setImageLabel(imgEnviar, "src/img/enviar.png");
 
-	}
+        }
 
-	private void imgVolverMouseEntered(java.awt.event.MouseEvent evt) {
-		CambiarIU.setImageLabel(imgVolver, "src/img/volverHover.png");
-	}
+        private void imgVolverMouseEntered(java.awt.event.MouseEvent evt) {
+                CambiarIU.setImageLabel(imgVolver, "src/img/volverHover.png");
+        }
 
-	private void imgVolverMouseExited(java.awt.event.MouseEvent evt) {
-		CambiarIU.setImageLabel(imgVolver, "src/img/volver.png");
-	}
+        private void imgVolverMouseExited(java.awt.event.MouseEvent evt) {
+                CambiarIU.setImageLabel(imgVolver, "src/img/volver.png");
+        }
 
-	private void imgVolverMouseClicked(java.awt.event.MouseEvent evt) {
-		if (chatClient != null) {
-			chatClient.close();
-		} else {
+        private void imgVolverMouseClicked(java.awt.event.MouseEvent evt) {
+                cerrarChat();
+                Principal principal = new Principal();
+                principal.setVisible(true);
+                this.setVisible(false);
+        }
 
-			JOptionPane.showMessageDialog(null, "El cliente de chat no está inicializado.", "ERROR",
-					JOptionPane.ERROR_MESSAGE);
-		}
-		Principal principal = new Principal();
-		principal.setVisible(true);
-		this.setVisible(false);
-	}
-
-	/**
-	 * @param args the command line arguments
-	 */
-	public static void main(String args[]) {
-		FlatMacDarkLaf.setup();
-		EventQueue.invokeLater(() -> new Ruleta().setVisible(true));
-	}
+        /**
+         * @param args the command line arguments
+         */
+        public static void main(String args[]) {
+                FlatMacDarkLaf.setup();
+                EventQueue.invokeLater(() -> new Ruleta().setVisible(true));
+        }
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton btnAlNegro;
@@ -464,6 +479,7 @@ public class Ruleta extends javax.swing.JFrame {
         private javax.swing.JLabel lbApuesta;
         private javax.swing.JLabel lbChat;
         private javax.swing.JLabel lbContenido;
+        private javax.swing.JLabel lbPersonasConectadas;
         private javax.swing.JLabel lbPonerFondos;
         private javax.swing.JLabel lbRuleta;
         private javax.swing.JScrollPane scChatRuleta;

@@ -20,9 +20,9 @@ public class VistaServidor extends javax.swing.JFrame {
 	 * Creates new form Bingo
 	 */
 	Map<Integer, String> juegos = new HashMap<>();
-	private int PORT;
+	private final int PORT;
 
-	public VistaServidor(int PORT_JUEGO) {
+	public VistaServidor(int PORT_JUEGO, int juegoId) {
 		this.PORT = PORT_JUEGO;
 		llenarJuegos();
 
@@ -33,7 +33,7 @@ public class VistaServidor extends javax.swing.JFrame {
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/icon.png")));
 		taChatServidor.setEditable(false);
 
-		startChatServer(PORT);
+		startChatServer(PORT, juegoId);
 	}
 
 	private void llenarJuegos() {
@@ -130,9 +130,9 @@ public class VistaServidor extends javax.swing.JFrame {
 	/**
 	 * @param args the command line arguments
 	 */
-	private void startChatServer(int PORT) {
-		lbChat.setText("Chat - " + juegos.get(PORT));
-		new Thread(() -> new ChatServer(PORT, this)).start();
+	private void startChatServer(int PORT, int juegoId) {
+		lbChat.setText("Chat " + juegos.get(PORT));
+		new Thread(() -> new ChatServer(PORT, this, juegoId)).start();
 	}
 
 	public void appendToChat(String message) {

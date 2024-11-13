@@ -15,8 +15,6 @@ import javax.swing.JOptionPane;
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 import Code.OperacionCRUD;
 import Code.Dates;
@@ -56,21 +54,20 @@ public class PersonalProfile extends javax.swing.JFrame {
         }
 
         public static double obtenerFondos() {
-                try (Connection conn = Conexion.conectar()) {
-                        String query = "SELECT fondos_jugador FROM jugadores WHERE jugador_id = ?";
-                        try (PreparedStatement stmt = conn.prepareStatement(query)) {
-                                stmt.setInt(1, Login.idUsuarioGuardar);
-                                ResultSet rs = stmt.executeQuery();
+                double fondos = 0.0;
+                String query = "SELECT fondos_jugador FROM jugadores WHERE jugador_id = " + Login.idUsuarioGuardar;
+                String[] columnas = { "fondos_jugador" };
 
-                                if (rs.next()) {
-                                        return rs.getDouble("fondos_jugador");
-                                }
+                try (Connection conn = Conexion.conectar()) {
+                        ArrayList<ArrayList<Object>> resultados = OperacionCRUD.seleccionar(conn, query, columnas);
+                        if (!resultados.isEmpty()) {
+                                fondos = (double) resultados.get(0).get(0);
                         }
                 } catch (SQLException e) {
                         JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR AL OBTENER FONDOS",
                                         JOptionPane.ERROR_MESSAGE);
                 }
-                return 0.0;
+                return fondos;
         }
 
         public static boolean fondosSuficientes(double fondosMinimosJuego) {

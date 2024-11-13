@@ -51,6 +51,8 @@ public class Login extends javax.swing.JFrame {
 		tfCorreo.requestFocus();
 		CambiarIU.ponerTextoCampo(tfCorreo, correoGuardar);
 
+		tfCorreo.setText("camilotuta2004@gmail.com");
+		pfContraseña.setText("Dulcehelado123.");
 		desactivarBotonIngresar();
 		eventoIngresar();
 
@@ -267,7 +269,7 @@ public class Login extends javax.swing.JFrame {
 				try {
 					btnIngresarActionPerformed(evt);
 				} catch (SQLException e) {
-					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
