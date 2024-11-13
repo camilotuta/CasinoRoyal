@@ -101,7 +101,7 @@ public class Poker extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-        // Code">//GEN-BEGIN:initComponents
+        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 ventanaBingo = new javax.swing.JPanel();
@@ -115,10 +115,10 @@ public class Poker extends javax.swing.JFrame {
                 scMensaje = new javax.swing.JScrollPane();
                 taMensaje = new javax.swing.JTextArea();
                 imgEnviar = new javax.swing.JLabel();
+                lbContenido = new javax.swing.JLabel();
                 btnApostar = new javax.swing.JButton();
                 btnCambiarApuesta = new javax.swing.JButton();
                 btnRetirarse = new javax.swing.JButton();
-                lbContenido = new javax.swing.JLabel();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -132,11 +132,9 @@ public class Poker extends javax.swing.JFrame {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseClicked(evt);
                         }
-
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseEntered(evt);
                         }
-
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseExited(evt);
                         }
@@ -202,16 +200,17 @@ public class Poker extends javax.swing.JFrame {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseClicked(evt);
                         }
-
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseEntered(evt);
                         }
-
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseExited(evt);
                         }
                 });
                 ventanaBingo.add(imgEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 650, 40, 40));
+
+                lbContenido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 0)));
+                ventanaBingo.add(lbContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 590, 380));
 
                 btnApostar.setBackground(new java.awt.Color(51, 102, 1));
                 btnApostar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -227,8 +226,7 @@ public class Poker extends javax.swing.JFrame {
                 btnCambiarApuesta.setText("Cambiar la apuesta");
                 btnCambiarApuesta.setActionCommand("Ingresar");
                 btnCambiarApuesta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                ventanaBingo.add(btnCambiarApuesta,
-                                new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 660, 210, -1));
+                ventanaBingo.add(btnCambiarApuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 660, 210, -1));
 
                 btnRetirarse.setBackground(new java.awt.Color(153, 0, 1));
                 btnRetirarse.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -238,21 +236,16 @@ public class Poker extends javax.swing.JFrame {
                 btnRetirarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 ventanaBingo.add(btnRetirarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 630, 120, -1));
 
-                lbContenido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 0)));
-                ventanaBingo.add(lbContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 590, 380));
-
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
+                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                );
                 layout.setVerticalGroup(
-                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
+                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                );
 
                 pack();
         }// </editor-fold>//GEN-END:initComponents

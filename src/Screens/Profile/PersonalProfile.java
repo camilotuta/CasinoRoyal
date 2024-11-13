@@ -202,17 +202,18 @@ public class PersonalProfile extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
         // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 ventanaProfile = new javax.swing.JPanel();
+                lbPerfil = new javax.swing.JLabel();
+                lbPonerFondos = new javax.swing.JLabel();
                 panelMenu = new javax.swing.JPanel();
                 imgCasa = new javax.swing.JLabel();
                 imgVolver = new javax.swing.JLabel();
                 imgUsuario = new javax.swing.JLabel();
                 imgMenuBar = new javax.swing.JLabel();
-                lbPonerFondos = new javax.swing.JLabel();
-                lbPerfil = new javax.swing.JLabel();
                 lbPonerNombre = new javax.swing.JLabel();
                 lbPonerEdad = new javax.swing.JLabel();
                 lbPonerCorreo = new javax.swing.JLabel();
@@ -222,9 +223,9 @@ public class PersonalProfile extends javax.swing.JFrame {
                 lbCambiarBiografia = new javax.swing.JLabel();
                 scrollCambiarBiografia = new Screens.Custom.ScrollPaneWin11();
                 tfCambiarBiografia = new javax.swing.JTextPane();
-                btnVerTransacciones = new javax.swing.JButton();
-                btnGuardarBiografia = new javax.swing.JButton();
                 btnCancelarBiografia = new javax.swing.JButton();
+                btnGuardarBiografia = new javax.swing.JButton();
+                btnVerTransacciones = new javax.swing.JButton();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -232,6 +233,19 @@ public class PersonalProfile extends javax.swing.JFrame {
                 ventanaProfile.setForeground(new java.awt.Color(255, 255, 255));
                 ventanaProfile.setPreferredSize(new java.awt.Dimension(1080, 720));
                 ventanaProfile.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+                lbPerfil.setFont(new java.awt.Font("Crabs", 1, 100)); // NOI18N
+                lbPerfil.setForeground(new java.awt.Color(227, 199, 104));
+                lbPerfil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                lbPerfil.setText("Perfil");
+                ventanaProfile.add(lbPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1080, -1));
+
+                lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+                lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
+                lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+                lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
+                lbPonerFondos.setText("-");
+                ventanaProfile.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
 
                 panelMenu.setBackground(new java.awt.Color(22, 22, 26));
                 panelMenu.setOpaque(false);
@@ -281,19 +295,6 @@ public class PersonalProfile extends javax.swing.JFrame {
                 panelMenu.add(imgMenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, -1));
 
                 ventanaProfile.add(panelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 230, 60, 220));
-
-                lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-                lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
-                lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-                lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
-                lbPonerFondos.setText("-");
-                ventanaProfile.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
-
-                lbPerfil.setFont(new java.awt.Font("Crabs", 1, 100)); // NOI18N
-                lbPerfil.setForeground(new java.awt.Color(227, 199, 104));
-                lbPerfil.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                lbPerfil.setText("Perfil");
-                ventanaProfile.add(lbPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1080, -1));
 
                 lbPonerNombre.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
                 lbPonerNombre.setForeground(new java.awt.Color(255, 255, 255));
@@ -358,19 +359,18 @@ public class PersonalProfile extends javax.swing.JFrame {
                 ventanaProfile.add(scrollCambiarBiografia,
                                 new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 530, 380, 80));
 
-                btnVerTransacciones.setBackground(new java.awt.Color(147, 128, 67));
-                btnVerTransacciones.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-                btnVerTransacciones.setForeground(new java.awt.Color(255, 255, 254));
-                btnVerTransacciones.setText("Ver Transacciones");
-                btnVerTransacciones.setActionCommand("Ingresar");
-                btnVerTransacciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                btnVerTransacciones.addActionListener(new java.awt.event.ActionListener() {
+                btnCancelarBiografia.setBackground(new java.awt.Color(147, 128, 67));
+                btnCancelarBiografia.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                btnCancelarBiografia.setForeground(new java.awt.Color(255, 255, 254));
+                btnCancelarBiografia.setText("Cancelar");
+                btnCancelarBiografia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnCancelarBiografia.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnVerTransaccionesActionPerformed(evt);
+                                btnCancelarBiografiaActionPerformed(evt);
                         }
                 });
-                ventanaProfile.add(btnVerTransacciones,
-                                new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 650, -1, -1));
+                ventanaProfile.add(btnCancelarBiografia,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 650, -1, -1));
 
                 btnGuardarBiografia.setBackground(new java.awt.Color(147, 128, 67));
                 btnGuardarBiografia.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -385,25 +385,25 @@ public class PersonalProfile extends javax.swing.JFrame {
                                 } catch (SQLException e) {
                                         JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
                                                         JOptionPane.ERROR_MESSAGE);
-
                                 }
                         }
                 });
                 ventanaProfile.add(btnGuardarBiografia,
                                 new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 650, 110, -1));
 
-                btnCancelarBiografia.setBackground(new java.awt.Color(147, 128, 67));
-                btnCancelarBiografia.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-                btnCancelarBiografia.setForeground(new java.awt.Color(255, 255, 254));
-                btnCancelarBiografia.setText("Cancelar");
-                btnCancelarBiografia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                btnCancelarBiografia.addActionListener(new java.awt.event.ActionListener() {
+                btnVerTransacciones.setBackground(new java.awt.Color(147, 128, 67));
+                btnVerTransacciones.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+                btnVerTransacciones.setForeground(new java.awt.Color(255, 255, 254));
+                btnVerTransacciones.setText("Ver Transacciones");
+                btnVerTransacciones.setActionCommand("Ingresar");
+                btnVerTransacciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnVerTransacciones.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnCancelarBiografiaActionPerformed(evt);
+                                btnVerTransaccionesActionPerformed(evt);
                         }
                 });
-                ventanaProfile.add(btnCancelarBiografia,
-                                new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 650, -1, -1));
+                ventanaProfile.add(btnVerTransacciones,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 650, -1, -1));
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);

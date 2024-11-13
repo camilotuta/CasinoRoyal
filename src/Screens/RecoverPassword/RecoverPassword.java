@@ -133,7 +133,7 @@ public class RecoverPassword extends javax.swing.JFrame {
 
 			return datosUsuarioRegistrado.size() == 1;
 		} catch (SQLException e) {
-		JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",JOptionPane.ERROR_MESSAGE);	
+			JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
 			throw e;
 		}
 	}
@@ -189,7 +189,7 @@ public class RecoverPassword extends javax.swing.JFrame {
 				return "";
 			}
 		} catch (SQLException e) {
-		JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",JOptionPane.ERROR_MESSAGE);	
+			JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
 			throw e;
 		}
 	}
@@ -255,24 +255,25 @@ public class RecoverPassword extends javax.swing.JFrame {
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
 	// Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
 
 		ventanaSignup = new javax.swing.JPanel();
-		lbErrorContraseña = new javax.swing.JLabel();
-		lbErrorConfContraseña = new javax.swing.JLabel();
-		lbRegistro = new javax.swing.JLabel();
+		lbRecuperarContraseña = new javax.swing.JLabel();
 		lbCorreo = new javax.swing.JLabel();
 		tfCorreo = new javax.swing.JTextField();
 		btnEnviarCodigo = new javax.swing.JButton();
 		tfRecibirCodigo = new javax.swing.JTextField();
 		btnVerificarCodigo = new javax.swing.JButton();
-		lbConfContraseña = new javax.swing.JLabel();
-		pfConfirmarContraseña = new javax.swing.JPasswordField();
 		lbNuevaContraseña = new javax.swing.JLabel();
 		pfContraseña = new javax.swing.JPasswordField();
-		btnConfirmar = new javax.swing.JButton();
+		lbErrorContraseña = new javax.swing.JLabel();
+		lbConfContraseña = new javax.swing.JLabel();
+		pfConfirmarContraseña = new javax.swing.JPasswordField();
+		lbErrorConfContraseña = new javax.swing.JLabel();
 		btnRegresar = new javax.swing.JButton();
+		btnConfirmar = new javax.swing.JButton();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -280,16 +281,12 @@ public class RecoverPassword extends javax.swing.JFrame {
 		ventanaSignup.setForeground(new java.awt.Color(224, 195, 102));
 		ventanaSignup.setPreferredSize(new java.awt.Dimension(1080, 720));
 		ventanaSignup.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-		ventanaSignup.add(lbErrorContraseña,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 340, 25, 25));
-		ventanaSignup.add(lbErrorConfContraseña,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 420, 25, 25));
 
-		lbRegistro.setFont(new java.awt.Font("Crabs", 1, 70)); // NOI18N
-		lbRegistro.setForeground(new java.awt.Color(227, 199, 104));
-		lbRegistro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-		lbRegistro.setText("Recuperar Contraseña");
-		ventanaSignup.add(lbRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 760, -1));
+		lbRecuperarContraseña.setFont(new java.awt.Font("Crabs", 1, 70)); // NOI18N
+		lbRecuperarContraseña.setForeground(new java.awt.Color(227, 199, 104));
+		lbRecuperarContraseña.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		lbRecuperarContraseña.setText("Recuperar Contraseña");
+		ventanaSignup.add(lbRecuperarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 760, -1));
 
 		lbCorreo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
 		lbCorreo.setForeground(new java.awt.Color(224, 195, 102));
@@ -322,8 +319,7 @@ public class RecoverPassword extends javax.swing.JFrame {
 				try {
 					btnEnviarCodigoActionPerformed(evt);
 				} catch (HeadlessException | SQLException e) {
-					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
-							JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -332,15 +328,13 @@ public class RecoverPassword extends javax.swing.JFrame {
 		tfRecibirCodigo.setBackground(new java.awt.Color(27, 9, 5));
 		tfRecibirCodigo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 		tfRecibirCodigo.setForeground(new java.awt.Color(255, 255, 255));
-		tfRecibirCodigo.setBorder(
-				new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+		tfRecibirCodigo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 		tfRecibirCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
 			public void keyReleased(java.awt.event.KeyEvent evt) {
 				tfRecibirCodigoKeyReleased(evt);
 			}
 		});
-		ventanaSignup.add(tfRecibirCodigo,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 180, 30));
+		ventanaSignup.add(tfRecibirCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 180, 30));
 
 		btnVerificarCodigo.setBackground(new java.awt.Color(147, 128, 67));
 		btnVerificarCodigo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -352,32 +346,12 @@ public class RecoverPassword extends javax.swing.JFrame {
 				btnVerificarCodigoActionPerformed(evt);
 			}
 		});
-		ventanaSignup.add(btnVerificarCodigo,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 250, -1, -1));
-
-		lbConfContraseña.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-		lbConfContraseña.setForeground(new java.awt.Color(224, 195, 102));
-		lbConfContraseña.setText("CONFIRMAR CONTRASEÑA: ");
-		ventanaSignup.add(lbConfContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, -1, -1));
-
-		pfConfirmarContraseña.setBackground(new java.awt.Color(27, 9, 5));
-		pfConfirmarContraseña.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-		pfConfirmarContraseña.setForeground(new java.awt.Color(255, 255, 255));
-		pfConfirmarContraseña.setBorder(
-				new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-		pfConfirmarContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
-			public void keyReleased(java.awt.event.KeyEvent evt) {
-				pfConfirmarContraseñaKeyReleased(evt);
-			}
-		});
-		ventanaSignup.add(pfConfirmarContraseña,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 420, 310, 30));
+		ventanaSignup.add(btnVerificarCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 250, -1, -1));
 
 		lbNuevaContraseña.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
 		lbNuevaContraseña.setForeground(new java.awt.Color(224, 195, 102));
 		lbNuevaContraseña.setText("NUEVA CONTRASEÑA: ");
-		ventanaSignup.add(lbNuevaContraseña,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, -1));
+		ventanaSignup.add(lbNuevaContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, -1));
 
 		pfContraseña.setBackground(new java.awt.Color(27, 9, 5));
 		pfContraseña.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -389,25 +363,24 @@ public class RecoverPassword extends javax.swing.JFrame {
 			}
 		});
 		ventanaSignup.add(pfContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, 310, 30));
+		ventanaSignup.add(lbErrorContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 340, 25, 25));
 
-		btnConfirmar.setBackground(new java.awt.Color(147, 128, 67));
-		btnConfirmar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-		btnConfirmar.setForeground(new java.awt.Color(255, 255, 254));
-		btnConfirmar.setText("Confirmar");
-		btnConfirmar.setActionCommand("Ingresar");
-		btnConfirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-		btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				try {
-					btnConfirmarActionPerformed(evt);
-				} catch (SQLException e) {
-					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
-							JOptionPane.ERROR_MESSAGE);
-				}
+		lbConfContraseña.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+		lbConfContraseña.setForeground(new java.awt.Color(224, 195, 102));
+		lbConfContraseña.setText("CONFIRMAR CONTRASEÑA: ");
+		ventanaSignup.add(lbConfContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, -1, -1));
 
+		pfConfirmarContraseña.setBackground(new java.awt.Color(27, 9, 5));
+		pfConfirmarContraseña.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+		pfConfirmarContraseña.setForeground(new java.awt.Color(255, 255, 255));
+		pfConfirmarContraseña.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+		pfConfirmarContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+			public void keyReleased(java.awt.event.KeyEvent evt) {
+				pfConfirmarContraseñaKeyReleased(evt);
 			}
 		});
-		ventanaSignup.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 550, -1, -1));
+		ventanaSignup.add(pfConfirmarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 420, 310, 30));
+		ventanaSignup.add(lbErrorConfContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 420, 25, 25));
 
 		btnRegresar.setBackground(new java.awt.Color(147, 128, 67));
 		btnRegresar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -421,16 +394,33 @@ public class RecoverPassword extends javax.swing.JFrame {
 		});
 		ventanaSignup.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 550, -1, -1));
 
+		btnConfirmar.setBackground(new java.awt.Color(147, 128, 67));
+		btnConfirmar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+		btnConfirmar.setForeground(new java.awt.Color(255, 255, 254));
+		btnConfirmar.setText("Confirmar");
+		btnConfirmar.setActionCommand("Ingresar");
+		btnConfirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+		btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				try {
+					btnConfirmarActionPerformed(evt);
+				} catch (SQLException e) {
+					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
+		ventanaSignup.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 550, -1, -1));
+
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
 		layout.setHorizontalGroup(
 				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-						.addComponent(ventanaSignup, javax.swing.GroupLayout.PREFERRED_SIZE,
-								758, javax.swing.GroupLayout.PREFERRED_SIZE));
+						.addComponent(ventanaSignup, javax.swing.GroupLayout.PREFERRED_SIZE, 758,
+								javax.swing.GroupLayout.PREFERRED_SIZE));
 		layout.setVerticalGroup(
 				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-						.addComponent(ventanaSignup, javax.swing.GroupLayout.PREFERRED_SIZE,
-								625, javax.swing.GroupLayout.PREFERRED_SIZE));
+						.addComponent(ventanaSignup, javax.swing.GroupLayout.PREFERRED_SIZE, 625,
+								javax.swing.GroupLayout.PREFERRED_SIZE));
 
 		pack();
 	}// </editor-fold>//GEN-END:initComponents
@@ -504,7 +494,7 @@ public class RecoverPassword extends javax.swing.JFrame {
 	private javax.swing.JLabel lbErrorConfContraseña;
 	private javax.swing.JLabel lbErrorContraseña;
 	private javax.swing.JLabel lbNuevaContraseña;
-	private javax.swing.JLabel lbRegistro;
+	private javax.swing.JLabel lbRecuperarContraseña;
 	private javax.swing.JPasswordField pfConfirmarContraseña;
 	private javax.swing.JPasswordField pfContraseña;
 	private javax.swing.JTextField tfCorreo;

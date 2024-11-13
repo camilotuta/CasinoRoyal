@@ -51,8 +51,6 @@ public class Login extends javax.swing.JFrame {
 		tfCorreo.requestFocus();
 		CambiarIU.ponerTextoCampo(tfCorreo, correoGuardar);
 
-		tfCorreo.setText("camilotuta2004@gmail.com");
-		pfContraseña.setText("Dulcehelado123.");
 		desactivarBotonIngresar();
 		eventoIngresar();
 
@@ -153,17 +151,18 @@ public class Login extends javax.swing.JFrame {
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
 	// Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
 
 		ventanaLogIn = new javax.swing.JPanel();
-		lbCambiarContraseña = new javax.swing.JLabel();
 		lbTitulo = new javax.swing.JLabel();
 		btnErroresComunes = new javax.swing.JButton();
 		lbCorreo = new javax.swing.JLabel();
 		tfCorreo = new javax.swing.JTextField();
 		lbContraseña = new javax.swing.JLabel();
 		pfContraseña = new javax.swing.JPasswordField();
+		lbCambiarContraseña = new javax.swing.JLabel();
 		btnRegistrarse = new javax.swing.JButton();
 		btnIngresar = new javax.swing.JButton();
 		txtMostrarCopy = new javax.swing.JLabel();
@@ -174,25 +173,6 @@ public class Login extends javax.swing.JFrame {
 		ventanaLogIn.setForeground(new java.awt.Color(255, 255, 255));
 		ventanaLogIn.setPreferredSize(new java.awt.Dimension(1080, 720));
 		ventanaLogIn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-		lbCambiarContraseña.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-		lbCambiarContraseña.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/help.png"))); // NOI18N
-		lbCambiarContraseña.setToolTipText("¿Deseas recuperar o cambiar tu contraseña? Click aquí.");
-		lbCambiarContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-		lbCambiarContraseña.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				lbCambiarContraseñaMouseClicked(evt);
-			}
-
-			public void mouseEntered(java.awt.event.MouseEvent evt) {
-				lbCambiarContraseñaMouseEntered(evt);
-			}
-
-			public void mouseExited(java.awt.event.MouseEvent evt) {
-				lbCambiarContraseñaMouseExited(evt);
-			}
-		});
-		ventanaLogIn.add(lbCambiarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 440, 30, 30));
 
 		lbTitulo.setFont(new java.awt.Font("Crabs", 1, 100)); // NOI18N
 		lbTitulo.setForeground(new java.awt.Color(255, 255, 254));
@@ -245,6 +225,25 @@ public class Login extends javax.swing.JFrame {
 		});
 		ventanaLogIn.add(pfContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 440, 310, 30));
 
+		lbCambiarContraseña.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+		lbCambiarContraseña.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/help.png"))); // NOI18N
+		lbCambiarContraseña.setToolTipText("¿Deseas recuperar o cambiar tu contraseña? Click aquí.");
+		lbCambiarContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+		lbCambiarContraseña.addMouseListener(new java.awt.event.MouseAdapter() {
+			public void mouseClicked(java.awt.event.MouseEvent evt) {
+				lbCambiarContraseñaMouseClicked(evt);
+			}
+
+			public void mouseEntered(java.awt.event.MouseEvent evt) {
+				lbCambiarContraseñaMouseEntered(evt);
+			}
+
+			public void mouseExited(java.awt.event.MouseEvent evt) {
+				lbCambiarContraseñaMouseExited(evt);
+			}
+		});
+		ventanaLogIn.add(lbCambiarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 440, 30, 30));
+
 		btnRegistrarse.setBackground(new java.awt.Color(147, 128, 67));
 		btnRegistrarse.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 		btnRegistrarse.setForeground(new java.awt.Color(255, 255, 255));
@@ -268,8 +267,7 @@ public class Login extends javax.swing.JFrame {
 				try {
 					btnIngresarActionPerformed(evt);
 				} catch (SQLException e) {
-					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
-							JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
