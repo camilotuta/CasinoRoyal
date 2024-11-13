@@ -323,35 +323,36 @@ public class Signup extends javax.swing.JFrame {
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// <editor-fold defaultstate="collapsed" desc="Generated
+	// <editor-fold defaultstate="collapsed" desc="Generated
 	// Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
 
 		datePicker = new DatePicker();
 		ventanaSignup = new javax.swing.JPanel();
-		lbErrorNombre = new javax.swing.JLabel();
-		lbErrorEdad = new javax.swing.JLabel();
-		lbErrorCedula = new javax.swing.JLabel();
-		lbErrorCorreo = new javax.swing.JLabel();
-		lbErrorContraseña = new javax.swing.JLabel();
-		lbErrorConfContraseña = new javax.swing.JLabel();
 		lbRegistro = new javax.swing.JLabel();
 		lbNombre = new javax.swing.JLabel();
 		tfNombre = new javax.swing.JTextField();
+		lbErrorNombre = new javax.swing.JLabel();
 		lbEdad = new javax.swing.JLabel();
 		ftFechaNacimiento = new JFormattedTextField();
+		lbErrorEdad = new javax.swing.JLabel();
 		lbCedula = new javax.swing.JLabel();
 		tfCedula = new javax.swing.JTextField();
+		lbErrorCedula = new javax.swing.JLabel();
 		lbCorreo = new javax.swing.JLabel();
 		tfCorreo = new javax.swing.JTextField();
+		lbErrorCorreo = new javax.swing.JLabel();
 		btnEnviarCodigo = new javax.swing.JButton();
 		tfRecibirCodigo = new javax.swing.JTextField();
 		btnVerificarCodigo = new javax.swing.JButton();
-		lbConfContraseña = new javax.swing.JLabel();
-		pfConfirmarContraseña = new javax.swing.JPasswordField();
 		lbContraseña = new javax.swing.JLabel();
 		pfContraseña = new javax.swing.JPasswordField();
-		btnRegistrarse = new javax.swing.JButton();
+		lbErrorContraseña = new javax.swing.JLabel();
+		lbConfContraseña = new javax.swing.JLabel();
+		pfConfirmarContraseña = new javax.swing.JPasswordField();
+		lbErrorConfContraseña = new javax.swing.JLabel();
 		btnRegresar = new javax.swing.JButton();
+		btnRegistrarse = new javax.swing.JButton();
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -359,14 +360,6 @@ public class Signup extends javax.swing.JFrame {
 		ventanaSignup.setForeground(new java.awt.Color(224, 195, 102));
 		ventanaSignup.setPreferredSize(new java.awt.Dimension(1080, 720));
 		ventanaSignup.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-		ventanaSignup.add(lbErrorNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 200, 25, 25));
-		ventanaSignup.add(lbErrorEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 250, 25, 25));
-		ventanaSignup.add(lbErrorCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 300, 25, 25));
-		ventanaSignup.add(lbErrorCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 350, 25, 25));
-		ventanaSignup.add(lbErrorContraseña,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 460, 25, 25));
-		ventanaSignup.add(lbErrorConfContraseña,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 520, 25, 25));
 
 		lbRegistro.setFont(new java.awt.Font("Crabs", 1, 100)); // NOI18N
 		lbRegistro.setForeground(new java.awt.Color(227, 199, 104));
@@ -389,6 +382,7 @@ public class Signup extends javax.swing.JFrame {
 			}
 		});
 		ventanaSignup.add(tfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, 310, 30));
+		ventanaSignup.add(lbErrorNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 200, 25, 25));
 
 		lbEdad.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
 		lbEdad.setForeground(new java.awt.Color(224, 195, 102));
@@ -414,6 +408,7 @@ public class Signup extends javax.swing.JFrame {
 				desactivarBotonRegistrarse();
 			}
 		});
+		ventanaSignup.add(lbErrorEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 250, 25, 25));
 
 		lbCedula.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
 		lbCedula.setForeground(new java.awt.Color(224, 195, 102));
@@ -430,6 +425,7 @@ public class Signup extends javax.swing.JFrame {
 			}
 		});
 		ventanaSignup.add(tfCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 300, 310, 30));
+		ventanaSignup.add(lbErrorCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 300, 25, 25));
 
 		lbCorreo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
 		lbCorreo.setForeground(new java.awt.Color(224, 195, 102));
@@ -446,6 +442,7 @@ public class Signup extends javax.swing.JFrame {
 			}
 		});
 		ventanaSignup.add(tfCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, 310, 30));
+		ventanaSignup.add(lbErrorCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 350, 25, 25));
 
 		btnEnviarCodigo.setBackground(new java.awt.Color(147, 128, 67));
 		btnEnviarCodigo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -457,9 +454,7 @@ public class Signup extends javax.swing.JFrame {
 				try {
 					btnEnviarCodigoActionPerformed(evt);
 				} catch (HeadlessException | SQLException e) {
-					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR DE DEPÓSITO",
-							JOptionPane.ERROR_MESSAGE);
-
+					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -468,15 +463,13 @@ public class Signup extends javax.swing.JFrame {
 		tfRecibirCodigo.setBackground(new java.awt.Color(27, 9, 5));
 		tfRecibirCodigo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 		tfRecibirCodigo.setForeground(new java.awt.Color(148, 161, 178));
-		tfRecibirCodigo.setBorder(
-				new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+		tfRecibirCodigo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 		tfRecibirCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
 			public void keyReleased(java.awt.event.KeyEvent evt) {
 				tfRecibirCodigoKeyReleased(evt);
 			}
 		});
-		ventanaSignup.add(tfRecibirCodigo,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, 180, 30));
+		ventanaSignup.add(tfRecibirCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 400, 180, 30));
 
 		btnVerificarCodigo.setBackground(new java.awt.Color(147, 128, 67));
 		btnVerificarCodigo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -488,27 +481,7 @@ public class Signup extends javax.swing.JFrame {
 				btnVerificarCodigoActionPerformed(evt);
 			}
 		});
-		ventanaSignup.add(btnVerificarCodigo,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 400, -1, -1));
-
-		lbConfContraseña.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-		lbConfContraseña.setForeground(new java.awt.Color(224, 195, 102));
-		lbConfContraseña.setText("CONFIRMAR CONTRASEÑA: ");
-		ventanaSignup.add(lbConfContraseña,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 520, -1, -1));
-
-		pfConfirmarContraseña.setBackground(new java.awt.Color(27, 9, 5));
-		pfConfirmarContraseña.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-		pfConfirmarContraseña.setForeground(new java.awt.Color(148, 161, 178));
-		pfConfirmarContraseña.setBorder(
-				new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-		pfConfirmarContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
-			public void keyReleased(java.awt.event.KeyEvent evt) {
-				pfConfirmarContraseñaKeyReleased(evt);
-			}
-		});
-		ventanaSignup.add(pfConfirmarContraseña,
-				new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 520, 310, 30));
+		ventanaSignup.add(btnVerificarCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 400, -1, -1));
 
 		lbContraseña.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
 		lbContraseña.setForeground(new java.awt.Color(224, 195, 102));
@@ -525,25 +498,24 @@ public class Signup extends javax.swing.JFrame {
 			}
 		});
 		ventanaSignup.add(pfContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 460, 310, 30));
+		ventanaSignup.add(lbErrorContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 460, 25, 25));
 
-		btnRegistrarse.setBackground(new java.awt.Color(147, 128, 67));
-		btnRegistrarse.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-		btnRegistrarse.setForeground(new java.awt.Color(255, 255, 254));
-		btnRegistrarse.setText("Registrarse");
-		btnRegistrarse.setActionCommand("Ingresar");
-		btnRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-		btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
-			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				try {
-					btnRegistrarseActionPerformed(evt);
-				} catch (SQLException e) {
-					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR DE DEPÓSITO",
-							JOptionPane.ERROR_MESSAGE);
+		lbConfContraseña.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+		lbConfContraseña.setForeground(new java.awt.Color(224, 195, 102));
+		lbConfContraseña.setText("CONFIRMAR CONTRASEÑA: ");
+		ventanaSignup.add(lbConfContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 520, -1, -1));
 
-				}
+		pfConfirmarContraseña.setBackground(new java.awt.Color(27, 9, 5));
+		pfConfirmarContraseña.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+		pfConfirmarContraseña.setForeground(new java.awt.Color(148, 161, 178));
+		pfConfirmarContraseña.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+		pfConfirmarContraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+			public void keyReleased(java.awt.event.KeyEvent evt) {
+				pfConfirmarContraseñaKeyReleased(evt);
 			}
 		});
-		ventanaSignup.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 580, -1, -1));
+		ventanaSignup.add(pfConfirmarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 520, 310, 30));
+		ventanaSignup.add(lbErrorConfContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 520, 25, 25));
 
 		btnRegresar.setBackground(new java.awt.Color(147, 128, 67));
 		btnRegresar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -557,18 +529,34 @@ public class Signup extends javax.swing.JFrame {
 		});
 		ventanaSignup.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 580, -1, -1));
 
+		btnRegistrarse.setBackground(new java.awt.Color(147, 128, 67));
+		btnRegistrarse.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+		btnRegistrarse.setForeground(new java.awt.Color(255, 255, 254));
+		btnRegistrarse.setText("Registrarse");
+		btnRegistrarse.setActionCommand("Ingresar");
+		btnRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+		btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				try {
+					btnRegistrarseActionPerformed(evt);
+				} catch (SQLException e) {
+					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+
+				}
+			}
+		});
+		ventanaSignup.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 580, -1, -1));
+
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
 		layout.setHorizontalGroup(
 				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 						.addComponent(ventanaSignup, javax.swing.GroupLayout.PREFERRED_SIZE,
-								javax.swing.GroupLayout.DEFAULT_SIZE,
-								javax.swing.GroupLayout.PREFERRED_SIZE));
+								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE));
 		layout.setVerticalGroup(
 				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 						.addComponent(ventanaSignup, javax.swing.GroupLayout.PREFERRED_SIZE,
-								javax.swing.GroupLayout.DEFAULT_SIZE,
-								javax.swing.GroupLayout.PREFERRED_SIZE));
+								javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE));
 
 		pack();
 	}// </editor-fold>//GEN-END:initComponents
