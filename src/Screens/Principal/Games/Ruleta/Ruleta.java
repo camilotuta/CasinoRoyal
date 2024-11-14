@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Screens.Principal.Games;
+package Screens.Principal.Games.Ruleta;
 
 import Code.ChatClient;
 import Screens.Custom.CambiarIU;
@@ -35,7 +35,7 @@ public class Ruleta extends javax.swing.JFrame {
         public Ruleta() {
                 initComponents();
 
-                this.setTitle("Ruleta");
+                this.setTitle("Resultado");
                 this.setResizable(false);
                 this.setLocationRelativeTo(null);
 
@@ -45,7 +45,8 @@ public class Ruleta extends javax.swing.JFrame {
                 ingresarChat();
                 taChatRuleta.setEditable(false);
                 Principal.ponerFondos(lbPonerFondos);
-		Principal.ponerPersonasConectadas(lbPersonasConectadas, 2);
+                Principal.ponerPersonasConectadas(lbPersonasConectadas, 2);
+
         }
 
         private void ingresarChat() {
@@ -107,6 +108,24 @@ public class Ruleta extends javax.swing.JFrame {
                                                 valorGanado[0] = valorApostado * 35;
                                         }
 
+                                        MostrarCasilla casilla = new MostrarCasilla(0, 0, 0, 0);
+                                        if (colorJuego.equalsIgnoreCase("Rojo")) {
+                                                casilla = new MostrarCasilla(casillaJuego, 200, 0, 0);
+                                                casilla.setVisible(true);
+
+                                        }
+                                        if (colorJuego.equalsIgnoreCase("Negro")) {
+                                                casilla = new MostrarCasilla(casillaJuego, 0, 0, 0);
+                                                casilla.setVisible(true);
+
+                                        }
+                                        if (colorJuego.equalsIgnoreCase("Verde")) {
+                                                casilla = new MostrarCasilla(casillaJuego, 0, 200, 0);
+                                                casilla.setVisible(true);
+
+                                        }
+                                        Thread.sleep(2000);
+                                        casilla.setVisible(false);
                                         String mensaje = "La ruleta ha caído en la casilla: " + casillaJuego + " ("
                                                         + colorJuego
                                                         + ")\n"
@@ -177,7 +196,8 @@ public class Ruleta extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 ventanaRuleta = new javax.swing.JPanel();
@@ -212,9 +232,11 @@ public class Ruleta extends javax.swing.JFrame {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseClicked(evt);
                         }
+
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseEntered(evt);
                         }
+
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseExited(evt);
                         }
@@ -258,7 +280,8 @@ public class Ruleta extends javax.swing.JFrame {
                 lbPersonasConectadas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
                 lbPersonasConectadas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/personas.png"))); // NOI18N
                 lbPersonasConectadas.setText("0");
-                ventanaRuleta.add(lbPersonasConectadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 300, -1));
+                ventanaRuleta.add(lbPersonasConectadas,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 300, -1));
 
                 taChatRuleta.setBackground(new java.awt.Color(36, 38, 41));
                 taChatRuleta.setColumns(20);
@@ -286,9 +309,11 @@ public class Ruleta extends javax.swing.JFrame {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseClicked(evt);
                         }
+
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseEntered(evt);
                         }
+
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseExited(evt);
                         }
@@ -350,7 +375,8 @@ public class Ruleta extends javax.swing.JFrame {
                                 btnIngresarNumerosActionPerformed(evt);
                         }
                 });
-                ventanaRuleta.add(btnIngresarNumeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 610, 120, -1));
+                ventanaRuleta.add(btnIngresarNumeros,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 610, 120, -1));
 
                 lbApuesta.setFont(new java.awt.Font("Crabs", 1, 24)); // NOI18N
                 lbApuesta.setForeground(new java.awt.Color(227, 199, 104));
@@ -361,21 +387,26 @@ public class Ruleta extends javax.swing.JFrame {
                 cbValorApostado.setBackground(new java.awt.Color(27, 9, 5));
                 cbValorApostado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                 cbValorApostado.setForeground(new java.awt.Color(224, 195, 102));
-                cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500", "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
-                ventanaRuleta.add(cbValorApostado, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 600, 190, 40));
+                cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500",
+                                "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
+                ventanaRuleta.add(cbValorApostado,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 600, 190, 40));
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(ventanaRuleta, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE))
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout
+                                                                .createSequentialGroup()
+                                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                                .addComponent(ventanaRuleta,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                1080,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)));
                 layout.setVerticalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaRuleta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaRuleta, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
                 pack();
         }// </editor-fold>//GEN-END:initComponents

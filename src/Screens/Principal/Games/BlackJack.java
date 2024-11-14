@@ -295,14 +295,14 @@ public class BlackJack extends javax.swing.JFrame {
                 panelJuego.setLayout(panelJuegoLayout);
                 panelJuegoLayout.setHorizontalGroup(
                         panelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 598, Short.MAX_VALUE)
+                        .addGap(0, 758, Short.MAX_VALUE)
                 );
                 panelJuegoLayout.setVerticalGroup(
                         panelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 408, Short.MAX_VALUE)
+                        .addGap(0, 428, Short.MAX_VALUE)
                 );
 
-                ventanaBlackJack.add(panelJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 600, 410));
+                ventanaBlackJack.add(panelJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 760, 430));
 
                 btnAllIn.setBackground(new java.awt.Color(139, 0, 0));
                 btnAllIn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N

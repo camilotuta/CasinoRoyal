@@ -1,4 +1,3 @@
-// cSpell:ignore ajqk curr
 package Screens.Custom.Games;
 
 import Screens.Profile.Transactions;
@@ -18,7 +17,7 @@ public class PartidaBlackJack {
             this.type = type;
         }
 
-	@Override
+        @Override
         public String toString() {
             return value + "-" + type;
         }
@@ -64,9 +63,14 @@ public class PartidaBlackJack {
     JButton hitButton = new JButton("Pedir");
     JButton stayButton = new JButton("Plantarse");
 
+    JLabel playerSumLabel = new JLabel("Tu mano actual: 0");
+
     public PartidaBlackJack(JPanel externalPanel, double valorApostado) {
         partidaEnCurso = true;
         this.gamePanel = externalPanel;
+
+        playerSumLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        playerSumLabel.setForeground(Color.WHITE);
 
         this.gamePanel.setLayout(new BorderLayout());
 
@@ -96,7 +100,6 @@ public class PartidaBlackJack {
                     if (!stayButton.isEnabled()) {
                         new Thread(() -> {
                             try {
-
                                 Thread.sleep(2000);
 
                                 dealerSum = reduceDealerAce();
@@ -129,13 +132,13 @@ public class PartidaBlackJack {
                                 cerrarJuego();
                             } catch (InterruptedException e) {
                                 JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
-                                                        JOptionPane.ERROR_MESSAGE);
+                                        JOptionPane.ERROR_MESSAGE);
                             }
                         }).start();
                     }
                 } catch (Exception e) {
-                   JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
-                                                        JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+                            JOptionPane.ERROR_MESSAGE);
                 }
             }
         }, BorderLayout.CENTER);
@@ -154,6 +157,9 @@ public class PartidaBlackJack {
         stayButton.setBackground(new Color(255, 99, 71));
         buttonPanel.add(stayButton);
 
+        buttonPanel.add(playerSumLabel);
+        // buttonPanel.setBackground(new Color(61, 61, 61));
+
         gamePanel.add(buttonPanel, BorderLayout.SOUTH);
 
         hitButton.addActionListener(e -> {
@@ -161,6 +167,9 @@ public class PartidaBlackJack {
             playerSum += card.getValue();
             playerAceCount += card.isAce() ? 1 : 0;
             playerHand.add(card);
+
+            playerSumLabel.setText("Tu mano actual: " + reducePlayerAce());
+
             if (reducePlayerAce() > 21) {
                 hitButton.setEnabled(false);
             }
@@ -210,6 +219,8 @@ public class PartidaBlackJack {
             playerAceCount += card.isAce() ? 1 : 0;
             playerHand.add(card);
         }
+
+        playerSumLabel.setText("Tu mano actual: " + playerSum);
     }
 
     public void buildDeck() {
@@ -271,5 +282,4 @@ public class PartidaBlackJack {
     public int getPlayerSum() {
         return playerSum;
     }
-
 }

@@ -12,7 +12,7 @@ import Screens.Principal.Games.Carrera;
 import Screens.Principal.Games.BlackJack;
 import Screens.Principal.Games.Dados;
 import Screens.Principal.Games.Poker;
-import Screens.Principal.Games.Ruleta;
+import Screens.Principal.Games.Ruleta.Ruleta;
 import Screens.Principal.Games.TragaMonedas;
 import Screens.Profile.PersonalProfile;
 import Screens.Profile.Transactions;
