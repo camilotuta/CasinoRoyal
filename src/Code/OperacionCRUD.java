@@ -1,3 +1,4 @@
+// cSpell: ignore operacion
 package Code;
 
 import java.sql.Connection;

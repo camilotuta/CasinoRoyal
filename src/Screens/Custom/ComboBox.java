@@ -10,5 +10,4 @@ public class ComboBox {
         comboBox.removeAllItems();
         comboBox.addItem("Seleccionar");
     }
-
 }

@@ -85,5 +85,4 @@ public class VerificarDato {
                 && confirmarContraseña.equals(contraseña);
 
     }
-
 }

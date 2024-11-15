@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Screens.Custom.Games;
+package Code.Games;
 
 import java.util.Random;
 import java.util.Arrays;
@@ -38,5 +38,4 @@ public class CasillasRuleta {
         return random.nextInt(0, 37);
 
     }
-
 }

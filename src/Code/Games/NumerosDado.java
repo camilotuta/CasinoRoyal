@@ -1,5 +1,5 @@
 // cSpell:ignore numeros
-package Screens.Custom.Games;
+package Code.Games;
 
 import java.util.Map;
 import java.util.Random;
@@ -26,5 +26,4 @@ public class NumerosDado {
     public static int cuotaSumaPagar(int suma) {
         return CUOTAS_SUMA.getOrDefault(suma, 0);
     }
-
 }

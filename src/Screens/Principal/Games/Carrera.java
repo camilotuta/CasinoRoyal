@@ -6,8 +6,8 @@
 package Screens.Principal.Games;
 
 import Code.ChatClient;
-import Screens.Custom.Games.Carrera.CarreraCarros;
-import Screens.Custom.Games.Carrera.Carro;
+import Code.Games.Carrera.CarreraCarros;
+import Code.Games.Carrera.Carro;
 import Screens.Custom.CambiarIU;
 
 import Screens.Custom.ObtenerIU;

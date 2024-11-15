@@ -1,6 +1,7 @@
 // cSpell:ignore publicacion operacion conexion
 package Code;
 
+import Code.env.EnvArchivo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -37,5 +38,4 @@ public class Conexion {
             JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
-
 }

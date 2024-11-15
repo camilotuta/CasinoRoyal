@@ -578,7 +578,6 @@ public class Signup extends javax.swing.JFrame {
 
 	private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
 		registrarUsuario();
-
 	}
 
 	private void btnVerificarCodigoActionPerformed(java.awt.event.ActionEvent evt) {
@@ -600,7 +599,6 @@ public class Signup extends javax.swing.JFrame {
 		Login login = new Login();
 		login.setVisible(true);
 		this.setVisible(false);
-
 	}
 
 	private void tfCorreoKeyReleased(java.awt.event.KeyEvent evt) {

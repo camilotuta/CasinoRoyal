@@ -9,5 +9,4 @@ public class GenerarCodigo {
     public static String getCodigo() {
         return String.valueOf(random.nextInt(100_000, 999_999));
     }
-
 }

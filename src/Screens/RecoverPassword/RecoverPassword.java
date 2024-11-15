@@ -461,7 +461,6 @@ public class RecoverPassword extends javax.swing.JFrame {
 		Login login = new Login();
 		login.setVisible(true);
 		this.setVisible(false);
-
 	}
 
 	private void tfCorreoKeyReleased(java.awt.event.KeyEvent evt) {

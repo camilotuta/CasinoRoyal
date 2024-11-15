@@ -1,5 +1,5 @@
 // cSpell:ignore GOOOOO Harvick
-package Screens.Custom.Games.Carrera;
+package Code.Games.Carrera;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -131,5 +131,4 @@ public class CarreraCarros {
     public void mostrarGanador() {
 
     }
-
 }

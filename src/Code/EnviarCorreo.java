@@ -1,9 +1,8 @@
 // cSpell:ignore optyxhhzjrbgnikz bwaj ehrc hgly starttls zjbc 
 package Code;
 
+import Code.env.EnvArchivo;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.swing.JOptionPane;
@@ -31,7 +30,6 @@ public class EnviarCorreo {
         subject = asunto;
         content = mensaje;
 
-        // Simple mail transfer protocol
         mProperties.put("mail.smtp.host", "smtp.gmail.com");
         mProperties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
         mProperties.setProperty("mail.smtp.starttls.enable", "true");
@@ -50,9 +48,9 @@ public class EnviarCorreo {
             mCorreo.setText(content, "UTF-8", "html");
 
         } catch (AddressException ex) {
-            Logger.getLogger(EnviarCorreo.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         } catch (MessagingException ex) {
-            Logger.getLogger(EnviarCorreo.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -67,10 +65,9 @@ public class EnviarCorreo {
                     null, "EL CÓDIGO HA SIDO ENVIADO A " + emailTo.toUpperCase()
                             + ".\n\nPor favor revise su carpeta de spam o correos no deseados y\nasegúrese de que el correo esté correctamente escrito.");
         } catch (NoSuchProviderException ex) {
-            Logger.getLogger(EnviarCorreo.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         } catch (MessagingException ex) {
-            Logger.getLogger(EnviarCorreo.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }
-
 }

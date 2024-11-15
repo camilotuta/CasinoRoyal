@@ -1,4 +1,5 @@
-package Screens.Custom.Games;
+// cSpell:ignore ajqk curr
+package Code.Games;
 
 import Screens.Profile.Transactions;
 import java.awt.*;

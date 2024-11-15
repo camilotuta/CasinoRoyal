@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 
 import Code.Dates;
+import Code.DatosUsuario;
 import Code.Desencriptar;
 import Code.OperacionCRUD;
 import Code.VerificarDato;
@@ -51,6 +52,8 @@ public class Login extends javax.swing.JFrame {
 		tfCorreo.requestFocus();
 		CambiarIU.ponerTextoCampo(tfCorreo, correoGuardar);
 
+		cargarDatos();
+
 		desactivarBotonIngresar();
 		eventoIngresar();
 	}
@@ -79,6 +82,20 @@ public class Login extends javax.swing.JFrame {
 				VerificarDato.correoValido((ObtenerIU.obtenerTextoCampo(tfCorreo))) && (VerificarDato
 						.contraseñaValida(Desencriptar.desencriptarContra(
 								ObtenerIU.obtenerContraseña(pfContraseña)))));
+	}
+
+	private void guardarDatos() {
+
+		new DatosUsuario().guardarInfo(ObtenerIU.obtenerTextoCampo(tfCorreo), Desencriptar.desencriptarContra(
+				ObtenerIU.obtenerContraseña(pfContraseña)));
+
+	}
+
+	private void cargarDatos() {
+		String[] datos = new DatosUsuario().obtenerInfo();
+		CambiarIU.ponerTextoCampo(tfCorreo, datos[0]);
+		CambiarIU.ponerTextoCampoContraseña(pfContraseña, datos[1]);
+
 	}
 
 	private boolean usuarioEstaRegistrado(String correo, String contraseña) throws SQLException {
@@ -115,6 +132,8 @@ public class Login extends javax.swing.JFrame {
 
 			if (usuarioEstaRegistrado(correo, contraseña)) {
 				correoGuardar = correo;
+
+				guardarDatos();
 
 				Principal pantallaPrincipal = new Principal();
 				pantallaPrincipal.setVisible(true);
@@ -317,7 +336,6 @@ public class Login extends javax.swing.JFrame {
 
 	private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
 		ingresarUsuario();
-
 	}
 
 	private void tfCorreoKeyReleased(java.awt.event.KeyEvent evt) {
@@ -326,43 +344,43 @@ public class Login extends javax.swing.JFrame {
 
 	private void btnErroresComunesActionPerformed(java.awt.event.ActionEvent evt) {
 		String texto = """
-			       \u00a1Hola! Aqu\u00ed te dejo un apartado de ayuda con algunos errores comunes y sus
-			       posibles soluciones:
-			       
-			       No puedes ingresar:
-			       Verifica tus credenciales de inicio de sesi\u00f3n.
-			       Restablece tu contrase\u00f1a si la has olvidado.
-			       Verifica tu conexi\u00f3n a internet.
-			       Si el problema persiste, contacta al soporte t\u00e9cnico de la plataforma.
-			       
-			       No puedes registrarte:
-			       Verifica que completaste todos los campos requeridos y que usaste una
-			       direcci\u00f3n de correo institucional v\u00e1lida.
-			       Si el problema persiste, intenta utilizar una direcci\u00f3n de correo electr\u00f3nico
-			       diferente o contacta al soporte t\u00e9cnico de la plataforma.
-			       
-			       Error al actualizar biograf\u00eda:
-			       Aseg\u00farate de seguir los requisitos de longitud y formato para la biograf\u00eda.
-			       Si el problema persiste, intenta actualizar tu biograf\u00eda desde otro
-			       dispositivo o navegador o contacta al soporte t\u00e9cnico de la plataforma.
-			       
-			       Error al agendar tutor\u00eda:
-			       Verifica que seleccionaste la fecha y hora correctas.
-			       Verifica que tienes los permisos necesarios para agendar una tutor\u00eda.
-			       Si el problema persiste, intenta utilizar otro dispositivo o navegador o
-			       contacta al soporte t\u00e9cnico de la plataforma.
-			       
-			       Error al actualizar lista de tareas:
-			       Aseg\u00farate de seguir los requisitos de longitud y formato para cada tarea en
-			       la lista.
-			       Verifica que tienes los permisos necesarios para actualizar la lista de
-			       tareas en la plataforma.
-			       
-			       Si necesitas ayuda adicional, por favor env\u00eda un correo especificando tu problema a alguno
-			       de los siguientes correos de contacto:
-			       
-			       Adri\u00e1n Camilo Tuta Cort\u00e9s: adriantuta.cc@academia.umb.edu.co
-			       Laura Nathalya Abril Velasquez: lauraabril.nv@academia.umb.edu.co""";
+				\u00a1Hola! Aqu\u00ed te dejo un apartado de ayuda con algunos errores comunes y sus
+				posibles soluciones:
+
+				No puedes ingresar:
+				Verifica tus credenciales de inicio de sesi\u00f3n.
+				Restablece tu contrase\u00f1a si la has olvidado.
+				Verifica tu conexi\u00f3n a internet.
+				Si el problema persiste, contacta al soporte t\u00e9cnico de la plataforma.
+
+				No puedes registrarte:
+				Verifica que completaste todos los campos requeridos y que usaste una
+				direcci\u00f3n de correo institucional v\u00e1lida.
+				Si el problema persiste, intenta utilizar una direcci\u00f3n de correo electr\u00f3nico
+				diferente o contacta al soporte t\u00e9cnico de la plataforma.
+
+				Error al actualizar biograf\u00eda:
+				Aseg\u00farate de seguir los requisitos de longitud y formato para la biograf\u00eda.
+				Si el problema persiste, intenta actualizar tu biograf\u00eda desde otro
+				dispositivo o navegador o contacta al soporte t\u00e9cnico de la plataforma.
+
+				Error al agendar tutor\u00eda:
+				Verifica que seleccionaste la fecha y hora correctas.
+				Verifica que tienes los permisos necesarios para agendar una tutor\u00eda.
+				Si el problema persiste, intenta utilizar otro dispositivo o navegador o
+				contacta al soporte t\u00e9cnico de la plataforma.
+
+				Error al actualizar lista de tareas:
+				Aseg\u00farate de seguir los requisitos de longitud y formato para cada tarea en
+				la lista.
+				Verifica que tienes los permisos necesarios para actualizar la lista de
+				tareas en la plataforma.
+
+				Si necesitas ayuda adicional, por favor env\u00eda un correo especificando tu problema a alguno
+				de los siguientes correos de contacto:
+
+				Adri\u00e1n Camilo Tuta Cort\u00e9s: adriantuta.cc@academia.umb.edu.co
+				Laura Nathalya Abril Velasquez: lauraabril.nv@academia.umb.edu.co""";
 
 		JOptionPane.showMessageDialog(this, texto, "AYUDA", JOptionPane.INFORMATION_MESSAGE);
 	}

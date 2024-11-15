@@ -1,5 +1,5 @@
 // cSpell:ignore numeros
-package Screens.Custom.Games;
+package Code.Games;
 
 import java.util.Random;
 
@@ -9,5 +9,4 @@ public class CasillasTragaMonedas {
     public static int casillaAleatorio() {
         return random.nextInt(0, 4);
     }
-
 }

@@ -1,5 +1,5 @@
 // cSpell:ignore posicion
-package Screens.Custom.Games.Carrera;
+package Code.Games.Carrera;
 
 import java.awt.Color;
 

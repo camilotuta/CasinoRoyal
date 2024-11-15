@@ -8,7 +8,7 @@ package Screens.Principal.Games;
 import Screens.Custom.CambiarIU;
 import Screens.Custom.ObtenerIU;
 import Screens.Custom.SoundPlay;
-import Screens.Custom.Games.NumerosDado;
+import Code.Games.NumerosDado;
 import Screens.Principal.Principal;
 
 import java.awt.EventQueue;
