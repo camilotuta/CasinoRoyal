@@ -126,18 +126,18 @@ public class PartidaBlackJack {
                                         + getPlayerSum() + " frente al "
                                         + getDealerSum() + ".\nGanancia: $" + valorGanado[0];
                                 Transactions.sumarFondos(valorGanado[0]);
-                                JOptionPane.showMessageDialog(null, mensaje, "Resultado de Blackjack",
+                                JOptionPane.showMessageDialog(this, mensaje, "Resultado de Blackjack",
                                         JOptionPane.INFORMATION_MESSAGE);
                                 partidaEnCurso = false;
                                 cerrarJuego();
                             } catch (InterruptedException e) {
-                                JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+                                JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR",
                                         JOptionPane.ERROR_MESSAGE);
                             }
                         }).start();
                     }
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+                    JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR",
                             JOptionPane.ERROR_MESSAGE);
                 }
             }

@@ -54,7 +54,7 @@ public class BlackJack extends javax.swing.JFrame {
                         if (!nombre.isEmpty()) {
                                 chatClient = new ChatClient(nombre, taChatBlackJack, taMensaje, imgEnviar, 2222);
                         } else {
-                                JOptionPane.showMessageDialog(null,
+                                JOptionPane.showMessageDialog(this,
                                                 "No se pudo obtener el nombre del jugador.", "ERROR",
                                                 JOptionPane.ERROR_MESSAGE);
                         }
@@ -66,7 +66,7 @@ public class BlackJack extends javax.swing.JFrame {
                 if (chatClient != null) {
                         chatClient.close();
                 } else {
-                        JOptionPane.showMessageDialog(null,
+                        JOptionPane.showMessageDialog(this,
                                         "El cliente de chat no está inicializado.", "ERROR",
                                         JOptionPane.ERROR_MESSAGE);
                 }
@@ -105,17 +105,17 @@ public class BlackJack extends javax.swing.JFrame {
 
                                         } catch (InterruptedException e) {
 
-                                                SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(null,
+                                                SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(this,
                                                                 e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE));
                                         } catch (Exception e) {
 
-                                                SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(null,
+                                                SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(this,
                                                                 e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE));
                                         }
                                 }).start();
                         } else {
 
-                                JOptionPane.showMessageDialog(null, "No tienes suficientes fondos para esta apuesta.",
+                                JOptionPane.showMessageDialog(this, "No tienes suficientes fondos para esta apuesta.",
                                                 "ERROR",
                                                 JOptionPane.ERROR_MESSAGE);
                         }
@@ -376,8 +376,8 @@ public class BlackJack extends javax.swing.JFrame {
         }
 
         private void imgEnviarMouseClicked(java.awt.event.MouseEvent evt) {
-                // pass
-        }
+
+	}
 
         private void imgEnviarMouseEntered(java.awt.event.MouseEvent evt) {
                 CambiarIU.setImageLabel(imgEnviar, "src/img/enviarHover.png");

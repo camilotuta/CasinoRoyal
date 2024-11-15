@@ -88,14 +88,14 @@ public class TragaMonedas extends javax.swing.JFrame {
                                         Thread.sleep(2000);
                                         String mensaje = "Ganancia: $" + valorGanado[0];
 
-                                        JOptionPane.showMessageDialog(null, mensaje, "Resultado de la partida",
+                                        JOptionPane.showMessageDialog(this, mensaje, "Resultado de la partida",
                                                         JOptionPane.INFORMATION_MESSAGE);
 
                                         CambiarIU.habilitarBotones(btnGirar, btnAllIn);
                                         Transactions.sumarFondos(valorGanado[0]);
                                         Principal.ponerFondos(lbPonerFondos);
                                 } catch (InterruptedException e) {
-                                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+                                        JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR",
                                                         JOptionPane.ERROR_MESSAGE);
                                 }
                         }).start();

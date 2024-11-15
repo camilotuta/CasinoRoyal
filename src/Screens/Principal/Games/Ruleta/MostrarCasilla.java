@@ -5,9 +5,9 @@
  */
 package Screens.Principal.Games.Ruleta;
 
+import java.awt.Color;
 import java.awt.Toolkit;
 
-import javax.swing.JFrame;
 
 /**
  *
@@ -19,12 +19,10 @@ public class MostrarCasilla extends javax.swing.JFrame {
          * Creates new form MostrarCasilla
          * 
          * @param numero
-         * @param r
-         * @param g
-         * @param b
+	 * @param color
          */
 
-        public MostrarCasilla(int numero, int r, int g, int b) {
+        public MostrarCasilla(int numero, Color color) {
                 initComponents();
 
                 this.setTitle("Ruleta");
@@ -33,7 +31,7 @@ public class MostrarCasilla extends javax.swing.JFrame {
 
                 this.setIconImage(Toolkit.getDefaultToolkit()
                                 .getImage(getClass().getResource("/img/icon.png")));
-                panelCasilla.setBackground(new java.awt.Color(r, g, b));
+                panelCasilla.setBackground(color);
                 lbNumeroCasilla.setText(String.valueOf(numero));
         }
 
@@ -84,18 +82,25 @@ public class MostrarCasilla extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
         // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 ventanaMostrarCasilla = new javax.swing.JPanel();
-                panelCasilla = new javax.swing.JPanel();
+                panelCasilla = new Screens.Custom.PanelRound();
                 lbNumeroCasilla = new javax.swing.JLabel();
 
-                setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
                 ventanaMostrarCasilla.setBackground(new java.awt.Color(27, 9, 5));
                 ventanaMostrarCasilla.setPreferredSize(new java.awt.Dimension(1080, 720));
                 ventanaMostrarCasilla.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+                panelCasilla.setBackground(new java.awt.Color(36, 38, 41));
+                panelCasilla.setRoundBottomLeft(30);
+                panelCasilla.setRoundBottomRight(30);
+                panelCasilla.setRoundTopLeft(30);
+                panelCasilla.setRoundTopRight(30);
 
                 lbNumeroCasilla.setFont(new java.awt.Font("Segoe UI", 1, 60)); // NOI18N
                 lbNumeroCasilla.setForeground(new java.awt.Color(255, 255, 255));
@@ -106,35 +111,29 @@ public class MostrarCasilla extends javax.swing.JFrame {
                 panelCasilla.setLayout(panelCasillaLayout);
                 panelCasillaLayout.setHorizontalGroup(
                                 panelCasillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(panelCasillaLayout.createSequentialGroup()
-                                                                .addContainerGap()
-                                                                .addComponent(lbNumeroCasilla,
-                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                108, Short.MAX_VALUE)
-                                                                .addContainerGap()));
+                                                .addComponent(lbNumeroCasilla,
+                                                                javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, 110,
+                                                                Short.MAX_VALUE));
                 panelCasillaLayout.setVerticalGroup(
                                 panelCasillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addGroup(panelCasillaLayout.createSequentialGroup()
-                                                                .addContainerGap()
-                                                                .addComponent(lbNumeroCasilla,
-                                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                                                108, Short.MAX_VALUE)
-                                                                .addContainerGap()));
+                                                .addComponent(lbNumeroCasilla, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                110, Short.MAX_VALUE));
 
                 ventanaMostrarCasilla.add(panelCasilla,
-                                new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 120, 120));
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 110, 110));
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
                                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(ventanaMostrarCasilla,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 220,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 168,
                                                                 javax.swing.GroupLayout.PREFERRED_SIZE));
                 layout.setVerticalGroup(
                                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                 .addComponent(ventanaMostrarCasilla,
-                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 185,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 150,
                                                                 javax.swing.GroupLayout.PREFERRED_SIZE));
 
                 pack();
@@ -142,7 +141,7 @@ public class MostrarCasilla extends javax.swing.JFrame {
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JLabel lbNumeroCasilla;
-        private javax.swing.JPanel panelCasilla;
+        private Screens.Custom.PanelRound panelCasilla;
         private javax.swing.JPanel ventanaMostrarCasilla;
         // End of variables declaration//GEN-END:variables
 }

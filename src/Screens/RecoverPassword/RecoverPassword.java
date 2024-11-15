@@ -96,7 +96,7 @@ public class RecoverPassword extends javax.swing.JFrame {
 
 		if (ObtenerIU.obtenerTextoCampo(tfRecibirCodigo).equals(enviarCodigo.getCodigo())
 				&& enviarCodigo.getIntentos() > 0) {
-			JOptionPane.showMessageDialog(null, "EL CÓDIGO ES CORRECTO.");
+			JOptionPane.showMessageDialog(this, "EL CÓDIGO ES CORRECTO.");
 			pfContraseña.setEnabled(true);
 			pfConfirmarContraseña.setEnabled(true);
 			enviarCodigo.setIntentos(3);
@@ -116,7 +116,7 @@ public class RecoverPassword extends javax.swing.JFrame {
 			btnVerificarCodigo.setEnabled(false);
 		} else {
 			enviarCodigo.setIntentos(enviarCodigo.getIntentos() - 1);
-			JOptionPane.showMessageDialog(null,
+			JOptionPane.showMessageDialog(this,
 					"EL CÓDIGO NO ES CORRECTO.\nTIENE " + enviarCodigo.getIntentos()
 							+ " INTENTOS.");
 		}
@@ -133,7 +133,7 @@ public class RecoverPassword extends javax.swing.JFrame {
 
 			return datosUsuarioRegistrado.size() == 1;
 		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
 			throw e;
 		}
 	}
@@ -170,7 +170,7 @@ public class RecoverPassword extends javax.swing.JFrame {
 			correoEnviado = true;
 
 		} else {
-			JOptionPane.showMessageDialog(null, "NO EXISTE UNA CUENTA CON ESTE CORREO.");
+			JOptionPane.showMessageDialog(this, "NO EXISTE UNA CUENTA CON ESTE CORREO.");
 		}
 	}
 
@@ -189,7 +189,7 @@ public class RecoverPassword extends javax.swing.JFrame {
 				return "";
 			}
 		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
 			throw e;
 		}
 	}

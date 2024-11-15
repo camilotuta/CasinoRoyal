@@ -1,6 +1,8 @@
 // cSpell:ignore posicion
 package Screens.Custom.Games.Carrera;
 
+import java.awt.Color;
+
 // 🚗
 // 🚙
 // 🎄
@@ -8,12 +10,14 @@ package Screens.Custom.Games.Carrera;
 // 🏁
 
 public class Carro {
-    private String icono, nombreConductor;
+    private String icon, nombreConductor;
     private int posicion;
+    private Color color;
 
-    public Carro(String icono, String nombre) {
+    public Carro(String icon, String nombre, Color color) {
         this.nombreConductor = nombre;
-        this.icono = icono;
+        this.icon = icon;
+        this.color = color;
     }
 
     public String getNombreConductor() {
@@ -33,10 +37,18 @@ public class Carro {
     }
 
     public String getIcon() {
-        return icono;
+        return icon;
     }
 
     public void setIcon(String icono) {
-        this.icono = icono;
+        this.icon = icono;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
 }

@@ -14,6 +14,7 @@ import Screens.Principal.Principal;
 import Screens.Profile.PersonalProfile;
 import Screens.Profile.Transactions;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
 
@@ -56,18 +57,24 @@ public class Ruleta extends javax.swing.JFrame {
                                 chatClient = new ChatClient(nombre, taChatRuleta, taMensaje, imgEnviar, 4444);
                         } else {
 
-                                JOptionPane.showMessageDialog(null, "No se pudo obtener el nombre del jugador.",
+                                JOptionPane.showMessageDialog(this, "No se pudo obtener el nombre del jugador.",
                                                 "ERROR", JOptionPane.ERROR_MESSAGE);
                         }
                 });
                 chatThread.start();
         }
 
+        private void ponerUltimaCasilla(int numero, Color color) {
+                panelUltimaCasilla.setBackground(color);
+                lbNumeroUltimaCasilla.setText(String.valueOf(numero));
+
+        }
+
         private void cerrarChat() {
                 if (chatClient != null) {
                         chatClient.close();
                 } else {
-                        JOptionPane.showMessageDialog(null,
+                        JOptionPane.showMessageDialog(this,
                                         "El cliente de chat no está inicializado.", "ERROR",
                                         JOptionPane.ERROR_MESSAGE);
                 }
@@ -108,34 +115,33 @@ public class Ruleta extends javax.swing.JFrame {
                                                 valorGanado[0] = valorApostado * 35;
                                         }
 
-                                        MostrarCasilla casilla = new MostrarCasilla(0, 0, 0, 0);
+                                        Color colorCasilla = new Color(0, 0, 0);
                                         if (colorJuego.equalsIgnoreCase("Rojo")) {
-                                                casilla = new MostrarCasilla(casillaJuego, 200, 0, 0);
-                                                casilla.setVisible(true);
+                                                colorCasilla = new Color(200, 0, 0);
 
                                         }
                                         if (colorJuego.equalsIgnoreCase("Negro")) {
-                                                casilla = new MostrarCasilla(casillaJuego, 0, 0, 0);
-                                                casilla.setVisible(true);
+                                                colorCasilla = new Color(0, 0, 0);
 
                                         }
                                         if (colorJuego.equalsIgnoreCase("Verde")) {
-                                                casilla = new MostrarCasilla(casillaJuego, 0, 200, 0);
-                                                casilla.setVisible(true);
+                                                colorCasilla = new Color(0, 200, 0);
 
                                         }
-                                        Thread.sleep(2000);
-                                        casilla.setVisible(false);
-                                        String mensaje = "La ruleta ha caído en la casilla: " + casillaJuego + " ("
-                                                        + colorJuego
-                                                        + ")\n"
-                                                        + "Ganancia: $" + valorGanado[0];
+                                        MostrarCasilla mostrarCasilla = new MostrarCasilla(casillaJuego, colorCasilla);
+                                        mostrarCasilla.setVisible(true);
 
+                                        Thread.sleep(2000);
+
+                                        String mensaje = "Ganancia: $" + valorGanado[0];
+
+                                        mostrarCasilla.setVisible(false);
                                         JOptionPane.showMessageDialog(
                                                         null,
                                                         mensaje,
                                                         "Resultado de la Ruleta",
                                                         JOptionPane.INFORMATION_MESSAGE);
+                                        ponerUltimaCasilla(casillaJuego, colorCasilla);
 
                                         Transactions.sumarFondos(valorGanado[0]);
                                         Principal.ponerFondos(lbPonerFondos);
@@ -143,7 +149,7 @@ public class Ruleta extends javax.swing.JFrame {
                                                         btnIngresarNumeros);
                                         CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaQuieta.png");
                                 } catch (InterruptedException e) {
-                                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+                                        JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR",
                                                         JOptionPane.ERROR_MESSAGE);
                                 }
                         }).start();
@@ -197,12 +203,17 @@ public class Ruleta extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
         // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 ventanaRuleta = new javax.swing.JPanel();
                 imgVolver = new javax.swing.JLabel();
                 btnDepositar = new javax.swing.JButton();
+                lbUltimaCasilla = new javax.swing.JLabel();
+                panelUltimaCasilla = new Screens.Custom.PanelRound();
+                lbNumeroUltimaCasilla = new javax.swing.JLabel();
                 lbRuleta = new javax.swing.JLabel();
                 lbPonerFondos = new javax.swing.JLabel();
                 lbChat = new javax.swing.JLabel();
@@ -255,6 +266,41 @@ public class Ruleta extends javax.swing.JFrame {
                         }
                 });
                 ventanaRuleta.add(btnDepositar, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 50, -1, -1));
+
+                lbUltimaCasilla.setFont(new java.awt.Font("Crabs", 1, 20)); // NOI18N
+                lbUltimaCasilla.setForeground(new java.awt.Color(227, 199, 104));
+                lbUltimaCasilla.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                lbUltimaCasilla.setText("Ultimo Resultado");
+                ventanaRuleta.add(lbUltimaCasilla,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 130, 150, 40));
+
+                panelUltimaCasilla.setBackground(new java.awt.Color(36, 38, 41));
+                panelUltimaCasilla.setRoundBottomLeft(30);
+                panelUltimaCasilla.setRoundBottomRight(30);
+                panelUltimaCasilla.setRoundTopLeft(30);
+                panelUltimaCasilla.setRoundTopRight(30);
+
+                lbNumeroUltimaCasilla.setFont(new java.awt.Font("Segoe UI", 1, 60)); // NOI18N
+                lbNumeroUltimaCasilla.setForeground(new java.awt.Color(255, 255, 255));
+                lbNumeroUltimaCasilla.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+                lbNumeroUltimaCasilla.setText("-");
+
+                javax.swing.GroupLayout panelUltimaCasillaLayout = new javax.swing.GroupLayout(panelUltimaCasilla);
+                panelUltimaCasilla.setLayout(panelUltimaCasillaLayout);
+                panelUltimaCasillaLayout.setHorizontalGroup(
+                                panelUltimaCasillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(lbNumeroUltimaCasilla,
+                                                                javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, 110,
+                                                                Short.MAX_VALUE));
+                panelUltimaCasillaLayout.setVerticalGroup(
+                                panelUltimaCasillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(lbNumeroUltimaCasilla,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, 110,
+                                                                Short.MAX_VALUE));
+
+                ventanaRuleta.add(panelUltimaCasilla,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 170, 110, 110));
 
                 lbRuleta.setFont(new java.awt.Font("Crabs", 1, 100)); // NOI18N
                 lbRuleta.setForeground(new java.awt.Color(227, 199, 104));
@@ -323,7 +369,7 @@ public class Ruleta extends javax.swing.JFrame {
                 lbContenido.setBackground(new java.awt.Color(36, 38, 41));
                 lbContenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 lbContenido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ruleta/ruletaQuieta.png"))); // NOI18N
-                ventanaRuleta.add(lbContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, 340, 340));
+                ventanaRuleta.add(lbContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 340, 340));
 
                 btnAlVerde.setBackground(new java.awt.Color(51, 153, 0));
                 btnAlVerde.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -336,7 +382,7 @@ public class Ruleta extends javax.swing.JFrame {
                                 btnAlVerdeActionPerformed(evt);
                         }
                 });
-                ventanaRuleta.add(btnAlVerde, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 610, 120, -1));
+                ventanaRuleta.add(btnAlVerde, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 600, 120, -1));
 
                 btnAlRojo.setBackground(new java.awt.Color(255, 0, 0));
                 btnAlRojo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -349,7 +395,7 @@ public class Ruleta extends javax.swing.JFrame {
                                 btnAlRojoActionPerformed(evt);
                         }
                 });
-                ventanaRuleta.add(btnAlRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 660, 120, -1));
+                ventanaRuleta.add(btnAlRojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 650, 120, -1));
 
                 btnAlNegro.setBackground(new java.awt.Color(0, 0, 0));
                 btnAlNegro.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -362,7 +408,7 @@ public class Ruleta extends javax.swing.JFrame {
                                 btnAlNegroActionPerformed(evt);
                         }
                 });
-                ventanaRuleta.add(btnAlNegro, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 660, 120, -1));
+                ventanaRuleta.add(btnAlNegro, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 650, 120, -1));
 
                 btnIngresarNumeros.setBackground(new java.awt.Color(153, 153, 0));
                 btnIngresarNumeros.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -376,13 +422,13 @@ public class Ruleta extends javax.swing.JFrame {
                         }
                 });
                 ventanaRuleta.add(btnIngresarNumeros,
-                                new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 610, 120, -1));
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 600, 120, -1));
 
                 lbApuesta.setFont(new java.awt.Font("Crabs", 1, 24)); // NOI18N
                 lbApuesta.setForeground(new java.awt.Color(227, 199, 104));
                 lbApuesta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 lbApuesta.setText("Apuesta");
-                ventanaRuleta.add(lbApuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 569, 190, 30));
+                ventanaRuleta.add(lbApuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 560, 190, 30));
 
                 cbValorApostado.setBackground(new java.awt.Color(27, 9, 5));
                 cbValorApostado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -390,7 +436,7 @@ public class Ruleta extends javax.swing.JFrame {
                 cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500",
                                 "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
                 ventanaRuleta.add(cbValorApostado,
-                                new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 600, 190, 40));
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 590, 190, 40));
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
@@ -438,7 +484,7 @@ public class Ruleta extends javax.swing.JFrame {
 
                         } else {
 
-                                JOptionPane.showMessageDialog(null,
+                                JOptionPane.showMessageDialog(this,
                                                 "El número ingresado no es válido (debe estar entre 0 y 36).",
                                                 "ERROR",
                                                 JOptionPane.ERROR_MESSAGE);
@@ -446,7 +492,7 @@ public class Ruleta extends javax.swing.JFrame {
                         }
 
                 } catch (HeadlessException | NumberFormatException e) {
-                        JOptionPane.showMessageDialog(null,
+                        JOptionPane.showMessageDialog(this,
                                         "El número ingresado no es válido.",
                                         "ERROR",
                                         JOptionPane.ERROR_MESSAGE);
@@ -510,9 +556,12 @@ public class Ruleta extends javax.swing.JFrame {
         private javax.swing.JLabel lbApuesta;
         private javax.swing.JLabel lbChat;
         private javax.swing.JLabel lbContenido;
+        private javax.swing.JLabel lbNumeroUltimaCasilla;
         private javax.swing.JLabel lbPersonasConectadas;
         private javax.swing.JLabel lbPonerFondos;
         private javax.swing.JLabel lbRuleta;
+        private javax.swing.JLabel lbUltimaCasilla;
+        private Screens.Custom.PanelRound panelUltimaCasilla;
         private javax.swing.JScrollPane scChatRuleta;
         private javax.swing.JScrollPane scMensaje;
         private javax.swing.JTextArea taChatRuleta;

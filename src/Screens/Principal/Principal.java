@@ -116,7 +116,7 @@ public class Principal extends javax.swing.JFrame {
                                 }
                         }
                 } catch (SQLException e) {
-                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR AL OBTENER CÓDIGO",
+                        JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR AL OBTENER CÓDIGO",
                                         JOptionPane.ERROR_MESSAGE);
                 }
                 return false;
@@ -131,7 +131,7 @@ public class Principal extends javax.swing.JFrame {
 
                         return !resultado.isEmpty();
                 } catch (SQLException e) {
-                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR AL VERIFICAR CÓDIGO",
+                        JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR AL VERIFICAR CÓDIGO",
                                         JOptionPane.ERROR_MESSAGE);
                 }
                 return false;

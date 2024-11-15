@@ -15,7 +15,7 @@ class Pista {
     private Carro carro;
 
     public Pista(Carro carro) {
-        this.tamañoPista = (int) (CarreraCarros.rand.nextInt(30, 50));
+        this.tamañoPista = (int) (CarreraCarros.rand.nextInt(30, 40));
         this.rellenarPosiciones();
         this.colocarCarro();
         this.carro = carro;

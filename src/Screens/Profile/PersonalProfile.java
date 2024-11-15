@@ -114,7 +114,7 @@ public class PersonalProfile extends javax.swing.JFrame {
                         }
 
                 } catch (SQLException e) {
-                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
         }
 
@@ -170,7 +170,7 @@ public class PersonalProfile extends javax.swing.JFrame {
                         CambiarIU.ponerTextoPanel(tfCambiarBiografia, "");
                         desactivarBotonGuardar();
                 } catch (SQLException e) {
-                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
         }
 
@@ -454,8 +454,8 @@ public class PersonalProfile extends javax.swing.JFrame {
         private void btnGuardarBiografiaActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
                 try {
                         actualizarBiografia();
-                } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+                } catch (SQLException e) {
+                        JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR",
                                         JOptionPane.ERROR_MESSAGE);
 
                 }

@@ -27,7 +27,8 @@ public class SoundPlay {
 
                 clip.drain();
             } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
+                JOptionPane.showMessageDialog(
+                        null, e.getMessage(), "ERROR",
                         JOptionPane.ERROR_MESSAGE);
             }
         });

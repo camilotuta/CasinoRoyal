@@ -1,6 +1,7 @@
 // cSpell:ignore GOOOOO Harvick
 package Screens.Custom.Games.Carrera;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,6 +15,9 @@ public class CarreraCarros {
             "Kevin Harvick");
     public static String[] iconosCarros = { "🚗", "🚙", "🚜", "🏍️", "🚚", "🚐", "🚑", "🚒", "🏎️", "🚓", "🚔", "🚕",
             "🚖", "🚘", "🚛" };
+    private static final List<Color> coloresCarros = Arrays.asList(new java.awt.Color(168, 0, 1),
+            new java.awt.Color(56, 168, 1),
+            new java.awt.Color(117, 1, 117), new java.awt.Color(219, 110, 1));
 
     public List<Carro> ganadores = new ArrayList<>();
     private int tamañoPista = (int) CarreraCarros.rand.nextInt(70, 90);
@@ -79,7 +83,7 @@ public class CarreraCarros {
     private void llenarCarros() {
         for (int i = 0; i < CarreraCarros.conductores.size(); i++) {
             String icono = iconosCarros[i];
-            Carro carro = new Carro(icono, conductores.get(i));
+            Carro carro = new Carro(icono, conductores.get(i), coloresCarros.get(i));
             this.carros.add(carro);
         }
     }

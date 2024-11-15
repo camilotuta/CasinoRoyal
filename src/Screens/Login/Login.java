@@ -61,7 +61,7 @@ public class Login extends javax.swing.JFrame {
 			try {
 				ingresarUsuario();
 			} catch (SQLException e1) {
-				JOptionPane.showMessageDialog(null, e1.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, e1.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
 			}
 		});
 
@@ -69,7 +69,7 @@ public class Login extends javax.swing.JFrame {
 			try {
 				ingresarUsuario();
 			} catch (SQLException e1) {
-				JOptionPane.showMessageDialog(null, e1.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, e1.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
 			}
 		});
 	}
@@ -101,7 +101,7 @@ public class Login extends javax.swing.JFrame {
 			}
 
 		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
 			throw e;
 		}
 
@@ -325,35 +325,46 @@ public class Login extends javax.swing.JFrame {
 	}
 
 	private void btnErroresComunesActionPerformed(java.awt.event.ActionEvent evt) {
-		String texto = "¡Hola! Aquí te dejo un apartado de ayuda con algunos errores comunes y"
-				+ " sus\nposibles soluciones:\n\nNo puedes ingresar:\nVerifica tus "
-				+ "credenciales de inicio de sesión.\nRestablece tu contraseña si "
-				+ "la has olvidado.\nVerifica tu conexión a internet.\nSi el "
-				+ "problema persiste, contacta al soporte técnico de la plataforma."
-				+ "\n\nNo puedes registrarte:\nVerifica que completaste todos los "
-				+ "campos requeridos y que usaste una\ndirección de correo "
-				+ "institucional válida.\nSi el problema persiste, intenta utilizar"
-				+ " una dirección de correo electrónico\ndiferente o contacta al "
-				+ "soporte técnico de la plataforma.\n\nError al actualizar "
-				+ "biografía:\nAsegúrate de seguir los requisitos de longitud y "
-				+ "formato para la biografía.\nSi el problema persiste, intenta "
-				+ "actualizar tu biografía desde otro\ndispositivo o navegador o "
-				+ "contacta al soporte técnico de la plataforma.\n\nError al"
-				+ " agendar tutoría:\nVerifica que seleccionaste la fecha y hora "
-				+ "correctas.\nVerifica que tienes los permisos necesarios para"
-				+ " agendar una tutoría.\nSi el problema persiste, intenta utilizar"
-				+ " otro dispositivo o navegador o\ncontacta al soporte técnico de"
-				+ " la plataforma.\n\nError al actualizar lista de tareas:"
-				+ "\nAsegúrate de seguir los requisitos de longitud y formato para"
-				+ " cada tarea en\nla lista.\nVerifica que tienes los permisos "
-				+ "necesarios para actualizar la lista de\ntareas en la plataforma."
-				+ "\n\nSi necesitas ayuda adicional, por favor envía un correo "
-				+ "especificando tu problema a alguno\nde los siguientes correos de"
-				+ " contacto:\n\nAdrián Camilo Tuta Cortés:"
-				+ " adriantuta.cc@academia.umb.edu.co\nLaura Nathalya Abril Velasquez:"
-				+ " lauraabril.nv@academia.umb.edu.co";
+		String texto = """
+			       \u00a1Hola! Aqu\u00ed te dejo un apartado de ayuda con algunos errores comunes y sus
+			       posibles soluciones:
+			       
+			       No puedes ingresar:
+			       Verifica tus credenciales de inicio de sesi\u00f3n.
+			       Restablece tu contrase\u00f1a si la has olvidado.
+			       Verifica tu conexi\u00f3n a internet.
+			       Si el problema persiste, contacta al soporte t\u00e9cnico de la plataforma.
+			       
+			       No puedes registrarte:
+			       Verifica que completaste todos los campos requeridos y que usaste una
+			       direcci\u00f3n de correo institucional v\u00e1lida.
+			       Si el problema persiste, intenta utilizar una direcci\u00f3n de correo electr\u00f3nico
+			       diferente o contacta al soporte t\u00e9cnico de la plataforma.
+			       
+			       Error al actualizar biograf\u00eda:
+			       Aseg\u00farate de seguir los requisitos de longitud y formato para la biograf\u00eda.
+			       Si el problema persiste, intenta actualizar tu biograf\u00eda desde otro
+			       dispositivo o navegador o contacta al soporte t\u00e9cnico de la plataforma.
+			       
+			       Error al agendar tutor\u00eda:
+			       Verifica que seleccionaste la fecha y hora correctas.
+			       Verifica que tienes los permisos necesarios para agendar una tutor\u00eda.
+			       Si el problema persiste, intenta utilizar otro dispositivo o navegador o
+			       contacta al soporte t\u00e9cnico de la plataforma.
+			       
+			       Error al actualizar lista de tareas:
+			       Aseg\u00farate de seguir los requisitos de longitud y formato para cada tarea en
+			       la lista.
+			       Verifica que tienes los permisos necesarios para actualizar la lista de
+			       tareas en la plataforma.
+			       
+			       Si necesitas ayuda adicional, por favor env\u00eda un correo especificando tu problema a alguno
+			       de los siguientes correos de contacto:
+			       
+			       Adri\u00e1n Camilo Tuta Cort\u00e9s: adriantuta.cc@academia.umb.edu.co
+			       Laura Nathalya Abril Velasquez: lauraabril.nv@academia.umb.edu.co""";
 
-		JOptionPane.showMessageDialog(null, texto, "AYUDA", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(this, texto, "AYUDA", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	/**
