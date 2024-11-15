@@ -10,8 +10,8 @@ import javax.swing.JOptionPane;
 
 public class EnviarCorreo {
 
-    private static final String EMAIL_FROM = "codigodeverificaciontutosumb@gmail.com";
-    private static final String PASSWORD_FROM = "bwaj hgly ehrc zjbc";
+    private static final String EMAIL_FROM = EnvArchivo.dotenv.get("EMAIL_FROM");;
+    private static final String PASSWORD_FROM = EnvArchivo.dotenv.get("PASSWORD_FROM");;
     private String emailTo;
     private String subject;
     private String content;

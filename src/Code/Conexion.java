@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 public class Conexion {
 
-    private static final String URL = "jdbc:sqlite:E:/Workspace Study/Java/Courses/Taller de Programación/Proyecto/CasinoRoyal/db/casino_royal.db";
+    private static final String URL = EnvArchivo.dotenv.get("DB_URL");
 
     public static Connection conectar() {
         try {
