@@ -3,5 +3,5 @@
 /ServidorChatsCasinoRoyal/nbproject/private/
 /ServidorChatsCasinoRoyal/dist/
 /db
-/env
+.env
 EnvArchivo.java
