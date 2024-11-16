@@ -386,7 +386,7 @@ public class Signup extends javax.swing.JFrame {
 
 		lbEdad.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
 		lbEdad.setForeground(new java.awt.Color(224, 195, 102));
-		lbEdad.setText("EDAD:");
+		lbEdad.setText("FECHA NACIMIENTO:");
 		ventanaSignup.add(lbEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, -1, -1));
 
 		datePicker.setDateSelectionMode(DatePicker.DateSelectionMode.SINGLE_DATE_SELECTED);
