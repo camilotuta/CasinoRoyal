@@ -2,8 +2,7 @@
 /ServidorChatsCasinoRoyal/build/
 /ServidorChatsCasinoRoyal/nbproject/private/
 /ServidorChatsCasinoRoyal/dist/
-/db
-/Code/env
-.env
-EnvArchivo.java
+/config
+.db
 /ServidorChatsCasinoRoyal
+/.vscode

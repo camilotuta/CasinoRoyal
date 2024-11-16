@@ -74,7 +74,7 @@ Casino Royal es una aplicación de casino virtual desarrollada en Java que ofrec
 
 ## 🎮 Juegos Disponibles
 
-### 🃏 Póker
+### 🃏 Poker
 
 - Chat en tiempo real
 - Sistema de apuestas
@@ -96,7 +96,7 @@ Casino Royal es una aplicación de casino virtual desarrollada en Java que ofrec
 - Apuestas personalizables
 - Sistema de cartas realista
 
-### 🎰 Tragamonedas
+### 🎰 Traga Monedas
 
 - Múltiples líneas de pago
 - Bonus especiales
@@ -149,17 +149,6 @@ La aplicación utiliza SQLite para almacenar:
 - 📧 Verificación por correo electrónico
 - 🛡 Protección contra trampas
 - 💂‍♂️ Sistema anti-fraude
-
-## 🤝 Contribución
-
-1. Fork del repositorio
-2. Crea una nueva rama
-3. Realiza tus cambios
-4. Envía un pull request
-
-## 📄 Licencia
-
-Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
 
 ---
 
