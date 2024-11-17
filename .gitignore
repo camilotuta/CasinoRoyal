@@ -3,9 +3,8 @@
 /ServidorChatsCasinoRoyal/nbproject/private/
 /ServidorChatsCasinoRoyal/dist/
 /config
-.db
 /ServidorChatsCasinoRoyal
 /.vscode
 
-/main/java/com/casinoRoyal/config
-/main/resources/database
+/src/main/java/com/casinoRoyal/config
+/src/main/resources/database
