@@ -1,4 +1,4 @@
-<!-- cSpell:ignore conexion encriptación inmersiva operacion tragamonedas signup  -->
+<!-- cSpell:ignore conexion encriptación inmersiva operacion tragamonedas signup codigo desencriptación desencriptar verificacion  -->
 
 # 🎰 Casino Royal
 
@@ -67,21 +67,49 @@ Casino Royal es una aplicación de casino virtual desarrollada en Java que ofrec
 ### Clases Principales
 
 ```java
-├── database/
-│   ├── Conexion.java           // Gestión de conexiones a la BD
-│   └── OperacionCRUD.java      // Operaciones CRUD
-├── communication/
-│   ├── EnviarCorreo.java       // Sistema de correos
-│   └── ChatCliente.java        // Cliente de chat
-├── games/
-│   ├── CarreraCarros.java      // Juego de carreras
-│   ├── CasillasRuleta.java     // Componentes de ruleta
-│   ├── CasillasTragamonedas.java
-│   └── PartidaBlackJack.java   // Lógica de BlackJack
-└── ui/
-    ├── CambiarIU.java          // Modificación de interfaz
-    ├── ObtenerIU.java          // Obtención de datos UI
-    └── SoundPlay.java          // Sistema de sonido
+├── core/
+│   ├── database/
+│   │   ├── Conexion.java           // Manejo de conexiones a BD
+│   │   └── OperacionCRUD.java      // Operaciones básicas de BD
+│   └── security/
+│       ├── Desencriptar.java       // Manejo de desencriptación
+│       └── VerificarDato.java      // Validación de datos
+├── game/
+│   ├── blackjack/                  // Juego de blackjack
+│   ├── carrera/                    // Juego de carreras
+│   ├── dados/                      // Juego de dados
+│   ├── ruleta/                     // Juego de ruleta
+│   └── tragaMonedas/               // Juego tragamonedas
+├── service/
+│   ├── communication/
+│   │   ├── ChatClient.java         // Cliente de chat
+│   │   ├── EnviarCodigoVerificacion.java  // Envío de códigos
+│   │   ├── EnviarCorreo.java       // Sistema de correos
+│   │   └── GenerarCodigo.java      // Generación de códigos
+│   └── user/
+│       └── DatosUsuario.java       // Gestión de datos de usuario
+├── ui/
+│   ├── components/
+│   │   ├── PanelRound.java         // Panel redondeado
+│   │   ├── PolygonCorner.java      // Esquinas poligonales
+│   │   ├── ScrollBarWin11UI.java   // Barra de desplazamiento
+│   │   └── ScrollPaneWin11.java    // Panel de desplazamiento
+│   ├── utils/
+│   │   ├── CambiarUI.java          // Modificación de interfaz
+│   │   ├── ComboBox.java           // Componente combo box
+│   │   ├── ObtenerUI.java          // Obtención de elementos UI
+│   │   └── SoundPlay.java          // Sistema de sonido
+│   └── views/
+│       ├── games/                  // Vistas de juegos
+│       ├── login/                  // Vista de inicio de sesión
+│       ├── principal/              // Vista principal
+│       ├── profile/                // Vista de perfil
+│       ├── recoverPassword/        // Recuperación de contraseña
+│       ├── signup/                 // Vista de registro
+│       └── transactions/           // Vista de transacciones
+└── util/
+    └── dates/
+        └── Dates.java              // Utilidades de fechas
 ```
 
 ## 🎮 Juegos Disponibles
