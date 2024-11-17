@@ -40,14 +40,14 @@ public class VerificarDato {
     }
 
     public static void ponerImagenError(JLabel labelPonerImagen, String toolTipTextNo) {
-        CambiarIU.setImageLabel(labelPonerImagen,
-                "src/img/error.png");
+        new CambiarIU().setImageLabel(labelPonerImagen,
+                "/main/resources/assets/img/error.png");
         labelPonerImagen.setToolTipText(toolTipTextNo);
     }
 
     public static void ponerImagenCheck(JLabel labelPonerImagen, String toolTipTextSi) {
-        CambiarIU.setImageLabel(labelPonerImagen,
-                "src/img/check.png");
+        new CambiarIU().setImageLabel(labelPonerImagen,
+                "/main/resources/assets/img/check.png");
         labelPonerImagen.setToolTipText(toolTipTextSi);
     }
 

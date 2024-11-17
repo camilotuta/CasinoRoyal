@@ -1,18 +1,15 @@
 package main.java.com.casinoRoyal.ui.utils;
 
+import java.io.IOException;
 import javax.sound.sampled.*;
 import javax.swing.JOptionPane;
 
-import java.io.File;
-import java.io.IOException;
-
 public class SoundPlay {
 
-    public static void reproducir(String filePath) {
+    public void reproducir(String path) {
         Thread soundThread = new Thread(() -> {
             try {
-                File soundFile = new File(filePath);
-                AudioInputStream audioStream = AudioSystem.getAudioInputStream(soundFile);
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(getClass().getResource(path));
 
                 Clip clip = AudioSystem.getClip();
                 clip.open(audioStream);

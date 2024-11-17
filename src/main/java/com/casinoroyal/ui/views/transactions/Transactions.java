@@ -43,7 +43,7 @@ public class Transactions extends javax.swing.JFrame {
 		this.setLocationRelativeTo(null);
 
 		this.setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(getClass().getResource("/img/icon.png")));
+				.getImage(getClass().getResource("/main/resources/assets/img/icon.png")));
 		ponerTransaccionesUsuario();
 		Principal.ponerFondos(lbPonerFondos);
 	}
@@ -186,7 +186,7 @@ public class Transactions extends javax.swing.JFrame {
                 ventanaTransacciones.setPreferredSize(new java.awt.Dimension(1080, 720));
                 ventanaTransacciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/volver.png"))); // NOI18N
+                imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/volver.png"))); // NOI18N
                 imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -210,7 +210,7 @@ public class Transactions extends javax.swing.JFrame {
                 lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
                 lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
                 lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-                lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
+                lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/fondos.png"))); // NOI18N
                 lbPonerFondos.setText("-");
                 ventanaTransacciones.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
 
@@ -330,11 +330,11 @@ public class Transactions extends javax.swing.JFrame {
 	}
 
 	private void imgVolverMouseEntered(java.awt.event.MouseEvent evt) {
-		CambiarIU.setImageLabel(imgVolver, "src/img/volverHover.png");
+		new CambiarIU().setImageLabel(imgVolver, "/main/resources/assets/img/volverHover.png");
 	}
 
 	private void imgVolverMouseExited(java.awt.event.MouseEvent evt) {
-		CambiarIU.setImageLabel(imgVolver, "src/img/volver.png");
+		new CambiarIU().setImageLabel(imgVolver, "/main/resources/assets/img/volver.png");
 	}
 
 	private void imgVolverMouseClicked(java.awt.event.MouseEvent evt) {

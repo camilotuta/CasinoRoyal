@@ -47,7 +47,7 @@ public class RecoverPassword extends javax.swing.JFrame {
 		this.setLocationRelativeTo(null);
 
 		this.setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(getClass().getResource("/img/icon.png")));
+				.getImage(getClass().getResource("/main/resources/assets/img/icon.png")));
 		desactivarBotonConfirmar();
 		desactivarBotonEnviarCodigo();
 		desactivarBotonVerificarCodigo();
@@ -122,7 +122,7 @@ public class RecoverPassword extends javax.swing.JFrame {
 		}
 	}
 
-	private boolean correoEstaRegistrado(String correo) throws SQLException {
+	private boolean correoEstaRegistrado(String correo) {
 		ArrayList<ArrayList<Object>> datosUsuarioRegistrado;
 
 		try (Connection conn = Conexion.conectar()) {
@@ -134,8 +134,8 @@ public class RecoverPassword extends javax.swing.JFrame {
 			return datosUsuarioRegistrado.size() == 1;
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-			throw e;
 		}
+		return true;
 	}
 
 	private void enviarCodigo() throws HeadlessException, SQLException {
@@ -174,7 +174,7 @@ public class RecoverPassword extends javax.swing.JFrame {
 		}
 	}
 
-	private String obtenerNombre(String correo) throws SQLException {
+	private String obtenerNombre(String correo) {
 		ArrayList<ArrayList<Object>> datos;
 
 		try (Connection conn = Conexion.conectar()) {
@@ -190,11 +190,11 @@ public class RecoverPassword extends javax.swing.JFrame {
 			}
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-			throw e;
 		}
+		return "";
 	}
 
-	private void actualizarContraseña() throws SQLException {
+	private void actualizarContraseña() {
 		String correo = ObtenerIU.obtenerTextoCampo(tfCorreo).toLowerCase();
 		String contraseña = Desencriptar.desencriptarContra(ObtenerIU.obtenerContraseña(pfConfirmarContraseña));
 
@@ -208,7 +208,6 @@ public class RecoverPassword extends javax.swing.JFrame {
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(this, "Error al actualizar la contraseña", "¡ERROR!",
 					javax.swing.JOptionPane.ERROR_MESSAGE);
-			throw e;
 		}
 	}
 
@@ -403,11 +402,7 @@ public class RecoverPassword extends javax.swing.JFrame {
 		btnConfirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				try {
 					btnConfirmarActionPerformed(evt);
-				} catch (SQLException e) {
-					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-				}
 			}
 		});
 		ventanaSignup.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 550, -1, -1));
@@ -440,7 +435,7 @@ public class RecoverPassword extends javax.swing.JFrame {
 		mostrarErrores();
 	}
 
-	private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
+	private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {
 		actualizarContraseña();
 
 		Login.correoGuardar = ObtenerIU.obtenerTextoCampo(tfCorreo);

@@ -14,9 +14,9 @@ import javax.swing.JTextPane;
 import raven.datetime.component.date.DatePicker;
 
 public class CambiarIU {
-    public static void setImageLabel(JLabel labelName, String root) {
+    public void setImageLabel(JLabel labelName, String path) {
         new Thread(() -> {
-            ImageIcon image = new ImageIcon(root);
+            ImageIcon image = new ImageIcon(getClass().getResource(path));
             Icon icon = new ImageIcon(
                     image.getImage().getScaledInstance(labelName.getWidth(), labelName.getHeight(),
                             Image.SCALE_DEFAULT));

@@ -41,8 +41,8 @@ public class Ruleta extends javax.swing.JFrame {
                 this.setLocationRelativeTo(null);
 
                 this.setIconImage(Toolkit.getDefaultToolkit()
-                                .getImage(getClass().getResource("/img/icon.png")));
-                CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaQuieta.png");
+                                .getImage(getClass().getResource("/main/resources/assets/img/icon.png")));
+                new CambiarIU().setImageLabel(lbContenido, "/main/resources/assets/img/ruleta/ruletaQuieta.png");
                 ingresarChat();
                 taChatRuleta.setEditable(false);
                 Principal.ponerFondos(lbPonerFondos);
@@ -87,8 +87,9 @@ public class Ruleta extends javax.swing.JFrame {
                         Transactions.restarFondos(valorApostado);
                         Principal.ponerFondos(lbPonerFondos);
 
-                        CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaGirando.gif");
-                        SoundPlay.reproducir("src/sound/ruletaGirando.wav");
+                        new CambiarIU().setImageLabel(lbContenido,
+                                        "/main/resources/assets/img/ruleta/ruletaGirando.gif");
+                        new SoundPlay().reproducir("/main/resources/assets/sound/ruletaGirando.wav");
                         CambiarIU.deshabilitarBotones(btnAlVerde, btnAlRojo, btnAlNegro, btnIngresarNumeros);
                         int casillaJuego = CasillasRuleta.casillaAleatoria();
                         String colorJuego = CasillasRuleta.colorCasilla(casillaJuego);
@@ -147,7 +148,8 @@ public class Ruleta extends javax.swing.JFrame {
                                         Principal.ponerFondos(lbPonerFondos);
                                         CambiarIU.habilitarBotones(btnAlVerde, btnAlRojo, btnAlNegro,
                                                         btnIngresarNumeros);
-                                        CambiarIU.setImageLabel(lbContenido, "src/img/ruleta/ruletaQuieta.png");
+                                        new CambiarIU().setImageLabel(lbContenido,
+                                                        "/main/resources/assets/img/ruleta/ruletaQuieta.png");
                                 } catch (InterruptedException e) {
                                         JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR",
                                                         JOptionPane.ERROR_MESSAGE);
@@ -205,7 +207,8 @@ public class Ruleta extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 ventanaRuleta = new javax.swing.JPanel();
@@ -237,15 +240,18 @@ public class Ruleta extends javax.swing.JFrame {
                 ventanaRuleta.setPreferredSize(new java.awt.Dimension(1080, 720));
                 ventanaRuleta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/volver.png"))); // NOI18N
+                imgVolver.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/volver.png"))); // NOI18N
                 imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseClicked(evt);
                         }
+
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseEntered(evt);
                         }
+
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseExited(evt);
                         }
@@ -269,7 +275,8 @@ public class Ruleta extends javax.swing.JFrame {
                 lbUltimaCasilla.setForeground(new java.awt.Color(227, 199, 104));
                 lbUltimaCasilla.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 lbUltimaCasilla.setText("Ultimo Resultado");
-                ventanaRuleta.add(lbUltimaCasilla, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 130, 150, 40));
+                ventanaRuleta.add(lbUltimaCasilla,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 130, 150, 40));
 
                 panelUltimaCasilla.setBackground(new java.awt.Color(36, 38, 41));
                 panelUltimaCasilla.setRoundBottomLeft(30);
@@ -285,15 +292,19 @@ public class Ruleta extends javax.swing.JFrame {
                 javax.swing.GroupLayout panelUltimaCasillaLayout = new javax.swing.GroupLayout(panelUltimaCasilla);
                 panelUltimaCasilla.setLayout(panelUltimaCasillaLayout);
                 panelUltimaCasillaLayout.setHorizontalGroup(
-                        panelUltimaCasillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lbNumeroUltimaCasilla, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                );
+                                panelUltimaCasillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(lbNumeroUltimaCasilla,
+                                                                javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, 110,
+                                                                Short.MAX_VALUE));
                 panelUltimaCasillaLayout.setVerticalGroup(
-                        panelUltimaCasillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lbNumeroUltimaCasilla, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                );
+                                panelUltimaCasillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(lbNumeroUltimaCasilla,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, 110,
+                                                                Short.MAX_VALUE));
 
-                ventanaRuleta.add(panelUltimaCasilla, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 170, 110, 110));
+                ventanaRuleta.add(panelUltimaCasilla,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 170, 110, 110));
 
                 lbRuleta.setFont(new java.awt.Font("Crabs", 1, 100)); // NOI18N
                 lbRuleta.setForeground(new java.awt.Color(227, 199, 104));
@@ -304,7 +315,8 @@ public class Ruleta extends javax.swing.JFrame {
                 lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
                 lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
                 lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-                lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
+                lbPonerFondos.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/fondos.png"))); // NOI18N
                 lbPonerFondos.setText("-");
                 ventanaRuleta.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
 
@@ -317,9 +329,11 @@ public class Ruleta extends javax.swing.JFrame {
                 lbPersonasConectadas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
                 lbPersonasConectadas.setForeground(new java.awt.Color(148, 161, 178));
                 lbPersonasConectadas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-                lbPersonasConectadas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/personas.png"))); // NOI18N
+                lbPersonasConectadas.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/personas.png"))); // NOI18N
                 lbPersonasConectadas.setText("0");
-                ventanaRuleta.add(lbPersonasConectadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 300, -1));
+                ventanaRuleta.add(lbPersonasConectadas,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 300, -1));
 
                 taChatRuleta.setBackground(new java.awt.Color(36, 38, 41));
                 taChatRuleta.setColumns(20);
@@ -341,15 +355,18 @@ public class Ruleta extends javax.swing.JFrame {
 
                 ventanaRuleta.add(scMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 650, 180, 50));
 
-                imgEnviar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/enviar.png"))); // NOI18N
+                imgEnviar.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/enviar.png"))); // NOI18N
                 imgEnviar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 imgEnviar.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseClicked(evt);
                         }
+
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseEntered(evt);
                         }
+
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseExited(evt);
                         }
@@ -358,7 +375,8 @@ public class Ruleta extends javax.swing.JFrame {
 
                 lbContenido.setBackground(new java.awt.Color(36, 38, 41));
                 lbContenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                lbContenido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ruleta/ruletaQuieta.png"))); // NOI18N
+                lbContenido.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/ruleta/ruletaQuieta.png"))); // NOI18N
                 ventanaRuleta.add(lbContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 340, 340));
 
                 btnAlVerde.setBackground(new java.awt.Color(51, 153, 0));
@@ -411,7 +429,8 @@ public class Ruleta extends javax.swing.JFrame {
                                 btnIngresarNumerosActionPerformed(evt);
                         }
                 });
-                ventanaRuleta.add(btnIngresarNumeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 600, 120, -1));
+                ventanaRuleta.add(btnIngresarNumeros,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 600, 120, -1));
 
                 lbApuesta.setFont(new java.awt.Font("Crabs", 1, 24)); // NOI18N
                 lbApuesta.setForeground(new java.awt.Color(227, 199, 104));
@@ -422,21 +441,26 @@ public class Ruleta extends javax.swing.JFrame {
                 cbValorApostado.setBackground(new java.awt.Color(27, 9, 5));
                 cbValorApostado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                 cbValorApostado.setForeground(new java.awt.Color(224, 195, 102));
-                cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500", "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
-                ventanaRuleta.add(cbValorApostado, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 590, 190, 40));
+                cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500",
+                                "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
+                ventanaRuleta.add(cbValorApostado,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 590, 190, 40));
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(ventanaRuleta, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE))
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout
+                                                                .createSequentialGroup()
+                                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                                .addComponent(ventanaRuleta,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                1080,
+                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)));
                 layout.setVerticalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaRuleta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaRuleta, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
                 pack();
         }// </editor-fold>//GEN-END:initComponents
@@ -496,21 +520,21 @@ public class Ruleta extends javax.swing.JFrame {
         }
 
         private void imgEnviarMouseEntered(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgEnviar, "src/img/enviarHover.png");
+                new CambiarIU().setImageLabel(imgEnviar, "/main/resources/assets/img/enviarHover.png");
 
         }
 
         private void imgEnviarMouseExited(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgEnviar, "src/img/enviar.png");
+                new CambiarIU().setImageLabel(imgEnviar, "/main/resources/assets/img/enviar.png");
 
         }
 
         private void imgVolverMouseEntered(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgVolver, "src/img/volverHover.png");
+                new CambiarIU().setImageLabel(imgVolver, "/main/resources/assets/img/volverHover.png");
         }
 
         private void imgVolverMouseExited(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgVolver, "src/img/volver.png");
+                new CambiarIU().setImageLabel(imgVolver, "/main/resources/assets/img/volver.png");
         }
 
         private void imgVolverMouseClicked(java.awt.event.MouseEvent evt) {

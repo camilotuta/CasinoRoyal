@@ -38,16 +38,16 @@ public class TragaMonedas extends javax.swing.JFrame {
                 this.setLocationRelativeTo(null);
 
                 this.setIconImage(Toolkit.getDefaultToolkit()
-                                .getImage(getClass().getResource("/img/icon.png")));
+                                .getImage(getClass().getResource("/main/resources/assets/img/icon.png")));
 
                 ponerCasillas();
                 Principal.ponerFondos(lbPonerFondos);
         }
 
         private void ponerCasillas() {
-                CambiarIU.setImageLabel(lbCasilla1, "src/img/tragamonedas/0.png");
-                CambiarIU.setImageLabel(lbCasilla2, "src/img/tragamonedas/1.png");
-                CambiarIU.setImageLabel(lbCasilla3, "src/img/tragamonedas/2.png");
+                new CambiarIU().setImageLabel(lbCasilla1, "/main/resources/assets/img/tragamonedas/0.png");
+                new CambiarIU().setImageLabel(lbCasilla2, "/main/resources/assets/img/tragamonedas/1.png");
+                new CambiarIU().setImageLabel(lbCasilla3, "/main/resources/assets/img/tragamonedas/2.png");
         }
 
         private void girarTragamonedas(double valorApostado) {
@@ -57,11 +57,14 @@ public class TragaMonedas extends javax.swing.JFrame {
                         Transactions.restarFondos(valorApostado);
                         Principal.ponerFondos(lbPonerFondos);
 
-                        CambiarIU.setImageLabel(lbCasilla1, "src/img/tragamonedas/casillaGirando.gif");
-                        CambiarIU.setImageLabel(lbCasilla2, "src/img/tragamonedas/casillaGirando.gif");
-                        CambiarIU.setImageLabel(lbCasilla3, "src/img/tragamonedas/casillaGirando.gif");
+                        new CambiarIU().setImageLabel(lbCasilla1,
+                                        "/main/resources/assets/img/tragamonedas/casillaGirando.gif");
+                        new CambiarIU().setImageLabel(lbCasilla2,
+                                        "/main/resources/assets/img/tragamonedas/casillaGirando.gif");
+                        new CambiarIU().setImageLabel(lbCasilla3,
+                                        "/main/resources/assets/img/tragamonedas/casillaGirando.gif");
 
-                        SoundPlay.reproducir("src/sound/tragamonedasGirando.wav");
+                        new SoundPlay().reproducir("/main/resources/assets/sound/tragamonedasGirando.wav");
                         CambiarIU.deshabilitarBotones(btnGirar, btnAllIn);
                         int numeroCasilla1 = CasillasTragaMonedas.casillaAleatorio();
                         int numeroCasilla2 = CasillasTragaMonedas.casillaAleatorio();
@@ -78,12 +81,15 @@ public class TragaMonedas extends javax.swing.JFrame {
 
                                         }
 
-                                        CambiarIU.setImageLabel(lbCasilla1,
-                                                        "src/img/tragamonedas/" + numeroCasilla1 + ".png");
-                                        CambiarIU.setImageLabel(lbCasilla2,
-                                                        "src/img/tragamonedas/" + numeroCasilla2 + ".png");
-                                        CambiarIU.setImageLabel(lbCasilla3,
-                                                        "src/img/tragamonedas/" + numeroCasilla3 + ".png");
+                                        new CambiarIU().setImageLabel(lbCasilla1,
+                                                        "/main/resources/assets/img/tragamonedas/" + numeroCasilla1
+                                                                        + ".png");
+                                        new CambiarIU().setImageLabel(lbCasilla2,
+                                                        "/main/resources/assets/img/tragamonedas/" + numeroCasilla2
+                                                                        + ".png");
+                                        new CambiarIU().setImageLabel(lbCasilla3,
+                                                        "/main/resources/assets/img/tragamonedas/" + numeroCasilla3
+                                                                        + ".png");
 
                                         Thread.sleep(2000);
                                         String mensaje = "Ganancia: $" + valorGanado[0];
@@ -142,7 +148,8 @@ public class TragaMonedas extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 ventanaBlackJack = new javax.swing.JPanel();
@@ -168,15 +175,18 @@ public class TragaMonedas extends javax.swing.JFrame {
                 ventanaBlackJack.setPreferredSize(new java.awt.Dimension(1080, 720));
                 ventanaBlackJack.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/volver.png"))); // NOI18N
+                imgVolver.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/volver.png"))); // NOI18N
                 imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseClicked(evt);
                         }
+
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseEntered(evt);
                         }
+
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseExited(evt);
                         }
@@ -200,14 +210,17 @@ public class TragaMonedas extends javax.swing.JFrame {
                 lbTragaMonedas.setForeground(new java.awt.Color(227, 199, 104));
                 lbTragaMonedas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 lbTragaMonedas.setText("Traga Monedas");
-                ventanaBlackJack.add(lbTragaMonedas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1080, -1));
+                ventanaBlackJack.add(lbTragaMonedas,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1080, -1));
 
                 lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
                 lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
                 lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-                lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
+                lbPonerFondos.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/fondos.png"))); // NOI18N
                 lbPonerFondos.setText("-");
-                ventanaBlackJack.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
+                ventanaBlackJack.add(lbPonerFondos,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
 
                 panelJuego.setBackground(new java.awt.Color(36, 38, 41));
                 panelJuego.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -216,28 +229,35 @@ public class TragaMonedas extends javax.swing.JFrame {
 
                 lbCasilla1.setBackground(new java.awt.Color(51, 51, 0));
                 lbCasilla1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                lbCasilla1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tragaMonedas/0.png"))); // NOI18N
+                lbCasilla1.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/tragaMonedas/0.png"))); // NOI18N
 
                 javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
                 jPanel1.setLayout(jPanel1Layout);
                 jPanel1Layout.setHorizontalGroup(
-                        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 130, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(lbCasilla1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                );
+                                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGap(0, 130, Short.MAX_VALUE)
+                                                .addGroup(jPanel1Layout.createParallelGroup(
+                                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                                                .addComponent(lbCasilla1,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                130,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addGap(0, 0, Short.MAX_VALUE))));
                 jPanel1Layout.setVerticalGroup(
-                        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 130, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(lbCasilla1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                );
+                                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGap(0, 130, Short.MAX_VALUE)
+                                                .addGroup(jPanel1Layout.createParallelGroup(
+                                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                                                .addComponent(lbCasilla1,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                130,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addGap(0, 0, Short.MAX_VALUE))));
 
                 panelJuego.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 130, 130));
 
@@ -245,28 +265,35 @@ public class TragaMonedas extends javax.swing.JFrame {
 
                 lbCasilla2.setBackground(new java.awt.Color(51, 51, 0));
                 lbCasilla2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                lbCasilla2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tragaMonedas/1.png"))); // NOI18N
+                lbCasilla2.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/tragaMonedas/1.png"))); // NOI18N
 
                 javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
                 jPanel2.setLayout(jPanel2Layout);
                 jPanel2Layout.setHorizontalGroup(
-                        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 130, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(lbCasilla2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                );
+                                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGap(0, 130, Short.MAX_VALUE)
+                                                .addGroup(jPanel2Layout.createParallelGroup(
+                                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                                                .addComponent(lbCasilla2,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                130,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addGap(0, 0, Short.MAX_VALUE))));
                 jPanel2Layout.setVerticalGroup(
-                        jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 130, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(lbCasilla2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                );
+                                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGap(0, 130, Short.MAX_VALUE)
+                                                .addGroup(jPanel2Layout.createParallelGroup(
+                                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                                                .addComponent(lbCasilla2,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                130,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addGap(0, 0, Short.MAX_VALUE))));
 
                 panelJuego.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 130, 130));
 
@@ -274,28 +301,35 @@ public class TragaMonedas extends javax.swing.JFrame {
 
                 lbCasilla3.setBackground(new java.awt.Color(51, 51, 0));
                 lbCasilla3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                lbCasilla3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/tragaMonedas/2.png"))); // NOI18N
+                lbCasilla3.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/tragaMonedas/2.png"))); // NOI18N
 
                 javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
                 jPanel3.setLayout(jPanel3Layout);
                 jPanel3Layout.setHorizontalGroup(
-                        jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 130, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(lbCasilla3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                );
+                                jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGap(0, 130, Short.MAX_VALUE)
+                                                .addGroup(jPanel3Layout.createParallelGroup(
+                                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                                                .addComponent(lbCasilla3,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                130,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addGap(0, 0, Short.MAX_VALUE))));
                 jPanel3Layout.setVerticalGroup(
-                        jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 130, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(lbCasilla3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                );
+                                jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGap(0, 130, Short.MAX_VALUE)
+                                                .addGroup(jPanel3Layout.createParallelGroup(
+                                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                                                .addComponent(lbCasilla3,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                130,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addGap(0, 0, Short.MAX_VALUE))));
 
                 panelJuego.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 130, 130));
 
@@ -337,19 +371,23 @@ public class TragaMonedas extends javax.swing.JFrame {
                 cbValorApostado.setBackground(new java.awt.Color(27, 9, 5));
                 cbValorApostado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                 cbValorApostado.setForeground(new java.awt.Color(224, 195, 102));
-                cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500", "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
-                ventanaBlackJack.add(cbValorApostado, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 550, 190, 40));
+                cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500",
+                                "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
+                ventanaBlackJack.add(cbValorApostado,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 550, 190, 40));
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaBlackJack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaBlackJack, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
                 layout.setVerticalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaBlackJack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaBlackJack, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
 
                 pack();
         }// </editor-fold>//GEN-END:initComponents
@@ -372,11 +410,11 @@ public class TragaMonedas extends javax.swing.JFrame {
         }
 
         private void imgVolverMouseEntered(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgVolver, "src/img/volverHover.png");
+                new CambiarIU().setImageLabel(imgVolver, "/main/resources/assets/img/volverHover.png");
         }
 
         private void imgVolverMouseExited(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgVolver, "src/img/volver.png");
+                new CambiarIU().setImageLabel(imgVolver, "/main/resources/assets/img/volver.png");
         }
 
         private void imgVolverMouseClicked(java.awt.event.MouseEvent evt) {

@@ -40,11 +40,11 @@ public class BlackJack extends javax.swing.JFrame {
                 this.setLocationRelativeTo(null);
 
                 this.setIconImage(Toolkit.getDefaultToolkit()
-                                .getImage(getClass().getResource("/img/icon.png")));
+                                .getImage(getClass().getResource("/main/resources/assets/img/icon.png")));
                 ingresarChat();
                 taChatBlackJack.setEditable(false);
                 Principal.ponerFondos(lbPonerFondos);
-		Principal.ponerPersonasConectadas(lbPersonasConectadas, 3);
+                Principal.ponerPersonasConectadas(lbPersonasConectadas, 3);
         }
 
         private void ingresarChat() {
@@ -79,7 +79,7 @@ public class BlackJack extends javax.swing.JFrame {
                         if (PersonalProfile.fondosSuficientes(valorApostado)) {
                                 Transactions.restarFondos(valorApostado);
                                 Principal.ponerFondos(lbPonerFondos);
-                                SoundPlay.reproducir("src/sound/blackjack.wav");
+                                new SoundPlay().reproducir("/main/resources/assets/sound/blackjack.wav");
                                 SwingUtilities.invokeLater(() -> CambiarIU.deshabilitarBotones(btnJugar, btnAllIn));
 
                                 new Thread(() -> {
@@ -171,7 +171,8 @@ public class BlackJack extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 ventanaBlackJack = new javax.swing.JPanel();
@@ -198,15 +199,18 @@ public class BlackJack extends javax.swing.JFrame {
                 ventanaBlackJack.setPreferredSize(new java.awt.Dimension(1080, 720));
                 ventanaBlackJack.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/volver.png"))); // NOI18N
+                imgVolver.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/volver.png"))); // NOI18N
                 imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseClicked(evt);
                         }
+
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseEntered(evt);
                         }
+
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseExited(evt);
                         }
@@ -235,9 +239,11 @@ public class BlackJack extends javax.swing.JFrame {
                 lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
                 lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
                 lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-                lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
+                lbPonerFondos.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/fondos.png"))); // NOI18N
                 lbPonerFondos.setText("-");
-                ventanaBlackJack.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
+                ventanaBlackJack.add(lbPonerFondos,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
 
                 lbChat.setFont(new java.awt.Font("Crabs", 1, 48)); // NOI18N
                 lbChat.setForeground(new java.awt.Color(227, 199, 104));
@@ -248,19 +254,23 @@ public class BlackJack extends javax.swing.JFrame {
                 lbPersonasConectadas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
                 lbPersonasConectadas.setForeground(new java.awt.Color(148, 161, 178));
                 lbPersonasConectadas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-                lbPersonasConectadas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/personas.png"))); // NOI18N
+                lbPersonasConectadas.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/personas.png"))); // NOI18N
                 lbPersonasConectadas.setText("0");
-                ventanaBlackJack.add(lbPersonasConectadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 300, -1));
+                ventanaBlackJack.add(lbPersonasConectadas,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 300, -1));
 
                 taChatBlackJack.setBackground(new java.awt.Color(36, 38, 41));
                 taChatBlackJack.setColumns(20);
                 taChatBlackJack.setForeground(new java.awt.Color(148, 161, 178));
                 taChatBlackJack.setLineWrap(true);
                 taChatBlackJack.setRows(5);
-                taChatBlackJack.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 199, 104)));
+                taChatBlackJack.setBorder(
+                                javax.swing.BorderFactory.createLineBorder(new java.awt.Color(227, 199, 104)));
                 scChatBlackJack.setViewportView(taChatBlackJack);
 
-                ventanaBlackJack.add(scChatBlackJack, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 370, -1, 260));
+                ventanaBlackJack.add(scChatBlackJack,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 370, -1, 260));
 
                 taMensaje.setBackground(new java.awt.Color(36, 38, 41));
                 taMensaje.setColumns(20);
@@ -272,15 +282,18 @@ public class BlackJack extends javax.swing.JFrame {
 
                 ventanaBlackJack.add(scMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 650, 180, 50));
 
-                imgEnviar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/enviar.png"))); // NOI18N
+                imgEnviar.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/enviar.png"))); // NOI18N
                 imgEnviar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 imgEnviar.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseClicked(evt);
                         }
+
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseEntered(evt);
                         }
+
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseExited(evt);
                         }
@@ -293,13 +306,11 @@ public class BlackJack extends javax.swing.JFrame {
                 javax.swing.GroupLayout panelJuegoLayout = new javax.swing.GroupLayout(panelJuego);
                 panelJuego.setLayout(panelJuegoLayout);
                 panelJuegoLayout.setHorizontalGroup(
-                        panelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 758, Short.MAX_VALUE)
-                );
+                                panelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGap(0, 758, Short.MAX_VALUE));
                 panelJuegoLayout.setVerticalGroup(
-                        panelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 428, Short.MAX_VALUE)
-                );
+                                panelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGap(0, 428, Short.MAX_VALUE));
 
                 ventanaBlackJack.add(panelJuego, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 760, 430));
 
@@ -339,19 +350,23 @@ public class BlackJack extends javax.swing.JFrame {
                 cbValorApostado.setBackground(new java.awt.Color(27, 9, 5));
                 cbValorApostado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                 cbValorApostado.setForeground(new java.awt.Color(224, 195, 102));
-                cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500", "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
-                ventanaBlackJack.add(cbValorApostado, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 630, 190, 40));
+                cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500",
+                                "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
+                ventanaBlackJack.add(cbValorApostado,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 630, 190, 40));
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaBlackJack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaBlackJack, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
                 layout.setVerticalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaBlackJack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaBlackJack, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
 
                 pack();
         }// </editor-fold>//GEN-END:initComponents
@@ -376,24 +391,24 @@ public class BlackJack extends javax.swing.JFrame {
 
         private void imgEnviarMouseClicked(java.awt.event.MouseEvent evt) {
 
-	}
+        }
 
         private void imgEnviarMouseEntered(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgEnviar, "src/img/enviarHover.png");
+                new CambiarIU().setImageLabel(imgEnviar, "/main/resources/assets/img/enviarHover.png");
 
         }
 
         private void imgEnviarMouseExited(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgEnviar, "src/img/enviar.png");
+                new CambiarIU().setImageLabel(imgEnviar, "/main/resources/assets/img/enviar.png");
 
         }
 
         private void imgVolverMouseEntered(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgVolver, "src/img/volverHover.png");
+                new CambiarIU().setImageLabel(imgVolver, "/main/resources/assets/img/volverHover.png");
         }
 
         private void imgVolverMouseExited(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgVolver, "src/img/volver.png");
+                new CambiarIU().setImageLabel(imgVolver, "/main/resources/assets/img/volver.png");
         }
 
         private void imgVolverMouseClicked(java.awt.event.MouseEvent evt) {

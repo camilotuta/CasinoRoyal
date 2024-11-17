@@ -39,7 +39,7 @@ public class PartidaBlackJack {
         }
 
         public String getImagePath() {
-            return "/img/blackjack/" + toString() + ".png";
+            return ("/main/resources/assets/img/blackjack/" + toString() + ".png");
         }
     }
 
@@ -81,7 +81,8 @@ public class PartidaBlackJack {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 try {
-                    Image hiddenCardImg = new ImageIcon(getClass().getResource("/img/blackjack/BACK.png")).getImage();
+                    Image hiddenCardImg = new ImageIcon(
+                            getClass().getResource("/main/resources/assets/img/blackjack/BACK.png")).getImage();
                     if (!stayButton.isEnabled()) {
                         hiddenCardImg = new ImageIcon(getClass().getResource(hiddenCard.getImagePath())).getImage();
                     }

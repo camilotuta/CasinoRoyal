@@ -36,12 +36,12 @@ public class Poker extends javax.swing.JFrame {
                 this.setLocationRelativeTo(null);
 
                 this.setIconImage(Toolkit.getDefaultToolkit()
-                                .getImage(getClass().getResource("/img/icon.png")));
+                                .getImage(getClass().getResource("/main/resources/assets/img/icon.png")));
                 ingresarChat();
                 taChatPoker.setEditable(false);
                 Principal.ponerFondos(lbPonerFondos);
-                CambiarIU.setImageLabel(lbContenido, "src/img/poker/pokerPartida.gif");
-		Principal.ponerPersonasConectadas(lbPersonasConectadas,1);
+                new CambiarIU().setImageLabel(lbContenido, "/main/resources/assets/img/poker/pokerPartida.gif");
+                Principal.ponerPersonasConectadas(lbPersonasConectadas, 1);
         }
 
         private void ingresarChat() {
@@ -113,7 +113,8 @@ public class Poker extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 ventanaBingo = new javax.swing.JPanel();
@@ -139,15 +140,18 @@ public class Poker extends javax.swing.JFrame {
                 ventanaBingo.setPreferredSize(new java.awt.Dimension(1080, 720));
                 ventanaBingo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/volver.png"))); // NOI18N
+                imgVolver.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/volver.png"))); // NOI18N
                 imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseClicked(evt);
                         }
+
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseEntered(evt);
                         }
+
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseExited(evt);
                         }
@@ -176,7 +180,8 @@ public class Poker extends javax.swing.JFrame {
                 lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
                 lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
                 lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-                lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
+                lbPonerFondos.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/fondos.png"))); // NOI18N
                 lbPonerFondos.setText("-");
                 ventanaBingo.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
 
@@ -189,9 +194,11 @@ public class Poker extends javax.swing.JFrame {
                 lbPersonasConectadas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
                 lbPersonasConectadas.setForeground(new java.awt.Color(148, 161, 178));
                 lbPersonasConectadas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-                lbPersonasConectadas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/personas.png"))); // NOI18N
+                lbPersonasConectadas.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/personas.png"))); // NOI18N
                 lbPersonasConectadas.setText("0");
-                ventanaBingo.add(lbPersonasConectadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 300, -1));
+                ventanaBingo.add(lbPersonasConectadas,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 300, -1));
 
                 taChatPoker.setBackground(new java.awt.Color(36, 38, 41));
                 taChatPoker.setColumns(20);
@@ -214,15 +221,18 @@ public class Poker extends javax.swing.JFrame {
 
                 ventanaBingo.add(scMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 650, 180, 50));
 
-                imgEnviar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/enviar.png"))); // NOI18N
+                imgEnviar.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/enviar.png"))); // NOI18N
                 imgEnviar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 imgEnviar.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseClicked(evt);
                         }
+
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseEntered(evt);
                         }
+
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseExited(evt);
                         }
@@ -246,7 +256,8 @@ public class Poker extends javax.swing.JFrame {
                 btnCambiarApuesta.setText("Cambiar la apuesta");
                 btnCambiarApuesta.setActionCommand("Ingresar");
                 btnCambiarApuesta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                ventanaBingo.add(btnCambiarApuesta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 660, 210, -1));
+                ventanaBingo.add(btnCambiarApuesta,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 660, 210, -1));
 
                 btnRetirarse.setBackground(new java.awt.Color(153, 0, 1));
                 btnRetirarse.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -259,13 +270,15 @@ public class Poker extends javax.swing.JFrame {
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
                 layout.setVerticalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
 
                 pack();
         }// </editor-fold>//GEN-END:initComponents
@@ -282,21 +295,21 @@ public class Poker extends javax.swing.JFrame {
         }
 
         private void imgEnviarMouseEntered(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgEnviar, "src/img/enviarHover.png");
+                new CambiarIU().setImageLabel(imgEnviar, "/main/resources/assets/img/enviarHover.png");
 
         }
 
         private void imgEnviarMouseExited(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgEnviar, "src/img/enviar.png");
+                new CambiarIU().setImageLabel(imgEnviar, "/main/resources/assets/img/enviar.png");
 
         }
 
         private void imgVolverMouseEntered(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgVolver, "src/img/volverHover.png");
+                new CambiarIU().setImageLabel(imgVolver, "/main/resources/assets/img/volverHover.png");
         }
 
         private void imgVolverMouseExited(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgVolver, "src/img/volver.png");
+                new CambiarIU().setImageLabel(imgVolver, "/main/resources/assets/img/volver.png");
         }
 
         private void imgVolverMouseClicked(java.awt.event.MouseEvent evt) {

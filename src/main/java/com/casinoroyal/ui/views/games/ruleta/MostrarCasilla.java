@@ -30,7 +30,7 @@ public class MostrarCasilla extends javax.swing.JFrame {
                 this.setLocationRelativeTo(null);
 
                 this.setIconImage(Toolkit.getDefaultToolkit()
-                                .getImage(getClass().getResource("/img/icon.png")));
+                                .getImage(getClass().getResource("/main/resources/assets/img/icon.png")));
                 panelCasilla.setBackground(color);
                 lbNumeroCasilla.setText(String.valueOf(numero));
         }

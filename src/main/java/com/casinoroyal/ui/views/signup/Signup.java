@@ -54,7 +54,7 @@ public class Signup extends javax.swing.JFrame {
 		this.setLocationRelativeTo(null);
 
 		this.setIconImage(Toolkit.getDefaultToolkit()
-				.getImage(getClass().getResource("/img/icon.png")));
+				.getImage(getClass().getResource("/main/resources/assets/img/icon.png")));
 		desactivarBotonRegistrarse();
 		desactivarBotonEnviarCodigo();
 		desactivarBotonVerificarCodigo();
@@ -66,19 +66,11 @@ public class Signup extends javax.swing.JFrame {
 	private void eventoRegistrar() {
 
 		pfContraseña.addActionListener(e -> {
-			try {
-				registrarUsuario();
-			} catch (SQLException e1) {
-				JOptionPane.showMessageDialog(this, e1.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-			}
+			registrarUsuario();
 		});
 
 		pfConfirmarContraseña.addActionListener(e -> {
-			try {
-				registrarUsuario();
-			} catch (SQLException e1) {
-				JOptionPane.showMessageDialog(this, e1.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-			}
+			registrarUsuario();
 		});
 	}
 
@@ -144,7 +136,7 @@ public class Signup extends javax.swing.JFrame {
 		}
 	}
 
-	private boolean correoEstaRegistrado(String correo) throws SQLException {
+	private boolean correoEstaRegistrado(String correo) {
 		ArrayList<ArrayList<Object>> datosUsuarioRegistrado;
 
 		try (Connection conn = Conexion.conectar()) {
@@ -157,11 +149,11 @@ public class Signup extends javax.swing.JFrame {
 			return datosUsuarioRegistrado.size() == 1;
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-			throw e;
 		}
+		return false;
 	}
 
-	private boolean IdEstaRegistrado(String idUsuario) throws SQLException {
+	private boolean IdEstaRegistrado(String idUsuario) {
 		ArrayList<ArrayList<Object>> datosUsuarioRegistrado;
 
 		try (Connection conn = Conexion.conectar()) {
@@ -174,8 +166,8 @@ public class Signup extends javax.swing.JFrame {
 			return datosUsuarioRegistrado.size() == 1;
 		} catch (SQLException e) {
 			JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-			throw e;
 		}
+		return false;
 	}
 
 	private void enviarCodigo() throws HeadlessException, SQLException {
@@ -217,7 +209,7 @@ public class Signup extends javax.swing.JFrame {
 		}
 	}
 
-	private void registrarUsuario() throws SQLException {
+	private void registrarUsuario() {
 		if (btnRegistrarse.isEnabled()) {
 
 			String cedula = ObtenerIU.obtenerTextoCampo(tfCedula);
@@ -538,12 +530,8 @@ public class Signup extends javax.swing.JFrame {
 		btnRegistrarse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				try {
-					btnRegistrarseActionPerformed(evt);
-				} catch (SQLException e) {
-					JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+				btnRegistrarseActionPerformed(evt);
 
-				}
 			}
 		});
 		ventanaSignup.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 580, -1, -1));
@@ -577,7 +565,7 @@ public class Signup extends javax.swing.JFrame {
 		mostrarErrores();
 	}
 
-	private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
+	private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {
 		registrarUsuario();
 	}
 

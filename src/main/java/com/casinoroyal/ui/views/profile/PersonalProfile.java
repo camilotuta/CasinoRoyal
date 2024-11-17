@@ -41,7 +41,7 @@ public class PersonalProfile extends javax.swing.JFrame {
                 this.setLocationRelativeTo(null);
 
                 this.setIconImage(Toolkit.getDefaultToolkit()
-                                .getImage(getClass().getResource("/img/icon.png")));
+                                .getImage(getClass().getResource("/main/resources/assets/img/icon.png")));
 
                 desactivarBotonGuardar();
 
@@ -157,7 +157,7 @@ public class PersonalProfile extends javax.swing.JFrame {
                                 && ObtenerIU.obtenerTextoPanel(tfCambiarBiografia).length() > 5);
         }
 
-        private void actualizarBiografia() throws SQLException {
+        private void actualizarBiografia() {
 
                 try (Connection conn = Conexion.conectar()) {
                         if (conn == null) {
@@ -242,7 +242,7 @@ public class PersonalProfile extends javax.swing.JFrame {
                 lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
                 lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
                 lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-                lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
+                lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/fondos.png"))); // NOI18N
                 lbPonerFondos.setText("-");
                 ventanaProfile.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
 
@@ -250,7 +250,7 @@ public class PersonalProfile extends javax.swing.JFrame {
                 panelMenu.setOpaque(false);
                 panelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                imgCasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/casa.png"))); // NOI18N
+                imgCasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/casa.png"))); // NOI18N
                 imgCasa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 imgCasa.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -267,7 +267,7 @@ public class PersonalProfile extends javax.swing.JFrame {
                 });
                 panelMenu.add(imgCasa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
-                imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/volver.png"))); // NOI18N
+                imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/volver.png"))); // NOI18N
                 imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -284,12 +284,12 @@ public class PersonalProfile extends javax.swing.JFrame {
                 });
                 panelMenu.add(imgVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
-                imgUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuarioHover.png"))); // NOI18N
+                imgUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/usuarioHover.png"))); // NOI18N
                 imgUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
                 panelMenu.add(imgUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
                 imgMenuBar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                imgMenuBar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lineaVertical.png"))); // NOI18N
+                imgMenuBar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/lineaVertical.png"))); // NOI18N
                 imgMenuBar.setVerticalAlignment(javax.swing.SwingConstants.TOP);
                 panelMenu.add(imgMenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, -1));
 
@@ -379,12 +379,7 @@ public class PersonalProfile extends javax.swing.JFrame {
                 btnGuardarBiografia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 btnGuardarBiografia.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                try {
-                                        btnGuardarBiografiaActionPerformed(evt);
-                                } catch (SQLException e) {
-                                        JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR",
-                                                        JOptionPane.ERROR_MESSAGE);
-                                }
+                                btnGuardarBiografiaActionPerformed(evt);
                         }
                 });
                 ventanaProfile.add(btnGuardarBiografia,
@@ -432,11 +427,11 @@ public class PersonalProfile extends javax.swing.JFrame {
         }
 
         private void imgVolverMouseEntered(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgVolver, "src/img/volverHover.png");
+                new CambiarIU().setImageLabel(imgVolver, "/main/resources/assets/img/volverHover.png");
         }
 
         private void imgVolverMouseExited(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgVolver, "src/img/volver.png");
+                new CambiarIU().setImageLabel(imgVolver, "/main/resources/assets/img/volver.png");
         }
 
         private void imgCasaMouseClicked(java.awt.event.MouseEvent evt) {
@@ -446,21 +441,15 @@ public class PersonalProfile extends javax.swing.JFrame {
         }
 
         private void imgCasaMouseEntered(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgCasa, "src/img/casaHover.png");
+                new CambiarIU().setImageLabel(imgCasa, "/main/resources/assets/img/casaHover.png");
         }
 
         private void imgCasaMouseExited(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgCasa, "src/img/casa.png");
+                new CambiarIU().setImageLabel(imgCasa, "/main/resources/assets/img/casa.png");
         }
 
-        private void btnGuardarBiografiaActionPerformed(java.awt.event.ActionEvent evt) throws SQLException {
-                try {
-                        actualizarBiografia();
-                } catch (SQLException e) {
-                        JOptionPane.showMessageDialog(this, e.getMessage(), "ERROR",
-                                        JOptionPane.ERROR_MESSAGE);
-
-                }
+        private void btnGuardarBiografiaActionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarBiografia();
         }
 
         private void btnCancelarBiografiaActionPerformed(java.awt.event.ActionEvent evt) {

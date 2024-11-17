@@ -42,7 +42,7 @@ public class Carrera extends javax.swing.JFrame {
                 this.setLocationRelativeTo(null);
 
                 this.setIconImage(Toolkit.getDefaultToolkit()
-                                .getImage(getClass().getResource("/img/icon.png")));
+                                .getImage(getClass().getResource("/main/resources/assets/img/icon.png")));
                 ingresarChat();
                 taChatCarrera.setEditable(false);
                 Principal.ponerFondos(lbPonerFondos);
@@ -97,7 +97,7 @@ public class Carrera extends javax.swing.JFrame {
                                 Double.parseDouble(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)))) {
                         Transactions.restarFondos(valorApostado);
                         Principal.ponerFondos(lbPonerFondos);
-                        SoundPlay.reproducir("src/sound/carrera.wav");
+                        new SoundPlay().reproducir("/main/resources/assets/sound/carrera.wav");
                         CambiarIU.deshabilitarBotones(btnApostarCarro1, btnApostarCarro2, btnApostarCarro3,
                                         btnApostarCarro4);
 
@@ -228,7 +228,8 @@ public class Carrera extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 ventanaBingo = new javax.swing.JPanel();
@@ -263,15 +264,18 @@ public class Carrera extends javax.swing.JFrame {
                 ventanaBingo.setPreferredSize(new java.awt.Dimension(1080, 720));
                 ventanaBingo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/volver.png"))); // NOI18N
+                imgVolver.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/volver.png"))); // NOI18N
                 imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseClicked(evt);
                         }
+
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseEntered(evt);
                         }
+
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseExited(evt);
                         }
@@ -300,14 +304,16 @@ public class Carrera extends javax.swing.JFrame {
                 lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
                 lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
                 lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-                lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
+                lbPonerFondos.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/fondos.png"))); // NOI18N
                 lbPonerFondos.setText("-");
                 ventanaBingo.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
 
                 lbCuentaRegresiva.setFont(new java.awt.Font("Crabs", 1, 36)); // NOI18N
                 lbCuentaRegresiva.setForeground(new java.awt.Color(204, 204, 204));
                 lbCuentaRegresiva.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                ventanaBingo.add(lbCuentaRegresiva, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 190, 50));
+                ventanaBingo.add(lbCuentaRegresiva,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 190, 50));
 
                 lbUltimoGanador.setFont(new java.awt.Font("Crabs", 1, 24)); // NOI18N
                 lbUltimoGanador.setForeground(new java.awt.Color(227, 199, 104));
@@ -334,23 +340,38 @@ public class Carrera extends javax.swing.JFrame {
                 javax.swing.GroupLayout panelUltimoGanadorLayout = new javax.swing.GroupLayout(panelUltimoGanador);
                 panelUltimoGanador.setLayout(panelUltimoGanadorLayout);
                 panelUltimoGanadorLayout.setHorizontalGroup(
-                        panelUltimoGanadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelUltimoGanadorLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(panelUltimoGanadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lbIconoUltimoGanador, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lbNombreUltimoGanador, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                );
+                                panelUltimoGanadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                panelUltimoGanadorLayout.createSequentialGroup()
+                                                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                                                .addGroup(panelUltimoGanadorLayout
+                                                                                                .createParallelGroup(
+                                                                                                                javax.swing.GroupLayout.Alignment.LEADING)
+                                                                                                .addComponent(lbIconoUltimoGanador,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                                160,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                                .addComponent(lbNombreUltimoGanador,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                                160,
+                                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE))));
                 panelUltimoGanadorLayout.setVerticalGroup(
-                        panelUltimoGanadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelUltimoGanadorLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(lbIconoUltimoGanador, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(lbNombreUltimoGanador, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                );
+                                panelUltimoGanadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                panelUltimoGanadorLayout.createSequentialGroup()
+                                                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                                                .addComponent(lbIconoUltimoGanador,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                70,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                                .addGap(0, 0, 0)
+                                                                                .addComponent(lbNombreUltimoGanador,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                                                30,
+                                                                                                javax.swing.GroupLayout.PREFERRED_SIZE)));
 
-                ventanaBingo.add(panelUltimoGanador, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 180, 160, -1));
+                ventanaBingo.add(panelUltimoGanador,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 180, 160, -1));
 
                 lbChat.setFont(new java.awt.Font("Crabs", 1, 48)); // NOI18N
                 lbChat.setForeground(new java.awt.Color(227, 199, 104));
@@ -361,9 +382,11 @@ public class Carrera extends javax.swing.JFrame {
                 lbPersonasConectadas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
                 lbPersonasConectadas.setForeground(new java.awt.Color(148, 161, 178));
                 lbPersonasConectadas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-                lbPersonasConectadas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/personas.png"))); // NOI18N
+                lbPersonasConectadas.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/personas.png"))); // NOI18N
                 lbPersonasConectadas.setText("0");
-                ventanaBingo.add(lbPersonasConectadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 300, -1));
+                ventanaBingo.add(lbPersonasConectadas,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 340, 300, -1));
 
                 taChatCarrera.setBackground(new java.awt.Color(36, 38, 41));
                 taChatCarrera.setColumns(20);
@@ -385,15 +408,18 @@ public class Carrera extends javax.swing.JFrame {
 
                 ventanaBingo.add(scMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 650, 180, 50));
 
-                imgEnviar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/enviar.png"))); // NOI18N
+                imgEnviar.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/enviar.png"))); // NOI18N
                 imgEnviar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 imgEnviar.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseClicked(evt);
                         }
+
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseEntered(evt);
                         }
+
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgEnviarMouseExited(evt);
                         }
@@ -405,7 +431,8 @@ public class Carrera extends javax.swing.JFrame {
                 taContenidoCarrera.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
                 taContenidoCarrera.setRows(5);
                 taContenidoCarrera.setText("🚙, 🚜, 🏍️, 🚚, 🚐, 🚑, 🚒, 🏎️, 🚓, 🚔, 🚕, 🚖, 🚘, 🚛\n");
-                taContenidoCarrera.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 0)));
+                taContenidoCarrera
+                                .setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 0)));
                 scCarrera.setViewportView(taContenidoCarrera);
 
                 ventanaBingo.add(scCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 800, 270));
@@ -421,7 +448,8 @@ public class Carrera extends javax.swing.JFrame {
                                 btnApostarCarro1ActionPerformed(evt);
                         }
                 });
-                ventanaBingo.add(btnApostarCarro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 570, 140, -1));
+                ventanaBingo.add(btnApostarCarro1,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 570, 140, -1));
 
                 btnApostarCarro2.setBackground(new java.awt.Color(51, 153, 1));
                 btnApostarCarro2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -434,7 +462,8 @@ public class Carrera extends javax.swing.JFrame {
                                 btnApostarCarro2ActionPerformed(evt);
                         }
                 });
-                ventanaBingo.add(btnApostarCarro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 570, 140, -1));
+                ventanaBingo.add(btnApostarCarro2,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 570, 140, -1));
 
                 btnApostarCarro3.setBackground(new java.awt.Color(102, 1, 102));
                 btnApostarCarro3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -447,7 +476,8 @@ public class Carrera extends javax.swing.JFrame {
                                 btnApostarCarro3ActionPerformed(evt);
                         }
                 });
-                ventanaBingo.add(btnApostarCarro3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 650, 140, -1));
+                ventanaBingo.add(btnApostarCarro3,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 650, 140, -1));
 
                 btnApostarCarro4.setBackground(new java.awt.Color(204, 102, 1));
                 btnApostarCarro4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -460,7 +490,8 @@ public class Carrera extends javax.swing.JFrame {
                                 btnApostarCarro4ActionPerformed(evt);
                         }
                 });
-                ventanaBingo.add(btnApostarCarro4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 650, 140, -1));
+                ventanaBingo.add(btnApostarCarro4,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 650, 140, -1));
 
                 lbApuesta.setFont(new java.awt.Font("Crabs", 1, 24)); // NOI18N
                 lbApuesta.setForeground(new java.awt.Color(227, 199, 104));
@@ -471,19 +502,22 @@ public class Carrera extends javax.swing.JFrame {
                 cbValorApostado.setBackground(new java.awt.Color(27, 9, 5));
                 cbValorApostado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                 cbValorApostado.setForeground(new java.awt.Color(224, 195, 102));
-                cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500", "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
+                cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500",
+                                "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
                 ventanaBingo.add(cbValorApostado, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 590, 190, 40));
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
                 layout.setVerticalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaBingo, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
 
                 pack();
         }// </editor-fold>//GEN-END:initComponents
@@ -520,21 +554,21 @@ public class Carrera extends javax.swing.JFrame {
         }
 
         private void imgEnviarMouseEntered(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgEnviar, "src/img/enviarHover.png");
+                new CambiarIU().setImageLabel(imgEnviar, "/main/resources/assets/img/enviarHover.png");
 
         }
 
         private void imgEnviarMouseExited(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgEnviar, "src/img/enviar.png");
+                new CambiarIU().setImageLabel(imgEnviar, "/main/resources/assets/img/enviar.png");
 
         }
 
         private void imgVolverMouseEntered(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgVolver, "src/img/volverHover.png");
+                new CambiarIU().setImageLabel(imgVolver, "/main/resources/assets/img/volverHover.png");
         }
 
         private void imgVolverMouseExited(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgVolver, "src/img/volver.png");
+                new CambiarIU().setImageLabel(imgVolver, "/main/resources/assets/img/volver.png");
         }
 
         private void imgVolverMouseClicked(java.awt.event.MouseEvent evt) {

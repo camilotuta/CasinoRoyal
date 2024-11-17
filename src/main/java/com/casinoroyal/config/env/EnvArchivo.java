@@ -13,7 +13,7 @@ import io.github.cdimascio.dotenv.Dotenv;
  */
 public class EnvArchivo {
     public static Dotenv dotenv = Dotenv.configure()
-            .directory("src/Code/env")
+            .directory("main/java/com/casinoRoyal/config/env")
             .load();
 
 }

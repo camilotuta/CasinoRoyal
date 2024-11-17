@@ -1,298 +1,344 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <Form version="1.8" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="3" />
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1" />
+    <SyntheticProperty name="generateCenter" type="boolean" value="false" />
   </SyntheticProperties>
   <AuxValues>
-    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
-    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
-    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
-    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
-    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0" />
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true" />
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1" />
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0" />
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false" />
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2" />
   </AuxValues>
 
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="ventanaBingo" alignment="0" min="-2" max="-2" attributes="0"/>
+        <Component id="ventanaBingo" alignment="0" min="-2" max="-2" attributes="0" />
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="ventanaBingo" alignment="0" min="-2" max="-2" attributes="0"/>
+        <Component id="ventanaBingo" alignment="0" min="-2" max="-2" attributes="0" />
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="ventanaBingo">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="5" green="9" red="1b" type="rgb"/>
+        <Property name="background" type="java.awt.Color"
+          editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="5" green="9" red="1b" type="rgb" />
         </Property>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[1080, 720]"/>
+        <Property name="preferredSize" type="java.awt.Dimension"
+          editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[1080, 720]" />
         </Property>
       </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
-        <Property name="useNullLayout" type="boolean" value="false"/>
+        <Property name="useNullLayout" type="boolean" value="false" />
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JLabel" name="imgVolver">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/volver.png"/>
+            <Property name="icon" type="javax.swing.Icon"
+              editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/main/resources/assets/img/volver.png" />
             </Property>
-            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+            <Property name="cursor" type="java.awt.Cursor"
+              editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor" />
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="imgVolverMouseClicked"/>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="imgVolverMouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="imgVolverMouseExited"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener"
+              parameters="java.awt.event.MouseEvent" handler="imgVolverMouseClicked" />
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener"
+              parameters="java.awt.event.MouseEvent" handler="imgVolverMouseEntered" />
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener"
+              parameters="java.awt.event.MouseEvent" handler="imgVolverMouseExited" />
           </Events>
           <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="10" width="-1" height="-1"/>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout"
+              value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="10" y="10" width="-1" height="-1" />
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JButton" name="btnDepositar">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="43" green="80" red="93" type="rgb"/>
+            <Property name="background" type="java.awt.Color"
+              editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="43" green="80" red="93" type="rgb" />
             </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="1"/>
+            <Property name="font" type="java.awt.Font"
+              editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="1" />
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="fe" green="ff" red="ff" type="rgb"/>
+            <Property name="foreground" type="java.awt.Color"
+              editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="fe" green="ff" red="ff" type="rgb" />
             </Property>
-            <Property name="text" type="java.lang.String" value="Depositar"/>
-            <Property name="actionCommand" type="java.lang.String" value="Ingresar"/>
-            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+            <Property name="text" type="java.lang.String" value="Depositar" />
+            <Property name="actionCommand" type="java.lang.String" value="Ingresar" />
+            <Property name="cursor" type="java.awt.Cursor"
+              editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor" />
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDepositarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener"
+              parameters="java.awt.event.ActionEvent" handler="btnDepositarActionPerformed" />
           </Events>
           <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="960" y="50" width="-1" height="-1"/>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout"
+              value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="960" y="50" width="-1" height="-1" />
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="lbCarrera">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Crabs" size="100" style="1"/>
+            <Property name="font" type="java.awt.Font"
+              editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Crabs" size="100" style="1" />
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="68" green="c7" red="e3" type="rgb"/>
+            <Property name="foreground" type="java.awt.Color"
+              editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="68" green="c7" red="e3" type="rgb" />
             </Property>
-            <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Carrera"/>
+            <Property name="horizontalAlignment" type="int" value="0" />
+            <Property name="text" type="java.lang.String" value="Carrera" />
           </Properties>
           <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="40" width="1080" height="-1"/>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout"
+              value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="0" y="40" width="1080" height="-1" />
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="lbPonerFondos">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="18" style="0"/>
+            <Property name="font" type="java.awt.Font"
+              editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="0" />
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="b2" green="a1" red="94" type="rgb"/>
+            <Property name="foreground" type="java.awt.Color"
+              editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="b2" green="a1" red="94" type="rgb" />
             </Property>
-            <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/fondos.png"/>
+            <Property name="horizontalAlignment" type="int" value="4" />
+            <Property name="icon" type="javax.swing.Icon"
+              editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/main/resources/assets/img/fondos.png" />
             </Property>
-            <Property name="text" type="java.lang.String" value="-"/>
+            <Property name="text" type="java.lang.String" value="-" />
           </Properties>
           <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="10" width="1050" height="-1"/>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout"
+              value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="10" y="10" width="1050" height="-1" />
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="lbCuentaRegresiva">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Crabs" size="36" style="1"/>
+            <Property name="font" type="java.awt.Font"
+              editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Crabs" size="36" style="1" />
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="cc" red="cc" type="rgb"/>
+            <Property name="foreground" type="java.awt.Color"
+              editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="cc" type="rgb" />
             </Property>
-            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="horizontalAlignment" type="int" value="0" />
           </Properties>
           <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="450" y="180" width="190" height="50"/>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout"
+              value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="450" y="180" width="190" height="50" />
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="lbUltimoGanador">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Crabs" size="24" style="1"/>
+            <Property name="font" type="java.awt.Font"
+              editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Crabs" size="24" style="1" />
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="68" green="c7" red="e3" type="rgb"/>
+            <Property name="foreground" type="java.awt.Color"
+              editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="68" green="c7" red="e3" type="rgb" />
             </Property>
-            <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Ultimo Ganador"/>
+            <Property name="horizontalAlignment" type="int" value="0" />
+            <Property name="text" type="java.lang.String" value="Ultimo Ganador" />
           </Properties>
           <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="870" y="140" width="160" height="40"/>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout"
+              value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="870" y="140" width="160" height="40" />
             </Constraint>
           </Constraints>
         </Component>
-        <Container class="main.java.com.casinoRoyal.ui.components.PanelRound" name="panelUltimoGanador">
+        <Container class="main.java.com.casinoRoyal.ui.components.PanelRound"
+          name="panelUltimoGanador">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="29" green="26" red="24" type="rgb"/>
+            <Property name="background" type="java.awt.Color"
+              editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="29" green="26" red="24" type="rgb" />
             </Property>
-            <Property name="roundBottomLeft" type="int" value="30"/>
-            <Property name="roundBottomRight" type="int" value="30"/>
-            <Property name="roundTopLeft" type="int" value="30"/>
-            <Property name="roundTopRight" type="int" value="30"/>
+            <Property name="roundBottomLeft" type="int" value="30" />
+            <Property name="roundBottomRight" type="int" value="30" />
+            <Property name="roundTopLeft" type="int" value="30" />
+            <Property name="roundTopRight" type="int" value="30" />
           </Properties>
           <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="870" y="180" width="160" height="-1"/>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout"
+              value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="870" y="180" width="160" height="-1" />
             </Constraint>
           </Constraints>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lbIconoUltimoGanador" min="-2" pref="160" max="-2" attributes="0"/>
-                          <Component id="lbNombreUltimoGanador" min="-2" pref="160" max="-2" attributes="0"/>
-                      </Group>
+                <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0" />
+                  <Group type="103" groupAlignment="0" attributes="0">
+                    <Component id="lbIconoUltimoGanador" min="-2" pref="160" max="-2" attributes="0" />
+                    <Component id="lbNombreUltimoGanador" min="-2" pref="160" max="-2"
+                      attributes="0" />
                   </Group>
+                </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="lbIconoUltimoGanador" min="-2" pref="70" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="lbNombreUltimoGanador" min="-2" pref="30" max="-2" attributes="0"/>
-                  </Group>
+                <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0" />
+                  <Component id="lbIconoUltimoGanador" min="-2" pref="70" max="-2" attributes="0" />
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0" />
+                  <Component id="lbNombreUltimoGanador" min="-2" pref="30" max="-2" attributes="0" />
+                </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JLabel" name="lbIconoUltimoGanador">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI Emoji" size="36" style="1"/>
+                <Property name="font" type="java.awt.Font"
+                  editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Emoji" size="36" style="1" />
                 </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="68" green="c7" red="e3" type="rgb"/>
+                <Property name="foreground" type="java.awt.Color"
+                  editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="68" green="c7" red="e3" type="rgb" />
                 </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="-"/>
+                <Property name="horizontalAlignment" type="int" value="0" />
+                <Property name="text" type="java.lang.String" value="-" />
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lbNombreUltimoGanador">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Crabs" size="18" style="1"/>
+                <Property name="font" type="java.awt.Font"
+                  editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Crabs" size="18" style="1" />
                 </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="68" green="c7" red="e3" type="rgb"/>
+                <Property name="foreground" type="java.awt.Color"
+                  editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="68" green="c7" red="e3" type="rgb" />
                 </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="-"/>
+                <Property name="horizontalAlignment" type="int" value="0" />
+                <Property name="text" type="java.lang.String" value="-" />
               </Properties>
             </Component>
           </SubComponents>
         </Container>
         <Component class="javax.swing.JLabel" name="lbChat">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Crabs" size="48" style="1"/>
+            <Property name="font" type="java.awt.Font"
+              editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Crabs" size="48" style="1" />
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="68" green="c7" red="e3" type="rgb"/>
+            <Property name="foreground" type="java.awt.Color"
+              editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="68" green="c7" red="e3" type="rgb" />
             </Property>
-            <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Chat"/>
+            <Property name="horizontalAlignment" type="int" value="0" />
+            <Property name="text" type="java.lang.String" value="Chat" />
           </Properties>
           <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="840" y="310" width="220" height="-1"/>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout"
+              value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="840" y="310" width="220" height="-1" />
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="lbPersonasConectadas">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="14" style="0"/>
+            <Property name="font" type="java.awt.Font"
+              editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="14" style="0" />
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="b2" green="a1" red="94" type="rgb"/>
+            <Property name="foreground" type="java.awt.Color"
+              editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="b2" green="a1" red="94" type="rgb" />
             </Property>
-            <Property name="horizontalAlignment" type="int" value="2"/>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/personas.png"/>
+            <Property name="horizontalAlignment" type="int" value="2" />
+            <Property name="icon" type="javax.swing.Icon"
+              editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/main/resources/assets/img/personas.png" />
             </Property>
-            <Property name="text" type="java.lang.String" value="0"/>
+            <Property name="text" type="java.lang.String" value="0" />
           </Properties>
           <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="840" y="340" width="300" height="-1"/>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout"
+              value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="840" y="340" width="300" height="-1" />
             </Constraint>
           </Constraints>
         </Component>
         <Container class="javax.swing.JScrollPane" name="scChatCarrera">
           <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true" />
           </AuxValues>
           <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="840" y="370" width="-1" height="260"/>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout"
+              value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="840" y="370" width="-1" height="260" />
             </Constraint>
           </Constraints>
 
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout" />
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="taChatCarrera">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="29" green="26" red="24" type="rgb"/>
+                <Property name="background" type="java.awt.Color"
+                  editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="29" green="26" red="24" type="rgb" />
                 </Property>
-                <Property name="columns" type="int" value="20"/>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="b2" green="a1" red="94" type="rgb"/>
+                <Property name="columns" type="int" value="20" />
+                <Property name="foreground" type="java.awt.Color"
+                  editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="b2" green="a1" red="94" type="rgb" />
                 </Property>
-                <Property name="lineWrap" type="boolean" value="true"/>
-                <Property name="rows" type="int" value="5"/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                <Property name="lineWrap" type="boolean" value="true" />
+                <Property name="rows" type="int" value="5" />
+                <Property name="border" type="javax.swing.border.Border"
+                  editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder>
-                      <Color PropertyName="color" blue="68" green="c7" red="e3" type="rgb"/>
+                      <Color PropertyName="color" blue="68" green="c7" red="e3" type="rgb" />
                     </LineBorder>
                   </Border>
                 </Property>
@@ -302,31 +348,35 @@
         </Container>
         <Container class="javax.swing.JScrollPane" name="scMensaje">
           <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true" />
           </AuxValues>
           <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="840" y="650" width="180" height="50"/>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout"
+              value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="840" y="650" width="180" height="50" />
             </Constraint>
           </Constraints>
 
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout" />
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="taMensaje">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="29" green="26" red="24" type="rgb"/>
+                <Property name="background" type="java.awt.Color"
+                  editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="29" green="26" red="24" type="rgb" />
                 </Property>
-                <Property name="columns" type="int" value="20"/>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="b2" green="a1" red="94" type="rgb"/>
+                <Property name="columns" type="int" value="20" />
+                <Property name="foreground" type="java.awt.Color"
+                  editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="b2" green="a1" red="94" type="rgb" />
                 </Property>
-                <Property name="lineWrap" type="boolean" value="true"/>
-                <Property name="rows" type="int" value="2"/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                <Property name="lineWrap" type="boolean" value="true" />
+                <Property name="rows" type="int" value="2" />
+                <Property name="border" type="javax.swing.border.Border"
+                  editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder>
-                      <Color PropertyName="color" blue="68" green="c7" red="e3" type="rgb"/>
+                      <Color PropertyName="color" blue="68" green="c7" red="e3" type="rgb" />
                     </LineBorder>
                   </Border>
                 </Property>
@@ -336,51 +386,63 @@
         </Container>
         <Component class="javax.swing.JLabel" name="imgEnviar">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/enviar.png"/>
+            <Property name="icon" type="javax.swing.Icon"
+              editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/main/resources/assets/img/enviar.png" />
             </Property>
-            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+            <Property name="cursor" type="java.awt.Cursor"
+              editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor" />
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="imgEnviarMouseClicked"/>
-            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="imgEnviarMouseEntered"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="imgEnviarMouseExited"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener"
+              parameters="java.awt.event.MouseEvent" handler="imgEnviarMouseClicked" />
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener"
+              parameters="java.awt.event.MouseEvent" handler="imgEnviarMouseEntered" />
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener"
+              parameters="java.awt.event.MouseEvent" handler="imgEnviarMouseExited" />
           </Events>
           <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="1030" y="650" width="40" height="40"/>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout"
+              value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="1030" y="650" width="40" height="40" />
             </Constraint>
           </Constraints>
         </Component>
         <Container class="javax.swing.JScrollPane" name="scCarrera">
           <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true" />
           </AuxValues>
           <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="270" width="800" height="270"/>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout"
+              value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="20" y="270" width="800" height="270" />
             </Constraint>
           </Constraints>
 
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout" />
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="taContenidoCarrera">
               <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="29" green="26" red="24" type="rgb"/>
+                <Property name="background" type="java.awt.Color"
+                  editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="29" green="26" red="24" type="rgb" />
                 </Property>
-                <Property name="columns" type="int" value="20"/>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI Emoji" size="18" style="0"/>
+                <Property name="columns" type="int" value="20" />
+                <Property name="font" type="java.awt.Font"
+                  editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI Emoji" size="18" style="0" />
                 </Property>
-                <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="\ud83d\ude99, \ud83d\ude9c, \ud83c\udfcd&#xfe0f;, \ud83d\ude9a, \ud83d\ude90, \ud83d\ude91, \ud83d\ude92, \ud83c\udfce&#xfe0f;, \ud83d\ude93, \ud83d\ude94, \ud83d\ude95, \ud83d\ude96, \ud83d\ude98, \ud83d\ude9b&#xa;" containsInvalidXMLChars="true"/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                <Property name="rows" type="int" value="5" />
+                <Property name="text" type="java.lang.String"
+                  value="\ud83d\ude99, \ud83d\ude9c, \ud83c\udfcd&#xfe0f;, \ud83d\ude9a, \ud83d\ude90, \ud83d\ude91, \ud83d\ude92, \ud83c\udfce&#xfe0f;, \ud83d\ude93, \ud83d\ude94, \ud83d\ude95, \ud83d\ude96, \ud83d\ude98, \ud83d\ude9b&#xa;"
+                  containsInvalidXMLChars="true" />
+                <Property name="border" type="javax.swing.border.Border"
+                  editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder>
-                      <Color PropertyName="color" blue="0" green="cc" red="cc" type="rgb"/>
+                      <Color PropertyName="color" blue="0" green="cc" red="cc" type="rgb" />
                     </LineBorder>
                   </Border>
                 </Property>
@@ -390,157 +452,190 @@
         </Container>
         <Component class="javax.swing.JButton" name="btnApostarCarro1">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="1" green="0" red="99" type="rgb"/>
+            <Property name="background" type="java.awt.Color"
+              editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="1" green="0" red="99" type="rgb" />
             </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="1"/>
+            <Property name="font" type="java.awt.Font"
+              editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="1" />
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="fe" green="ff" red="ff" type="rgb"/>
+            <Property name="foreground" type="java.awt.Color"
+              editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="fe" green="ff" red="ff" type="rgb" />
             </Property>
-            <Property name="text" type="java.lang.String" value="Carro 1"/>
-            <Property name="actionCommand" type="java.lang.String" value="Ingresar"/>
-            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+            <Property name="text" type="java.lang.String" value="Carro 1" />
+            <Property name="actionCommand" type="java.lang.String" value="Ingresar" />
+            <Property name="cursor" type="java.awt.Cursor"
+              editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor" />
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnApostarCarro1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener"
+              parameters="java.awt.event.ActionEvent" handler="btnApostarCarro1ActionPerformed" />
           </Events>
           <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="240" y="570" width="140" height="-1"/>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout"
+              value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="240" y="570" width="140" height="-1" />
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JButton" name="btnApostarCarro2">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="1" green="99" red="33" type="rgb"/>
+            <Property name="background" type="java.awt.Color"
+              editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="1" green="99" red="33" type="rgb" />
             </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="1"/>
+            <Property name="font" type="java.awt.Font"
+              editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="1" />
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="fe" green="ff" red="ff" type="rgb"/>
+            <Property name="foreground" type="java.awt.Color"
+              editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="fe" green="ff" red="ff" type="rgb" />
             </Property>
-            <Property name="text" type="java.lang.String" value="Carro 2"/>
-            <Property name="actionCommand" type="java.lang.String" value="Ingresar"/>
-            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+            <Property name="text" type="java.lang.String" value="Carro 2" />
+            <Property name="actionCommand" type="java.lang.String" value="Ingresar" />
+            <Property name="cursor" type="java.awt.Cursor"
+              editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor" />
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnApostarCarro2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener"
+              parameters="java.awt.event.ActionEvent" handler="btnApostarCarro2ActionPerformed" />
           </Events>
           <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="630" y="570" width="140" height="-1"/>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout"
+              value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="630" y="570" width="140" height="-1" />
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JButton" name="btnApostarCarro3">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="66" green="1" red="66" type="rgb"/>
+            <Property name="background" type="java.awt.Color"
+              editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="66" green="1" red="66" type="rgb" />
             </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="1"/>
+            <Property name="font" type="java.awt.Font"
+              editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="1" />
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="fe" green="ff" red="ff" type="rgb"/>
+            <Property name="foreground" type="java.awt.Color"
+              editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="fe" green="ff" red="ff" type="rgb" />
             </Property>
-            <Property name="text" type="java.lang.String" value="Carro 3"/>
-            <Property name="actionCommand" type="java.lang.String" value="Ingresar"/>
-            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+            <Property name="text" type="java.lang.String" value="Carro 3" />
+            <Property name="actionCommand" type="java.lang.String" value="Ingresar" />
+            <Property name="cursor" type="java.awt.Cursor"
+              editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor" />
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnApostarCarro3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener"
+              parameters="java.awt.event.ActionEvent" handler="btnApostarCarro3ActionPerformed" />
           </Events>
           <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="320" y="650" width="140" height="-1"/>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout"
+              value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="320" y="650" width="140" height="-1" />
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JButton" name="btnApostarCarro4">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="1" green="66" red="cc" type="rgb"/>
+            <Property name="background" type="java.awt.Color"
+              editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="1" green="66" red="cc" type="rgb" />
             </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="1"/>
+            <Property name="font" type="java.awt.Font"
+              editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="1" />
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="fe" green="ff" red="ff" type="rgb"/>
+            <Property name="foreground" type="java.awt.Color"
+              editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="fe" green="ff" red="ff" type="rgb" />
             </Property>
-            <Property name="text" type="java.lang.String" value="Carro 4"/>
-            <Property name="actionCommand" type="java.lang.String" value="Ingresar"/>
-            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+            <Property name="text" type="java.lang.String" value="Carro 4" />
+            <Property name="actionCommand" type="java.lang.String" value="Ingresar" />
+            <Property name="cursor" type="java.awt.Cursor"
+              editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor" />
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnApostarCarro4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener"
+              parameters="java.awt.event.ActionEvent" handler="btnApostarCarro4ActionPerformed" />
           </Events>
           <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="540" y="650" width="140" height="-1"/>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout"
+              value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="540" y="650" width="140" height="-1" />
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JLabel" name="lbApuesta">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Crabs" size="24" style="1"/>
+            <Property name="font" type="java.awt.Font"
+              editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Crabs" size="24" style="1" />
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="68" green="c7" red="e3" type="rgb"/>
+            <Property name="foreground" type="java.awt.Color"
+              editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="68" green="c7" red="e3" type="rgb" />
             </Property>
-            <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Apuesta"/>
+            <Property name="horizontalAlignment" type="int" value="0" />
+            <Property name="text" type="java.lang.String" value="Apuesta" />
           </Properties>
           <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="410" y="560" width="190" height="30"/>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout"
+              value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="410" y="560" width="190" height="30" />
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbValorApostado">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="5" green="9" red="1b" type="rgb"/>
+            <Property name="background" type="java.awt.Color"
+              editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="5" green="9" red="1b" type="rgb" />
             </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="1"/>
+            <Property name="font" type="java.awt.Font"
+              editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="18" style="1" />
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="66" green="c3" red="e0" type="rgb"/>
+            <Property name="foreground" type="java.awt.Color"
+              editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="66" green="c3" red="e0" type="rgb" />
             </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+            <Property name="model" type="javax.swing.ComboBoxModel"
+              editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="10">
-                <StringItem index="0" value="100"/>
-                <StringItem index="1" value="200"/>
-                <StringItem index="2" value="500"/>
-                <StringItem index="3" value="1000"/>
-                <StringItem index="4" value="2000"/>
-                <StringItem index="5" value="5000"/>
-                <StringItem index="6" value="10000"/>
-                <StringItem index="7" value="25000"/>
-                <StringItem index="8" value="50000"/>
-                <StringItem index="9" value="100000"/>
+                <StringItem index="0" value="100" />
+                <StringItem index="1" value="200" />
+                <StringItem index="2" value="500" />
+                <StringItem index="3" value="1000" />
+                <StringItem index="4" value="2000" />
+                <StringItem index="5" value="5000" />
+                <StringItem index="6" value="10000" />
+                <StringItem index="7" value="25000" />
+                <StringItem index="8" value="50000" />
+                <StringItem index="9" value="100000" />
               </StringArray>
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String"
+              value="&lt;String&gt;" />
           </AuxValues>
           <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="410" y="590" width="190" height="40"/>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout"
+              value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="410" y="590" width="190" height="40" />
             </Constraint>
           </Constraints>
         </Component>

@@ -10,17 +10,15 @@ import javax.swing.JOptionPane;
 
 public class OperacionCRUD {
 
-    public static void registrar(Connection conn, String query) throws SQLException {
+    public static void registrar(Connection conn, String query) {
         try (PreparedStatement pSt = conn.prepareStatement(query)) {
             pSt.executeUpdate();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-            throw e;
         }
     }
 
-    public static ArrayList<ArrayList<Object>> seleccionar(Connection conn, String query, String[] columnas)
-            throws SQLException {
+    public static ArrayList<ArrayList<Object>> seleccionar(Connection conn, String query, String[] columnas) {
         ArrayList<ArrayList<Object>> registros = new ArrayList<>();
         try (PreparedStatement pSt = conn.prepareStatement(query);
                 ResultSet result = pSt.executeQuery()) {
@@ -34,26 +32,23 @@ public class OperacionCRUD {
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-            throw e;
         }
         return registros;
     }
 
-    public static void actualizar(Connection conn, String query) throws SQLException {
+    public static void actualizar(Connection conn, String query) {
         try (PreparedStatement pSt = conn.prepareStatement(query)) {
             pSt.executeUpdate();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-            throw e;
         }
     }
 
-    public static void eliminar(Connection conn, String query) throws SQLException {
+    public static void eliminar(Connection conn, String query) {
         try (PreparedStatement pSt = conn.prepareStatement(query)) {
             pSt.executeUpdate();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
-            throw e;
         }
     }
 }

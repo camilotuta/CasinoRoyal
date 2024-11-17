@@ -20,7 +20,6 @@ import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 
 import main.java.com.casinoRoyal.ui.views.profile.PersonalProfile;
 import main.java.com.casinoRoyal.ui.views.transactions.Transactions;
-
 import java.awt.HeadlessException;
 
 /**
@@ -40,7 +39,7 @@ public class Dados extends javax.swing.JFrame {
                 this.setLocationRelativeTo(null);
 
                 this.setIconImage(Toolkit.getDefaultToolkit()
-                                .getImage(getClass().getResource("/img/icon.png")));
+                                .getImage(getClass().getResource("/main/resources/assets/img/icon.png")));
                 Principal.ponerFondos(lbPonerFondos);
         }
 
@@ -51,9 +50,9 @@ public class Dados extends javax.swing.JFrame {
                         Principal.ponerFondos(lbPonerFondos);
 
                         CambiarIU.deshabilitarBotones(btnApostarPar, btnApostarImpar, btnApostarSuma, btnApostarDobles);
-                        CambiarIU.setImageLabel(lbDado1, "src/img/dados/dadoGirando.gif");
-                        CambiarIU.setImageLabel(lbDado2, "src/img/dados/dadoGirando.gif");
-                        SoundPlay.reproducir("src/sound/lanzandoDados.wav");
+                        new CambiarIU().setImageLabel(lbDado1, "/main/resources/assets/img/dados/dadoGirando.gif");
+                        new CambiarIU().setImageLabel(lbDado2, "/main/resources/assets/img/dados/dadoGirando.gif");
+                        new SoundPlay().reproducir("/main/resources/assets/sound/lanzandoDados.wav");
 
                         int numeroDado1 = NumerosDado.numeroAleatorio();
                         int numeroDado2 = NumerosDado.numeroAleatorio();
@@ -83,8 +82,12 @@ public class Dados extends javax.swing.JFrame {
                                                 valorGanado[0] = valorApostado * 30;
                                         }
 
-                                        CambiarIU.setImageLabel(lbDado1, "src/img/dados/dado" + numeroDado1 + ".png");
-                                        CambiarIU.setImageLabel(lbDado2, "src/img/dados/dado" + numeroDado2 + ".png");
+                                        new CambiarIU().setImageLabel(lbDado1,
+                                                        "/main/resources/assets/img/dados/dado" + numeroDado1
+                                                                        + ".png");
+                                        new CambiarIU().setImageLabel(lbDado2,
+                                                        "/main/resources/assets/img/dados/dado" + numeroDado2
+                                                                        + ".png");
 
                                         Thread.sleep(2000);
                                         String mensaje = "Los dados han caído en: " + numeroDado1 + " y " + numeroDado2
@@ -148,7 +151,8 @@ public class Dados extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 ventanaBlackJack = new javax.swing.JPanel();
@@ -171,15 +175,18 @@ public class Dados extends javax.swing.JFrame {
                 ventanaBlackJack.setPreferredSize(new java.awt.Dimension(1080, 720));
                 ventanaBlackJack.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/volver.png"))); // NOI18N
+                imgVolver.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/volver.png"))); // NOI18N
                 imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseClicked(evt);
                         }
+
                         public void mouseEntered(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseEntered(evt);
                         }
+
                         public void mouseExited(java.awt.event.MouseEvent evt) {
                                 imgVolverMouseExited(evt);
                         }
@@ -208,14 +215,18 @@ public class Dados extends javax.swing.JFrame {
                 lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
                 lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
                 lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-                lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fondos.png"))); // NOI18N
+                lbPonerFondos.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/fondos.png"))); // NOI18N
                 lbPonerFondos.setText("-");
-                ventanaBlackJack.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
+                ventanaBlackJack.add(lbPonerFondos,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
 
-                lbDado1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dados/dado1.png"))); // NOI18N
+                lbDado1.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/dados/dado1.png"))); // NOI18N
                 ventanaBlackJack.add(lbDado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 154, 156));
 
-                lbDado2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dados/dado6.png"))); // NOI18N
+                lbDado2.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/dados/dado6.png"))); // NOI18N
                 ventanaBlackJack.add(lbDado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 280, 154, 156));
 
                 btnApostarPar.setBackground(new java.awt.Color(153, 1, 102));
@@ -229,7 +240,8 @@ public class Dados extends javax.swing.JFrame {
                                 btnApostarParActionPerformed(evt);
                         }
                 });
-                ventanaBlackJack.add(btnApostarPar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 580, -1, -1));
+                ventanaBlackJack.add(btnApostarPar,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 580, -1, -1));
 
                 btnApostarImpar.setBackground(new java.awt.Color(204, 102, 1));
                 btnApostarImpar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -242,7 +254,8 @@ public class Dados extends javax.swing.JFrame {
                                 btnApostarImparActionPerformed(evt);
                         }
                 });
-                ventanaBlackJack.add(btnApostarImpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 580, -1, -1));
+                ventanaBlackJack.add(btnApostarImpar,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 580, -1, -1));
 
                 btnApostarSuma.setBackground(new java.awt.Color(1, 153, 153));
                 btnApostarSuma.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -255,7 +268,8 @@ public class Dados extends javax.swing.JFrame {
                                 btnApostarSumaActionPerformed(evt);
                         }
                 });
-                ventanaBlackJack.add(btnApostarSuma, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 640, -1, -1));
+                ventanaBlackJack.add(btnApostarSuma,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 640, -1, -1));
 
                 btnApostarDobles.setBackground(new java.awt.Color(51, 1, 153));
                 btnApostarDobles.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -268,7 +282,8 @@ public class Dados extends javax.swing.JFrame {
                                 btnApostarDoblesActionPerformed(evt);
                         }
                 });
-                ventanaBlackJack.add(btnApostarDobles, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 640, -1, -1));
+                ventanaBlackJack.add(btnApostarDobles,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 640, -1, -1));
 
                 lbApuesta.setFont(new java.awt.Font("Crabs", 1, 24)); // NOI18N
                 lbApuesta.setForeground(new java.awt.Color(227, 199, 104));
@@ -279,19 +294,24 @@ public class Dados extends javax.swing.JFrame {
                 cbValorApostado.setBackground(new java.awt.Color(27, 9, 5));
                 cbValorApostado.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
                 cbValorApostado.setForeground(new java.awt.Color(224, 195, 102));
-                cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500", "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
-                ventanaBlackJack.add(cbValorApostado, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 570, 190, 40));
+                cbValorApostado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "100", "200", "500",
+                                "1000", "2000", "5000", "10000", "25000", "50000", "100000" }));
+                ventanaBlackJack.add(cbValorApostado,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 570, 190, 40));
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaBlackJack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaBlackJack, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
                 layout.setVerticalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaBlackJack, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaBlackJack,
+                                                                javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
 
                 pack();
         }// </editor-fold>//GEN-END:initComponents
@@ -374,11 +394,11 @@ public class Dados extends javax.swing.JFrame {
         }
 
         private void imgVolverMouseEntered(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgVolver, "src/img/volverHover.png");
+                new CambiarIU().setImageLabel(imgVolver, "/main/resources/assets/img/volverHover.png");
         }
 
         private void imgVolverMouseExited(java.awt.event.MouseEvent evt) {
-                CambiarIU.setImageLabel(imgVolver, "src/img/volver.png");
+                new CambiarIU().setImageLabel(imgVolver, "/main/resources/assets/img/volver.png");
         }
 
         private void imgVolverMouseClicked(java.awt.event.MouseEvent evt) {
