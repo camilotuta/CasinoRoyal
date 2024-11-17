@@ -6,3 +6,6 @@
 .db
 /ServidorChatsCasinoRoyal
 /.vscode
+
+/main/java/com/casinoRoyal/config
+/main/resources/database
