@@ -10,7 +10,6 @@ import main.java.com.casinoRoyal.ui.utils.CambiarIU;
 import main.java.com.casinoRoyal.ui.utils.ObtenerIU;
 import main.java.com.casinoRoyal.ui.utils.SoundPlay;
 import main.java.com.casinoRoyal.game.blackJack.PartidaBlackJack;
-import main.java.com.casinoRoyal.ui.views.login.Login;
 import main.java.com.casinoRoyal.ui.views.principal.Principal;
 import main.java.com.casinoRoyal.ui.views.profile.PersonalProfile;
 import main.java.com.casinoRoyal.ui.views.transactions.Transactions;
@@ -65,10 +64,9 @@ public class BlackJack extends javax.swing.JFrame {
         private void cerrarChat() {
                 if (chatClient != null) {
                         chatClient.close();
+                        chatClient = null; // Liberar el recurso
                 } else {
-                        JOptionPane.showMessageDialog(this,
-                                        "El cliente de chat no está inicializado.", "ERROR",
-                                        JOptionPane.ERROR_MESSAGE);
+                        System.err.println("El cliente de chat ya está cerrado o no fue inicializado.");
                 }
         }
 
@@ -384,8 +382,8 @@ public class BlackJack extends javax.swing.JFrame {
         }
 
         private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {
-                cerrarChat();
                 Transactions transactions = new Transactions();
+                Principal.pantallaAnterior = this;
                 transactions.setVisible(true);
                 this.setVisible(false);
         }
@@ -414,9 +412,13 @@ public class BlackJack extends javax.swing.JFrame {
 
         private void imgVolverMouseClicked(java.awt.event.MouseEvent evt) {
                 cerrarChat();
-                Principal principal = new Principal();
-                principal.setVisible(true);
-                this.setVisible(false);
+                if (Principal.pantallaAnterior != null) {
+                        Principal.pantallaAnterior.setVisible(true);
+                } else {
+                        JOptionPane.showMessageDialog(this, "No hay una pantalla anterior para volver.", "Aviso",
+                                        JOptionPane.WARNING_MESSAGE);
+                }
+                dispose();
         }
 
         /**

@@ -8,7 +8,6 @@ package main.java.com.casinoRoyal.ui.views.games.ruleta;
 import java.awt.Color;
 import java.awt.Toolkit;
 
-
 /**
  *
  * @author tutaa
@@ -19,13 +18,13 @@ public class MostrarCasilla extends javax.swing.JFrame {
          * Creates new form MostrarCasilla
          * 
          * @param numero
-	 * @param color
+         * @param color
          */
 
         public MostrarCasilla(int numero, Color color) {
                 initComponents();
 
-                this.setTitle("Ruleta");
+                this.setTitle("Resultado");
                 this.setResizable(false);
                 this.setLocationRelativeTo(null);
 
@@ -83,7 +82,8 @@ public class MostrarCasilla extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
         // <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
                 ventanaMostrarCasilla = new javax.swing.JPanel();
@@ -110,26 +110,31 @@ public class MostrarCasilla extends javax.swing.JFrame {
                 javax.swing.GroupLayout panelCasillaLayout = new javax.swing.GroupLayout(panelCasilla);
                 panelCasilla.setLayout(panelCasillaLayout);
                 panelCasillaLayout.setHorizontalGroup(
-                        panelCasillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lbNumeroCasilla, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                );
+                                panelCasillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(lbNumeroCasilla,
+                                                                javax.swing.GroupLayout.Alignment.TRAILING,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE, 110,
+                                                                Short.MAX_VALUE));
                 panelCasillaLayout.setVerticalGroup(
-                        panelCasillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lbNumeroCasilla, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                );
+                                panelCasillaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(lbNumeroCasilla, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                110, Short.MAX_VALUE));
 
-                ventanaMostrarCasilla.add(panelCasilla, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 110, 110));
+                ventanaMostrarCasilla.add(panelCasilla,
+                                new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 110, 110));
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
                 getContentPane().setLayout(layout);
                 layout.setHorizontalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaMostrarCasilla, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaMostrarCasilla,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 168,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
                 layout.setVerticalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaMostrarCasilla, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                );
+                                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ventanaMostrarCasilla,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 150,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE));
 
                 pack();
         }// </editor-fold>//GEN-END:initComponents

@@ -46,8 +46,19 @@ public class Carrera extends javax.swing.JFrame {
                 ingresarChat();
                 taChatCarrera.setEditable(false);
                 Principal.ponerFondos(lbPonerFondos);
-                ponerCarros();
                 Principal.ponerPersonasConectadas(lbPersonasConectadas, 6);
+                ponerCarros();
+                ponerGanadorRandom();
+
+        }
+
+        private void ponerGanadorRandom() {
+                int num = CarreraCarros.rand.nextInt(0, 4);
+
+                ponerUltimoGanador(CarreraCarros.conductores.get(num),
+                                CarreraCarros.iconosCarros.get(
+                                                num),
+                                CarreraCarros.coloresCarros.get(num));
         }
 
         private void ponerCarros() {
@@ -55,7 +66,7 @@ public class Carrera extends javax.swing.JFrame {
 
                 for (int i = 0; i < CarreraCarros.conductores.size(); i++) {
                         taContenidoCarrera.append("\n" + (i + 1) + " - " + CarreraCarros.conductores.get(i) + ": "
-                                        + CarreraCarros.iconosCarros[i] + "\n\n");
+                                        + CarreraCarros.iconosCarros.get(i) + "\n\n");
                 }
         }
 
@@ -76,10 +87,9 @@ public class Carrera extends javax.swing.JFrame {
         private void cerrarChat() {
                 if (chatClient != null) {
                         chatClient.close();
+                        chatClient = null;
                 } else {
-                        JOptionPane.showMessageDialog(this,
-                                        "El cliente de chat no está inicializado.", "ERROR",
-                                        JOptionPane.ERROR_MESSAGE);
+                        System.err.println("El cliente de chat ya está cerrado o no fue inicializado.");
                 }
         }
 
@@ -91,7 +101,7 @@ public class Carrera extends javax.swing.JFrame {
 
         }
 
-        private void iniciarCarrera(int carroGanador, double valorApostado) {
+        private void iniciarCarrera(int numeroCarroApostado, double valorApostado) {
 
                 if (PersonalProfile.fondosSuficientes(
                                 Double.parseDouble(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)))) {
@@ -116,24 +126,28 @@ public class Carrera extends javax.swing.JFrame {
                                                         carrera.ganadores.get(0).getIcon(),
                                                         carrera.ganadores.get(0).getColor());
 
+                                        String nombreConductorApostado = CarreraCarros.conductores
+                                                        .get(numeroCarroApostado - 1);
+
                                         if (carrera.ganadores.size() == 1
                                                         && CarreraCarros.conductores.indexOf((carrera.ganadores.get(0)
-                                                                        .getNombreConductor())) == (carroGanador - 1)) {
+                                                                        .getNombreConductor())) == (numeroCarroApostado
+                                                                                        - 1)) {
 
                                                 valorGanado[0] = valorApostado * 10;
 
-                                        } else if (carrera.ganadores.size() == 2
-                                                        && CarreraCarros.conductores.contains((carrera.ganadores.get(0)
-                                                                        .getNombreConductor()))) {
-                                                valorGanado[0] = valorApostado * 5;
-                                        } else if (carrera.ganadores.size() == 3
-                                                        && CarreraCarros.conductores.contains((carrera.ganadores.get(0)
-                                                                        .getNombreConductor()))) {
-                                                valorGanado[0] = valorApostado * 2.5;
-                                        } else if (carrera.ganadores.size() == 3
-                                                        && CarreraCarros.conductores.contains((carrera.ganadores.get(0)
-                                                                        .getNombreConductor()))) {
-                                                valorGanado[0] = valorApostado * 1.25;
+                                        } else if (carrera.ganadores.stream().map(Carro::getNombreConductor)
+                                                        .anyMatch(nombre -> nombre.equals(nombreConductorApostado))) {
+
+                                                if (carrera.ganadores.size() == 2) {
+                                                        valorGanado[0] = valorApostado * 5;
+
+                                                } else if (carrera.ganadores.size() == 3) {
+                                                        valorGanado[0] = valorApostado * 2.5;
+
+                                                } else if (carrera.ganadores.size() == 3) {
+                                                        valorGanado[0] = valorApostado * 1.25;
+                                                }
                                         }
 
                                         Thread.sleep(2000);
@@ -543,9 +557,9 @@ public class Carrera extends javax.swing.JFrame {
         }
 
         private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {
-                cerrarChat();
                 Transactions transactions = new Transactions();
                 transactions.setVisible(true);
+                Principal.pantallaAnterior = this;
                 this.setVisible(false);
         }
 
@@ -573,9 +587,13 @@ public class Carrera extends javax.swing.JFrame {
 
         private void imgVolverMouseClicked(java.awt.event.MouseEvent evt) {
                 cerrarChat();
-                Principal principal = new Principal();
-                principal.setVisible(true);
-                this.setVisible(false);
+                if (Principal.pantallaAnterior != null) {
+                        Principal.pantallaAnterior.setVisible(true);
+                } else {
+                        JOptionPane.showMessageDialog(this, "No hay una pantalla anterior para volver.", "Aviso",
+                                        JOptionPane.WARNING_MESSAGE);
+                }
+                dispose();
         }
 
         /**

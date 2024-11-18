@@ -13,16 +13,17 @@ public class CarreraCarros {
     public static Random rand = new Random();
     public static List<String> conductores = Arrays.asList("Kyle Larson", "Chase Elliott", "Denny Hamlin",
             "Kevin Harvick");
-    public static String[] iconosCarros = { "🚗", "🚙", "🚜", "🏍️", "🚚", "🚐", "🚑", "🚒", "🏎️", "🚓", "🚔", "🚕",
-            "🚖", "🚘", "🚛" };
-    private static final List<Color> coloresCarros = Arrays.asList(new java.awt.Color(168, 0, 1),
+    public static List<String> iconosCarros = Arrays
+            .asList("🚗", "🚙", "🚜", "🏍️", "🚚", "🚐", "🚑", "🚒", "🏎️", "🚓", "🚔", "🚕",
+                    "🚖", "🚘", "🚛");
+    public static final List<Color> coloresCarros = Arrays.asList(new java.awt.Color(168, 0, 1),
             new java.awt.Color(56, 168, 1),
             new java.awt.Color(117, 1, 117), new java.awt.Color(219, 110, 1));
 
     public List<Carro> ganadores = new ArrayList<>();
-    private int tamañoPista = (int) CarreraCarros.rand.nextInt(70, 90);
+    private int tamañoPista = (int) rand.nextInt(20, 21);// TODO: cambiar a 70,90
 
-    private int velocidadCarrera = CarreraCarros.rand.nextInt(200, 600);
+    private int velocidadCarrera = rand.nextInt(10, 200); // TODO: cambiar a 200 ,600
     private List<Carro> carros = new ArrayList<>();
     private List<Pista> pistas = new ArrayList<>();
     private final JTextArea textArea;
@@ -82,7 +83,7 @@ public class CarreraCarros {
 
     private void llenarCarros() {
         for (int i = 0; i < CarreraCarros.conductores.size(); i++) {
-            String icono = iconosCarros[i];
+            String icono = iconosCarros.get(i);
             Carro carro = new Carro(icono, conductores.get(i), coloresCarros.get(i));
             this.carros.add(carro);
         }

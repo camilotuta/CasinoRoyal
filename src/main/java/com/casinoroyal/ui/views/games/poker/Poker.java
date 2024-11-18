@@ -61,10 +61,9 @@ public class Poker extends javax.swing.JFrame {
         private void cerrarChat() {
                 if (chatClient != null) {
                         chatClient.close();
+                        chatClient = null;
                 } else {
-                        JOptionPane.showMessageDialog(this,
-                                        "El cliente de chat no está inicializado.", "ERROR",
-                                        JOptionPane.ERROR_MESSAGE);
+                        System.err.println("El cliente de chat ya está cerrado o no fue inicializado.");
                 }
         }
 
@@ -284,9 +283,9 @@ public class Poker extends javax.swing.JFrame {
         }// </editor-fold>//GEN-END:initComponents
 
         private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {
-                cerrarChat();
                 Transactions transactions = new Transactions();
                 transactions.setVisible(true);
+                Principal.pantallaAnterior = this;
                 this.setVisible(false);
         }
 
@@ -314,9 +313,13 @@ public class Poker extends javax.swing.JFrame {
 
         private void imgVolverMouseClicked(java.awt.event.MouseEvent evt) {
                 cerrarChat();
-                Principal principal = new Principal();
-                principal.setVisible(true);
-                this.setVisible(false);
+                if (Principal.pantallaAnterior != null) {
+                        Principal.pantallaAnterior.setVisible(true);
+                } else {
+                        JOptionPane.showMessageDialog(this, "No hay una pantalla anterior para volver.", "Aviso",
+                                        JOptionPane.WARNING_MESSAGE);
+                }
+                dispose();
         }
 
         /**

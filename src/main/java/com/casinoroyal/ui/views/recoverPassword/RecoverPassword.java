@@ -402,7 +402,7 @@ public class RecoverPassword extends javax.swing.JFrame {
 		btnConfirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 		btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
-					btnConfirmarActionPerformed(evt);
+				btnConfirmarActionPerformed(evt);
 			}
 		});
 		ventanaSignup.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 550, -1, -1));
@@ -441,7 +441,7 @@ public class RecoverPassword extends javax.swing.JFrame {
 		Login.correoGuardar = ObtenerIU.obtenerTextoCampo(tfCorreo);
 		Login login = new Login();
 		login.setVisible(true);
-		this.setVisible(false);
+		dispose();
 	}
 
 	private void btnVerificarCodigoActionPerformed(java.awt.event.ActionEvent evt) {
@@ -456,7 +456,7 @@ public class RecoverPassword extends javax.swing.JFrame {
 	private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {
 		Login login = new Login();
 		login.setVisible(true);
-		this.setVisible(false);
+		dispose();
 	}
 
 	private void tfCorreoKeyReleased(java.awt.event.KeyEvent evt) {

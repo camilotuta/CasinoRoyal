@@ -24,6 +24,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
+import javax.swing.JFrame;
 
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 
@@ -39,7 +40,11 @@ import javax.swing.JLabel;
  *
  * @author tutaa
  */
+
+// TODO: guardar la pantalla anterior
 public class Principal extends javax.swing.JFrame {
+
+        public static JFrame pantallaAnterior = new Login();
 
         /**
          * Creates new form Principal
@@ -284,7 +289,8 @@ public class Principal extends javax.swing.JFrame {
                 lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
                 lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
                 lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-                lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/fondos.png"))); // NOI18N
+                lbPonerFondos.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/fondos.png"))); // NOI18N
                 lbPonerFondos.setText("-");
                 ventanaPrincipal.add(lbPonerFondos,
                                 new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
@@ -293,11 +299,13 @@ public class Principal extends javax.swing.JFrame {
                 panelMenu.setOpaque(false);
                 panelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                imgCasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/casaHover.png"))); // NOI18N
+                imgCasa.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/casaHover.png"))); // NOI18N
                 imgCasa.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
                 panelMenu.add(imgCasa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
-                imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/volver.png"))); // NOI18N
+                imgVolver.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/volver.png"))); // NOI18N
                 imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -314,7 +322,8 @@ public class Principal extends javax.swing.JFrame {
                 });
                 panelMenu.add(imgVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
-                imgUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/usuario.png"))); // NOI18N
+                imgUsuario.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/usuario.png"))); // NOI18N
                 imgUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 imgUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -332,7 +341,8 @@ public class Principal extends javax.swing.JFrame {
                 panelMenu.add(imgUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
                 imgMenuBar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                imgMenuBar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/lineaVertical.png"))); // NOI18N
+                imgMenuBar.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/lineaVertical.png"))); // NOI18N
                 imgMenuBar.setVerticalAlignment(javax.swing.SwingConstants.TOP);
                 panelMenu.add(imgMenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, -1));
 
@@ -348,7 +358,8 @@ public class Principal extends javax.swing.JFrame {
                 lbPersonasConectadasPoker.setForeground(new java.awt.Color(148, 161, 178));
                 lbPersonasConectadasPoker.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 lbPersonasConectadasPoker
-                                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/personas.png"))); // NOI18N
+                                .setIcon(new javax.swing.ImageIcon(
+                                                getClass().getResource("/main/resources/assets/img/personas.png"))); // NOI18N
                 lbPersonasConectadasPoker.setText("0");
                 panelPublicaciones.add(lbPersonasConectadasPoker,
                                 new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 230, 40));
@@ -359,7 +370,8 @@ public class Principal extends javax.swing.JFrame {
                                 javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
                 panelPoker.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                imgPoker.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/poker.png"))); // NOI18N
+                imgPoker.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/poker.png"))); // NOI18N
                 panelPoker.add(imgPoker, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
                 btnPoker.setBackground(new java.awt.Color(147, 128, 67));
@@ -379,7 +391,8 @@ public class Principal extends javax.swing.JFrame {
                 lbPersonasConectadasRuleta.setForeground(new java.awt.Color(148, 161, 178));
                 lbPersonasConectadasRuleta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 lbPersonasConectadasRuleta
-                                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/personas.png"))); // NOI18N
+                                .setIcon(new javax.swing.ImageIcon(
+                                                getClass().getResource("/main/resources/assets/img/personas.png"))); // NOI18N
                 lbPersonasConectadasRuleta.setText("0");
                 panelPublicaciones.add(lbPersonasConectadasRuleta,
                                 new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 230, 40));
@@ -390,7 +403,8 @@ public class Principal extends javax.swing.JFrame {
                                 javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
                 panelRuleta.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                imgRuleta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/ruleta.png"))); // NOI18N
+                imgRuleta.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/ruleta.png"))); // NOI18N
                 imgRuleta.setText("jLabel2");
                 panelRuleta.add(imgRuleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 195, 130));
 
@@ -412,7 +426,8 @@ public class Principal extends javax.swing.JFrame {
                 lbPersonasConectadasBlackJack.setForeground(new java.awt.Color(148, 161, 178));
                 lbPersonasConectadasBlackJack.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 lbPersonasConectadasBlackJack
-                                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/personas.png"))); // NOI18N
+                                .setIcon(new javax.swing.ImageIcon(
+                                                getClass().getResource("/main/resources/assets/img/personas.png"))); // NOI18N
                 lbPersonasConectadasBlackJack.setText("0");
                 panelPublicaciones.add(lbPersonasConectadasBlackJack,
                                 new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 230, 40));
@@ -423,7 +438,8 @@ public class Principal extends javax.swing.JFrame {
                                 javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
                 panelBlackJack.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                imgBlackJack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/blackJack.png"))); // NOI18N
+                imgBlackJack.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/blackJack.png"))); // NOI18N
                 imgBlackJack.setText("jLabel2");
                 panelBlackJack.add(imgBlackJack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 195, 130));
 
@@ -447,7 +463,8 @@ public class Principal extends javax.swing.JFrame {
                                 javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
                 panelTragaMonedas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                imgTragaMonedas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/tragaMonedas.png"))); // NOI18N
+                imgTragaMonedas.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/tragaMonedas.png"))); // NOI18N
                 imgTragaMonedas.setText("jLabel2");
                 panelTragaMonedas.add(imgTragaMonedas,
                                 new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 13, 195, 130));
@@ -473,7 +490,8 @@ public class Principal extends javax.swing.JFrame {
                                 javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
                 panelDados.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                imgDados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/dados.png"))); // NOI18N
+                imgDados.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/dados.png"))); // NOI18N
                 imgDados.setText("jLabel2");
                 panelDados.add(imgDados, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 13, 195, 130));
 
@@ -495,7 +513,8 @@ public class Principal extends javax.swing.JFrame {
                 lbPersonasConectadasCarrera.setForeground(new java.awt.Color(148, 161, 178));
                 lbPersonasConectadasCarrera.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
                 lbPersonasConectadasCarrera
-                                .setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/personas.png"))); // NOI18N
+                                .setIcon(new javax.swing.ImageIcon(
+                                                getClass().getResource("/main/resources/assets/img/personas.png"))); // NOI18N
                 lbPersonasConectadasCarrera.setText("0");
                 panelPublicaciones.add(lbPersonasConectadasCarrera,
                                 new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 240, 230, 40));
@@ -506,7 +525,8 @@ public class Principal extends javax.swing.JFrame {
                                 javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255))));
                 panelCarrera.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                imgCarrera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/carrera.jpg"))); // NOI18N
+                imgCarrera.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/carrera.jpg"))); // NOI18N
                 imgCarrera.setText("jLabel2");
                 panelCarrera.add(imgCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 195, -1));
 
@@ -592,6 +612,8 @@ public class Principal extends javax.swing.JFrame {
         }
 
         private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {
+                pantallaAnterior = new Principal();
+
                 Transactions transactions = new Transactions();
                 transactions.setVisible(true);
                 this.setVisible(false);
@@ -599,12 +621,14 @@ public class Principal extends javax.swing.JFrame {
         }
 
         private void btnCarreraActionPerformed(java.awt.event.ActionEvent evt) {
+                pantallaAnterior = new Principal();
                 Carrera carrera = new Carrera();
                 carrera.setVisible(true);
                 this.setVisible(false);
         }
 
         private void btnTragaMonedasActionPerformed(java.awt.event.ActionEvent evt) {
+                pantallaAnterior = new Principal();
                 TragaMonedas tragaMonedas = new TragaMonedas();
                 tragaMonedas.setVisible(true);
                 this.setVisible(false);
@@ -612,6 +636,7 @@ public class Principal extends javax.swing.JFrame {
         }
 
         private void btnPokerActionPerformed(java.awt.event.ActionEvent evt) {
+                pantallaAnterior = new Principal();
                 Poker poker = new Poker();
                 poker.setVisible(true);
                 this.setVisible(false);
@@ -619,6 +644,7 @@ public class Principal extends javax.swing.JFrame {
         }
 
         private void btnBlackJackActionPerformed(java.awt.event.ActionEvent evt) {
+                pantallaAnterior = new Principal();
                 BlackJack blackJack = new BlackJack();
                 blackJack.setVisible(true);
                 this.setVisible(false);
@@ -626,6 +652,7 @@ public class Principal extends javax.swing.JFrame {
         }
 
         private void btnRuletaActionPerformed(java.awt.event.ActionEvent evt) {
+                pantallaAnterior = new Principal();
                 Ruleta ruleta = new Ruleta();
                 ruleta.setVisible(true);
                 this.setVisible(false);
@@ -633,6 +660,7 @@ public class Principal extends javax.swing.JFrame {
         }
 
         private void btnDadosActionPerformed(java.awt.event.ActionEvent evt) {
+                pantallaAnterior = new Principal();
                 Dados dados = new Dados();
                 dados.setVisible(true);
                 this.setVisible(false);

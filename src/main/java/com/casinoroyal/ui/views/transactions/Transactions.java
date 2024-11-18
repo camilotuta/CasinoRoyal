@@ -167,114 +167,118 @@ public class Transactions extends javax.swing.JFrame {
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// <editor-fold defaultstate="collapsed" desc="Generated
-        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-        private void initComponents() {
+	// <editor-fold defaultstate="collapsed" desc="Generated
+	// Code">//GEN-BEGIN:initComponents
+	private void initComponents() {
 
-                ventanaTransacciones = new javax.swing.JPanel();
-                imgVolver = new javax.swing.JLabel();
-                lbTransacciones = new javax.swing.JLabel();
-                lbPonerFondos = new javax.swing.JLabel();
-                tbContenidoTransacciones = new javax.swing.JScrollPane();
-                tablaTransacciones = new javax.swing.JTable();
-                btnDepositar = new javax.swing.JButton();
-                btnRetirar = new javax.swing.JButton();
+		ventanaTransacciones = new javax.swing.JPanel();
+		imgVolver = new javax.swing.JLabel();
+		lbTransacciones = new javax.swing.JLabel();
+		lbPonerFondos = new javax.swing.JLabel();
+		tbContenidoTransacciones = new javax.swing.JScrollPane();
+		tablaTransacciones = new javax.swing.JTable();
+		btnDepositar = new javax.swing.JButton();
+		btnRetirar = new javax.swing.JButton();
 
-                setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-                setBackground(new java.awt.Color(27, 9, 5));
+		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+		setBackground(new java.awt.Color(27, 9, 5));
 
-                ventanaTransacciones.setBackground(new java.awt.Color(27, 9, 5));
-                ventanaTransacciones.setPreferredSize(new java.awt.Dimension(1080, 720));
-                ventanaTransacciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+		ventanaTransacciones.setBackground(new java.awt.Color(27, 9, 5));
+		ventanaTransacciones.setPreferredSize(new java.awt.Dimension(1080, 720));
+		ventanaTransacciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/volver.png"))); // NOI18N
-                imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
-                        public void mouseClicked(java.awt.event.MouseEvent evt) {
-                                imgVolverMouseClicked(evt);
-                        }
-                        public void mouseEntered(java.awt.event.MouseEvent evt) {
-                                imgVolverMouseEntered(evt);
-                        }
-                        public void mouseExited(java.awt.event.MouseEvent evt) {
-                                imgVolverMouseExited(evt);
-                        }
-                });
-                ventanaTransacciones.add(imgVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+		imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/volver.png"))); // NOI18N
+		imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+		imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+			public void mouseClicked(java.awt.event.MouseEvent evt) {
+				imgVolverMouseClicked(evt);
+			}
 
-                lbTransacciones.setFont(new java.awt.Font("Crabs", 1, 85)); // NOI18N
-                lbTransacciones.setForeground(new java.awt.Color(227, 199, 104));
-                lbTransacciones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                lbTransacciones.setText("Transacciones");
-                ventanaTransacciones.add(lbTransacciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1080, -1));
+			public void mouseEntered(java.awt.event.MouseEvent evt) {
+				imgVolverMouseEntered(evt);
+			}
 
-                lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-                lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
-                lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-                lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/fondos.png"))); // NOI18N
-                lbPonerFondos.setText("-");
-                ventanaTransacciones.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
+			public void mouseExited(java.awt.event.MouseEvent evt) {
+				imgVolverMouseExited(evt);
+			}
+		});
+		ventanaTransacciones.add(imgVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-                tablaTransacciones.setBackground(new java.awt.Color(36, 38, 41));
-                tablaTransacciones.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-                tablaTransacciones.setForeground(new java.awt.Color(255, 255, 255));
-                tablaTransacciones.setModel(new javax.swing.table.DefaultTableModel(
-                        new Object [][] {
-                                {},
-                                {},
-                                {},
-                                {},
-                                {},
-                                {}
-                        },
-                        new String [] {
+		lbTransacciones.setFont(new java.awt.Font("Crabs", 1, 85)); // NOI18N
+		lbTransacciones.setForeground(new java.awt.Color(227, 199, 104));
+		lbTransacciones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+		lbTransacciones.setText("Transacciones");
+		ventanaTransacciones.add(lbTransacciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1080, -1));
 
-                        }
-                ));
-                tablaTransacciones.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-                tablaTransacciones.setGridColor(new java.awt.Color(255, 51, 51));
-                tbContenidoTransacciones.setViewportView(tablaTransacciones);
+		lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+		lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
+		lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+		lbPonerFondos
+				.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/fondos.png"))); // NOI18N
+		lbPonerFondos.setText("-");
+		ventanaTransacciones.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
 
-                ventanaTransacciones.add(tbContenidoTransacciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 980, 490));
+		tablaTransacciones.setBackground(new java.awt.Color(36, 38, 41));
+		tablaTransacciones.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+		tablaTransacciones.setForeground(new java.awt.Color(255, 255, 255));
+		tablaTransacciones.setModel(new javax.swing.table.DefaultTableModel(
+				new Object[][] {
+						{},
+						{},
+						{},
+						{},
+						{},
+						{}
+				},
+				new String[] {
 
-                btnDepositar.setBackground(new java.awt.Color(147, 128, 67));
-                btnDepositar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-                btnDepositar.setForeground(new java.awt.Color(255, 255, 254));
-                btnDepositar.setText("Depositar");
-                btnDepositar.setActionCommand("Ingresar");
-                btnDepositar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                btnDepositar.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnDepositarActionPerformed(evt);
-                        }
-                });
-                ventanaTransacciones.add(btnDepositar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 630, -1, -1));
+				}));
+		tablaTransacciones.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+		tablaTransacciones.setGridColor(new java.awt.Color(255, 51, 51));
+		tbContenidoTransacciones.setViewportView(tablaTransacciones);
 
-                btnRetirar.setBackground(new java.awt.Color(147, 128, 67));
-                btnRetirar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-                btnRetirar.setForeground(new java.awt.Color(255, 255, 254));
-                btnRetirar.setText("Retirar");
-                btnRetirar.setActionCommand("Ingresar");
-                btnRetirar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                btnRetirar.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnRetirarActionPerformed(evt);
-                        }
-                });
-                ventanaTransacciones.add(btnRetirar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 630, -1, -1));
+		ventanaTransacciones.add(tbContenidoTransacciones,
+				new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 980, 490));
 
-                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-                getContentPane().setLayout(layout);
-                layout.setHorizontalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaTransacciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                );
-                layout.setVerticalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ventanaTransacciones, javax.swing.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
-                );
+		btnDepositar.setBackground(new java.awt.Color(147, 128, 67));
+		btnDepositar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+		btnDepositar.setForeground(new java.awt.Color(255, 255, 254));
+		btnDepositar.setText("Depositar");
+		btnDepositar.setActionCommand("Ingresar");
+		btnDepositar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+		btnDepositar.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				btnDepositarActionPerformed(evt);
+			}
+		});
+		ventanaTransacciones.add(btnDepositar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 630, -1, -1));
 
-                pack();
-        }// </editor-fold>//GEN-END:initComponents
+		btnRetirar.setBackground(new java.awt.Color(147, 128, 67));
+		btnRetirar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+		btnRetirar.setForeground(new java.awt.Color(255, 255, 254));
+		btnRetirar.setText("Retirar");
+		btnRetirar.setActionCommand("Ingresar");
+		btnRetirar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+		btnRetirar.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				btnRetirarActionPerformed(evt);
+			}
+		});
+		ventanaTransacciones.add(btnRetirar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 630, -1, -1));
+
+		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+		getContentPane().setLayout(layout);
+		layout.setHorizontalGroup(
+				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addComponent(ventanaTransacciones, javax.swing.GroupLayout.DEFAULT_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+		layout.setVerticalGroup(
+				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addComponent(ventanaTransacciones, javax.swing.GroupLayout.DEFAULT_SIZE, 682,
+								Short.MAX_VALUE));
+
+		pack();
+	}// </editor-fold>//GEN-END:initComponents
 
 	private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {
 		try {
@@ -338,9 +342,14 @@ public class Transactions extends javax.swing.JFrame {
 	}
 
 	private void imgVolverMouseClicked(java.awt.event.MouseEvent evt) {
-		PersonalProfile personalProfile = new PersonalProfile();
-		personalProfile.setVisible(true);
-		this.setVisible(false);
+		if (Principal.pantallaAnterior != null) {
+			Principal.pantallaAnterior.setVisible(true);
+			Principal.pantallaAnterior = new Principal();
+			this.setVisible(false);
+		} else {
+			JOptionPane.showMessageDialog(this, "No hay una pantalla anterior para volver.", "Aviso",
+					JOptionPane.WARNING_MESSAGE);
+		}
 	}
 
 	/**
@@ -351,14 +360,14 @@ public class Transactions extends javax.swing.JFrame {
 		EventQueue.invokeLater(() -> new Transactions().setVisible(true));
 	}
 
-        // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JButton btnDepositar;
-        private javax.swing.JButton btnRetirar;
-        private javax.swing.JLabel imgVolver;
-        private javax.swing.JLabel lbPonerFondos;
-        private javax.swing.JLabel lbTransacciones;
-        private javax.swing.JTable tablaTransacciones;
-        private javax.swing.JScrollPane tbContenidoTransacciones;
-        private javax.swing.JPanel ventanaTransacciones;
-        // End of variables declaration//GEN-END:variables
+	// Variables declaration - do not modify//GEN-BEGIN:variables
+	private javax.swing.JButton btnDepositar;
+	private javax.swing.JButton btnRetirar;
+	private javax.swing.JLabel imgVolver;
+	private javax.swing.JLabel lbPonerFondos;
+	private javax.swing.JLabel lbTransacciones;
+	private javax.swing.JTable tablaTransacciones;
+	private javax.swing.JScrollPane tbContenidoTransacciones;
+	private javax.swing.JPanel ventanaTransacciones;
+	// End of variables declaration//GEN-END:variables
 }

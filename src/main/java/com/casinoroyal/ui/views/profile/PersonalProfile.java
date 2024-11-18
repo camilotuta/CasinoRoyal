@@ -242,7 +242,8 @@ public class PersonalProfile extends javax.swing.JFrame {
                 lbPonerFondos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
                 lbPonerFondos.setForeground(new java.awt.Color(148, 161, 178));
                 lbPonerFondos.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-                lbPonerFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/fondos.png"))); // NOI18N
+                lbPonerFondos.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/fondos.png"))); // NOI18N
                 lbPonerFondos.setText("-");
                 ventanaProfile.add(lbPonerFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1050, -1));
 
@@ -250,7 +251,8 @@ public class PersonalProfile extends javax.swing.JFrame {
                 panelMenu.setOpaque(false);
                 panelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                imgCasa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/casa.png"))); // NOI18N
+                imgCasa.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/casa.png"))); // NOI18N
                 imgCasa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 imgCasa.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -267,7 +269,8 @@ public class PersonalProfile extends javax.swing.JFrame {
                 });
                 panelMenu.add(imgCasa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
-                imgVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/volver.png"))); // NOI18N
+                imgVolver.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/volver.png"))); // NOI18N
                 imgVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
                 imgVolver.addMouseListener(new java.awt.event.MouseAdapter() {
                         public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -284,12 +287,14 @@ public class PersonalProfile extends javax.swing.JFrame {
                 });
                 panelMenu.add(imgVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
-                imgUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/usuarioHover.png"))); // NOI18N
+                imgUsuario.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/usuarioHover.png"))); // NOI18N
                 imgUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
                 panelMenu.add(imgUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
                 imgMenuBar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-                imgMenuBar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/main/resources/assets/img/lineaVertical.png"))); // NOI18N
+                imgMenuBar.setIcon(new javax.swing.ImageIcon(
+                                getClass().getResource("/main/resources/assets/img/lineaVertical.png"))); // NOI18N
                 imgMenuBar.setVerticalAlignment(javax.swing.SwingConstants.TOP);
                 panelMenu.add(imgMenuBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 60, -1));
 
@@ -416,7 +421,8 @@ public class PersonalProfile extends javax.swing.JFrame {
         private void btnVerTransaccionesActionPerformed(java.awt.event.ActionEvent evt) {
                 Transactions transactions = new Transactions();
                 transactions.setVisible(true);
-                this.setVisible(false);
+                Principal.pantallaAnterior = this;
+                dispose();
 
         }
 
@@ -437,7 +443,7 @@ public class PersonalProfile extends javax.swing.JFrame {
         private void imgCasaMouseClicked(java.awt.event.MouseEvent evt) {
                 Principal principal = new Principal();
                 principal.setVisible(true);
-                this.setVisible(false);
+                dispose();
         }
 
         private void imgCasaMouseEntered(java.awt.event.MouseEvent evt) {

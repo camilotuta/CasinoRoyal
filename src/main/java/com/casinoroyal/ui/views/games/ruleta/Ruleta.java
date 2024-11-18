@@ -26,6 +26,7 @@ import javax.swing.JOptionPane;
  *
  * @author tutaa
  */
+// Todo: guardar la ultima casilla para que se muestre apenas se entre
 public class Ruleta extends javax.swing.JFrame {
 
         /**
@@ -36,7 +37,7 @@ public class Ruleta extends javax.swing.JFrame {
         public Ruleta() {
                 initComponents();
 
-                this.setTitle("Resultado");
+                this.setTitle("Ruleta");
                 this.setResizable(false);
                 this.setLocationRelativeTo(null);
 
@@ -47,7 +48,23 @@ public class Ruleta extends javax.swing.JFrame {
                 taChatRuleta.setEditable(false);
                 Principal.ponerFondos(lbPonerFondos);
                 Principal.ponerPersonasConectadas(lbPersonasConectadas, 2);
+                ponerCasillaRandom();
+        }
 
+        private void ponerCasillaRandom() {
+                int casilla = CasillasRuleta.casillaAleatoria();
+                Color colorCasilla = new Color(0, 0, 0);
+                String color = CasillasRuleta.colorCasilla(casilla);
+                if (color.equalsIgnoreCase("Rojo")) {
+                        colorCasilla = new Color(200, 0, 0);
+                }
+                if (color.equalsIgnoreCase("Negro")) {
+                        colorCasilla = new Color(0, 0, 0);
+                }
+                if (color.equalsIgnoreCase("Verde")) {
+                        colorCasilla = new Color(0, 200, 0);
+                }
+                ponerUltimaCasilla(casilla, colorCasilla);
         }
 
         private void ingresarChat() {
@@ -509,9 +526,9 @@ public class Ruleta extends javax.swing.JFrame {
         }
 
         private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {
-                cerrarChat();
                 Transactions transactions = new Transactions();
                 transactions.setVisible(true);
+                Principal.pantallaAnterior = this;
                 this.setVisible(false);
         }
 
@@ -539,9 +556,13 @@ public class Ruleta extends javax.swing.JFrame {
 
         private void imgVolverMouseClicked(java.awt.event.MouseEvent evt) {
                 cerrarChat();
-                Principal principal = new Principal();
-                principal.setVisible(true);
-                this.setVisible(false);
+                if (Principal.pantallaAnterior != null) {
+                        Principal.pantallaAnterior.setVisible(true);
+                } else {
+                        JOptionPane.showMessageDialog(this, "No hay una pantalla anterior para volver.", "Aviso",
+                                        JOptionPane.WARNING_MESSAGE);
+                }
+                dispose();
         }
 
         /**

@@ -406,7 +406,8 @@ public class TragaMonedas extends javax.swing.JFrame {
         private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {
                 Transactions transactions = new Transactions();
                 transactions.setVisible(true);
-                this.setVisible(false);
+                Principal.pantallaAnterior = this;
+                dispose();
         }
 
         private void imgVolverMouseEntered(java.awt.event.MouseEvent evt) {
@@ -418,9 +419,13 @@ public class TragaMonedas extends javax.swing.JFrame {
         }
 
         private void imgVolverMouseClicked(java.awt.event.MouseEvent evt) {
-                Principal principal = new Principal();
-                principal.setVisible(true);
-                this.setVisible(false);
+                if (Principal.pantallaAnterior != null) {
+                        Principal.pantallaAnterior.setVisible(true);
+                } else {
+                        JOptionPane.showMessageDialog(this, "No hay una pantalla anterior para volver.", "Aviso",
+                                        JOptionPane.WARNING_MESSAGE);
+                }
+                dispose();
         }
 
         /**

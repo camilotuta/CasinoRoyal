@@ -238,7 +238,7 @@ public class Signup extends javax.swing.JFrame {
 					Login.correoGuardar = correo;
 					Login login = new Login();
 					login.setVisible(true);
-					this.setVisible(false);
+					dispose();
 
 				} catch (SQLException e) {
 
@@ -587,7 +587,7 @@ public class Signup extends javax.swing.JFrame {
 	private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {
 		Login login = new Login();
 		login.setVisible(true);
-		this.setVisible(false);
+		dispose();
 	}
 
 	private void tfCorreoKeyReleased(java.awt.event.KeyEvent evt) {
