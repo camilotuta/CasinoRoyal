@@ -41,7 +41,6 @@ import javax.swing.JLabel;
  * @author tutaa
  */
 
-// TODO: guardar la pantalla anterior
 public class Principal extends javax.swing.JFrame {
 
         public static JFrame pantallaAnterior = new Login();

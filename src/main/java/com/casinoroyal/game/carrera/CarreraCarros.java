@@ -21,9 +21,9 @@ public class CarreraCarros {
             new java.awt.Color(117, 1, 117), new java.awt.Color(219, 110, 1));
 
     public List<Carro> ganadores = new ArrayList<>();
-    private int tamañoPista = (int) rand.nextInt(20, 21);// TODO: cambiar a 70,90
+    private int tamañoPista = (int) rand.nextInt(70, 90);
 
-    private int velocidadCarrera = rand.nextInt(10, 200); // TODO: cambiar a 200 ,600
+    private int velocidadCarrera = rand.nextInt(200, 600);
     private List<Carro> carros = new ArrayList<>();
     private List<Pista> pistas = new ArrayList<>();
     private final JTextArea textArea;
