@@ -45,8 +45,8 @@ public class Ruleta extends javax.swing.JFrame {
                                 .getImage(getClass().getResource("/main/resources/assets/img/icon.png")));
                 new CambiarIU().setImageLabel(lbContenido, "/main/resources/assets/img/ruleta/ruletaQuieta.png");
                 ingresarChat();
+                Principal.actualizarFondos(lbPonerFondos);
                 taChatRuleta.setEditable(false);
-                Principal.ponerFondos(lbPonerFondos);
                 Principal.ponerPersonasConectadas(lbPersonasConectadas, 2);
                 ponerCasillaRandom();
         }
@@ -102,7 +102,6 @@ public class Ruleta extends javax.swing.JFrame {
                                 .fondosSuficientes(
                                                 Double.parseDouble(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)))) {
                         Transactions.restarFondos(valorApostado);
-                        Principal.ponerFondos(lbPonerFondos);
 
                         new CambiarIU().setImageLabel(lbContenido,
                                         "/main/resources/assets/img/ruleta/ruletaGirando.gif");
@@ -162,7 +161,6 @@ public class Ruleta extends javax.swing.JFrame {
                                         ponerUltimaCasilla(casillaJuego, colorCasilla);
 
                                         Transactions.sumarFondos(valorGanado[0]);
-                                        Principal.ponerFondos(lbPonerFondos);
                                         CambiarIU.habilitarBotones(btnAlVerde, btnAlRojo, btnAlNegro,
                                                         btnIngresarNumeros);
                                         new CambiarIU().setImageLabel(lbContenido,

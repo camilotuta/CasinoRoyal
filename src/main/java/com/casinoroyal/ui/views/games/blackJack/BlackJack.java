@@ -43,7 +43,7 @@ public class BlackJack extends javax.swing.JFrame {
                                 .getImage(getClass().getResource("/main/resources/assets/img/icon.png")));
                 ingresarChat();
                 taChatBlackJack.setEditable(false);
-                Principal.ponerFondos(lbPonerFondos);
+                Principal.actualizarFondos(lbPonerFondos);
                 Principal.ponerPersonasConectadas(lbPersonasConectadas, 3);
         }
 
@@ -77,7 +77,6 @@ public class BlackJack extends javax.swing.JFrame {
 
                         if (PersonalProfile.fondosSuficientes(valorApostado)) {
                                 Transactions.restarFondos(valorApostado);
-                                Principal.ponerFondos(lbPonerFondos);
                                 new SoundPlay().reproducir("/main/resources/assets/sound/blackjack.wav");
                                 SwingUtilities.invokeLater(() -> CambiarIU.deshabilitarBotones(btnJugar, btnAllIn));
 
@@ -95,8 +94,6 @@ public class BlackJack extends javax.swing.JFrame {
                                                         });
                                                         Thread.sleep(100);
                                                 }
-
-                                                SwingUtilities.invokeLater(() -> Principal.ponerFondos(lbPonerFondos));
 
                                                 SwingUtilities.invokeLater(
                                                                 () -> CambiarIU.habilitarBotones(btnJugar, btnAllIn));

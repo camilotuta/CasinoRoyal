@@ -45,7 +45,7 @@ public class Carrera extends javax.swing.JFrame {
                                 .getImage(getClass().getResource("/main/resources/assets/img/icon.png")));
                 ingresarChat();
                 taChatCarrera.setEditable(false);
-                Principal.ponerFondos(lbPonerFondos);
+                Principal.actualizarFondos(lbPonerFondos);
                 Principal.ponerPersonasConectadas(lbPersonasConectadas, 6);
                 ponerCarros();
                 ponerGanadorRandom();
@@ -106,7 +106,7 @@ public class Carrera extends javax.swing.JFrame {
                 if (PersonalProfile.fondosSuficientes(
                                 Double.parseDouble(ObtenerIU.obtenerSeleccionCombo(cbValorApostado)))) {
                         Transactions.restarFondos(valorApostado);
-                        Principal.ponerFondos(lbPonerFondos);
+
                         new SoundPlay().reproducir("/main/resources/assets/sound/carrera.wav");
                         CambiarIU.deshabilitarBotones(btnApostarCarro1, btnApostarCarro2, btnApostarCarro3,
                                         btnApostarCarro4);
@@ -177,7 +177,7 @@ public class Carrera extends javax.swing.JFrame {
                                         CambiarIU.ponerTextoEtiqueta(lbCuentaRegresiva, "");
 
                                         Transactions.sumarFondos(valorGanado[0]);
-                                        Principal.ponerFondos(lbPonerFondos);
+
                                         CambiarIU.habilitarBotones(btnApostarCarro1, btnApostarCarro2,
                                                         btnApostarCarro3,
                                                         btnApostarCarro4);

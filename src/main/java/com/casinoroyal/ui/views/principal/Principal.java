@@ -100,6 +100,24 @@ public class Principal extends javax.swing.JFrame {
                 }).start();
         }
 
+        public static void actualizarFondos(JLabel lbActualizarFondos) {
+
+                new Thread(() -> {
+                        try {
+                                while (true) {
+                                        ponerFondos(lbActualizarFondos);
+                                        Thread.sleep(2000);
+                                }
+
+                        } catch (InterruptedException e) {
+                                JOptionPane.showMessageDialog(null, e.getMessage(),
+                                                "ERROR AL ACTUALIZAR FONDOS",
+                                                JOptionPane.ERROR_MESSAGE);
+                        }
+                }).start();
+
+        }
+
         public void deshabilitarBotonCanjear() {
                 btnCanjear.setEnabled(VerificarDato.codigoPromocionalValido(ObtenerIU.obtenerTextoCampo(
                                 tfCodigoPromocional)));

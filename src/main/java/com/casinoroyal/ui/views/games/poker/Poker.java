@@ -39,7 +39,7 @@ public class Poker extends javax.swing.JFrame {
                                 .getImage(getClass().getResource("/main/resources/assets/img/icon.png")));
                 ingresarChat();
                 taChatPoker.setEditable(false);
-                Principal.ponerFondos(lbPonerFondos);
+                Principal.actualizarFondos(lbPonerFondos);
                 new CambiarIU().setImageLabel(lbContenido, "/main/resources/assets/img/poker/pokerPartida.gif");
                 Principal.ponerPersonasConectadas(lbPersonasConectadas, 1);
         }
